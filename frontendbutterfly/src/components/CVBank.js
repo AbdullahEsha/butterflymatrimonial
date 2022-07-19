@@ -25,6 +25,94 @@ const CVBank = (props) => {
   const [siblingData, setSiblingData] = useState(null)
   const [preferenceData, setPreferenceData] = useState(null)
 
+  const validation = () => {
+    if (data === 'ProfileInformation') {
+      if (profileData.image === '') {
+        Swal.fire('Oops..!', 'Name isn`t submited!!', 'error')
+      } else if (profileData.name === '') {
+        Swal.fire('Oops..!', 'Name isn`t submited!!', 'error')
+      } else if (profileData.gender === '') {
+        Swal.fire('Oops..!', 'Gender isn`t submited!!', 'error')
+      } else if (profileData.religion === '') {
+        Swal.fire('Oops..!', 'Religion isn`t submited!!', 'error')
+      } else if (profileData.email === '') {
+        Swal.fire('Oops..!', 'Email isn`t submited!!', 'error')
+      } else if (profileData.presentAddress === '') {
+        Swal.fire('Oops..!', 'Present Address isn`t submited!!', 'error')
+      } else if (profileData.divisionPresent === '') {
+        Swal.fire('Oops..!', 'Present division isn`t submited!!', 'error')
+      } else if (profileData.dristrictPresent === '') {
+        Swal.fire('Oops..!', 'Present dristrict isn`t submited!!', 'error')
+      } else if (profileData.parmanentAddress === '') {
+        Swal.fire('Oops..!', 'Parmanent address isn`t submited!!', 'error')
+      } else if (profileData.divisionParmanent === '') {
+        Swal.fire('Oops..!', 'Parmanent division isn`t submited!!', 'error')
+      } else if (profileData.dristrictParmanent === '') {
+        Swal.fire('Oops..!', 'Parmanent dristrict isn`t submited!!', 'error')
+      } else if (profileData.age === '') {
+        Swal.fire('Oops..!', 'Age isn`t submited!!', 'error')
+      } else if (preferenceData.length <= 0) {
+        Swal.fire('Oops..!', 'Please check at least one preference!!', 'error')
+      } else if (profileData.specialCase === '') {
+        Swal.fire('Oops..!', 'Special Case isn`t submited!!', 'error')
+      } else if (profileData.spousePreference === '') {
+        Swal.fire('Oops..!', 'Spouse Preference isn`t submited!!', 'error')
+      } else {
+        setData('PersonalInformation')
+      }
+    } else if (data === 'PersonalInformation') {
+      if (personalData.height === '') {
+        Swal.fire('Oops..!', 'Height isn`t submited!!', 'error')
+      } else if (personalData.weight === '') {
+        Swal.fire('Oops..!', 'Weight isn`t submited!!', 'error')
+      } else if (personalData.bloodGroup === '') {
+        Swal.fire('Oops..!', 'Blood Group isn`t submited!!', 'error')
+      } else if (personalData.grownUpAt === '') {
+        Swal.fire('Oops..!', 'Please submit where you grown up.', 'error')
+      } else if (personalData.specialCondition === '') {
+        Swal.fire('Oops..!', 'Special Condition isn`t submited!!', 'error')
+      } else {
+        setData('EducationalQulification')
+      }
+    } else if (data === 'EducationalQulification') {
+      if (educationalData.map((item) => item.instituteName)[0] === '') {
+        Swal.fire('Oops..!', 'Please submit institute name!!', 'error')
+      } else if (educationalData.map((item) => item.passingYear)[0] === '') {
+        Swal.fire('Oops..!', 'Please submit institute passing year!!', 'error')
+      } else {
+        setData('ProfessionalQualification')
+      }
+    } else if (data === 'ProfessionalQualification') {
+      if (professionalData.designation === '') {
+        Swal.fire('Oops..!', 'Designation isn`t submited!!', 'error')
+      } else if (professionalData.organizationName === '') {
+        Swal.fire('Oops..!', 'Organization Name isn`t submited!!', 'error')
+      } else {
+        setData('FamilyMember')
+      }
+    } else if (data === 'FamilyMember') {
+      if (familyData.fatherName === '') {
+        Swal.fire('Oops..!', 'Father name isn`t submited!!', 'error')
+      } else if (familyData.fatherOcupation === '') {
+        Swal.fire('Oops..!', 'Father ocupation isn`t submited!!', 'error')
+      } else if (familyData.motherName === '') {
+        Swal.fire('Oops..!', 'Mother Name isn`t submited!!', 'error')
+      } else if (familyData.motherOcupation === '') {
+        Swal.fire('Oops..!', 'Mother Ocupation isn`t submited!!', 'error')
+      } else if (siblingData.map((item) => item.name)[0] === '') {
+        Swal.fire('Oops..!', 'Sibling Name isn`t submited!!', 'error')
+      } else if (siblingData.map((item) => item.spouseDetails)[0] === '') {
+        Swal.fire('Oops..!', 'Spouse Details isn`t submited!!', 'error')
+      } else if (siblingData.map((item) => item.ocupation)[0] === '') {
+        Swal.fire('Oops..!', 'Sibling ocupation Name isn`t submited!!', 'error')
+      } else if (siblingData.map((item) => item.details)[0] === '') {
+        Swal.fire('Oops..!', 'Sibling details isn`t submited!!', 'error')
+      } else {
+        setData('Preview')
+      }
+    }
+  }
+
   const updateProfileData = (a) => {
     setProfileData(a)
   }
@@ -500,20 +588,6 @@ const CVBank = (props) => {
     doc.save(profileData.name + ' Cv.pdf')
   }
 
-  // const hide = document.querySelectorAll('.ToHide')
-  // hide.forEach((element) => {
-  //   element.style.visibility = 'hidden'
-  // })
-  // html2canvas(document.querySelector('.cv_bank_container2'), {}).then(
-  //   (canvas) => {
-  //     //document.body.appendChild(canvas); // if you want see your screenshot in body.
-  //     const imgData = canvas.toDataURL('image/png')
-  //     const pdf = new jsPDF('p', 'in', 'a3') //set pdf size to 8.5in x 11in Portrait
-  //     pdf.addImage(imgData, 'PNG', 0, 0)
-  //     pdf.save(profileData.name + 'Cv.pdf')
-  //   },
-  // )
-
   return (
     <div style={{ backgroundColor: '#ededed' }}>
       <MainNav />
@@ -708,47 +782,7 @@ const CVBank = (props) => {
           <Col align="right">
             <div>
               {data !== 'FamilyMember' && data !== 'Preview' && (
-                <button
-                  className="cv_bankButton_BackNext"
-                  onClick={() => {
-                    data === 'ProfileInformation' &&
-                      profileData.image !== '' &&
-                      profileData.name !== '' &&
-                      profileData.gender !== '' &&
-                      profileData.phone !== '' &&
-                      profileData.religion !== '' &&
-                      profileData.email !== '' &&
-                      profileData.presentAddress !== '' &&
-                      profileData.divisionPresent !== '' &&
-                      profileData.dristrictPresent !== '' &&
-                      profileData.parmanentAddress !== '' &&
-                      profileData.divisionParmanent !== '' &&
-                      profileData.dristrictParmanent !== '' &&
-                      profileData.age !== '' &&
-                      profileData.specialCase !== '' &&
-                      profileData.spousePreference !== '' &&
-                      profileData.about !== '' &&
-                      preferenceData.length > 0 &&
-                      setData('PersonalInformation')
-                    data === 'PersonalInformation' &&
-                      personalData.height !== '' &&
-                      personalData.weight !== '' &&
-                      personalData.bloodGroup !== '' &&
-                      personalData.grownUpAt !== '' &&
-                      personalData.specialCondition !== '' &&
-                      setData('EducationalQulification')
-                    data === 'EducationalQulification' &&
-                      educationalData.map((item) => item.instituteName)[0] !==
-                        '' &&
-                      educationalData.map((item) => item.passingYear)[0] !==
-                        '' &&
-                      setData('ProfessionalQualification')
-                    data === 'ProfessionalQualification' &&
-                      professionalData.designation !== '' &&
-                      professionalData.organizationName !== '' &&
-                      setData('FamilyMember')
-                  }}
-                >
+                <button className="cv_bankButton_BackNext" onClick={validation}>
                   Next
                 </button>
               )}
@@ -757,17 +791,7 @@ const CVBank = (props) => {
                 <div>
                   <button
                     className="cv_bankButton_BackNext"
-                    onClick={() =>
-                      familyData.fatherName !== '' &&
-                      familyData.fatherOcupation !== '' &&
-                      familyData.motherName !== '' &&
-                      familyData.motherOcupation !== '' &&
-                      siblingData.map((item) => item.name)[0] !== '' &&
-                      siblingData.map((item) => item.spouseDetails)[0] !== '' &&
-                      siblingData.map((item) => item.ocupation)[0] !== '' &&
-                      siblingData.map((item) => item.details)[0] !== '' &&
-                      setData('Preview')
-                    }
+                    onClick={validation}
                   >
                     Preview
                   </button>

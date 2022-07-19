@@ -12,6 +12,10 @@ h6 {
   letter-spacing: 1px;
 }
 
+.row-padding {
+  padding-bottom: 30px;
+}
+
 .berPadd h1 {
   font-weight: 700;
 }
@@ -715,6 +719,10 @@ input[type='radio']:checked {
 }
 
 @media only screen and (min-width: 361px) and (max-width: 600px) {
+  .row-padding {
+    padding-bottom: 0px;
+  }
+
   .background-img_1 {
     height: 700px;
   }
@@ -972,6 +980,10 @@ input[type='radio']:checked {
 }
 
 @media only screen and (max-width: 360px) {
+  .row-padding {
+    padding-bottom: 0px;
+  }
+
   .venus_img_1 {
     height: 280px;
   }
@@ -982,3 +994,49 @@ input[type='radio']:checked {
     padding: 5px;
   }
 }
+
+/* ============================================ select-search__input ============================= */
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  width: 50%;
+  height: 50vh;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/**
+ * Main wrapper
+ */
+.select-search {
+  width: 300px;
+  position: relative;
+  font-family: 'Nunito Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.select-search *,
+.select-search *::after,
+.select-search *::before {
+  box-sizing: inherit;
+}
+
+/**
+* Value wrapper
+*/
+.select-search__value {
+  position: relative;
+  z-index: 1;
+}
+
+.select-search__value::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: calc(50% - 9px);
+  right: 19px;
+  width: 11px;
+  height: 11px;
+}
+
+/* ========================== Input  =========================== */

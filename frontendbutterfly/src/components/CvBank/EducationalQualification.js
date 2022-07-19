@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import Select from 'react-select'
+
+const options = [
+  { label: 'Science', value: 'Science' },
+  { label: 'Commerce', value: 'Commerce' },
+  { label: 'Arts', value: 'Arts' },
+  { label: 'Biology', value: 'Biology' },
+  { label: 'Physics', value: 'Physics' },
+  { label: 'Chemistry', value: 'Chemistry' },
+]
 
 const EducationalQulification = (props) => {
   const [educationalQulification, setEducationalQulification] = useState([
@@ -42,10 +52,32 @@ const EducationalQulification = (props) => {
       <Container className="cv_bank_container21">
         <Row>
           <Col xs={12} md={6}>
-            <h4>Write Your School/College/University Name</h4>
+            <h4>Level of Education:</h4>
+            <select
+              className="form-control"
+              // onChange={(event) =>
+              //   setPersonalInformation({
+              //     ...personalInformation,
+              //     bloodGroup: event.target.value,
+              //   })
+              // }
+            >
+              <option value="" disabled selected>
+                Choose One
+              </option>
+              <option value="Secondary">Secondary</option>
+              <option value="Higher Secondary">Higher Secondary</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Bachelor Honors">Bachelor Honors</option>
+              <option value="Masters">Masters</option>
+              <option value="PhD">PhD(Doctor of philosophy)</option>
+            </select>
           </Col>
           <Col xs={0} md={6} className="hideyear">
-            <h4>Select Year Completed</h4>
+            <h4>Concentration/Major/Group</h4>
+            <div className="App2">
+              <Select options={options} />
+            </div>
           </Col>
         </Row>
       </Container>
@@ -57,6 +89,7 @@ const EducationalQulification = (props) => {
               <Container className="cv_bank_container21">
                 <Row>
                   <Col xs={12} md={6}>
+                    <h4>Institute Name</h4>
                     <input
                       type="text"
                       className="form-control"
@@ -67,6 +100,7 @@ const EducationalQulification = (props) => {
                     />
                   </Col>
                   <Col xs={12} md={6}>
+                    <h4>Year of Passing</h4>
                     <input
                       type="month"
                       className="form-control"

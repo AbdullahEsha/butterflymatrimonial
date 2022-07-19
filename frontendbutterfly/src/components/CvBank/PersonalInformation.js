@@ -19,7 +19,7 @@ const PersonalInformation = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
-        <Row>
+        <Row className="row-padding">
           <Col xs={12} md={6}>
             <h4>Height:</h4>
             <select
@@ -80,12 +80,9 @@ const PersonalInformation = (props) => {
             />
           </Col>
         </Row>
-      </Container>
-      <br />
-      <Container className="cv_bank_container21">
-        <Row>
-          <Col xs={12} md={3}>
-            <h4>Blood Group</h4>
+        <Row className="row-padding">
+          <Col xs={12} md={6}>
+            <h4>Blood Group:</h4>
             <select
               class="form-control"
               placeholder="Choose One"
@@ -109,42 +106,41 @@ const PersonalInformation = (props) => {
               <option value="AB-">AB-</option>
             </select>
           </Col>
+          <Col xs={12} md={6}>
+            <h4>Where You Grown Up?</h4>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter the country name."
+              onChange={(event) => {
+                setPersonalInformation({
+                  ...personalInformation,
+                  grownUpAt: event.target.value,
+                })
+              }}
+            />
+          </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={12} md={12}>
+            <h4>Special Condition:</h4>
+            <div class="input-group">
+              <textarea
+                class="form-control"
+                placeholder="Please share if you have any disabilities, low eye vision etc."
+                aria-label="With textarea"
+                rows="7"
+                onChange={(event) => {
+                  setPersonalInformation({
+                    ...personalInformation,
+                    specialCondition: event.target.value,
+                  })
+                }}
+              ></textarea>
+            </div>
+          </Col>
         </Row>
       </Container>
-      <br />
-      <Container className="cv_bank_container21">
-        <h4>Where You Grown Up?(Country)</h4>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Enter the country name."
-          onChange={(event) => {
-            setPersonalInformation({
-              ...personalInformation,
-              grownUpAt: event.target.value,
-            })
-          }}
-        />
-      </Container>
-      <br />
-      <Container className="cv_bank_container21">
-        <h4>Special Condition:</h4>
-        <div class="input-group">
-          <textarea
-            class="form-control"
-            placeholder="Please Share Details."
-            aria-label="With textarea"
-            rows="7"
-            onChange={(event) => {
-              setPersonalInformation({
-                ...personalInformation,
-                specialCondition: event.target.value,
-              })
-            }}
-          ></textarea>
-        </div>
-      </Container>
-      <br />
     </>
   )
 }
