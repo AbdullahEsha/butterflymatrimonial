@@ -32,7 +32,13 @@ h6 {
 
 #date-change:focus,
 #date-change:active {
-  border-style: hidden;
+  outline: 0;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #ffffff;
+  /* opacity: 1; */
 }
 
 .sticky-top {

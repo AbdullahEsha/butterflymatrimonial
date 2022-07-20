@@ -53,15 +53,16 @@ const EducationalQulification = (props) => {
         {educationalQulification.map((item, index) => {
           return (
             <div key={index}>
-              <div className="row-padding">
-                <h4
+              <div>
+                <br />
+                <p
                   style={{
                     borderBottom: '1px solid #ff566b',
                     color: '#ff566b',
                   }}
                 >
                   Academic {index + 1}
-                </h4>
+                </p>
               </div>
 
               <Row className="row-padding">
@@ -95,13 +96,26 @@ const EducationalQulification = (props) => {
                 </Col>
               </Row>
               <Row className="row-padding">
-                <Col xs={12} md={6}>
+                <Col xs={12} md={12}>
                   <h4>Institute Name</h4>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Enter your institute name."
                     name="instituteName"
+                    value={educationalQulification.instituteName}
+                    onChange={(event) => handleInput(index, event)}
+                  />
+                </Col>
+              </Row>
+              <Row className="row-padding">
+                <Col xs={12} md={6}>
+                  <h4>Institute Location</h4>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter your institute location."
+                    name="instituteLocation"
                     value={educationalQulification.instituteName}
                     onChange={(event) => handleInput(index, event)}
                   />
@@ -114,19 +128,6 @@ const EducationalQulification = (props) => {
                     name="passingYear"
                     placeholder="mm/yyyy"
                     value={educationalQulification.passingYear}
-                    onChange={(event) => handleInput(index, event)}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} md={12}>
-                  <h4>Institute Location</h4>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter your institute location."
-                    name="instituteLocation"
-                    value={educationalQulification.instituteName}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>

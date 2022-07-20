@@ -19,5 +19,8 @@ class Edu_qualificationData extends Model
         'instituteName',
         'passingYear',
         'cvdata_id',
+        'levelOfEducation',
+        'instituteLocation',
+        'group',
     ];
 }

@@ -101,8 +101,6 @@ const CVBank = (props) => {
         Swal.fire('Oops..!', 'Mother Ocupation isn`t submited!!', 'error')
       } else if (siblingData.map((item) => item.name)[0] === '') {
         Swal.fire('Oops..!', 'Sibling Name isn`t submited!!', 'error')
-      } else if (siblingData.map((item) => item.spouseDetails)[0] === '') {
-        Swal.fire('Oops..!', 'Spouse Details isn`t submited!!', 'error')
       } else if (siblingData.map((item) => item.ocupation)[0] === '') {
         Swal.fire('Oops..!', 'Sibling ocupation Name isn`t submited!!', 'error')
       } else if (siblingData.map((item) => item.details)[0] === '') {
@@ -169,7 +167,6 @@ const CVBank = (props) => {
       familyData.motherName !== '' &&
       familyData.motherOcupation !== '' &&
       siblingData.map((item) => item.name)[0] !== '' &&
-      siblingData.map((item) => item.spouseDetails)[0] !== '' &&
       siblingData.map((item) => item.ocupation)[0] !== '' &&
       siblingData.map((item) => item.details)[0] !== ''
     ) {
@@ -232,7 +229,6 @@ const CVBank = (props) => {
                   axios
                     .post(`http://localhost:8000/api/post/sibling`, {
                       name: item.name,
-                      spouseDetails: item.spouseDetails,
                       ocupation: item.ocupation,
                       details: item.details,
                       cvdata_id: cvData.length + 1,

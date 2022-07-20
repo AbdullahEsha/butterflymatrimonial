@@ -13,16 +13,16 @@ class cvdataController extends Controller
         try {
             $cvData = CvData::orderBy('id', 'desc')->get();
             return $cvData;
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }
 
     public function store(Request $req)
     {
-        $cvStore = new CvData;
+        $cvStore = new CvData();
         try {
             $cvStore->name = $req->name;
             $cvStore->gender = $req->gender;
@@ -46,11 +46,16 @@ class cvdataController extends Controller
             $cvStore->specialCondition = $req->specialCondition;
             $cvStore->designation = $req->designation;
             $cvStore->organizationName = $req->organizationName;
+            $cvStore->com_department = $req->com_department;
+            $cvStore->com_location = $req->com_location;
+            $cvStore->from_employment = $req->from_employment;
+            $cvStore->to_employment = $req->to_employment;
+            $cvStore->com_reference = $req->com_reference;
             $cvStore->fatherName = $req->fatherName;
             $cvStore->fatherOcupation = $req->fatherOcupation;
             $cvStore->motherName = $req->motherName;
             $cvStore->motherOcupation = $req->motherOcupation;
-            $cvStore->maritalStatus = "Unmarried";
+            $cvStore->maritalStatus = 'Unmarried';
 
             $rename = $req->file('image')->getClientOriginalName();
             $cvStore->image = 'uploads/images/' . $rename;
@@ -59,11 +64,11 @@ class cvdataController extends Controller
             $req->file('image')->move('uploads/images', $rename);
 
             return response()->json([
-                "message" => 'Your CV has just been stored.',
+                'message' => 'Your CV has just been stored.',
             ]);
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }
@@ -73,9 +78,9 @@ class cvdataController extends Controller
         try {
             $cvData = CvData::where('id', $id)->first();
             return $cvData;
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }
@@ -84,16 +89,16 @@ class cvdataController extends Controller
     {
         $cvUpdateToMarried = CvData::find($id);
         try {
-            $cvUpdateToMarried->maritalStatus =    "Married";
+            $cvUpdateToMarried->maritalStatus = 'Married';
 
             $cvUpdateToMarried->update();
 
             return response()->json([
-                "message" => 'Marital Status has just been updated to Married.',
+                'message' => 'Marital Status has just been updated to Married.',
             ]);
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }

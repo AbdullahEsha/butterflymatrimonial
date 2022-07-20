@@ -15,11 +15,5 @@ class SiblingData extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'spouseDetails',
-        'ocupation',
-        'details',
-        'cvdata_id',
-    ];
+    protected $fillable = ['name', 'ocupation', 'details', 'cvdata_id'];
 }

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -38,6 +37,11 @@ return new class extends Migration
             $table->text('specialCondition');
             $table->text('designation');
             $table->text('organizationName');
+            $table->text('com_department');
+            $table->text('com_location');
+            $table->text('from_employment');
+            $table->text('to_employment');
+            $table->text('com_reference');
             $table->text('fatherName');
             $table->text('fatherOcupation');
             $table->text('motherName');

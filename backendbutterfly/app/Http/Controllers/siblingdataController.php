@@ -13,19 +13,18 @@ class siblingdataController extends Controller
         try {
             $siblingData = SiblingData::where('cvdata_id', $id)->get();
             return $siblingData;
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }
 
     public function store(Request $req)
     {
-        $siblingDataStore = new SiblingData;
+        $siblingDataStore = new SiblingData();
         try {
             $siblingDataStore->name = $req->name;
-            $siblingDataStore->spouseDetails = $req->spouseDetails;
             $siblingDataStore->ocupation = $req->ocupation;
             $siblingDataStore->details = $req->details;
             $siblingDataStore->cvdata_id = $req->cvdata_id;
@@ -33,11 +32,11 @@ class siblingdataController extends Controller
             $siblingDataStore->save();
 
             return response()->json([
-                "message" => 'Your data has just been stored.',
+                'message' => 'Your data has just been stored.',
             ]);
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }

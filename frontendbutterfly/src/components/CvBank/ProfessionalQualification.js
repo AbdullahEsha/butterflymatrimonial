@@ -9,6 +9,11 @@ const ProfessionalQulification = (props) => {
   const [professionalQulification, setProfessionalQulification] = useState({
     designation: '',
     organizationName: '',
+    com_department: '',
+    com_location: '',
+    from_employment: '',
+    to_employment: '',
+    com_reference: '',
   })
 
   const { updateProfessionalData } = props
@@ -16,6 +21,12 @@ const ProfessionalQulification = (props) => {
   useEffect(() => {
     updateProfessionalData(professionalQulification)
   }, [professionalQulification, updateProfessionalData])
+
+  const DATE_OPTIONS = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }
 
   return (
     <>
@@ -40,7 +51,7 @@ const ProfessionalQulification = (props) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter organization name."
+              placeholder="Enter company name."
               onChange={(event) =>
                 setProfessionalQulification({
                   ...professionalQulification,
@@ -87,10 +98,16 @@ const ProfessionalQulification = (props) => {
               <div class="input-group mb-2">
                 <input
                   type="text"
-                  class="form-control"
-                  id="inlineFormInputGroup"
-                  value={fromdate}
-                  placeholder="From Date(MM/DD/YYYY)"
+                  className="form-control input-background"
+                  placeholder="From Date (M DD, YYYY)"
+                  value={
+                    fromdate
+                      ? new Date(fromdate).toLocaleDateString(
+                          'en-US',
+                          DATE_OPTIONS,
+                        )
+                      : ''
+                  }
                   disabled
                 />
                 <div class="input-group-prepend">
@@ -98,7 +115,16 @@ const ProfessionalQulification = (props) => {
                     <input
                       type="date"
                       id="date-change"
-                      onChange={(event) => setFromDate(event.target.value)}
+                      onChange={(event) =>
+                        setFromDate(
+                          event.target.value
+                            ? new Date(event.target.value).toLocaleDateString(
+                                'en-US',
+                                DATE_OPTIONS,
+                              )
+                            : '',
+                        )
+                      }
                     />
                   </div>
                 </div>
@@ -111,10 +137,9 @@ const ProfessionalQulification = (props) => {
                 <div class="input-group mb-2">
                   <input
                     type="text"
-                    class="form-control"
-                    id="inlineFormInputGroup"
+                    className="form-control input-background"
                     value={todate}
-                    placeholder="To Date(MM/DD/YYYY)"
+                    placeholder="To Date (M DD, YYYY)"
                     disabled
                   />
                   <div class="input-group-prepend">
@@ -122,7 +147,16 @@ const ProfessionalQulification = (props) => {
                       <input
                         type="date"
                         id="date-change"
-                        onChange={(event) => setToDate(event.target.value)}
+                        onChange={(event) =>
+                          setToDate(
+                            event.target.value
+                              ? new Date(event.target.value).toLocaleDateString(
+                                  'en-US',
+                                  DATE_OPTIONS,
+                                )
+                              : '',
+                          )
+                        }
                       />
                     </div>
                   </div>
@@ -148,20 +182,23 @@ const ProfessionalQulification = (props) => {
             </label>
           </div>
         </Row>
-        <Row>
+        <Row className="row-padding">
           <Col xs={12} md={12}>
             <h4>Reference:</h4>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter department name."
-              onChange={(event) =>
-                setProfessionalQulification({
-                  ...professionalQulification,
-                  organizationName: event.target.value,
-                })
-              }
-            />
+            <div class="input-group">
+              <textarea
+                class="form-control"
+                placeholder="Please share your immediate superior name, email/phone number."
+                aria-label="With textarea"
+                rows="3"
+                // onChange={(event) => {
+                //   setPersonalInformation({
+                //     ...personalInformation,
+                //     specialCondition: event.target.value,
+                //   })
+                // }}
+              ></textarea>
+            </div>
           </Col>
         </Row>
       </Container>

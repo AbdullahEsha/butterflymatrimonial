@@ -30,6 +30,10 @@ class edu_qualificationdataController extends Controller
             $edu_qualificationStore->instituteName = $req->instituteName;
             $edu_qualificationStore->passingYear = $req->passingYear;
             $edu_qualificationStore->cvdata_id = $req->cvdata_id;
+            $edu_qualificationStore->levelOfEducation = $req->levelOfEducation;
+            $edu_qualificationStore->instituteLocation =
+                $req->instituteLocation;
+            $edu_qualificationStore->group = $req->group;
 
             $edu_qualificationStore->save();
 
