@@ -13,7 +13,7 @@ h6 {
 }
 
 .row-padding {
-  padding-bottom: 30px;
+  padding-bottom: 15px;
 }
 
 .berPadd h1 {
@@ -22,6 +22,17 @@ h6 {
 
 .berPadd img {
   height: 75px;
+}
+
+#date-change {
+  width: 20px;
+  border-style: hidden;
+  background-color: #e9ecef;
+}
+
+#date-change:focus,
+#date-change:active {
+  border-style: hidden;
 }
 
 .sticky-top {
