@@ -1013,14 +1013,6 @@ input[type='radio']:checked {
 }
 
 /* ============================================ select-search__input ============================= */
-.App {
-  font-family: sans-serif;
-  text-align: center;
-  width: 50%;
-  height: 50vh;
-  margin: 40px auto;
-  padding: 20px;
-}
 
 /**
  * Main wrapper

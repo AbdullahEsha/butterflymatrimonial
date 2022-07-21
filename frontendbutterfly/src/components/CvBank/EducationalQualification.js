@@ -4,12 +4,12 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 import Select from 'react-select'
 
 const options = [
-  { label: 'Science', value: 'Science' },
-  { label: 'Commerce', value: 'Commerce' },
-  { label: 'Arts', value: 'Arts' },
-  { label: 'Biology', value: 'Biology' },
-  { label: 'Physics', value: 'Physics' },
-  { label: 'Chemistry', value: 'Chemistry' },
+  { label: 'Science', value: 'Science', name: 'group' },
+  { label: 'Commerce', value: 'Commerce', name: 'group' },
+  { label: 'Arts', value: 'Arts', name: 'group' },
+  { label: 'Biology', value: 'Biology', name: 'group' },
+  { label: 'Physics', value: 'Physics', name: 'group' },
+  { label: 'Chemistry', value: 'Chemistry', name: 'group' },
 ]
 
 const EducationalQulification = (props) => {
@@ -17,6 +17,9 @@ const EducationalQulification = (props) => {
     {
       instituteName: '',
       passingYear: '',
+      levelOfEducation: '',
+      instituteLocation: '',
+      group: '',
     },
   ])
 
@@ -26,6 +29,9 @@ const EducationalQulification = (props) => {
       {
         instituteName: '',
         passingYear: '',
+        levelOfEducation: '',
+        instituteLocation: '',
+        group: '',
       },
     ])
   }
@@ -44,6 +50,12 @@ const EducationalQulification = (props) => {
   const handleInput = (index, event) => {
     const values = [...educationalQulification]
     values[index][event.target.name] = event.target.value
+    setEducationalQulification(values)
+  }
+
+  const handleInput2 = (index, event) => {
+    const values = [...educationalQulification]
+    values[index][event.name] = event.value
     setEducationalQulification(values)
   }
 
@@ -70,12 +82,8 @@ const EducationalQulification = (props) => {
                   <h4>Level of Education:</h4>
                   <select
                     className="form-control"
-                    // onChange={(event) =>
-                    //   setPersonalInformation({
-                    //     ...personalInformation,
-                    //     bloodGroup: event.target.value,
-                    //   })
-                    // }
+                    name="levelOfEducation"
+                    onChange={(event) => handleInput(index, event)}
                   >
                     <option value="" disabled selected>
                       Choose One
@@ -91,7 +99,19 @@ const EducationalQulification = (props) => {
                 <Col xs={0} md={6}>
                   <h4>Concentration/Major/Group</h4>
                   <div className="App2">
-                    <Select options={options} />
+                    <Select
+                      options={options}
+                      theme={(theme) => ({
+                        ...theme,
+                        borderRadius: 3,
+                        colors: {
+                          ...theme.colors,
+                          primary25: '#ff566a56',
+                          primary: '#ff566b',
+                        },
+                      })}
+                      onChange={(event) => handleInput2(index, event)}
+                    />
                   </div>
                 </Col>
               </Row>
@@ -116,7 +136,7 @@ const EducationalQulification = (props) => {
                     className="form-control"
                     placeholder="Enter your institute location."
                     name="instituteLocation"
-                    value={educationalQulification.instituteName}
+                    value={educationalQulification.instituteLocation}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>

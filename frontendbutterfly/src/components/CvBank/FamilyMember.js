@@ -155,7 +155,7 @@ const FamilyMember = (props) => {
                 <div class="input-group">
                   <textarea
                     class="form-control"
-                    placeholder="Write Details here."
+                    placeholder="Write here about your sibling. For example his/her marital status, current study or job detail etc."
                     aria-label="With textarea"
                     rows="7"
                     name="details"
