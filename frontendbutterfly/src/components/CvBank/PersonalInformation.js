@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import Select from 'react-select'
 
 const PersonalInformation = (props) => {
+  const [city, setCity] = useState([])
   const [personalInformation, setPersonalInformation] = useState({
     height: '',
     weight: '',
@@ -13,15 +15,44 @@ const PersonalInformation = (props) => {
   const { updatePersonalData } = props
 
   useEffect(() => {
+    getAllCity()
     updatePersonalData(personalInformation)
   }, [personalInformation, updatePersonalData])
+
+  const getAllCity = async () => {
+    fetch(`https://countriesnow.space/api/v0.1/countries`, {})
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          const countryInfo = [...data.data]
+          let requiredCountryInfo = []
+          countryInfo.map((item, index) =>
+            item.cities.map((value, ind) =>
+              requiredCountryInfo.push({
+                label: `${item.country},${value}`,
+                value: `${item.country},${value}`,
+              }),
+            ),
+          )
+          console.log('required info ', requiredCountryInfo)
+          setCity(requiredCountryInfo)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
+
+  //console.log(city)
 
   return (
     <>
       <Container className="cv_bank_container21">
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h4>Height:</h4>
+            <h5>Height:</h5>
             <select
               class="form-control"
               placeholder="Choose One"
@@ -63,7 +94,7 @@ const PersonalInformation = (props) => {
             </select>
           </Col>
           <Col xs={12} md={6}>
-            <h4>Weight in (kg):</h4>
+            <h5>Weight in (kg):</h5>
             <input
               type="number"
               min="30"
@@ -82,7 +113,7 @@ const PersonalInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h4>Blood Group:</h4>
+            <h5>Blood Group:</h5>
             <select
               class="form-control"
               placeholder="Choose One"
@@ -107,11 +138,11 @@ const PersonalInformation = (props) => {
             </select>
           </Col>
           <Col xs={12} md={6}>
-            <h4>Where You Grown Up?</h4>
+            <h5>Where You Grown Up?</h5>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter the country name."
+              placeholder="Enter the Country and City name."
               onChange={(event) => {
                 setPersonalInformation({
                   ...personalInformation,
@@ -119,11 +150,23 @@ const PersonalInformation = (props) => {
                 })
               }}
             />
+            {/* <Select
+              options={city}
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 3,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#ff566a56',
+                  primary: '#ff566b',
+                },
+              })}
+            /> */}
           </Col>
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h4>Special Condition:</h4>
+            <h5>Special Condition:</h5>
             <div class="input-group">
               <textarea
                 class="form-control"

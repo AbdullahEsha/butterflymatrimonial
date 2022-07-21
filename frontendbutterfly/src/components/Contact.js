@@ -1,10 +1,49 @@
-import React from "react";
-import { Col, Row, Container } from "react-bootstrap";
-import contact from "../asset/image/contact.png";
-import Footer from "./Footer";
-import MainNav from "./MainNav";
+import React, { useState } from 'react'
+import { Col, Row, Container, Form } from 'react-bootstrap'
+import contact from '../asset/image/contact.png'
+import Footer from './Footer'
+import MainNav from './MainNav'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const Contact = () => {
+  const [validationError, setValidationError] = useState({})
+  const [contactData, setContactData] = useState({
+    name: '',
+    email: '',
+    question: '',
+  })
+
+  const addContact = async (event) => {
+    event.preventDefault()
+
+    await axios
+      .post(`http://localhost:8000/api/post/contact/new`, contactData)
+      .then(({ data }) => {
+        Swal.fire({
+          icon: 'success',
+          text: data.message,
+        }).then(function () {
+          window.location = 'http://localhost:3000/contact'
+        })
+      })
+      .catch(({ response }) => {
+        if (response.status === 422) {
+          setValidationError(response.data.errors)
+          Swal.fire({
+            title: 'Error!',
+            text: validationError,
+            icon: 'error',
+          })
+        } else {
+          Swal.fire({
+            text: response.data.message,
+            icon: 'error',
+          })
+        }
+      })
+  }
+
   return (
     <>
       <MainNav />
@@ -26,45 +65,78 @@ const Contact = () => {
             </div>
           </Col>
           <Col xs={12} md={6} className="contact_text_position_1">
-            <div>
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your name"
-                  aria-label="Your name"
-                  aria-describedby="basic-addon1"
-                />
+            <Form onSubmit={addContact}>
+              <div>
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your name"
+                    aria-label="Your name"
+                    aria-describedby="basic-addon1"
+                    name="name"
+                    value={contactData.name}
+                    onChange={(event) =>
+                      setContactData({
+                        ...contactData,
+                        name: event.target.value,
+                      })
+                    }
+                    required
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="What’s your email?"
+                    aria-label="your email?"
+                    aria-describedby="basic-addon1"
+                    name="email"
+                    value={contactData.email}
+                    onChange={(event) =>
+                      setContactData({
+                        ...contactData,
+                        email: event.target.value,
+                      })
+                    }
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <textarea
+                    class="form-control"
+                    placeholder="Your question."
+                    aria-label="With textarea"
+                    rows="6"
+                    name="question"
+                    value={contactData.question}
+                    onChange={(event) =>
+                      setContactData({
+                        ...contactData,
+                        question: event.target.value,
+                      })
+                    }
+                    required
+                  ></textarea>
+                </div>
+                <br />
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg btn-block"
+                  id="btn-primary"
+                >
+                  Send message
+                </button>
               </div>
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="What’s your email?"
-                  aria-label="your email?"
-                  aria-describedby="basic-addon1"
-                />
-              </div>
-              <div class="input-group">
-                <textarea
-                  class="form-control"
-                  placeholder="Your question..."
-                  aria-label="With textarea"
-                  rows="6"
-                ></textarea>
-              </div>
-              <br />
-              <button type="button" class="btn btn-primary btn-lg btn-block">
-                Send message
-              </button>
-            </div>
+            </Form>
           </Col>
         </Row>
       </Container>
       <br />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

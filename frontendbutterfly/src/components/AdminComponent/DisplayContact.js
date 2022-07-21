@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { MdDeleteForever, MdOutlineCalendarViewDay } from 'react-icons/md'
 
-const DisplayAllCV = () => {
-  const [cvdata, setCvData] = useState([])
+const DisplayContact = () => {
+  const [contact, setContact] = useState([])
   const auth = useAuth()
   const navigate = useNavigate()
 
@@ -29,28 +29,27 @@ const DisplayAllCV = () => {
   }, [])
 
   const getAllCv = async () => {
-    fetch(`http://localhost:8000/api/get/all/cv`, {})
+    fetch(`http://localhost:8000/api/get/contact/all`, {})
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
           console.log('vul')
         } else {
-          setCvData(data)
+          setContact(data)
         }
       })
       .catch((err) => {
         console.log('pro erro', err)
       })
   }
-
   return (
     <>
       <div class="sidebar">
         <Link to="/admin">Dashboard</Link>
-        <Link class="active" to="/admin/display-cv">
-          Display CV
+        <Link to="/admin/display-cv">Display CV</Link>
+        <Link class="active" to="/admin/contact">
+          Display Contacts
         </Link>
-        <Link to="/admin/contact">Display Contacts</Link>
         <Link to="/admin/venus">Venus</Link>
         <Link to="/admin/special-pairing">Special Pairing</Link>
         <Link to="/admin/login" onClick={handleLogout}>
@@ -69,19 +68,21 @@ const DisplayAllCV = () => {
                 <tr>
                   <th scope="col">No.</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Phone Number</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Question</th>
                   <th scope="col">Date</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">Send Mail</th>
                 </tr>
               </thead>
               <tbody>
-                {cvdata.map((item, index) => {
+                {contact.map((item, index) => {
                   return (
                     <>
                       <tr>
                         <td>{index + 1}</td>
                         <td>{item.name}</td>
-                        <td>{item.phone}</td>
+                        <td>{item.email}</td>
+                        <td>{item.question}</td>
                         <td>{`${
                           item.created_at
                             ? new Date(item.created_at).toLocaleString(
@@ -96,19 +97,13 @@ const DisplayAllCV = () => {
                             : ''
                         }`}</td>
                         <td>
-                          <Link
-                            to={`/admin/display-cv/${item.id}`}
-                            title="View"
+                          <a
+                            href={`mailto:${item.email}`}
+                            title="Send Mail"
                             className="btn btn-outline-info"
                           >
                             <MdOutlineCalendarViewDay size={20} />
-                          </Link>{' '}
-                          <button
-                            className="btn btn-outline-danger"
-                            title="Delete"
-                          >
-                            <MdDeleteForever size={20} />
-                          </button>
+                          </a>
                         </td>
                       </tr>
                     </>
@@ -128,4 +123,4 @@ const DisplayAllCV = () => {
   )
 }
 
-export default DisplayAllCV
+export default DisplayContact

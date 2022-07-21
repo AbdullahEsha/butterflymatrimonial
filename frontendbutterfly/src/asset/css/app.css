@@ -12,6 +12,10 @@ h6 {
   letter-spacing: 1px;
 }
 
+h5 {
+  font-size: 1.2rem;
+}
+
 .row-padding {
   padding-bottom: 15px;
 }
@@ -497,7 +501,21 @@ li a {
   background-color: #ffffff;
   color: #ff566b;
   border-color: #ff566b;
+  box-shadow: 0px 0px 7px 0px #ff566a69;
 }
+
+button#btn-primary:active,
+button#btn-primary:focus {
+  background-color: #fc6375;
+  border-color: #ff566b;
+  box-shadow: 0px 0px 7px 0px #ff566a69;
+}
+
+/* button#btn-primary:focus {
+  background-color: #fc6375;
+  border-color: #ff566b;
+  box-shadow: 0px 0px 7px 0px #ff566a69;
+} */
 
 .form-control:hover {
   border-color: #ff566b;

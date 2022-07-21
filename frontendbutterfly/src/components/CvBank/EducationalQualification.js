@@ -67,19 +67,19 @@ const EducationalQulification = (props) => {
             <div key={index}>
               <div>
                 <br />
-                <p
+                <h5
                   style={{
                     borderBottom: '1px solid #ff566b',
                     color: '#ff566b',
                   }}
                 >
                   Academic {index + 1}
-                </p>
+                </h5>
               </div>
 
-              <Row className="row-padding">
-                <Col xs={12} md={6}>
-                  <h4>Level of Education:</h4>
+              <Row className="row-padding custom-font-size">
+                <Col xs={12} md={6} className="">
+                  <h5>Level of Education:</h5>
                   <select
                     className="form-control"
                     name="levelOfEducation"
@@ -97,7 +97,7 @@ const EducationalQulification = (props) => {
                   </select>
                 </Col>
                 <Col xs={0} md={6}>
-                  <h4>Concentration/Major/Group</h4>
+                  <h5>Concentration/Major/Group</h5>
                   <div className="App2">
                     <Select
                       options={options}
@@ -117,7 +117,7 @@ const EducationalQulification = (props) => {
               </Row>
               <Row className="row-padding">
                 <Col xs={12} md={12}>
-                  <h4>Institute Name</h4>
+                  <h5>Institute Name</h5>
                   <input
                     type="text"
                     className="form-control"
@@ -130,7 +130,7 @@ const EducationalQulification = (props) => {
               </Row>
               <Row className="row-padding">
                 <Col xs={12} md={6}>
-                  <h4>Institute Location</h4>
+                  <h5>Institute Location</h5>
                   <input
                     type="text"
                     className="form-control"
@@ -141,7 +141,7 @@ const EducationalQulification = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <h4>Year of Passing</h4>
+                  <h5>Year of Passing</h5>
                   <input
                     type="month"
                     className="form-control"

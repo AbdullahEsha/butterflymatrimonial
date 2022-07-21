@@ -14,6 +14,7 @@ import DisplayCV from './components/AdminComponent/DisplayCV'
 import Login from './components/AdminComponent/Login'
 import AdminSpecialPairing from './components/AdminComponent/AdminSpecialPairing'
 import AdminVenus from './components/AdminComponent/AdminVenus'
+import DisplayContact from './components/AdminComponent/DisplayContact'
 import { Notfound } from './components/NotFound'
 
 function App() {
@@ -30,9 +31,10 @@ function App() {
         <Route path="/admin" element={<AuthProvider />}>
           <Route path="" element={<Dashboard />} />
           <Route path="display-cv" element={<DisplayAllCV />} />
+          <Route path="display-cv/:id" element={<DisplayCV />} />
+          <Route path="contact" element={<DisplayContact />} />
           <Route path="venus" element={<AdminVenus />} />
           <Route path="special-pairing" element={<AdminSpecialPairing />} />
-          <Route path="display-cv/:id" element={<DisplayCV />} />
           <Route path="login" element={<Login />} />
         </Route>
       </Routes>

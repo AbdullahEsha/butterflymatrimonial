@@ -117,14 +117,14 @@ const FamilyMember = (props) => {
               <div key={index}>
                 <div>
                   <br />
-                  <p
+                  <h5
                     style={{
                       borderBottom: '0.2px solid #ff566b',
                       color: '#ff566b',
                     }}
                   >
                     Sibling {index + 1}
-                  </p>
+                  </h5>
                 </div>
                 <div className="row">
                   <div className="col-12 col-sm-6">

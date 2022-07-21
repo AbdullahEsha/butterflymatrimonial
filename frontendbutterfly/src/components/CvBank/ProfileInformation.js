@@ -77,7 +77,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h4>Name:</h4>
+            <h5>Name:</h5>
             <input
               type="text"
               className="form-control"
@@ -135,7 +135,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h4>Phone:</h4>
+            <h5>Phone:</h5>
             <input
               type="number"
               className="form-control"
@@ -150,7 +150,7 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h4>Religion:</h4>
+            <h5>Religion:</h5>
             <select
               class="form-control"
               placeholder="Choose One"
@@ -174,7 +174,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h4>Email:</h4>
+            <h5>Email:</h5>
             <input
               type="email"
               className="form-control"
@@ -188,7 +188,7 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h4>Date Of Birth:</h4>
+            <h5>Date Of Birth:</h5>
             <input
               type="date"
               data-date-format="mm/dd/yyyy"
@@ -205,7 +205,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h4>Present Address:</h4>
+            <h5>Present Address:</h5>
             <input
               type="text"
               className="form-control"
@@ -221,7 +221,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h4>Division:</h4>
+            <h5>Division:</h5>
             <input
               type="text"
               className="form-control"
@@ -235,7 +235,7 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h4>Dristrict:</h4>
+            <h5>Dristrict:</h5>
             <input
               type="text"
               className="form-control"
@@ -251,7 +251,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col>
-            <h4>Parmanent Address:</h4>
+            <h5>Parmanent Address:</h5>
             <input
               type="text"
               className="form-control"
@@ -267,7 +267,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h4>Division:</h4>
+            <h5>Division:</h5>
             <input
               type="text"
               className="form-control"
@@ -281,7 +281,7 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h4>Dristrict:</h4>
+            <h5>Dristrict:</h5>
             <input
               type="text"
               className="form-control"
@@ -297,7 +297,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h4>Limitations Or Special Case:</h4>
+            <h5>Limitations Or Special Case:</h5>
             <div>
               <div class="form-check">
                 <input
@@ -372,7 +372,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h4>Preference:</h4>
+            <h5>Preference:</h5>
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -421,7 +421,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h4>Spouse Preference:</h4>
+            <h5>Spouse Preference:</h5>
             <div>
               <div class="form-check">
                 <input
@@ -462,7 +462,7 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h4>About:</h4>
+            <h5>About:</h5>
             <div class="input-group">
               <textarea
                 class="form-control"

@@ -1,101 +1,101 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
-import logo from "../../asset/image/butterfly.png";
-import "../../asset/css/sidebar.css";
-import { Link } from "react-router-dom";
-import { useAuth } from "./auth";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Row, Col } from 'react-bootstrap'
+import logo from '../../asset/image/butterfly.png'
+import '../../asset/css/sidebar.css'
+import { Link } from 'react-router-dom'
+import { useAuth } from './auth'
+import { useNavigate } from 'react-router-dom'
 
 const DisplayCV = () => {
-  const [cvdata, setCvData] = useState([]);
-  const [edudata, setEduData] = useState([]);
-  const [preferenceData, setPreferenceData] = useState([]);
-  const [siblingData, setSiblingData] = useState([]);
+  const [cvdata, setCvData] = useState([])
+  const [edudata, setEduData] = useState([])
+  const [preferenceData, setPreferenceData] = useState([])
+  const [siblingData, setSiblingData] = useState([])
 
-  const auth = useAuth();
-  const navigate = useNavigate();
+  const auth = useAuth()
+  const navigate = useNavigate()
 
   if (!auth.isLogin) {
-    navigate("/admin/login");
+    navigate('/admin/login')
   }
 
   const handleLogout = () => {
-    auth.logout();
-    navigate("/admin/login");
-  };
+    auth.logout()
+    navigate('/admin/login')
+  }
 
-  const { id } = useParams();
+  const { id } = useParams()
 
   useEffect(() => {
-    getCv();
-    getEdu();
-    getPreference();
-    getSibling();
+    getCv()
+    getEdu()
+    getPreference()
+    getSibling()
     return () => {
       //console.log("removing...", e);
-    };
-  }, []);
+    }
+  }, [])
 
   const getCv = async () => {
     fetch(`http://localhost:8000/api/get/cv/${id}`, {})
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          console.log("vul");
+          console.log('vul')
         } else {
-          setCvData(data);
+          setCvData(data)
         }
       })
       .catch((err) => {
-        console.log("pro erro", err);
-      });
-  };
+        console.log('pro erro', err)
+      })
+  }
 
   const getEdu = async () => {
     fetch(`http://localhost:8000/api/get/education/qualification/${id}`, {})
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          console.log("vul");
+          console.log('vul')
         } else {
-          setEduData(data);
+          setEduData(data)
         }
       })
       .catch((err) => {
-        console.log("pro erro", err);
-      });
-  };
+        console.log('pro erro', err)
+      })
+  }
 
   const getPreference = async () => {
     fetch(`http://localhost:8000/api/get/preference/${id}`, {})
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          console.log("vul");
+          console.log('vul')
         } else {
-          setPreferenceData(data);
+          setPreferenceData(data)
         }
       })
       .catch((err) => {
-        console.log("pro erro", err);
-      });
-  };
+        console.log('pro erro', err)
+      })
+  }
 
   const getSibling = async () => {
     fetch(`http://localhost:8000/api/get/sibling/${id}`, {})
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          console.log("vul");
+          console.log('vul')
         } else {
-          setSiblingData(data);
+          setSiblingData(data)
         }
       })
       .catch((err) => {
-        console.log("pro erro", err);
-      });
-  };
+        console.log('pro erro', err)
+      })
+  }
 
   return (
     <>
@@ -104,6 +104,7 @@ const DisplayCV = () => {
         <Link class="active" to="/admin/display-cv">
           Display CV
         </Link>
+        <Link to="/admin/contact">Display Contacts</Link>
         <Link to="/admin/venus">Venus</Link>
         <Link to="/admin/special-pairing">Special Pairing</Link>
         <Link to="/admin/login" onClick={handleLogout}>
@@ -112,9 +113,9 @@ const DisplayCV = () => {
       </div>
       <div
         class="content"
-        style={{ backgroundColor: "#ededed", padding: "30px" }}
+        style={{ backgroundColor: '#ededed', padding: '30px' }}
       >
-        <div style={{ backgroundColor: "#fff", padding: "30px" }}>
+        <div style={{ backgroundColor: '#fff', padding: '30px' }}>
           <Row>
             <Col>
               <h3>
@@ -126,7 +127,7 @@ const DisplayCV = () => {
           <Row>
             <Col>
               <img
-                src={"http://localhost:8000/" + cvdata.image}
+                src={'http://localhost:8000/' + cvdata.image}
                 alt="mage"
                 height="150px"
               />
@@ -136,7 +137,7 @@ const DisplayCV = () => {
           </Row>
           <Row>
             <Col xs={6} md={6}>
-              {" "}
+              {' '}
               <h6>
                 <b>Name:</b> {cvdata.name}
               </h6>
@@ -207,15 +208,15 @@ const DisplayCV = () => {
           <Row>
             <Col xs={6} md={6}>
               <h6>
-                <b>Date Of Birth:</b>{" "}
+                <b>Date Of Birth:</b>{' '}
                 {`${
                   cvdata.age
-                    ? new Date(cvdata.age).toLocaleString("en-GB", {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
+                    ? new Date(cvdata.age).toLocaleString('en-GB', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
                       })
-                    : ""
+                    : ''
                 }`}
               </h6>
             </Col>
@@ -233,9 +234,9 @@ const DisplayCV = () => {
             </Col>
             <Col xs={6} md={6}>
               <h6>
-                <b>Preference:</b>{" "}
+                <b>Preference:</b>{' '}
                 {preferenceData.map((item) => {
-                  return item.preference + " ";
+                  return item.preference + ' '
                 })}
               </h6>
             </Col>
@@ -289,7 +290,7 @@ const DisplayCV = () => {
                   </h6>
                 </Col>
               </Row>
-            );
+            )
           })}
           <Row>
             <Col>
@@ -391,7 +392,7 @@ const DisplayCV = () => {
                   </Col>
                 </Row>
               </>
-            );
+            )
           })}
         </div>
       </div>
@@ -402,7 +403,7 @@ const DisplayCV = () => {
         </Link>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default DisplayCV;
+export default DisplayCV

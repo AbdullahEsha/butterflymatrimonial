@@ -13,16 +13,16 @@ class preferencedataController extends Controller
         try {
             $preferenceData = PreferenceData::where('cvdata_id', $id)->get();
             return $preferenceData;
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }
 
     public function store(Request $req)
     {
-        $preferenceDataStore = new PreferenceData;
+        $preferenceDataStore = new PreferenceData();
         try {
             $preferenceDataStore->preference = $req->preference;
             $preferenceDataStore->cvdata_id = $req->cvdata_id;
@@ -30,11 +30,11 @@ class preferencedataController extends Controller
             $preferenceDataStore->save();
 
             return response()->json([
-                "message" => 'Order is placed. Please, wait for 30 minutes...',
+                'message' => 'Preference submited.',
             ]);
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
-                "message" => $e->getMessage(),
+                'message' => $e->getMessage(),
             ]);
         }
     }
