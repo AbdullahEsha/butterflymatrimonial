@@ -59,12 +59,14 @@ const ProfileInformation = (props) => {
     <>
       <Container className="cv_bank_container21">
         <Row className="row-padding">
-          <Col xs={12} md={2} className="img_uploader">
+          <Col xs={12} md={2} className="img_uploader image">
             <input
               type="file"
               accept="image/*"
               title="Choose Image"
-              className="uploadImg"
+              name="image"
+              className="uploadImg imageFile"
+              id="image2"
               onChange={(event) => {
                 setProfileInformation({
                   ...profileInformation,
@@ -77,10 +79,16 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Name:</h5>
+            <h5>
+              Name
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control name"
               placeholder="Enter your name."
               onChange={(event) =>
                 setProfileInformation({
@@ -112,7 +120,7 @@ const ProfileInformation = (props) => {
                   Male
                 </label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline ">
                 <input
                   class="form-check-input"
                   type="radio"
@@ -130,15 +138,27 @@ const ProfileInformation = (props) => {
                   Female
                 </label>
               </div>
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>{' '}
+              <label className="gender" style={{ color: 'red' }}>
+                Select one please.
+              </label>
             </div>
           </Col>
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Phone:</h5>
+            <h5>
+              Phone
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="number"
-              className="form-control"
+              className="form-control phone"
               id="phoneNumber"
               placeholder="Enter your phone number."
               onChange={(event) =>
@@ -150,9 +170,15 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h5>Religion:</h5>
+            <h5>
+              Religion
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <select
-              class="form-control"
+              class="form-control religion"
               placeholder="Choose One"
               onChange={(event) =>
                 setProfileInformation({
@@ -174,10 +200,16 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Email:</h5>
+            <h5>
+              Email
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="email"
-              className="form-control"
+              className="form-control email"
               placeholder="Enter your email id."
               onChange={(event) =>
                 setProfileInformation({
@@ -188,12 +220,18 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h5>Date Of Birth:</h5>
+            <h5>
+              Date Of Birth
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="date"
               data-date-format="mm/dd/yyyy"
               title="mm/dd/yyyy"
-              className="form-control"
+              className="form-control age"
               onChange={(event) =>
                 setProfileInformation({
                   ...profileInformation,
@@ -205,10 +243,16 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Present Address:</h5>
+            <h5>
+              Present Address
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control presentAddress"
               placeholder="Enter your present address."
               onChange={(event) =>
                 setProfileInformation({
@@ -221,10 +265,17 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Division:</h5>
+            <h5>
+              Division
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control divisionPresent"
+              id="divisionPresent"
               placeholder="Enter your division."
               onChange={(event) =>
                 setProfileInformation({
@@ -235,10 +286,16 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h5>Dristrict:</h5>
+            <h5>
+              Dristrict
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control dristrictPresent"
               placeholder="Enter your dristrict."
               onChange={(event) =>
                 setProfileInformation({
@@ -251,10 +308,16 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col>
-            <h5>Parmanent Address:</h5>
+            <h5>
+              Parmanent Address
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control parmanentAddress"
               placeholder="Enter your present address."
               onChange={(event) =>
                 setProfileInformation({
@@ -267,10 +330,16 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Division:</h5>
+            <h5>
+              Division
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control divisionParmanent"
               placeholder="Enter your division."
               onChange={(event) =>
                 setProfileInformation({
@@ -281,10 +350,16 @@ const ProfileInformation = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h5>Dristrict:</h5>
+            <h5>
+              Dristrict
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control dristrictParmanent"
               placeholder="Enter your dristrict."
               onChange={(event) =>
                 setProfileInformation({
@@ -297,11 +372,17 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Limitations Or Special Case:</h5>
+            <h5>
+              Limitations Or Special Case
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <div>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="Addiction"
@@ -318,7 +399,7 @@ const ProfileInformation = (props) => {
               </div>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="Diabetics"
@@ -335,7 +416,7 @@ const ProfileInformation = (props) => {
               </div>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="Smoker"
@@ -352,7 +433,7 @@ const ProfileInformation = (props) => {
               </div>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="Other"
@@ -372,10 +453,16 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Preference:</h5>
+            <h5>
+              Preference
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <div class="form-check">
               <input
-                class="form-check-input"
+                class="form-check-input preference"
                 type="checkbox"
                 value="Single"
                 onChange={(event) =>
@@ -386,7 +473,7 @@ const ProfileInformation = (props) => {
             </div>
             <div class="form-check">
               <input
-                class="form-check-input"
+                class="form-check-input preference"
                 type="checkbox"
                 value="Divorce"
                 onChange={(event) =>
@@ -397,7 +484,7 @@ const ProfileInformation = (props) => {
             </div>
             <div class="form-check">
               <input
-                class="form-check-input"
+                class="form-check-input preference"
                 type="checkbox"
                 value="Divorce without child"
                 onChange={(event) =>
@@ -408,7 +495,7 @@ const ProfileInformation = (props) => {
             </div>
             <div class="form-check">
               <input
-                class="form-check-input"
+                class="form-check-input preference"
                 type="checkbox"
                 value="Divorce with child"
                 onChange={(event) =>
@@ -421,11 +508,17 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Spouse Preference:</h5>
+            <h5>
+              Spouse Preference
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <div>
               <div class="form-check">
                 <input
-                  class="form-check-input"
+                  class="form-check-input spousePreference"
                   type="radio"
                   name="redioJob"
                   value="Job"
@@ -462,10 +555,16 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>About:</h5>
+            <h5>
+              About
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <div class="input-group">
               <textarea
-                class="form-control"
+                class="form-control about"
                 placeholder="Write about yourself."
                 aria-label="With textarea"
                 rows="7"

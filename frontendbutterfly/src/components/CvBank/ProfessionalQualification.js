@@ -5,7 +5,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 const ProfessionalQulification = (props) => {
   const [fromdate, setFromDate] = useState('')
   const [todate, setToDate] = useState('')
-  const [current, setCurrent] = useState('notChacked')
+  const [current, setCurrent] = useState('NotChacked')
 
   const [professionalQulification, setProfessionalQulification] = useState([
     {
@@ -44,6 +44,12 @@ const ProfessionalQulification = (props) => {
     updateProfessionalData(professionalQulification)
   }, [professionalQulification, updateProfessionalData])
 
+  const handleInput = (index, event) => {
+    const values = [...professionalQulification]
+    values[index][event.target.name] = event.target.value
+    setProfessionalQulification(values)
+  }
+
   const DATE_OPTIONS = {
     year: 'numeric',
     month: 'short',
@@ -56,74 +62,99 @@ const ProfessionalQulification = (props) => {
         {professionalQulification.map((item, index) => {
           return (
             <div key={index}>
+              <div>
+                <br />
+                <h5
+                  style={{
+                    borderBottom: '1px solid #ff566b',
+                    color: '#ff566b',
+                  }}
+                >
+                  Profession {index + 1}
+                </h5>
+              </div>
               <Row className="row-padding">
                 <Col xs={12} md={6}>
-                  <h5>Designation:</h5>
+                  <h5>
+                    Designation
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control designation"
                     placeholder="Enter your designation."
-                    onChange={(event) =>
-                      setProfessionalQulification({
-                        ...professionalQulification,
-                        designation: event.target.value,
-                      })
-                    }
+                    name="designation"
+                    onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <h5>Company Name:</h5>
+                  <h5>
+                    Company Name
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control organizationName"
                     placeholder="Enter company name."
-                    onChange={(event) =>
-                      setProfessionalQulification({
-                        ...professionalQulification,
-                        organizationName: event.target.value,
-                      })
-                    }
+                    name="organizationName"
+                    onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
               </Row>
               <Row className="row-padding">
                 <Col xs={12} md={6}>
-                  <h5>Department:</h5>
+                  <h5>
+                    Department
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control com_department"
                     placeholder="Enter department."
-                    onChange={(event) =>
-                      setProfessionalQulification({
-                        ...professionalQulification,
-                        organizationName: event.target.value,
-                      })
-                    }
+                    name="com_department"
+                    onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <h5>Location:</h5>
+                  <h5>
+                    Location
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control com_location"
                     placeholder="Enter location."
-                    onChange={(event) =>
-                      setProfessionalQulification({
-                        ...professionalQulification,
-                        organizationName: event.target.value,
-                      })
-                    }
+                    name="com_location"
+                    onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
               </Row>
               <Row className="row-padding">
-                <h5>Employment Period:</h5>
+                <h5>
+                  Employment Period
+                  <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                    *
+                  </span>
+                  :
+                </h5>
                 <Col xs={12} md={6}>
                   <div class="from-group">
                     <div class="input-group mb-2">
                       <input
                         type="text"
-                        className="form-control input-background"
+                        className="form-control input-background from_employment"
                         placeholder="From Date (M DD, YYYY)"
                         value={
                           fromdate
@@ -140,15 +171,11 @@ const ProfessionalQulification = (props) => {
                           <input
                             type="date"
                             id="date-change"
-                            onChange={(event) =>
-                              setFromDate(
-                                event.target.value
-                                  ? new Date(
-                                      event.target.value,
-                                    ).toLocaleDateString('en-US', DATE_OPTIONS)
-                                  : '',
-                              )
-                            }
+                            name="from_employment"
+                            onChange={(event) => {
+                              setFromDate(event.target.value)
+                              handleInput(index, event)
+                            }}
                           />
                         </div>
                       </div>
@@ -156,14 +183,21 @@ const ProfessionalQulification = (props) => {
                   </div>
                 </Col>
                 <Col xs={12} md={6}>
-                  {current === 'notChacked' && (
+                  {current !== `Chacked_${index}` && (
                     <div class="from-group">
                       <div class="input-group mb-2">
                         <input
                           type="text"
-                          className="form-control input-background"
-                          value={todate}
-                          placeholder="To Date (M DD, YYYY)"
+                          className="form-control input-background to_employment"
+                          value={
+                            todate
+                              ? new Date(todate).toLocaleDateString(
+                                  'en-US',
+                                  DATE_OPTIONS,
+                                )
+                              : ''
+                          }
+                          placeholder="To Date (MM, DD, YYYY)"
                           disabled
                         />
                         <div class="input-group-prepend">
@@ -171,18 +205,11 @@ const ProfessionalQulification = (props) => {
                             <input
                               type="date"
                               id="date-change"
-                              onChange={(event) =>
-                                setToDate(
-                                  event.target.value
-                                    ? new Date(
-                                        event.target.value,
-                                      ).toLocaleDateString(
-                                        'en-US',
-                                        DATE_OPTIONS,
-                                      )
-                                    : '',
-                                )
-                              }
+                              name="to_employment"
+                              onChange={(event) => {
+                                setToDate(event.target.value)
+                                handleInput(index, event)
+                              }}
                             />
                           </div>
                         </div>
@@ -194,13 +221,20 @@ const ProfessionalQulification = (props) => {
                   <label style={{ marginLeft: '20px' }}>
                     <input
                       type="checkbox"
-                      value="Chacked"
+                      value={`Chacked_${index}`}
                       className="form-check-input"
                       onChange={(event) => {
                         if (event.target.checked) {
                           setCurrent(event.target.value)
+                          const values = [...professionalQulification]
+                          values[index]['to_employment'] =
+                            'Currently working here'
+                          setProfessionalQulification(values)
                         } else if (!event.target.checked) {
-                          setCurrent('notChacked')
+                          setCurrent(`NotChacked`)
+                          const values = [...professionalQulification]
+                          values[index]['to_employment'] = todate
+                          setProfessionalQulification(values)
                         }
                       }}
                     />{' '}
@@ -210,13 +244,21 @@ const ProfessionalQulification = (props) => {
               </Row>
               <Row className="row-padding">
                 <Col xs={12} md={12}>
-                  <h5>Reference:</h5>
+                  <h5>
+                    Reference
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <div class="input-group">
                     <textarea
-                      class="form-control"
+                      className="form-control com_reference"
                       placeholder="Please share your immediate superior name, email/phone number."
                       aria-label="With textarea"
                       rows="3"
+                      name="com_reference"
+                      onChange={(event) => handleInput(index, event)}
                     ></textarea>
                   </div>
                 </Col>
@@ -231,7 +273,7 @@ const ProfessionalQulification = (props) => {
                         title="Remove One"
                         onClick={() => handleServiceRemove(index)}
                       >
-                        <FaMinus size={15} color="white" />
+                        <FaMinus size={15} color="white" /> Close
                       </button>
                     )}{' '}
                   {professionalQulification.length - 1 === index &&
@@ -241,7 +283,7 @@ const ProfessionalQulification = (props) => {
                         title="Add More"
                         onClick={handleServiceAdd}
                       >
-                        <FaPlus size={15} color="white" />
+                        <FaPlus size={15} color="white" /> Add More
                       </button>
                     )}
                 </Col>

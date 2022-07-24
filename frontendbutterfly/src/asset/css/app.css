@@ -28,6 +28,10 @@ h5 {
   height: 75px;
 }
 
+.gender {
+  visibility: hidden;
+}
+
 #date-change {
   width: 20px;
   border-style: hidden;
@@ -603,9 +607,9 @@ a:hover {
   background-color: #ff566b;
   color: #ffffff;
   border: 2px solid #ff566b;
-  border-radius: 50px;
+  border-radius: 20px;
   height: 30px;
-  width: 30px;
+  width: 120px;
   cursor: pointer;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.37);
 }

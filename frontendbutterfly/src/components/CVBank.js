@@ -27,84 +27,116 @@ const CVBank = (props) => {
 
   const validation = () => {
     if (data === 'ProfileInformation') {
+      const inputfile = document.getElementById('image2')
+      console.log('input', inputfile)
       if (profileData.image === '') {
-        Swal.fire('Oops..!', 'Name isn`t submited!!', 'error')
+        document.querySelector('.imageFile').style.border = '1px solid red'
       } else if (profileData.name === '') {
-        Swal.fire('Oops..!', 'Name isn`t submited!!', 'error')
+        document.querySelector('.name').style.border = '1px solid red'
       } else if (profileData.gender === '') {
-        Swal.fire('Oops..!', 'Gender isn`t submited!!', 'error')
+        document.querySelector('.gender').style.visibility = 'visible'
+      } else if (profileData.phone === '') {
+        document.querySelector('.phone').style.border = '1px solid red'
       } else if (profileData.religion === '') {
-        Swal.fire('Oops..!', 'Religion isn`t submited!!', 'error')
+        document.querySelector('.religion').style.borderColor = 'red'
       } else if (profileData.email === '') {
-        Swal.fire('Oops..!', 'Email isn`t submited!!', 'error')
-      } else if (profileData.presentAddress === '') {
-        Swal.fire('Oops..!', 'Present Address isn`t submited!!', 'error')
-      } else if (profileData.divisionPresent === '') {
-        Swal.fire('Oops..!', 'Present division isn`t submited!!', 'error')
-      } else if (profileData.dristrictPresent === '') {
-        Swal.fire('Oops..!', 'Present dristrict isn`t submited!!', 'error')
-      } else if (profileData.parmanentAddress === '') {
-        Swal.fire('Oops..!', 'Parmanent address isn`t submited!!', 'error')
-      } else if (profileData.divisionParmanent === '') {
-        Swal.fire('Oops..!', 'Parmanent division isn`t submited!!', 'error')
-      } else if (profileData.dristrictParmanent === '') {
-        Swal.fire('Oops..!', 'Parmanent dristrict isn`t submited!!', 'error')
+        document.querySelector('.email').style.borderColor = 'red'
       } else if (profileData.age === '') {
-        Swal.fire('Oops..!', 'Age isn`t submited!!', 'error')
-      } else if (preferenceData.length <= 0) {
-        Swal.fire('Oops..!', 'Please check at least one preference!!', 'error')
+        document.querySelector('.age').style.borderColor = 'red'
+      } else if (profileData.presentAddress === '') {
+        document.querySelector('.presentAddress').style.borderColor = 'red'
+      } else if (profileData.divisionPresent === '') {
+        document.querySelector('.divisionPresent').style.border =
+          '1px solid red'
+      } else if (profileData.dristrictPresent === '') {
+        document.querySelector('.dristrictPresent').style.borderColor = 'red'
+      } else if (profileData.parmanentAddress === '') {
+        document.querySelector('.parmanentAddress').style.borderColor = 'red'
+      } else if (profileData.divisionParmanent === '') {
+        document.querySelector('.divisionParmanent').style.borderColor = 'red'
+      } else if (profileData.dristrictParmanent === '') {
+        document.querySelector('.dristrictParmanent').style.borderColor = 'red'
       } else if (profileData.specialCase === '') {
-        Swal.fire('Oops..!', 'Special Case isn`t submited!!', 'error')
+        document.querySelector('.specialCase').style.border = '1px solid red'
+      } else if (preferenceData.length <= 0) {
+        document.querySelector('.preference').style.border = '1px solid red'
       } else if (profileData.spousePreference === '') {
-        Swal.fire('Oops..!', 'Spouse Preference isn`t submited!!', 'error')
+        document.querySelector('.spousePreference').style.border =
+          '1px solid red'
+      } else if (profileData.about === '') {
+        document.querySelector('.about').style.borderColor = 'red'
       } else {
         setData('PersonalInformation')
       }
     } else if (data === 'PersonalInformation') {
       if (personalData.height === '') {
-        Swal.fire('Oops..!', 'Height isn`t submited!!', 'error')
+        document.querySelector('.height').style.borderColor = 'red'
       } else if (personalData.weight === '') {
-        Swal.fire('Oops..!', 'Weight isn`t submited!!', 'error')
+        document.querySelector('.weight').style.borderColor = 'red'
       } else if (personalData.bloodGroup === '') {
-        Swal.fire('Oops..!', 'Blood Group isn`t submited!!', 'error')
+        document.querySelector('.bloodGroup').style.borderColor = 'red'
       } else if (personalData.grownUpAt === '') {
-        Swal.fire('Oops..!', 'Please submit where you grown up.', 'error')
+        document.querySelector('.grownUpAt').style.borderColor = 'red'
       } else if (personalData.specialCondition === '') {
-        Swal.fire('Oops..!', 'Special Condition isn`t submited!!', 'error')
+        document.querySelector('.specialCondition').style.borderColor = 'red'
       } else {
         setData('EducationalQulification')
       }
     } else if (data === 'EducationalQulification') {
-      if (educationalData.map((item) => item.instituteName)[0] === '') {
-        Swal.fire('Oops..!', 'Please submit institute name!!', 'error')
+      if (educationalData.map((item) => item.levelOfEducation)[0] === '') {
+        document.querySelector('.levelOfEducation').style.borderColor = 'red'
+      } else if (educationalData.map((item) => item.group)[0] === '') {
+        document.querySelector('.group_0').style.borderColor = 'red'
+      } else if (educationalData.map((item) => item.instituteName)[0] === '') {
+        document.querySelector('.instituteName').style.borderColor = 'red'
+      } else if (
+        educationalData.map((item) => item.instituteLocation)[0] === ''
+      ) {
+        document.querySelector('.instituteLocation').style.borderColor = 'red'
       } else if (educationalData.map((item) => item.passingYear)[0] === '') {
-        Swal.fire('Oops..!', 'Please submit institute passing year!!', 'error')
+        document.querySelector('.passingYear').style.borderColor = 'red'
       } else {
         setData('ProfessionalQualification')
       }
     } else if (data === 'ProfessionalQualification') {
-      if (professionalData.designation === '') {
-        Swal.fire('Oops..!', 'Designation isn`t submited!!', 'error')
-      } else if (professionalData.organizationName === '') {
-        Swal.fire('Oops..!', 'Organization Name isn`t submited!!', 'error')
+      if (professionalData.map((item) => item.designation)[0] === '') {
+        document.querySelector('.designation').style.borderColor = 'red'
+      } else if (
+        professionalData.map((item) => item.organizationName)[0] === ''
+      ) {
+        document.querySelector('.organizationName').style.borderColor = 'red'
+      } else if (
+        professionalData.map((item) => item.com_department)[0] === ''
+      ) {
+        document.querySelector('.com_department').style.borderColor = 'red'
+      } else if (professionalData.map((item) => item.com_location)[0] === '') {
+        document.querySelector('.com_location').style.borderColor = 'red'
+      } else if (
+        professionalData.map((item) => item.from_employment)[0] === ''
+      ) {
+        document.querySelector('.from_employment').style.borderColor = 'red'
+      } else if (professionalData.map((item) => item.to_employment)[0] === '') {
+        document.querySelector('.to_employment').style.borderColor = 'red'
+      } else if (professionalData.map((item) => item.com_reference)[0] === '') {
+        document.querySelector('.com_reference').style.borderColor = 'red'
       } else {
         setData('FamilyMember')
       }
     } else if (data === 'FamilyMember') {
       if (familyData.fatherName === '') {
-        Swal.fire('Oops..!', 'Father name isn`t submited!!', 'error')
+        document.querySelector('.fatherName').style.borderColor = 'red'
       } else if (familyData.fatherOcupation === '') {
-        Swal.fire('Oops..!', 'Father ocupation isn`t submited!!', 'error')
+        document.querySelector('.fatherOcupation').style.borderColor = 'red'
       } else if (familyData.motherName === '') {
-        Swal.fire('Oops..!', 'Mother Name isn`t submited!!', 'error')
+        document.querySelector('.motherName').style.borderColor = 'red'
       } else if (familyData.motherOcupation === '') {
-        Swal.fire('Oops..!', 'Mother Ocupation isn`t submited!!', 'error')
+        document.querySelector('.motherOcupation').style.borderColor = 'red'
       } else if (siblingData.map((item) => item.name)[0] === '') {
-        Swal.fire('Oops..!', 'Sibling Name isn`t submited!!', 'error')
+        document.querySelector('.sibname').style.borderColor = 'red'
       } else if (siblingData.map((item) => item.ocupation)[0] === '') {
-        Swal.fire('Oops..!', 'Sibling ocupation Name isn`t submited!!', 'error')
+        document.querySelector('.sibocupation').style.borderColor = 'red'
       } else if (siblingData.map((item) => item.details)[0] === '') {
-        Swal.fire('Oops..!', 'Sibling details isn`t submited!!', 'error')
+        document.querySelector('.sibdetails').style.borderColor = 'red'
       } else {
         setData('Preview')
       }
@@ -135,136 +167,112 @@ const CVBank = (props) => {
 
   const addCV = (event) => {
     event.preventDefault()
-    if (
-      profileData.image !== '' &&
-      profileData.name !== '' &&
-      profileData.gender !== '' &&
-      profileData.phone !== '' &&
-      profileData.religion !== '' &&
-      profileData.email !== '' &&
-      profileData.presentAddress !== '' &&
-      profileData.divisionPresent !== '' &&
-      profileData.dristrictPresent !== '' &&
-      profileData.parmanentAddress !== '' &&
-      profileData.divisionParmanent !== '' &&
-      profileData.dristrictParmanent !== '' &&
-      profileData.age !== '' &&
-      profileData.specialCase !== '' &&
-      profileData.spousePreference !== '' &&
-      profileData.about !== '' &&
-      preferenceData.length > 0 &&
-      personalData.height !== '' &&
-      personalData.weight !== '' &&
-      personalData.bloodGroup !== '' &&
-      personalData.grownUpAt !== '' &&
-      personalData.specialCondition !== '' &&
-      professionalData.designation !== '' &&
-      professionalData.organizationName !== '' &&
-      educationalData.map((item) => item.instituteName)[0] !== '' &&
-      educationalData.map((item) => item.passingYear)[0] !== '' &&
-      familyData.fatherName !== '' &&
-      familyData.fatherOcupation !== '' &&
-      familyData.motherName !== '' &&
-      familyData.motherOcupation !== '' &&
-      siblingData.map((item) => item.name)[0] !== '' &&
-      siblingData.map((item) => item.ocupation)[0] !== '' &&
-      siblingData.map((item) => item.details)[0] !== ''
-    ) {
-      const formData = new FormData()
-      formData.append('image', profileData.image)
-      formData.append('name', profileData.name)
-      formData.append('gender', profileData.gender)
-      formData.append('phone', profileData.phone)
-      formData.append('religion', profileData.religion)
-      formData.append('email', profileData.email)
-      formData.append('presentAddress', profileData.presentAddress)
-      formData.append('divisionPresent', profileData.divisionPresent)
-      formData.append('dristrictPresent', profileData.dristrictPresent)
-      formData.append('parmanentAddress', profileData.parmanentAddress)
-      formData.append('divisionParmanent', profileData.divisionParmanent)
-      formData.append('dristrictParmanent', profileData.dristrictParmanent)
-      formData.append('age', profileData.age)
-      formData.append('specialCase', profileData.specialCase)
-      formData.append('spousePreference', profileData.spousePreference)
-      formData.append('about', profileData.about)
-      formData.append('designation', professionalData.designation)
-      formData.append('organizationName', professionalData.organizationName)
-      formData.append('height', personalData.height)
-      formData.append('weight', personalData.weight)
-      formData.append('bloodGroup', personalData.bloodGroup)
-      formData.append('grownUpAt', personalData.grownUpAt)
-      formData.append('specialCondition', personalData.specialCondition)
-      formData.append('fatherName', familyData.fatherName)
-      formData.append('fatherOcupation', familyData.fatherOcupation)
-      formData.append('motherName', familyData.motherName)
-      formData.append('motherOcupation', familyData.motherOcupation)
+    const formData = new FormData()
+    formData.append('image', profileData.image)
+    formData.append('name', profileData.name)
+    formData.append('gender', profileData.gender)
+    formData.append('phone', profileData.phone)
+    formData.append('religion', profileData.religion)
+    formData.append('email', profileData.email)
+    formData.append('presentAddress', profileData.presentAddress)
+    formData.append('divisionPresent', profileData.divisionPresent)
+    formData.append('dristrictPresent', profileData.dristrictPresent)
+    formData.append('parmanentAddress', profileData.parmanentAddress)
+    formData.append('divisionParmanent', profileData.divisionParmanent)
+    formData.append('dristrictParmanent', profileData.dristrictParmanent)
+    formData.append('age', profileData.age)
+    formData.append('specialCase', profileData.specialCase)
+    formData.append('spousePreference', profileData.spousePreference)
+    formData.append('about', profileData.about)
+    formData.append('height', personalData.height)
+    formData.append('weight', personalData.weight)
+    formData.append('bloodGroup', personalData.bloodGroup)
+    formData.append('grownUpAt', personalData.grownUpAt)
+    formData.append('specialCondition', personalData.specialCondition)
+    formData.append('fatherName', familyData.fatherName)
+    formData.append('fatherOcupation', familyData.fatherOcupation)
+    formData.append('motherName', familyData.motherName)
+    formData.append('motherOcupation', familyData.motherOcupation)
 
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, submit it!',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          //insert cvdata
-          axios
-            .post(`http://localhost:8000/api/post/cv/new`, formData)
-            .then((data) => {
-              if (data) {
-                preferenceData.map((item, index) =>
-                  axios
-                    .post(`http://localhost:8000/api/post/preference`, {
-                      preference: item,
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, submit it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        //insert cvdata
+        axios
+          .post(`http://localhost:8000/api/post/cv/new`, formData)
+          .then((data) => {
+            if (data) {
+              preferenceData.map((item, index) =>
+                axios
+                  .post(`http://localhost:8000/api/post/preference`, {
+                    preference: item,
+                    cvdata_id: cvData.length + 1,
+                  })
+                  .catch(({ response }) => {
+                    console.log('Preference ', response)
+                  }),
+              )
+              siblingData.map((item, index) =>
+                axios
+                  .post(`http://localhost:8000/api/post/sibling`, {
+                    name: item.name,
+                    ocupation: item.ocupation,
+                    details: item.details,
+                    cvdata_id: cvData.length + 1,
+                  })
+                  .catch(({ response }) => {
+                    console.log('Sibling ', response)
+                  }),
+              )
+              educationalData.map((item, index) =>
+                axios
+                  .post(
+                    `http://localhost:8000/api/post/education/qualification`,
+                    {
+                      instituteName: item.instituteName,
+                      passingYear: item.passingYear,
+                      levelOfEducation: item.levelOfEducation,
+                      instituteLocation: item.instituteLocation,
+                      group: item.group,
                       cvdata_id: cvData.length + 1,
-                    })
-                    .catch(({ response }) => {
-                      console.log('Preference ', response)
-                    }),
-                )
-
-                siblingData.map((item, index) =>
-                  axios
-                    .post(`http://localhost:8000/api/post/sibling`, {
-                      name: item.name,
-                      ocupation: item.ocupation,
-                      details: item.details,
-                      cvdata_id: cvData.length + 1,
-                    })
-                    .catch(({ response }) => {
-                      console.log('Sibling ', response)
-                    }),
-                )
-
-                educationalData.map((item, index) =>
-                  axios
-                    .post(
-                      `http://localhost:8000/api/post/education/qualification`,
-                      {
-                        instituteName: item.instituteName,
-                        passingYear: item.passingYear,
-                        cvdata_id: cvData.length + 1,
-                      },
-                    )
-                    .catch(({ response }) => {
-                      console.log('Educational ', response)
-                    }),
-                )
-
-                //submission confirmation
-                Swal.fire('Submitted!', 'CV has been submitted.', 'success')
-              }
-            })
-            .catch(({ response }) => {
-              console.log('Main CV data response', response)
-            })
-        }
-      })
-    } else {
-      console.log("Sorry, data isn't fill-up perfectly.")
-    }
+                    },
+                  )
+                  .catch(({ response }) => {
+                    console.log('Educational ', response)
+                  }),
+              )
+              professionalData.map((item, index) =>
+                axios
+                  .post(`http://localhost:8000/api/post/professional`, {
+                    designation: item.designation,
+                    organizationName: item.organizationName,
+                    com_department: item.com_department,
+                    com_location: item.com_location,
+                    from_employment: item.from_employment,
+                    to_employment: item.to_employment,
+                    com_reference: item.com_reference,
+                    cvdata_id: cvData.length + 1,
+                  })
+                  .catch(({ response }) => {
+                    console.log('Educational ', response)
+                  }),
+              )
+              //submission confirmation
+              Swal.fire({ icon: 'success', text: data.message })
+            }
+          })
+          .catch(({ response }) => {
+            console.log('Main CV data response', response)
+          })
+      }
+    })
   }
 
   useEffect(() => {
@@ -583,6 +591,8 @@ const CVBank = (props) => {
 
     doc.save(profileData.name + ' Cv.pdf')
   }
+
+  // console.log('profileData', profileData)
 
   return (
     <div style={{ backgroundColor: '#ededed' }}>

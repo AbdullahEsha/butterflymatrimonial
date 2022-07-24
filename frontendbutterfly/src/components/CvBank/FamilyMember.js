@@ -53,10 +53,16 @@ const FamilyMember = (props) => {
       <Container className="cv_bank_container21">
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Father’s Name:</h5>
+            <h5>
+              Father’s Name
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control fatherName"
               placeholder="Enter your father’s Name"
               onChange={(event) =>
                 setFamilyMember({
@@ -67,10 +73,16 @@ const FamilyMember = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h5>Ocupation:</h5>
+            <h5>
+              Ocupation
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control fatherOcupation"
               placeholder="Enter father’s Ocupation."
               onChange={(event) =>
                 setFamilyMember({
@@ -83,10 +95,16 @@ const FamilyMember = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Mother’s Name:</h5>
+            <h5>
+              Mother’s Name
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control motherName"
               placeholder="Enter your Mother’s Name."
               onChange={(event) =>
                 setFamilyMember({
@@ -97,10 +115,16 @@ const FamilyMember = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h5>Ocupation:</h5>
+            <h5>
+              Ocupation
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control motherOcupation"
               placeholder="Enter Mother’s Ocupation."
               onChange={(event) =>
                 setFamilyMember({
@@ -128,10 +152,16 @@ const FamilyMember = (props) => {
                 </div>
                 <div className="row">
                   <div className="col-12 col-sm-6">
-                    <h5>Name:</h5>
+                    <h5>
+                      Name
+                      <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                        *
+                      </span>
+                      :
+                    </h5>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control sibname"
                       placeholder="Enter name."
                       value={sibling.name}
                       name="name"
@@ -139,10 +169,16 @@ const FamilyMember = (props) => {
                     />
                   </div>
                   <div className="col-12 col-sm-6">
-                    <h5>Ocupation:</h5>
+                    <h5>
+                      Ocupation
+                      <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                        *
+                      </span>
+                      :
+                    </h5>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control sibocupation"
                       name="ocupation"
                       placeholder="Enter ocupation."
                       value={sibling.ocupation}
@@ -151,10 +187,16 @@ const FamilyMember = (props) => {
                   </div>
                 </div>
                 <br />
-                <h5>Details:</h5>
+                <h5>
+                  Details
+                  <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                    *
+                  </span>
+                  :
+                </h5>
                 <div class="input-group">
                   <textarea
-                    class="form-control"
+                    className="form-control sibdetails"
                     placeholder="Write here about your sibling. For example his/her marital status, current study or job detail etc."
                     aria-label="With textarea"
                     rows="7"
@@ -173,7 +215,7 @@ const FamilyMember = (props) => {
                         title="Remove one"
                         onClick={() => handleServiceRemove(index)}
                       >
-                        <FaMinus size={15} color="white" />
+                        <FaMinus size={15} color="white" /> Close
                       </button>
                     )}{' '}
                   {sibling.length - 1 === index && sibling.length < 6 && (
@@ -182,7 +224,7 @@ const FamilyMember = (props) => {
                       title="Add More"
                       onClick={handleServiceAdd}
                     >
-                      <FaPlus size={15} color="white" />
+                      <FaPlus size={15} color="white" /> Add More
                     </button>
                   )}
                 </div>

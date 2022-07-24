@@ -44,13 +44,6 @@ class cvdataController extends Controller
             $cvStore->bloodGroup = $req->bloodGroup;
             $cvStore->grownUpAt = $req->grownUpAt;
             $cvStore->specialCondition = $req->specialCondition;
-            $cvStore->designation = $req->designation;
-            $cvStore->organizationName = $req->organizationName;
-            $cvStore->com_department = $req->com_department;
-            $cvStore->com_location = $req->com_location;
-            $cvStore->from_employment = $req->from_employment;
-            $cvStore->to_employment = $req->to_employment;
-            $cvStore->com_reference = $req->com_reference;
             $cvStore->fatherName = $req->fatherName;
             $cvStore->fatherOcupation = $req->fatherOcupation;
             $cvStore->motherName = $req->motherName;
@@ -69,6 +62,7 @@ class cvdataController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),
+                $req->file('image'),
             ]);
         }
     }

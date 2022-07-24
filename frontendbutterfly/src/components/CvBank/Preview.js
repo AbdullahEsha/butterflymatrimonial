@@ -148,21 +148,57 @@ const Preview = (props) => {
             <hr />
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <h6>
-              <b>Designation:</b> {props.professionalData.designation}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h6>
-              <b>Organization Name:</b>{' '}
-              {props.professionalData.organizationName}
-            </h6>
-          </Col>
-        </Row>
+        {props.professionalData.map((item) => {
+          return (
+            <>
+              <Row>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Designation:</b>
+                    {item.designation}
+                  </h6>
+                </Col>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Organization Name:</b>
+                    {item.organizationName}
+                  </h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Department:</b>
+                    {item.com_department}
+                  </h6>
+                </Col>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Location:</b>
+                    {item.com_location}
+                  </h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="12">
+                  <h6>
+                    <b>Employment Period:</b> {item.from_employment} to{' '}
+                    {item.to_employment}
+                  </h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Reference:</b>
+                    {item.designation}
+                  </h6>
+                </Col>
+              </Row>
+            </>
+          )
+        })}
+        <Row></Row>
         <Row>
           <Col>
             <br />
@@ -174,14 +210,34 @@ const Preview = (props) => {
         </Row>
         {props.educationalData.map((item) => {
           return (
-            <Row>
-              <Col>
-                <h6>
-                  <b>Institute Name:</b> {item.instituteName}({item.passingYear}
-                  )
-                </h6>
-              </Col>
-            </Row>
+            <>
+              <Row>
+                <Col xs={12} md={6}>
+                  <h6>
+                    <b>Institute Name:</b> {item.instituteName}(
+                    {item.passingYear})
+                  </h6>
+                </Col>
+                <Col xs={12} md={6}>
+                  <h6>
+                    <b>Concentration/Major/Group:</b> {item.group}
+                  </h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} md={6}>
+                  <h6>
+                    <b>Level of Education:</b> {item.levelOfEducation}(
+                    {item.passingYear})
+                  </h6>
+                </Col>
+                <Col xs={12} md={6}>
+                  <h6>
+                    <b>Institute Location:</b> {item.instituteLocation}
+                  </h6>
+                </Col>
+              </Row>
+            </>
           )
         })}
         <Row>
@@ -265,21 +321,21 @@ const Preview = (props) => {
           return (
             <>
               <Row>
-                <Col>
-                  <h6>
-                    <b>Name:</b> {item.name}
-                  </h6>
-                </Col>
-              </Row>
-              <Row>
                 <Col xs={6} md={6}>
                   <h6>
-                    <b>Details:</b> {item.spouseDetails}
+                    <b>Name:</b> {item.name}
                   </h6>
                 </Col>
                 <Col xs={6} md={6}>
                   <h6>
                     <b>Ocupation:</b> {item.ocupation}
+                  </h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h6>
+                    <b>Details:</b> {item.details}
                   </h6>
                 </Col>
               </Row>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import Select from 'react-select'
+//import Select from 'react-select'
 
 const PersonalInformation = (props) => {
-  const [city, setCity] = useState([])
+  //const [city, setCity] = useState([])
   const [personalInformation, setPersonalInformation] = useState({
     height: '',
     weight: '',
@@ -15,35 +15,35 @@ const PersonalInformation = (props) => {
   const { updatePersonalData } = props
 
   useEffect(() => {
-    getAllCity()
+    //getAllCity()
     updatePersonalData(personalInformation)
   }, [personalInformation, updatePersonalData])
 
-  const getAllCity = async () => {
-    fetch(`https://countriesnow.space/api/v0.1/countries`, {})
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          console.log('vul')
-        } else {
-          const countryInfo = [...data.data]
-          let requiredCountryInfo = []
-          countryInfo.map((item, index) =>
-            item.cities.map((value, ind) =>
-              requiredCountryInfo.push({
-                label: `${item.country},${value}`,
-                value: `${item.country},${value}`,
-              }),
-            ),
-          )
-          console.log('required info ', requiredCountryInfo)
-          setCity(requiredCountryInfo)
-        }
-      })
-      .catch((err) => {
-        console.log('pro erro', err)
-      })
-  }
+  // const getAllCity = async () => {
+  //   fetch(`https://countriesnow.space/api/v0.1/countries`, {})
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.error) {
+  //         console.log('vul')
+  //       } else {
+  //         const countryInfo = [...data.data]
+  //         let requiredCountryInfo = []
+  //         countryInfo.map((item, index) =>
+  //           item.cities.map((value, ind) =>
+  //             requiredCountryInfo.push({
+  //               label: `${item.country},${value}`,
+  //               value: `${item.country},${value}`,
+  //             }),
+  //           ),
+  //         )
+  //         console.log('required info ', requiredCountryInfo)
+  //         setCity(requiredCountryInfo)
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log('pro erro', err)
+  //     })
+  // }
 
   //console.log(city)
 
@@ -52,9 +52,15 @@ const PersonalInformation = (props) => {
       <Container className="cv_bank_container21">
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Height:</h5>
+            <h5>
+              Height
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <select
-              class="form-control"
+              class="form-control height"
               placeholder="Choose One"
               onChange={(event) =>
                 setPersonalInformation({
@@ -94,13 +100,19 @@ const PersonalInformation = (props) => {
             </select>
           </Col>
           <Col xs={12} md={6}>
-            <h5>Weight in (kg):</h5>
+            <h5>
+              Weight in (kg)
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="number"
               min="30"
               max="150"
               step="5"
-              className="form-control"
+              className="form-control weight"
               placeholder="Enter your weight."
               onChange={(event) =>
                 setPersonalInformation({
@@ -113,9 +125,15 @@ const PersonalInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Blood Group:</h5>
+            <h5>
+              Blood Group
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <select
-              class="form-control"
+              class="form-control bloodGroup"
               placeholder="Choose One"
               onChange={(event) =>
                 setPersonalInformation({
@@ -138,10 +156,16 @@ const PersonalInformation = (props) => {
             </select>
           </Col>
           <Col xs={12} md={6}>
-            <h5>Where You Grown Up?</h5>
+            <h5>
+              Where You Grown Up?
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <input
               type="text"
-              className="form-control"
+              className="form-control grownUpAt"
               placeholder="Enter the Country and City name."
               onChange={(event) => {
                 setPersonalInformation({
@@ -166,10 +190,16 @@ const PersonalInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Special Condition:</h5>
+            <h5>
+              Special Condition
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <div class="input-group">
               <textarea
-                class="form-control"
+                class="form-control specialCondition"
                 placeholder="Please share if you have any disabilities, low eye vision etc."
                 aria-label="With textarea"
                 rows="7"

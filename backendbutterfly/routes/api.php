@@ -4,6 +4,7 @@ use App\Http\Controllers\cvdataController;
 use App\Http\Controllers\edu_qualificationdataController;
 use App\Http\Controllers\preferencedataController;
 use App\Http\Controllers\siblingdataController;
+use App\Http\Controllers\professionaldataController;
 use App\Http\Controllers\contactController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,14 @@ Route::get('/get/sibling/{id}', [
     'getDataByCvId',
 ]);
 Route::post('/post/sibling', [SiblingdataController::class, 'store']);
+//
+//
+//============================== Professional data api end =========================================================//
+Route::get('/get/professional/{id}', [
+    ProfessionaldataController::class,
+    'getDataByCvId',
+]);
+Route::post('/post/professional', [ProfessionaldataController::class, 'store']);
 //
 //
 //============================== Contact data api end =========================================================//

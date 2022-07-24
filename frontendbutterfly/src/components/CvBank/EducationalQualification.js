@@ -79,9 +79,15 @@ const EducationalQulification = (props) => {
 
               <Row className="row-padding custom-font-size">
                 <Col xs={12} md={6} className="">
-                  <h5>Level of Education:</h5>
+                  <h5>
+                    Level of Education
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <select
-                    className="form-control"
+                    className="form-control levelOfEducation"
                     name="levelOfEducation"
                     onChange={(event) => handleInput(index, event)}
                   >
@@ -97,10 +103,17 @@ const EducationalQulification = (props) => {
                   </select>
                 </Col>
                 <Col xs={0} md={6}>
-                  <h5>Concentration/Major/Group</h5>
+                  <h5>
+                    Concentration/Major/Group
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <div className="App2">
                     <Select
                       options={options}
+                      className={`group_${index}`}
                       theme={(theme) => ({
                         ...theme,
                         borderRadius: 3,
@@ -117,10 +130,16 @@ const EducationalQulification = (props) => {
               </Row>
               <Row className="row-padding">
                 <Col xs={12} md={12}>
-                  <h5>Institute Name</h5>
+                  <h5>
+                    Institute Name
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control instituteName"
                     placeholder="Enter your institute name."
                     name="instituteName"
                     value={educationalQulification.instituteName}
@@ -130,10 +149,16 @@ const EducationalQulification = (props) => {
               </Row>
               <Row className="row-padding">
                 <Col xs={12} md={6}>
-                  <h5>Institute Location</h5>
+                  <h5>
+                    Institute Location
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control instituteLocation"
                     placeholder="Enter your institute location."
                     name="instituteLocation"
                     value={educationalQulification.instituteLocation}
@@ -141,10 +166,16 @@ const EducationalQulification = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <h5>Year of Passing</h5>
+                  <h5>
+                    Year of Passing
+                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                      *
+                    </span>
+                    :
+                  </h5>
                   <input
                     type="month"
-                    className="form-control"
+                    className="form-control passingYear"
                     name="passingYear"
                     placeholder="mm/yyyy"
                     value={educationalQulification.passingYear}
@@ -162,7 +193,7 @@ const EducationalQulification = (props) => {
                         title="Remove One"
                         onClick={() => handleServiceRemove(index)}
                       >
-                        <FaMinus size={15} color="white" />
+                        <FaMinus size={15} color="white" /> Close
                       </button>
                     )}{' '}
                   {educationalQulification.length - 1 === index &&
@@ -172,7 +203,7 @@ const EducationalQulification = (props) => {
                         title="Add More"
                         onClick={handleServiceAdd}
                       >
-                        <FaPlus size={15} color="white" />
+                        <FaPlus size={15} color="white" /> Add More
                       </button>
                     )}
                 </Col>
