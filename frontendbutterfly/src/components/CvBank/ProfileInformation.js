@@ -101,6 +101,13 @@ const ProfileInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
+            <h5>
+              Gender
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
             <div>
               <div class="form-check form-check-inline">
                 <input
@@ -138,11 +145,8 @@ const ProfileInformation = (props) => {
                   Female
                 </label>
               </div>
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>{' '}
               <label className="gender" style={{ color: 'red' }}>
-                Select one please.
+                Please select at least one.
               </label>
             </div>
           </Col>

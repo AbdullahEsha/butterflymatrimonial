@@ -8,6 +8,7 @@ import {
   FaInstagramSquare,
   FaWhatsappSquare,
 } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -54,16 +55,16 @@ const Footer = () => {
             <h4>Company</h4>
             <ul>
               <li>
-                <a href="/">About Us</a>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <a href="/">Careers</a>
+                <Link to="/career">Career`s</Link>
               </li>
               <li>
-                <a href="/">Blog</a>
+                <Link to="/blog">Blog`s</Link>
               </li>
               <li>
-                <a href="/">Pricing</a>
+                <Link to="/pricing">Pricing</Link>
               </li>
             </ul>
             <br />
@@ -93,10 +94,10 @@ const Footer = () => {
                 <a href="/">API docs</a>
               </li>
               <li>
-                <a href="/">Guides</a>
+                <Link to="/guide">Guides</Link>
               </li>
               <li>
-                <a href="/">Support</a>
+                <Link to="/contact">Support</Link>
               </li>
             </ul>
             <br />
@@ -105,16 +106,16 @@ const Footer = () => {
             <h4>Legal</h4>
             <ul>
               <li>
-                <a href="/">Terms of service</a>
+                <Link to="/terms">Terms of service</Link>
               </li>
               <li>
-                <a href="/">Privacy policy</a>
+                <Link to="/privacy-policy">Privacy policy</Link>
               </li>
               <li>
-                <a href="/">Cookie policy</a>
+                <Link to="/cookie-policy">Cookie policy</Link>
               </li>
               <li>
-                <a href="/">Acceptable use policy</a>
+                <Link to="/acceptable-use-policy">Acceptable use policy</Link>
               </li>
             </ul>
             <br />
@@ -135,13 +136,13 @@ const Footer = () => {
           </Col>
           <Col xs={12} md={6}>
             <div className="socialLogoPosition">
-              <a href="/" className="socialLogo">
+              <a href="/facebook.com" className="socialLogo">
                 <FaFacebookSquare size={35} color="white" />
               </a>{' '}
               <a href="/" className="socialLogo">
                 <FaWhatsappSquare size={35} color="white" />
               </a>{' '}
-              <a href="/" className="socialLogo">
+              <a href="/instagram.com" className="socialLogo">
                 <FaInstagramSquare size={35} color="white" />
               </a>
             </div>

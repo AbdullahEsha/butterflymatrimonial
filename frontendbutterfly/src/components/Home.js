@@ -216,7 +216,6 @@ function Home() {
           personalized recommendations.
         </h6>
       </div>
-      <br />
       <Container>
         <Row>
           <Col xs={12} md={4}>

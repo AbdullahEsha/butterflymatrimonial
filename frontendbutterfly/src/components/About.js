@@ -191,7 +191,6 @@ const About = () => {
           </Swiper>
         </Container>
       )}
-      <br />
       <Footer />
     </>
   )

@@ -79,7 +79,7 @@ const Preview = (props) => {
         <Row>
           <Col>
             <h6>
-              <b>Parmanent Address:</b> {props.profileData.parmanentAddress}
+              <b>Permanent Address:</b> {props.profileData.parmanentAddress}
             </h6>
           </Col>
         </Row>
@@ -188,17 +188,16 @@ const Preview = (props) => {
                 </Col>
               </Row>
               <Row>
-                <Col xs="12" md="6">
+                <Col xs="12" md="12">
                   <h6>
                     <b>Reference:</b>
-                    {item.designation}
+                    {item.com_reference}
                   </h6>
                 </Col>
               </Row>
             </>
           )
         })}
-        <Row></Row>
         <Row>
           <Col>
             <br />
