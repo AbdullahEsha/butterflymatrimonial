@@ -17,13 +17,13 @@ const CVBank = (props) => {
   const [data, setData] = useState('ProfileInformation')
   const [cvData, setCvData] = useState([])
 
-  const [profileData, setProfileData] = useState(null)
-  const [professionalData, setProfessionalData] = useState(null)
-  const [personalData, setPersonalData] = useState(null)
-  const [familyData, setFamilyData] = useState(null)
-  const [educationalData, setEducationalData] = useState(null)
-  const [siblingData, setSiblingData] = useState(null)
-  const [preferenceData, setPreferenceData] = useState(null)
+  const [profileData, setProfileData] = useState({})
+  const [professionalData, setProfessionalData] = useState({})
+  const [personalData, setPersonalData] = useState({})
+  const [familyData, setFamilyData] = useState({})
+  const [educationalData, setEducationalData] = useState({})
+  const [siblingData, setSiblingData] = useState({})
+  const [preferenceData, setPreferenceData] = useState({})
 
   const validation = () => {
     if (data === 'ProfileInformation') {
@@ -31,58 +31,48 @@ const CVBank = (props) => {
       var fileName = file.files[0].name
       var idxDot = fileName.lastIndexOf('.') + 1
       var extFile = fileName.substr(idxDot, fileName.length).toLowerCase()
-      if (extFile === 'jpg' || extFile === 'jpeg' || extFile === 'png') {
-        if (profileData.image === '') {
-          document.querySelector('.imageFile').style.border = '1px solid red'
-        } else if (file.files[0].size >= 221000) {
-          document.querySelector('.imageFile').style.border = '1px solid red'
-          document.getElementById('warning').innerHTML =
-            'File size max allowed 220kb.'
-        } else if (profileData.name === '') {
-          document.querySelector('.name').style.border = '1px solid red'
-        } else if (profileData.gender === '') {
-          document.querySelector('.gender').style.visibility = 'visible'
-        } else if (
-          profileData.phone === '' ||
-          profileData.phone.match(/\d/g).length !== 11
-        ) {
-          document.querySelector('.phone').style.border = '1px solid red'
-        } else if (profileData.religion === '') {
-          document.querySelector('.religion').style.borderColor = 'red'
-        } else if (profileData.email === '') {
-          document.querySelector('.email').style.borderColor = 'red'
-        } else if (profileData.age === '') {
-          document.querySelector('.age').style.borderColor = 'red'
-        } else if (profileData.presentAddress === '') {
-          document.querySelector('.presentAddress').style.borderColor = 'red'
-        } else if (profileData.divisionPresent === '') {
-          document.querySelector('.divisionPresent').style.border =
-            '1px solid red'
-        } else if (profileData.dristrictPresent === '') {
-          document.querySelector('.dristrictPresent').style.borderColor = 'red'
-        } else if (profileData.parmanentAddress === '') {
-          document.querySelector('.parmanentAddress').style.borderColor = 'red'
-        } else if (profileData.divisionParmanent === '') {
-          document.querySelector('.divisionParmanent').style.borderColor = 'red'
-        } else if (profileData.dristrictParmanent === '') {
-          document.querySelector('.dristrictParmanent').style.borderColor =
-            'red'
-        } else if (profileData.specialCase === '') {
-          document.querySelector('.specialCase').style.border = '1px solid red'
-        } else if (preferenceData.length <= 0) {
-          document.querySelector('.preference').style.border = '1px solid red'
-        } else if (profileData.spousePreference === '') {
-          document.querySelector('.spousePreference').style.border =
-            '1px solid red'
-        } else if (profileData.about === '') {
-          document.querySelector('.about').style.borderColor = 'red'
-        } else {
-          setData('PersonalInformation')
-        }
-      } else {
+
+      if (profileData.image === '') {
         document.querySelector('.imageFile').style.border = '1px solid red'
-        document.getElementById('warning').innerHTML =
-          'Only jpg/jpeg and png files are allowed!'
+      } else if (profileData.name === '') {
+        document.querySelector('.name').style.border = '1px solid red'
+      } else if (profileData.gender === '') {
+        document.querySelector('.gender').style.visibility = 'visible'
+      } else if (
+        profileData.phone === '' ||
+        profileData.phone.match(/\d/g).length !== 11
+      ) {
+        document.querySelector('.phone').style.border = '1px solid red'
+      } else if (profileData.religion === '') {
+        document.querySelector('.religion').style.borderColor = 'red'
+      } else if (profileData.email === '') {
+        document.querySelector('.email').style.borderColor = 'red'
+      } else if (profileData.age === '') {
+        document.querySelector('.age').style.borderColor = 'red'
+      } else if (profileData.presentAddress === '') {
+        document.querySelector('.presentAddress').style.borderColor = 'red'
+      } else if (profileData.divisionPresent === '') {
+        document.querySelector('.divisionPresent').style.border =
+          '1px solid red'
+      } else if (profileData.dristrictPresent === '') {
+        document.querySelector('.dristrictPresent').style.borderColor = 'red'
+      } else if (profileData.parmanentAddress === '') {
+        document.querySelector('.parmanentAddress').style.borderColor = 'red'
+      } else if (profileData.divisionParmanent === '') {
+        document.querySelector('.divisionParmanent').style.borderColor = 'red'
+      } else if (profileData.dristrictParmanent === '') {
+        document.querySelector('.dristrictParmanent').style.borderColor = 'red'
+      } else if (profileData.specialCase === '') {
+        document.querySelector('.specialCase').style.border = '1px solid red'
+      } else if (preferenceData.length <= 0) {
+        document.querySelector('.preference').style.border = '1px solid red'
+      } else if (profileData.spousePreference === '') {
+        document.querySelector('.spousePreference').style.border =
+          '1px solid red'
+      } else if (profileData.about === '') {
+        document.querySelector('.about').style.borderColor = 'red'
+      } else {
+        setData('PersonalInformation')
       }
     } else if (data === 'PersonalInformation') {
       if (personalData.height === '') {
@@ -224,7 +214,8 @@ const CVBank = (props) => {
         axios
           .post(`http://localhost:8000/api/post/cv/new`, formData)
           .then((data) => {
-            if (data) {
+            console.log('data', data)
+            if (data.data.message === 'Your CV has just been stored.') {
               preferenceData.map((item, index) =>
                 axios
                   .post(`http://localhost:8000/api/post/preference`, {
@@ -281,10 +272,25 @@ const CVBank = (props) => {
                   }),
               )
               //submission confirmation
-              Swal.fire({ icon: 'success', text: data.message })
+              Swal.fire({
+                title: 'Success',
+                icon: 'success',
+                text: data.data.message,
+              })
+            } else {
+              Swal.fire({
+                title: 'Oops!',
+                icon: 'error',
+                text: data.data.message,
+              })
             }
           })
           .catch(({ response }) => {
+            Swal.fire({
+              title: 'Oops!',
+              icon: 'error',
+              text: 'Something went wrong!',
+            })
             console.log('Main CV data response', response)
           })
       }
@@ -460,8 +466,9 @@ const CVBank = (props) => {
     var text_width = doc.getTextWidth(profileData.about)
     var splitTitle = doc.splitTextToSize(profileData.about, 170)
     doc.text(20, y + 5, splitTitle, 'left')
-    y = y + text_width / 25 + 2
+    y = y + text_width / 25
 
+    y = y - 2.5
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
     doc.text(20, y, 'Personal Information:', 'left')
@@ -514,7 +521,7 @@ const CVBank = (props) => {
     text_width = doc.getTextWidth(personalData.specialCondition)
     splitTitle = doc.splitTextToSize(personalData.specialCondition, 170)
     doc.text(20, y + 5, splitTitle, 'left')
-    y = y + text_width / 25 + 8
+    y = y + text_width / 25
 
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
@@ -572,6 +579,10 @@ const CVBank = (props) => {
     if (y >= 260) {
       doc.addPage()
       y = 20 // Restart height position
+      var f = true
+    } else {
+      y = y + 2
+      f = false
     }
 
     doc.setFontSize(16)
@@ -646,6 +657,11 @@ const CVBank = (props) => {
 
       y += 8
     })
+
+    if (y >= 260 && f === false) {
+      doc.addPage()
+      y = 20 // Restart height position
+    }
 
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')

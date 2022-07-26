@@ -23,9 +23,98 @@ const ProfileInformation = (props) => {
     about: '',
   })
 
-  var loadFile = function (event) {
+  async function image_to_base64(file) {
+    let result_base64 = await new Promise((resolve) => {
+      let fileReader = new FileReader()
+      fileReader.onload = (e) => resolve(fileReader.result)
+      fileReader.onerror = (error) => {
+        console.log(error)
+        alert('An Error occurred please try again, File might be corrupt')
+      }
+      fileReader.readAsDataURL(file)
+    })
+    return result_base64
+  }
+
+  function calc_image_size(image) {
+    let y = 1
+    if (image.endsWith('==')) {
+      y = 2
+    }
+    const x_size = image.length * (3 / 4) - y
+    return Math.round(x_size / 1024)
+  }
+
+  async function reduce_image_file_size(
+    base64Str,
+    MAX_WIDTH = 450,
+    MAX_HEIGHT = 450,
+  ) {
+    let resized_base64 = await new Promise((resolve) => {
+      let img = new Image()
+      img.src = base64Str
+      img.onload = () => {
+        let canvas = document.createElement('canvas')
+        let width = img.width
+        let height = img.height
+
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width
+            width = MAX_WIDTH
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height
+            height = MAX_HEIGHT
+          }
+        }
+        canvas.width = width
+        canvas.height = height
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, width, height)
+        resolve(canvas.toDataURL()) // this will return base64 image results after resize
+      }
+    })
+    return resized_base64
+  }
+
+  function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n)
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n)
+    }
+    return new File([u8arr], filename, { type: mime })
+  }
+
+  //Usage example:
+
+  const loadFile = async (event) => {
     document.querySelector('.uploadImg').style.backgroundImage =
       'url(' + URL.createObjectURL(event.target.files[0]) + ')'
+
+    const res = await image_to_base64(event.target.files[0])
+
+    if (res) {
+      const resized = await reduce_image_file_size(res)
+      // console.log(resized)
+      var new_img = new Image()
+      new_img.src = resized
+      new_img.onload = function (event) {
+        var file = dataURLtoFile(resized, `${profileInformation.name}.png`)
+        // console.log(file)
+        setProfileInformation({
+          ...profileInformation,
+          image: file,
+        })
+      }
+    } else {
+      console.log('return err')
+    }
   }
 
   const checkSingle = (event, name) => {
@@ -73,16 +162,16 @@ const ProfileInformation = (props) => {
 
             <input
               type="file"
-              accept="image/*"
+              accept="image/png"
               title="Choose Image"
               name="image"
               className="uploadImg imageFile"
               id="image2"
               onChange={(event) => {
-                setProfileInformation({
-                  ...profileInformation,
-                  image: event.target.files[0],
-                })
+                // setProfileInformation({
+                //   ...profileInformation,
+                //   image: event.target.files[0],
+                // })
                 loadFile(event)
               }}
             />
