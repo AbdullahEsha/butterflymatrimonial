@@ -3,8 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 
 const ProfessionalQulification = (props) => {
-  const [fromdate, setFromDate] = useState('')
-  const [todate, setToDate] = useState('')
+  const [fromdate, setFromDate] = useState([{ dateset: '' }])
+  const [todate, setToDate] = useState([{ dateset: '' }])
   const [current, setCurrent] = useState('NotChacked')
 
   const [professionalQulification, setProfessionalQulification] = useState([
@@ -30,6 +30,18 @@ const ProfessionalQulification = (props) => {
         group: '',
       },
     ])
+    setFromDate([
+      ...fromdate,
+      {
+        dateset: '',
+      },
+    ])
+    setToDate([
+      ...todate,
+      {
+        dateset: '',
+      },
+    ])
   }
 
   const handleServiceRemove = (index) => {
@@ -48,6 +60,18 @@ const ProfessionalQulification = (props) => {
     const values = [...professionalQulification]
     values[index][event.target.name] = event.target.value
     setProfessionalQulification(values)
+  }
+
+  const hendleDateFrom = (index, inputdate) => {
+    const values = [...fromdate]
+    values[index]['dateset'] = inputdate
+    setFromDate(values)
+  }
+
+  const hendleDateTo = (index, inputdate) => {
+    const values = [...todate]
+    values[index]['dateset'] = inputdate
+    setToDate(values)
   }
 
   const DATE_OPTIONS = {
@@ -156,14 +180,7 @@ const ProfessionalQulification = (props) => {
                         type="text"
                         className="form-control input-background from_employment"
                         placeholder="From Date (M DD, YYYY)"
-                        value={
-                          fromdate
-                            ? new Date(fromdate).toLocaleDateString(
-                                'en-US',
-                                DATE_OPTIONS,
-                              )
-                            : ''
-                        }
+                        value={fromdate.map((item) => item.dateset)[index]}
                         disabled
                       />
                       <div class="input-group-prepend">
@@ -173,7 +190,7 @@ const ProfessionalQulification = (props) => {
                             id="date-change"
                             name="from_employment"
                             onChange={(event) => {
-                              setFromDate(event.target.value)
+                              hendleDateFrom(index, event.target.value)
                               handleInput(index, event)
                             }}
                           />
@@ -189,14 +206,7 @@ const ProfessionalQulification = (props) => {
                         <input
                           type="text"
                           className="form-control input-background to_employment"
-                          value={
-                            todate
-                              ? new Date(todate).toLocaleDateString(
-                                  'en-US',
-                                  DATE_OPTIONS,
-                                )
-                              : ''
-                          }
+                          value={todate.map((item) => item.dateset)[index]}
                           placeholder="To Date (MM, DD, YYYY)"
                           disabled
                         />
@@ -207,7 +217,7 @@ const ProfessionalQulification = (props) => {
                               id="date-change"
                               name="to_employment"
                               onChange={(event) => {
-                                setToDate(event.target.value)
+                                hendleDateTo(index, event.target.value)
                                 handleInput(index, event)
                               }}
                             />
@@ -233,7 +243,9 @@ const ProfessionalQulification = (props) => {
                         } else if (!event.target.checked) {
                           setCurrent(`NotChacked`)
                           const values = [...professionalQulification]
-                          values[index]['to_employment'] = todate
+                          values[index]['to_employment'] = todate.map(
+                            (item) => item.dateset,
+                          )[index]
                           setProfessionalQulification(values)
                         }
                       }}

@@ -27,15 +27,23 @@ const CVBank = (props) => {
 
   const validation = () => {
     if (data === 'ProfileInformation') {
-      const inputfile = document.getElementById('image2')
-      console.log('input', inputfile)
-      if (profileData.image === '') {
+      var fileName = document.getElementById('image2').value
+      var idxDot = fileName.lastIndexOf('.') + 1
+      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase()
+      if (extFile !== 'jpg' || extFile !== 'jpeg' || extFile !== 'png') {
+        document.querySelector('.imageFile').style.border = '1px solid red'
+        document.getElementById('warning').innerHTML =
+          'Only jpg/jpeg and png files are allowed!'
+      } else if (profileData.image === '') {
         document.querySelector('.imageFile').style.border = '1px solid red'
       } else if (profileData.name === '') {
         document.querySelector('.name').style.border = '1px solid red'
       } else if (profileData.gender === '') {
         document.querySelector('.gender').style.visibility = 'visible'
-      } else if (profileData.phone === '') {
+      } else if (
+        profileData.phone === '' ||
+        profileData.phone.match(/\d/g).length !== 11
+      ) {
         document.querySelector('.phone').style.border = '1px solid red'
       } else if (profileData.religion === '') {
         document.querySelector('.religion').style.borderColor = 'red'

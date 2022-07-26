@@ -58,8 +58,19 @@ const ProfileInformation = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
-        <Row className="row-padding">
+        <Row>
           <Col xs={12} md={2} className="img_uploader image">
+            <h5>
+              Image
+              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+                *
+              </span>
+              :
+            </h5>
+            <em style={{ color: '#fc6375', fontSize: '14px' }} id="warning">
+              (Size 310*310px)*
+            </em>
+
             <input
               type="file"
               accept="image/*"
@@ -160,18 +171,22 @@ const ProfileInformation = (props) => {
               </span>
               :
             </h5>
-            <input
-              type="number"
-              className="form-control phone"
-              id="phoneNumber"
-              placeholder="Enter your phone number."
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  phone: event.target.value,
-                })
-              }
-            />
+            <div class="form-groupx form-control phone">
+              <span class="border-end country-code px-2">+88</span>
+              <input
+                type="number"
+                class="form-control"
+                aria-describedby="emailHelp"
+                id="phoneNumber"
+                placeholder="013********"
+                onChange={(event) => {
+                  setProfileInformation({
+                    ...profileInformation,
+                    phone: event.target.value,
+                  })
+                }}
+              />
+            </div>
           </Col>
           <Col xs={12} md={6}>
             <h5>

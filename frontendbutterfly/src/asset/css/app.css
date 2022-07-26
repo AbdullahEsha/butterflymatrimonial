@@ -16,6 +16,10 @@ h5 {
   font-size: 1.2rem;
 }
 
+em {
+  font-size: 14px;
+}
+
 .row-padding {
   padding-bottom: 15px;
 }
@@ -26,6 +30,38 @@ h5 {
 
 .berPadd img {
   height: 75px;
+}
+
+.form-groupx {
+  border: 1px solid #ced4da;
+  padding: 0px;
+  border-radius: 3px;
+}
+.form-groupx:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #fc6375;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.form-groupx:active {
+  color: #212529;
+  background-color: #fff;
+  border-color: #fc6375;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.form-groupx input {
+  margin-left: 10px;
+  display: inline-block;
+  width: 90%;
+  border: none;
+}
+
+.form-groupx input:focus {
+  box-shadow: none;
 }
 
 .gender {
@@ -573,6 +609,10 @@ a:hover {
   outline: inherit;
 }
 
+.img_uploader {
+  margin-bottom: -10px;
+}
+
 .img_uploader input {
   display: inline-block;
   width: 70%;
@@ -583,9 +623,15 @@ a:hover {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background: url('../image/img_upload.png') center center no-repeat #ffffff;
-  border-radius: 12px;
+  border-radius: 8px;
   background-size: cover;
   cursor: pointer;
+  border: 1px solid #ced4da;
+}
+
+.img_uploader input:hover {
+  border: 1px solid #ff425c;
+  box-shadow: 5px 5px 5px #ff425b49;
 }
 
 .cv_bankButton_BackNext {
@@ -758,7 +804,40 @@ input[type='radio']:checked {
   width: 250px;
 }
 
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+  .form-groupx input {
+    margin-left: 10px;
+    width: 88.8%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .form-groupx input {
+    margin-left: 10px;
+    width: 86%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .form-groupx input {
+    margin-left: 10px;
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+  .form-groupx input {
+    margin-left: 10px;
+    width: 86%;
+  }
+}
+
 @media only screen and (min-width: 361px) and (max-width: 600px) {
+  .form-groupx input {
+    margin-left: 10px;
+    width: 82%;
+  }
+
   .row-padding {
     padding-bottom: 0px;
   }
@@ -1020,6 +1099,11 @@ input[type='radio']:checked {
 }
 
 @media only screen and (max-width: 360px) {
+  .form-groupx input {
+    align-self: center;
+    width: 60%;
+  }
+
   .row-padding {
     padding-bottom: 0px;
   }
