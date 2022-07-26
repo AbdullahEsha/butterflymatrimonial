@@ -27,54 +27,62 @@ const CVBank = (props) => {
 
   const validation = () => {
     if (data === 'ProfileInformation') {
-      var fileName = document.getElementById('image2').value
+      var file = document.getElementById('image2')
+      var fileName = file.files[0].name
       var idxDot = fileName.lastIndexOf('.') + 1
       var extFile = fileName.substr(idxDot, fileName.length).toLowerCase()
-      if (extFile !== 'jpg' || extFile !== 'jpeg' || extFile !== 'png') {
+      if (extFile === 'jpg' || extFile === 'jpeg' || extFile === 'png') {
+        if (profileData.image === '') {
+          document.querySelector('.imageFile').style.border = '1px solid red'
+        } else if (file.files[0].size >= 221000) {
+          document.querySelector('.imageFile').style.border = '1px solid red'
+          document.getElementById('warning').innerHTML =
+            'File size max allowed 220kb.'
+        } else if (profileData.name === '') {
+          document.querySelector('.name').style.border = '1px solid red'
+        } else if (profileData.gender === '') {
+          document.querySelector('.gender').style.visibility = 'visible'
+        } else if (
+          profileData.phone === '' ||
+          profileData.phone.match(/\d/g).length !== 11
+        ) {
+          document.querySelector('.phone').style.border = '1px solid red'
+        } else if (profileData.religion === '') {
+          document.querySelector('.religion').style.borderColor = 'red'
+        } else if (profileData.email === '') {
+          document.querySelector('.email').style.borderColor = 'red'
+        } else if (profileData.age === '') {
+          document.querySelector('.age').style.borderColor = 'red'
+        } else if (profileData.presentAddress === '') {
+          document.querySelector('.presentAddress').style.borderColor = 'red'
+        } else if (profileData.divisionPresent === '') {
+          document.querySelector('.divisionPresent').style.border =
+            '1px solid red'
+        } else if (profileData.dristrictPresent === '') {
+          document.querySelector('.dristrictPresent').style.borderColor = 'red'
+        } else if (profileData.parmanentAddress === '') {
+          document.querySelector('.parmanentAddress').style.borderColor = 'red'
+        } else if (profileData.divisionParmanent === '') {
+          document.querySelector('.divisionParmanent').style.borderColor = 'red'
+        } else if (profileData.dristrictParmanent === '') {
+          document.querySelector('.dristrictParmanent').style.borderColor =
+            'red'
+        } else if (profileData.specialCase === '') {
+          document.querySelector('.specialCase').style.border = '1px solid red'
+        } else if (preferenceData.length <= 0) {
+          document.querySelector('.preference').style.border = '1px solid red'
+        } else if (profileData.spousePreference === '') {
+          document.querySelector('.spousePreference').style.border =
+            '1px solid red'
+        } else if (profileData.about === '') {
+          document.querySelector('.about').style.borderColor = 'red'
+        } else {
+          setData('PersonalInformation')
+        }
+      } else {
         document.querySelector('.imageFile').style.border = '1px solid red'
         document.getElementById('warning').innerHTML =
           'Only jpg/jpeg and png files are allowed!'
-      } else if (profileData.image === '') {
-        document.querySelector('.imageFile').style.border = '1px solid red'
-      } else if (profileData.name === '') {
-        document.querySelector('.name').style.border = '1px solid red'
-      } else if (profileData.gender === '') {
-        document.querySelector('.gender').style.visibility = 'visible'
-      } else if (
-        profileData.phone === '' ||
-        profileData.phone.match(/\d/g).length !== 11
-      ) {
-        document.querySelector('.phone').style.border = '1px solid red'
-      } else if (profileData.religion === '') {
-        document.querySelector('.religion').style.borderColor = 'red'
-      } else if (profileData.email === '') {
-        document.querySelector('.email').style.borderColor = 'red'
-      } else if (profileData.age === '') {
-        document.querySelector('.age').style.borderColor = 'red'
-      } else if (profileData.presentAddress === '') {
-        document.querySelector('.presentAddress').style.borderColor = 'red'
-      } else if (profileData.divisionPresent === '') {
-        document.querySelector('.divisionPresent').style.border =
-          '1px solid red'
-      } else if (profileData.dristrictPresent === '') {
-        document.querySelector('.dristrictPresent').style.borderColor = 'red'
-      } else if (profileData.parmanentAddress === '') {
-        document.querySelector('.parmanentAddress').style.borderColor = 'red'
-      } else if (profileData.divisionParmanent === '') {
-        document.querySelector('.divisionParmanent').style.borderColor = 'red'
-      } else if (profileData.dristrictParmanent === '') {
-        document.querySelector('.dristrictParmanent').style.borderColor = 'red'
-      } else if (profileData.specialCase === '') {
-        document.querySelector('.specialCase').style.border = '1px solid red'
-      } else if (preferenceData.length <= 0) {
-        document.querySelector('.preference').style.border = '1px solid red'
-      } else if (profileData.spousePreference === '') {
-        document.querySelector('.spousePreference').style.border =
-          '1px solid red'
-      } else if (profileData.about === '') {
-        document.querySelector('.about').style.borderColor = 'red'
-      } else {
-        setData('PersonalInformation')
       }
     } else if (data === 'PersonalInformation') {
       if (personalData.height === '') {
