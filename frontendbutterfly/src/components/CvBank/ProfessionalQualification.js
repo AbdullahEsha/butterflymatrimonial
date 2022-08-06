@@ -74,11 +74,11 @@ const ProfessionalQulification = (props) => {
     setToDate(values)
   }
 
-  const DATE_OPTIONS = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  }
+  // const DATE_OPTIONS = {
+  //   year: 'numeric',
+  //   month: 'short',
+  //   day: 'numeric',
+  // }
 
   return (
     <>

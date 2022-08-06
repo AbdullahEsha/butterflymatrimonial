@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from './auth'
 import { useNavigate } from 'react-router-dom'
 
-import { MdDeleteForever, MdOutlineCalendarViewDay } from 'react-icons/md'
+import { MdOutlineCalendarViewDay } from 'react-icons/md'
 
 const DisplayContact = () => {
   const [contact, setContact] = useState([])

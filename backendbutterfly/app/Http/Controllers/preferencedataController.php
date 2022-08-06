@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class preferencedataController extends Controller
 {
+    public function getData()
+    {
+        try {
+            $preference = PreferenceData::orderBy('id', 'desc')->get();
+            return $preference;
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
     public function getDataByCvId($id)
     {
         try {

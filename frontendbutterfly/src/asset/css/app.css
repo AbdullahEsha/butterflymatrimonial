@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;900&display=swap');
 
 * {
   font-family: 'Urbanist', sans-serif;
@@ -260,6 +260,7 @@ h1 {
 
 .card_2:hover {
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.363);
+  transform: scale(1.02);
 }
 
 .card_2 h1 {
@@ -336,6 +337,7 @@ h1 {
 
 .card:hover {
   box-shadow: 0 18px 28px rgba(0, 0, 0, 0.363);
+  transform: scale(1.02);
 }
 
 .card h3,
@@ -715,10 +717,58 @@ input[type='radio']:checked {
   background: #ff5064;
 }
 
+.ageGroup {
+  background-color: #ffffff;
+  padding: 30px;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.24);
+  transition: 0.3s;
+}
+
+.ageGroup:hover {
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.24);
+  transform: scale(1.01);
+}
+
+.ageGroup h5 {
+  font-weight: 600;
+}
+
+.ageGroup p {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.progress-outer {
+  padding-top: 10px;
+}
+
+.progress-bar {
+  background: linear-gradient(to right, #ff425c 0%, #ffa5b2 100%);
+  transition: 0.3s;
+}
+
 .componentDisplay {
   background-size: cover;
   color: #ffffff;
   padding: 10px;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.24);
+  transition: 0.3s;
+}
+
+.bar-card {
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.24);
+  transition: 0.3s;
+}
+
+.bar-card:hover {
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.24);
+  transform: scale(1.01);
+}
+
+.componentDisplay:hover {
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.24);
+  transform: scale(1.01);
 }
 
 #firstComponentDisplay {

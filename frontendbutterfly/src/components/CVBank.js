@@ -27,11 +27,10 @@ const CVBank = (props) => {
 
   const validation = () => {
     if (data === 'ProfileInformation') {
-      var file = document.getElementById('image2')
-      var fileName = file.files[0].name
-      var idxDot = fileName.lastIndexOf('.') + 1
-      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase()
-
+      // var file = document.getElementById('image2')
+      // var fileName = file.files[0].name
+      // var idxDot = fileName.lastIndexOf('.') + 1
+      // var extFile = fileName.substr(idxDot, fileName.length).toLowerCase()
       if (profileData.image === '') {
         document.querySelector('.imageFile').style.border = '1px solid red'
       } else if (profileData.name === '') {

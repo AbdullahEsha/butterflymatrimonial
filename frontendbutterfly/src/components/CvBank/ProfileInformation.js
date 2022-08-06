@@ -36,14 +36,14 @@ const ProfileInformation = (props) => {
     return result_base64
   }
 
-  function calc_image_size(image) {
-    let y = 1
-    if (image.endsWith('==')) {
-      y = 2
-    }
-    const x_size = image.length * (3 / 4) - y
-    return Math.round(x_size / 1024)
-  }
+  // function calc_image_size(image) {
+  //   let y = 1
+  //   if (image.endsWith('==')) {
+  //     y = 2
+  //   }
+  //   const x_size = image.length * (3 / 4) - y
+  //   return Math.round(x_size / 1024)
+  // }
 
   async function reduce_image_file_size(
     base64Str,
@@ -168,10 +168,6 @@ const ProfileInformation = (props) => {
               className="uploadImg imageFile"
               id="image2"
               onChange={(event) => {
-                // setProfileInformation({
-                //   ...profileInformation,
-                //   image: event.target.files[0],
-                // })
                 loadFile(event)
               }}
             />

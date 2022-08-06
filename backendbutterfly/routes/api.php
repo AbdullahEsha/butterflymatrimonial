@@ -45,6 +45,7 @@ Route::get('/get/preference/{id}', [
     PreferencedataController::class,
     'getDataByCvId',
 ]);
+Route::get('/get/preference', [PreferencedataController::class, 'getData']);
 Route::post('/post/preference', [PreferencedataController::class, 'store']);
 //
 //
