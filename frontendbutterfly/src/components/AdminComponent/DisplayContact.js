@@ -4,8 +4,7 @@ import '../../asset/css/sidebar.css'
 import { Link } from 'react-router-dom'
 import { useAuth } from './auth'
 import { useNavigate } from 'react-router-dom'
-
-import { MdOutlineCalendarViewDay } from 'react-icons/md'
+import { MdForwardToInbox } from 'react-icons/md'
 
 const DisplayContact = () => {
   const [contact, setContact] = useState([])
@@ -102,7 +101,7 @@ const DisplayContact = () => {
                             title="Send Mail"
                             className="btn btn-outline-info"
                           >
-                            <MdOutlineCalendarViewDay size={20} />
+                            <MdForwardToInbox size={20} />
                           </a>
                         </td>
                       </tr>

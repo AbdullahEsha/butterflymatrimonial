@@ -364,98 +364,171 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="row" style={{ padding: '15px' }}>
-          <div
-            className="col-sm-12 col-md-6 col-lg-6 ageGroup"
-            style={{ backgroundColor: '#fff' }}
-          >
-            <h5>Preference Data</h5>
-            <div className="progress-outer">
-              <p style={{ float: 'right' }}>
-                {((filterPreference1 / preferencedata.length) * 100).toFixed(2)}
-                %
-              </p>
-              <p>Single</p>
-              <div className="progress progress-extra">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style={{
-                    width: `${
-                      (filterPreference1 / preferencedata.length) * 100
-                    }%`,
-                  }}
-                  aria-valuenow="50"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
+          <div className="col-sm-12 col-md-4 col-lg-4 preferance-div">
+            <h5>Recently CV Added</h5>
+            <table width="100%">
+              <tr>
+                <td rowSpan={2} width="50px">
+                  <img
+                    src={
+                      'http://localhost:8000/' +
+                      cvdata.map((item) => item.image)[0]
+                    }
+                    alt="mage"
+                    height="40px"
+                  />
+                </td>
+                <td>
+                  <b>Name:</b> {cvdata.map((item) => item.name)[0]}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Email:</b> {cvdata.map((item) => item.email)[0]}
+                </td>
+              </tr>
+              <br />
+              <tr>
+                <td rowSpan={2} width="50px">
+                  <img
+                    src={
+                      'http://localhost:8000/' +
+                      cvdata.map((item) => item.image)[1]
+                    }
+                    alt="mage"
+                    height="40px"
+                  />
+                </td>
+                <td>
+                  <b>Name:</b> {cvdata.map((item) => item.name)[1]}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Email:</b> {cvdata.map((item) => item.email)[1]}
+                </td>
+              </tr>
+              <br />
+              <tr>
+                <td rowSpan={2} width="50px">
+                  <img
+                    src={
+                      'http://localhost:8000/' +
+                      cvdata.map((item) => item.image)[2]
+                    }
+                    alt="mage"
+                    height="40px"
+                  />
+                </td>
+                <td>
+                  <b>Name:</b> {cvdata.map((item) => item.name)[2]}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Email:</b> {cvdata.map((item) => item.email)[2]}
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div className="col-sm-12 col-md-8 col-lg-8 ">
+            <div className="preferance-div">
+              <h5>Preference Data</h5>
+              <div className="progress-outer">
+                <p style={{ float: 'right' }}>
+                  {((filterPreference1 / preferencedata.length) * 100).toFixed(
+                    2,
+                  )}
+                  %
+                </p>
+                <p>Single</p>
+                <div className="progress progress-extra">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style={{
+                      width: `${
+                        (filterPreference1 / preferencedata.length) * 100
+                      }%`,
+                    }}
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
               </div>
-            </div>
-            <div className="progress-outer">
-              <p style={{ float: 'right' }}>
-                {((filterPreference2 / preferencedata.length) * 100).toFixed(2)}
-                %
-              </p>
-              <p>Divorce</p>
-              <div className="progress progress-extra">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style={{
-                    width: `${
-                      (filterPreference2 / preferencedata.length) * 100
-                    }%`,
-                  }}
-                  aria-valuenow="50"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
+              <div className="progress-outer">
+                <p style={{ float: 'right' }}>
+                  {((filterPreference2 / preferencedata.length) * 100).toFixed(
+                    2,
+                  )}
+                  %
+                </p>
+                <p>Divorce</p>
+                <div className="progress progress-extra">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style={{
+                      width: `${
+                        (filterPreference2 / preferencedata.length) * 100
+                      }%`,
+                    }}
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
               </div>
-            </div>
-            <div className="progress-outer">
-              <p style={{ float: 'right' }}>
-                {((filterPreference3 / preferencedata.length) * 100).toFixed(2)}
-                %
-              </p>
-              <p>Divorce without child</p>
-              <div className="progress progress-extra">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style={{
-                    width: `${
-                      (filterPreference3 / preferencedata.length) * 100
-                    }%`,
-                  }}
-                  aria-valuenow="50"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
+              <div className="progress-outer">
+                <p style={{ float: 'right' }}>
+                  {((filterPreference3 / preferencedata.length) * 100).toFixed(
+                    2,
+                  )}
+                  %
+                </p>
+                <p>Divorce without child</p>
+                <div className="progress progress-extra">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style={{
+                      width: `${
+                        (filterPreference3 / preferencedata.length) * 100
+                      }%`,
+                    }}
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
               </div>
-            </div>
-            <div className="progress-outer">
-              <p style={{ float: 'right' }}>
-                {((filterPreference4 / preferencedata.length) * 100).toFixed(2)}
-                %
-              </p>
-              <p>Divorce with child</p>
-              <div className="progress progress-extra">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style={{
-                    width: `${
-                      (filterPreference4 / preferencedata.length) * 100
-                    }%`,
-                  }}
-                  aria-valuenow="50"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
+              <div className="progress-outer">
+                <p style={{ float: 'right' }}>
+                  {((filterPreference4 / preferencedata.length) * 100).toFixed(
+                    2,
+                  )}
+                  %
+                </p>
+                <p>Divorce with child</p>
+                <div className="progress progress-extra">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style={{
+                      width: `${
+                        (filterPreference4 / preferencedata.length) * 100
+                      }%`,
+                    }}
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-6" style={{ backgroundColor: '#fff' }}></div>
       </div>
       <div className="logoStyle">
         <Link to="/">

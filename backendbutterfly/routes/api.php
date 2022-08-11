@@ -30,6 +30,10 @@ Route::post('/update/cv/married/{id}', [
 //
 //
 //============================== Education Qualification data api start ========================================//
+Route::get('/get/education', [
+    Edu_qualificationdataController::class,
+    'getData',
+]);
 Route::get('/get/education/qualification/{id}', [
     Edu_qualificationdataController::class,
     'getDataByCvId',
@@ -58,6 +62,7 @@ Route::post('/post/sibling', [SiblingdataController::class, 'store']);
 //
 //
 //============================== Professional data api end =========================================================//
+Route::get('/get/professional', [ProfessionaldataController::class, 'getData']);
 Route::get('/get/professional/{id}', [
     ProfessionaldataController::class,
     'getDataByCvId',

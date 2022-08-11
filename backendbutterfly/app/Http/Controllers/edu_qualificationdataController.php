@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class edu_qualificationdataController extends Controller
 {
+    public function getData()
+    {
+        try {
+            $eduData = Edu_qualificationData::orderBy('id', 'desc')->get();
+            return $eduData;
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
     public function getDataByCvId($id)
     {
         try {

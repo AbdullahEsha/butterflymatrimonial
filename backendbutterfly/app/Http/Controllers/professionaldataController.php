@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class professionaldataController extends Controller
 {
+    public function getData()
+    {
+        try {
+            $profData = ProfessionalData::orderBy('id', 'desc')->get();
+            return $profData;
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
     public function getDataByCvId($id)
     {
         try {
