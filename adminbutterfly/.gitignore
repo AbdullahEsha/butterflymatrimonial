@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# credential file
+# credential file "https://notepad.pw/butterfly.web"
 /src/components/AdminComponent/Login.js
