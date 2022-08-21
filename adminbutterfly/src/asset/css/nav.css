@@ -1,0 +1,36 @@
+a.nav-link {
+  font-family: "Urbanist";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.logoTop {
+  height: 50px;
+}
+
+#buttonCV {
+  border-style: hidden;
+  border-radius: 8px;
+  background-color: #ff566b;
+  color: #fff;
+  padding: 7px 25px 7px;
+  position: relative;
+  bottom: 7px;
+}
+
+@media only screen and (min-width: 996px) {
+  .navpaddingleft {
+    padding-left: 100px;
+  }
+
+  .navpaddingright {
+    padding-right: 100px;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    vertical-align: middle;
+    position: relative;
+    top: 15px;
+  }
+}

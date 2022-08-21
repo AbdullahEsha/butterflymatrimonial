@@ -50,7 +50,10 @@ class cvdataController extends Controller
             $cvStore->motherOcupation = $req->motherOcupation;
             $cvStore->maritalStatus = 'Unmarried';
 
-            $rename = $req->file('image')->getClientOriginalName();
+            $rename =
+                time() .
+                '.' .
+                $req->file('image')->getClientOriginalExtension();
             $cvStore->image = 'uploads/images/' . $rename;
 
             $cvStore->save();

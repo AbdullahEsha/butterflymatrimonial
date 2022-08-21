@@ -36,7 +36,7 @@ const CVBank = (props) => {
       } else if (profileData.name === '') {
         document.querySelector('.name').style.border = '1px solid red'
       } else if (profileData.gender === '') {
-        document.querySelector('.gender').style.visibility = 'visible'
+        document.querySelector('.gender').style.display = 'block'
       } else if (
         profileData.phone === '' ||
         profileData.phone.match(/\d/g).length !== 11
@@ -170,6 +170,365 @@ const CVBank = (props) => {
     setPreferenceData(g)
   }
 
+  const exportPdf = () => {
+    var doc = new jsPDF('p', 'mm', 'a4')
+
+    var img = new Image()
+    img.src = URL.createObjectURL(profileData.image)
+    doc.addImage(img, '*', 20, 24, 30, 30)
+
+    doc.setFontSize(16)
+    doc.addFont('ComicSansMS', 'Comic Sans', 'normal')
+    doc.setFont('Comic Sans')
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 20, 'Profile Information:', 'left')
+
+    doc.setDrawColor(255, 0, 0)
+    doc.rect(20, 22, 170, 0.1, 'F') // black line
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 60, 'Name:', 'left')
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'normal')
+    doc.text(32, 60, `${profileData.name}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 60, 'Gender:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(125, 60, `${profileData.gender}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 68, 'Phone:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(32, 68, `${profileData.phone}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 68, 'Religion:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(126, 68, `${profileData.religion}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 76, 'Email:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(32, 76, `${profileData.email}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 84, 'Present Address:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(49, 84, `${profileData.presentAddress}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 92, 'Present Division:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(49, 92, `${profileData.divisionPresent}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 92, 'Present Dristrict:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(139, 92, `${profileData.dristrictPresent}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 100, 'Permanent Address:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(54, 100, `${profileData.parmanentAddress}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 108, 'Permanent Division:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(54, 108, `${profileData.divisionParmanent}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 108, 'Permanent Dristrict:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(145, 108, `${profileData.dristrictParmanent}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 116, 'Date Of Birth:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(44, 116, `${profileData.age}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 116, 'Limitations Or Species Case:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(158.5, 116, `${profileData.specialCase}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 124, 'Spouse Preference:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(52, 124, `${profileData.spousePreference}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 124, 'Preference:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(130, 124, `${preferenceData.map((item) => item)}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 132, 'About:', 'left')
+
+    var y = 132
+
+    doc.setFont(undefined, 'normal')
+    var text_width = doc.getTextWidth(profileData.about)
+    var splitTitle = doc.splitTextToSize(profileData.about, 170)
+    doc.text(20, y + 5, splitTitle, 'left')
+    y = y + text_width / 25
+
+    y = y + 8
+    doc.setFontSize(16)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Personal Information:', 'left')
+
+    y = y + 2
+    doc.setDrawColor(255, 0, 0)
+    doc.rect(20, y, 170, 0.1, 'F') // black line
+
+    y = y + 5
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Height:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(33, y, `${personalData.height}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, y, 'Weight:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(124, y, `${personalData.weight + '(kg)'}`, 'left')
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Blood Group:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(43.5, y, `${personalData.bloodGroup}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, y, 'Grown Up At:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(134, y, `${personalData.grownUpAt}`, 'left')
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Special Condition:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    text_width = doc.getTextWidth(personalData.specialCondition)
+    splitTitle = doc.splitTextToSize(personalData.specialCondition, 170)
+    doc.text(20, y + 5, splitTitle, 'left')
+    y = y + text_width / 25
+
+    y = y + 12
+    doc.setFontSize(16)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Educational Qualification:', 'left')
+
+    y = y + 2
+    doc.setDrawColor(255, 0, 0)
+    doc.rect(20, y, 170, 0.1, 'F') // black line
+
+    let x = 20
+    y = y + 5
+
+    doc.setFontSize(10)
+    educationalData.forEach((item, index) => {
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Institute Name:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(
+        x + 24,
+        y,
+        `${item.instituteName + '(' + item.passingYear + ')'}`,
+        'left',
+      )
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x + 90, y, 'Concentration/Major/Group:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 135, y, `${item.group}`, 'left')
+
+      y = y + 8
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Level of Education:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 30, y, `${item.levelOfEducation}`, 'left')
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x + 90, y, 'Institute Location:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 118.5, y, `${item.instituteLocation}`, 'left')
+
+      y += 8
+    })
+
+    if (y >= 260) {
+      doc.addPage()
+      y = 20 // Restart height position
+    } else {
+      y = y + 2
+    }
+
+    doc.setFontSize(16)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Professional Qualification:', 'left')
+
+    y = y + 2
+    doc.setDrawColor(255, 0, 0)
+    doc.rect(20, y, 170, 0.1, 'F') // black line
+
+    y = y + 5
+    doc.setFontSize(11)
+    professionalData.forEach((item, index) => {
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Designation:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 21.5, y, `${item.designation}`, 'left')
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x + 90, y, 'Company Name:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 118.5, y, `${item.organizationName}`, 'left')
+
+      y = y + 8
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Department:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 22, y, `${item.com_department}`, 'left')
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x + 90, y, 'Company Location:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 123.5, y, `${item.com_location}`, 'left')
+
+      y = y + 8
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Employment Period:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(
+        x + 35,
+        y,
+        `${item.from_employment} to ${item.to_employment}`,
+        'left',
+      )
+
+      y = y + 8
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Reference:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      text_width = doc.getTextWidth(item.com_reference)
+      splitTitle = doc.splitTextToSize(item.com_reference, 170)
+      doc.text(x, y + 5, splitTitle, 'left')
+      y = y + text_width / 25
+
+      y += 8
+    })
+
+    y += 4
+    doc.setFontSize(16)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Family Member:', 'left')
+
+    y += 2
+    doc.setDrawColor(255, 0, 0)
+    doc.rect(20, y, 170, 0.1, 'F') // black line
+
+    y = y + 5
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Father Name:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 24, y, `${familyData.fatherName}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Father Ocupation:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 121, y, `${familyData.fatherOcupation}`, 'left')
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Mother Name:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 25, y, `${familyData.motherName}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Mother Ocupation:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 122.5, y, `${familyData.motherOcupation}`, 'left')
+
+    y = y + 8
+    doc.setFontSize(12)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Siblings:', 'left')
+
+    y = y + 5
+    siblingData.forEach((item, index) => {
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Name:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 12.5, y, `${item.name}`, 'left')
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x + 90, y, 'Ocupation:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      doc.text(x + 111, y, `${item.ocupation}`, 'left')
+
+      y = y + 8
+
+      doc.setFont(undefined, 'bold')
+      doc.text(x, y, 'Details:', 'left')
+
+      doc.setFont(undefined, 'normal')
+      text_width = doc.getTextWidth(item.details)
+      splitTitle = doc.splitTextToSize(item.details, 170)
+      doc.text(x, y + 5, splitTitle, 'left')
+      y = y + text_width / 25
+
+      y += 8
+    })
+
+    doc.save(profileData.name + ' Cv.pdf')
+  }
+
   const addCV = (event) => {
     event.preventDefault()
     const formData = new FormData()
@@ -211,28 +570,37 @@ const CVBank = (props) => {
       if (result.isConfirmed) {
         //insert cvdata
         axios
-          .post(`http://localhost:8000/api/post/cv/new`, formData)
+          .post(
+            `https://api.butterflymatrimonial.com/api/post/cv/new`,
+            formData,
+          )
           .then((data) => {
             console.log('data', data)
             if (data.data.message === 'Your CV has just been stored.') {
               preferenceData.map((item, index) =>
                 axios
-                  .post(`http://localhost:8000/api/post/preference`, {
-                    preference: item,
-                    cvdata_id: cvData.length + 1,
-                  })
+                  .post(
+                    `https://api.butterflymatrimonial.com/api/post/preference`,
+                    {
+                      preference: item,
+                      cvdata_id: cvData.length + 1,
+                    },
+                  )
                   .catch(({ response }) => {
                     console.log('Preference ', response)
                   }),
               )
               siblingData.map((item, index) =>
                 axios
-                  .post(`http://localhost:8000/api/post/sibling`, {
-                    name: item.name,
-                    ocupation: item.ocupation,
-                    details: item.details,
-                    cvdata_id: cvData.length + 1,
-                  })
+                  .post(
+                    `https://api.butterflymatrimonial.com/api/post/sibling`,
+                    {
+                      name: item.name,
+                      ocupation: item.ocupation,
+                      details: item.details,
+                      cvdata_id: cvData.length + 1,
+                    },
+                  )
                   .catch(({ response }) => {
                     console.log('Sibling ', response)
                   }),
@@ -240,7 +608,7 @@ const CVBank = (props) => {
               educationalData.map((item, index) =>
                 axios
                   .post(
-                    `http://localhost:8000/api/post/education/qualification`,
+                    `https://api.butterflymatrimonial.com/api/post/education/qualification`,
                     {
                       instituteName: item.instituteName,
                       passingYear: item.passingYear,
@@ -256,20 +624,24 @@ const CVBank = (props) => {
               )
               professionalData.map((item, index) =>
                 axios
-                  .post(`http://localhost:8000/api/post/professional`, {
-                    designation: item.designation,
-                    organizationName: item.organizationName,
-                    com_department: item.com_department,
-                    com_location: item.com_location,
-                    from_employment: item.from_employment,
-                    to_employment: item.to_employment,
-                    com_reference: item.com_reference,
-                    cvdata_id: cvData.length + 1,
-                  })
+                  .post(
+                    `https://api.butterflymatrimonial.com/api/post/professional`,
+                    {
+                      designation: item.designation,
+                      organizationName: item.organizationName,
+                      com_department: item.com_department,
+                      com_location: item.com_location,
+                      from_employment: item.from_employment,
+                      to_employment: item.to_employment,
+                      com_reference: item.com_reference,
+                      cvdata_id: cvData.length + 1,
+                    },
+                  )
                   .catch(({ response }) => {
                     console.log('Educational ', response)
                   }),
               )
+              exportPdf()
               //submission confirmation
               Swal.fire({
                 title: 'Success',
@@ -304,7 +676,7 @@ const CVBank = (props) => {
   }, [])
 
   const getAllCv = async () => {
-    fetch(`http://localhost:8000/api/get/all/cv`, {})
+    fetch(`https://api.butterflymatrimonial.com/api/get/all/cv`, {})
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -316,446 +688,6 @@ const CVBank = (props) => {
       .catch((err) => {
         console.log('pro erro', err)
       })
-  }
-
-  const exportPdf = () => {
-    var doc = new jsPDF('p', 'mm', 'a4')
-
-    var img = new Image()
-    img.src = URL.createObjectURL(profileData.image)
-    doc.addImage(img, '*', 20, 24, 30, 30)
-
-    doc.setFontSize(16)
-    doc.addFont('ComicSansMS', 'Comic Sans', 'normal')
-    doc.setFont('Comic Sans')
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 20, 'Profile Information:', 'left')
-
-    doc.setDrawColor(255, 0, 0)
-    doc.rect(20, 22, 170, 0.1, 'F') // black line
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 60, 'Name:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(31, 60, `${profileData.name}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, 60, 'Gender:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(123, 60, `${profileData.gender}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 68, 'Phone:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(31, 68, `${profileData.phone}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, 68, 'Religion:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(125, 68, `${profileData.religion}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 76, 'Email:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(31, 76, `${profileData.email}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 84, 'Present Address:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(47, 84, `${profileData.presentAddress}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 92, 'Present Division:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(47, 92, `${profileData.divisionPresent}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, 92, 'Present Dristrict:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(137, 92, `${profileData.dristrictPresent}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 100, 'Permanent Address:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(52, 100, `${profileData.parmanentAddress}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 108, 'Permanent Division:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(52, 108, `${profileData.divisionParmanent}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, 108, 'Permanent Dristrict:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(142, 108, `${profileData.dristrictParmanent}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 116, 'Date Of Birth:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(42, 116, `${profileData.age}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, 116, 'Limitations Or Species Case:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(155, 116, `${profileData.specialCase}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 124, 'Spouse Preference:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(49, 124, `${profileData.spousePreference}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, 124, 'Preference:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(127.5, 124, `${preferenceData.map((item) => item)}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 132, 'About:', 'left')
-
-    var y = 132
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    var text_width = doc.getTextWidth(profileData.about)
-    var splitTitle = doc.splitTextToSize(profileData.about, 170)
-    doc.text(20, y + 5, splitTitle, 'left')
-    y = y + text_width / 25
-
-    y = y - 2.5
-    doc.setFontSize(16)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Personal Information:', 'left')
-
-    y = y + 2
-    doc.setDrawColor(255, 0, 0)
-    doc.rect(20, y, 170, 0.1, 'F') // black line
-
-    y = y + 5
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Height:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(32, y, `${personalData.height}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, y, 'Weight:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(122, y, `${personalData.weight + '(kg)'}`, 'left')
-
-    y = y + 8
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Blood Group:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(41.5, y, `${personalData.bloodGroup}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, y, 'Grown Up At:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(132, y, `${personalData.grownUpAt}`, 'left')
-
-    y = y + 8
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Special Condition:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    text_width = doc.getTextWidth(personalData.specialCondition)
-    splitTitle = doc.splitTextToSize(personalData.specialCondition, 170)
-    doc.text(20, y + 5, splitTitle, 'left')
-    y = y + text_width / 25
-
-    doc.setFontSize(16)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Educational Qualification:', 'left')
-
-    y = y + 2
-    doc.setDrawColor(255, 0, 0)
-    doc.rect(20, y, 170, 0.1, 'F') // black line
-
-    let x = 20
-    y = y + 5
-
-    educationalData.forEach((item, index) => {
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Institute Name:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(
-        x + 24,
-        y,
-        `${item.instituteName + '(' + item.passingYear + ')'}`,
-        'left',
-      )
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Concentration/Major/Group:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 135, y, `${item.group}`, 'left')
-
-      y = y + 8
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Level of Education:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 30, y, `${item.levelOfEducation}`, 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Institute Location:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 118.5, y, `${item.instituteLocation}`, 'left')
-
-      y += 8
-    })
-
-    if (y >= 260) {
-      doc.addPage()
-      y = 20 // Restart height position
-      var f = true
-    } else {
-      y = y + 2
-      f = false
-    }
-
-    doc.setFontSize(16)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Professional Qualification:', 'left')
-
-    y = y + 2
-    doc.setDrawColor(255, 0, 0)
-    doc.rect(20, y, 170, 0.1, 'F') // black line
-
-    y = y + 5
-    professionalData.forEach((item, index) => {
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Designation:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 19, y, `${item.designation}`, 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Company Name:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 116, y, `${item.organizationName}`, 'left')
-
-      y = y + 8
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Department:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 20, y, `${item.com_department}`, 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Company Location:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 120.5, y, `${item.com_location}`, 'left')
-
-      y = y + 8
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Employment Period:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(
-        x + 32,
-        y,
-        `${item.from_employment} to ${item.to_employment}`,
-        'left',
-      )
-
-      y = y + 8
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Reference:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      text_width = doc.getTextWidth(item.com_reference)
-      splitTitle = doc.splitTextToSize(item.com_reference, 170)
-      doc.text(x, y + 5, splitTitle, 'left')
-      y = y + text_width / 25
-      //doc.text(x, y, `${item.com_reference}`, 'left')
-
-      y += 8
-    })
-
-    if (y >= 260 && f === false) {
-      doc.addPage()
-      y = 20 // Restart height position
-    }
-
-    doc.setFontSize(16)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Family Member:', 'left')
-
-    y += 2
-    doc.setDrawColor(255, 0, 0)
-    doc.rect(20, y, 170, 0.1, 'F') // black line
-
-    y = y + 5
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(x, y, 'Father Name:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(x + 22, y, `${familyData.fatherName}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(x + 90, y, 'Father Ocupation:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(x + 119, y, `${familyData.fatherOcupation}`, 'left')
-
-    y = y + 8
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(x, y, 'Mother Name:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(x + 23, y, `${familyData.motherName}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(x + 90, y, 'Mother Ocupation:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(x + 120, y, `${familyData.motherOcupation}`, 'left')
-
-    y = y + 8
-    doc.setFontSize(12)
-    doc.setFont(undefined, 'bold')
-    doc.text(x, y, 'Sibling`s:', 'left')
-
-    y = y + 5
-    siblingData.forEach((item, index) => {
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Name:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 10.5, y, `${item.name}`, 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Ocupation:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 107.5, y, `${item.ocupation}`, 'left')
-
-      y = y + 8
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Details:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      text_width = doc.getTextWidth(item.details)
-      splitTitle = doc.splitTextToSize(item.details, 170)
-      doc.text(x, y + 5, splitTitle, 'left')
-      y = y + text_width / 25
-
-      y += 8
-    })
-
-    // doc.setFontSize(10)
-    // doc.setFont(undefined, 'bold')
-    // doc.text(20, 274, 'Sibling - ', 'left')
-
-    // doc.setFontSize(10)
-    // doc.setFont(undefined, 'normal')
-    // doc.text(
-    //   20,
-    //   280,
-    //   `${siblingData.map((item) => item.name + '(' + item.ocupation + ')')}`,
-    //   'left',
-    // )
-
-    doc.save(profileData.name + ' Cv.pdf')
   }
 
   // console.log('profileData', profileData)
@@ -977,13 +909,7 @@ const CVBank = (props) => {
                       addCV(event)
                     }}
                   >
-                    Submit
-                  </button>{' '}
-                  <button
-                    onClick={exportPdf}
-                    className="cv_bankButton_BackNext"
-                  >
-                    Download PDF
+                    Submit & Download PDF
                   </button>
                 </div>
               )}

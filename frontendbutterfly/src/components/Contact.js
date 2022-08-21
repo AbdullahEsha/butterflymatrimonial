@@ -18,13 +18,16 @@ const Contact = () => {
     event.preventDefault()
 
     await axios
-      .post(`http://localhost:8000/api/post/contact/new`, contactData)
+      .post(
+        `https://api.butterflymatrimonial.com/api/post/contact/new`,
+        contactData,
+      )
       .then(({ data }) => {
         Swal.fire({
           icon: 'success',
           text: data.message,
         }).then(function () {
-          window.location = 'http://localhost:3000/contact'
+          window.location = 'https://butterflymatrimonial.com/contact'
         })
       })
       .catch(({ response }) => {

@@ -30,7 +30,7 @@ const Footer = () => {
               <br />
               <br />
               <div>
-                <a href="/">
+                <a href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627">
                   <img
                     src={apple}
                     alt="imgggg"
@@ -39,7 +39,7 @@ const Footer = () => {
                     style={{ paddingRight: '10px' }}
                   />
                 </a>
-                <a href="/">
+                <a href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US">
                   <img
                     src={google}
                     alt="imgaaa"
@@ -136,13 +136,22 @@ const Footer = () => {
           </Col>
           <Col xs={12} md={6}>
             <div className="socialLogoPosition">
-              <a href="/facebook.com" className="socialLogo">
+              <a
+                href="https://www.facebook.com/butterflymatrimonial/"
+                className="socialLogo"
+              >
                 <FaFacebookSquare size={35} color="white" />
               </a>{' '}
-              <a href="/" className="socialLogo">
+              <a
+                href="https://web.whatsapp.com/send?phone='+8801951271550'"
+                className="socialLogo"
+              >
                 <FaWhatsappSquare size={35} color="white" />
               </a>{' '}
-              <a href="/instagram.com" className="socialLogo">
+              <a
+                href="https://www.instagram.com/butterflymatrimonial/"
+                className="socialLogo"
+              >
                 <FaInstagramSquare size={35} color="white" />
               </a>
             </div>

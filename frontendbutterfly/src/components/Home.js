@@ -21,6 +21,7 @@ import logo_3 from '../asset/image/logo_3.png'
 import logo_4 from '../asset/image/logo_4.png'
 import MainNav from './MainNav'
 import Footer from './Footer'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
@@ -41,20 +42,23 @@ function Home() {
             artificial intelligence to generate personalized recommendations.
           </h6>
           <br />
-          <a href="/venus" id="venusButton">
+          <Link to="/venus" id="venusButton">
             Venus
-          </a>{' '}
+          </Link>
           <br />
           <br />
           <br />
           <div>
             <a
-              href="/"
+              href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
               style={{ textDecoration: 'none', paddingRight: '10px' }}
             >
               <img src={apple} alt="apple" height="50px" />{' '}
             </a>
-            <a href="/" style={{ textDecoration: 'none' }}>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US"
+              style={{ textDecoration: 'none' }}
+            >
               <img src={google} alt="google" height="50px" />
             </a>
           </div>
@@ -130,10 +134,16 @@ function Home() {
                   personalized recommendations.
                 </h6>
                 <div className="badge_psition">
-                  <a href="/" id="badge">
+                  <a
+                    href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
+                    id="badge"
+                  >
                     <img src={apple} alt="apple" height="40px" />{' '}
                   </a>
-                  <a href="/" id="badge">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US"
+                    id="badge"
+                  >
                     <img src={google} alt="google" height="40px" />
                   </a>
                 </div>
