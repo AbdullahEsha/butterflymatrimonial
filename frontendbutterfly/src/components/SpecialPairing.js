@@ -18,7 +18,6 @@ const SpecialPairing = () => {
         <h1>SPECIAL PAIRING</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
@@ -34,7 +33,6 @@ const SpecialPairing = () => {
           <br />
           <h6>
             Butterfly Matrimonial is a digital platform, we use machine-learning
-            <br />
             algorithm paired with artificial intelligence to generate
             personalized recommendations.
           </h6>
@@ -65,8 +63,8 @@ const SpecialPairing = () => {
               <img src={communication} alt="communication" />{' '}
               <h3>Communication</h3>{' '}
               <h6>
-                Any problem with registration, please send your <br />
-                NID, Resume & Photos to butterflymatrimonial@gmail.com
+                Any problem with registration, please send your NID, Resume &
+                Photos to butter@gmail.com
               </h6>
             </div>
           </Col>
@@ -81,7 +79,6 @@ const SpecialPairing = () => {
         <h1>Lorem Ipsum</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
@@ -93,15 +90,17 @@ const SpecialPairing = () => {
               <img src={apu} alt="apu" className="img_possition_1" />
             </Col>
             <Col xs={12} md={6}>
-              <div className="text_3">
-                <h1>Huraira Shishir</h1>
-                <h6>
-                  Butterfly Matrimonial is a digital platform, we use
-                  <br />
-                  machine-learning algorithm paired with artificial intelligence
-                  to generate personalized recommendations.Butterfly Matrimonial
-                  is a digital platform,we use machine-learning algorithm.
-                </h6>
+              <div className="home_text_3_outside">
+                <div className="text_3">
+                  <h1>Huraira Shishir</h1>
+                  <h6>
+                    Butterfly Matrimonial is a digital platform, we use
+                    machine-learning algorithm paired with artificial
+                    intelligence to generate personalized
+                    recommendations.Butterfly Matrimonial is a digital
+                    platform,we use machine-learning algorithm.
+                  </h6>
+                </div>
               </div>
             </Col>
           </Row>
@@ -111,7 +110,6 @@ const SpecialPairing = () => {
         <h1>SUCCESS STORIES</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>

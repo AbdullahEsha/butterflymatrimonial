@@ -63,8 +63,10 @@ const Contact = () => {
       <Container>
         <Row>
           <Col xs={12} md={6}>
-            <div align="center">
-              <img src={contact} alt="venus_img" className="contact_img_1" />
+            <div className="contact_img_1_outside">
+              <div align="center" className="contact_img_1">
+                <img src={contact} alt="venus_img" />
+              </div>
             </div>
           </Col>
           <Col xs={12} md={6} className="contact_text_position_1">

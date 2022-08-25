@@ -67,17 +67,14 @@ const About = () => {
         <br />
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
       </div>
       <div className="about_text_position_2">
         <h1>HOW IT’S WORKS?</h1>
-        <br />
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
@@ -124,12 +121,10 @@ const About = () => {
           </Row>
         </Container>
       </div>
-      <div className="about_text_position_21">
+      <div className="about_text_position_2">
         <h1>OUR TEAM</h1>
-        <br />
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>

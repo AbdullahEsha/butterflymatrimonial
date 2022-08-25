@@ -116,47 +116,47 @@ function Home() {
           </Col>
         </Row>
       </Container>
-      <br />
-      <br />
       <div className="background-img_2">
-        <Container className="possition_content_1">
+        <Container>
           <Row>
-            <Col xs={12} md={6}>
-              <img src={swipe} alt="swipe" className="img_1" />
+            <Col xs={12} md={6} id="home-content-2">
+              <div className="img_1">
+                <img src={swipe} alt="swipe" />
+              </div>
             </Col>
-            <Col xs={12} md={6}>
-              <div className="text_2">
-                <h1>Download Here</h1>
-                <h6>
-                  Butterfly Matrimonial is a digital platform, we use
-                  machine-learning <br />
-                  algorithm paired withartificial intelligence to generate
-                  personalized recommendations.
-                </h6>
-                <div className="badge_psition">
-                  <a
-                    href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
-                    id="badge"
-                  >
-                    <img src={apple} alt="apple" height="40px" />{' '}
-                  </a>
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US"
-                    id="badge"
-                  >
-                    <img src={google} alt="google" height="40px" />
-                  </a>
+            <Col xs={12} md={6} id="home-content-2">
+              <div className="home_text_2_outside">
+                <div className="text_2">
+                  <h1>Download Here</h1>
+                  <h6>
+                    Butterfly Matrimonial is a digital platform, we use
+                    machine-learning algorithm paired withartificial
+                    intelligence to generate personalized recommendations.
+                  </h6>
+                  <div className="badge_psition">
+                    <a
+                      href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
+                      id="badge"
+                    >
+                      <img src={apple} alt="apple" height="40px" />{' '}
+                    </a>
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US"
+                      id="badge"
+                    >
+                      <img src={google} alt="google" height="40px" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </Col>
           </Row>
         </Container>
       </div>
-      <div className="text_position_3" id="text_position_3">
+      <div className="text_position_3_milestone" id="text_position_3">
         <h1>MILESTONE</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
@@ -192,7 +192,6 @@ function Home() {
         <h1>FOUNDER</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
@@ -204,15 +203,17 @@ function Home() {
               <img src={apu} alt="apu" className="img_possition_1" />
             </Col>
             <Col xs={12} md={6}>
-              <div className="text_3">
-                <h1>Huraira Shishir</h1>
-                <h6>
-                  Butterfly Matrimonial is a digital platform, we use
-                  <br />
-                  machine-learning algorithm paired with artificial intelligence
-                  to generate personalized recommendations.Butterfly Matrimonial
-                  is a digital platform,we use machine-learning algorithm.
-                </h6>
+              <div className="home_text_3_outside">
+                <div className="text_3">
+                  <h1>Huraira Shishir</h1>
+                  <h6>
+                    Butterfly Matrimonial is a digital platform, we use
+                    machine-learning algorithm paired with artificial
+                    intelligence to generate personalized
+                    recommendations.Butterfly Matrimonial is a digital
+                    platform,we use machine-learning algorithm.
+                  </h6>
+                </div>
               </div>
             </Col>
           </Row>
@@ -221,9 +222,9 @@ function Home() {
       <div className="text_position_3">
         <h1>SUCCESS STORIES</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning{' '}
-          <br /> algorithm paired with artificial intelligence to generate
-          personalized recommendations.
+          Butterfly Matrimonial is a digital platform, we use machine-learning
+          algorithm paired with artificial intelligence to generate personalized
+          recommendations.
         </h6>
       </div>
       <Container>
@@ -266,9 +267,9 @@ function Home() {
       <div className="text_position_3">
         <h1>AFFILIATION</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning{' '}
-          <br /> algorithm paired with artificial intelligence to generate
-          personalized recommendations.
+          Butterfly Matrimonial is a digital platform, we use machine-learning
+          algorithm paired with artificial intelligence to generate personalized
+          recommendations.
         </h6>
       </div>
       <Container>

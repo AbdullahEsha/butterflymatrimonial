@@ -1,8 +1,8 @@
-import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import Img from "../asset/image/butterfly.png";
-import "../asset/css/nav.css";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
+import Img from '../asset/image/butterfly.png'
+import '../asset/css/nav.css'
+import { Link } from 'react-router-dom'
 
 const MainNav = () => {
   return (
@@ -13,8 +13,8 @@ const MainNav = () => {
         sticky="top"
         bg="light"
         style={{
-          borderBottomLeftRadius: "15px",
-          borderBottomRightRadius: "15px",
+          borderBottomLeftRadius: '15px',
+          borderBottomRightRadius: '15px',
         }}
       >
         <Navbar.Brand href="/" className="navpaddingleft">
@@ -23,25 +23,21 @@ const MainNav = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto navpaddingright">
-            <Link to="/" style={{ color: "#000" }} className="nav-link">
+            <Link to="/" className="nav-link">
               Home
             </Link>
-            <Link to="/about" style={{ color: "#000" }} className="nav-link">
+            <Link to="/about" className="nav-link">
               About
             </Link>
-            <Link to="/venus" style={{ color: "#000" }} className="nav-link">
+            <Link to="/venus" className="nav-link">
               Venus
             </Link>
-            <Link
-              to="/special-pairing"
-              style={{ color: "#000" }}
-              className="nav-link"
-            >
+            <Link to="/special-pairing" className="nav-link">
               Special Pairing
             </Link>
             <Link
               to="/contact"
-              style={{ color: "#000", paddingRight: "30px" }}
+              style={{ paddingRight: '30px' }}
               className="nav-link"
             >
               Contact
@@ -53,7 +49,7 @@ const MainNav = () => {
         </Navbar.Collapse>
       </Navbar>
     </>
-  );
-};
+  )
+}
 
-export default MainNav;
+export default MainNav

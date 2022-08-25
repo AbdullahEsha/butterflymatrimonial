@@ -1,5 +1,5 @@
 a.nav-link {
-  font-family: "Urbanist";
+  font-family: 'Urbanist';
   font-size: 16px;
   font-weight: 600;
 }
@@ -17,14 +17,17 @@ a.nav-link {
   position: relative;
   bottom: 7px;
 }
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+}
 
-@media only screen and (min-width: 996px) {
+@media only screen and (min-width: 992px) {
   .navpaddingleft {
-    padding-left: 100px;
+    padding-left: 5%;
   }
 
   .navpaddingright {
-    padding-right: 100px;
+    padding-right: 5%;
   }
 
   .nav-link {

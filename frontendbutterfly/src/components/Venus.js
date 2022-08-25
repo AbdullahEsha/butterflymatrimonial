@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import codicon from '../asset/image/codicon.png'
 import communication from '../asset/image/communication.png'
 import uil_processor from '../asset/image/uil_processor.png'
@@ -14,11 +15,10 @@ const Venus = () => {
   return (
     <>
       <MainNav />
-      <div className="text_position_3">
+      <div className="about_text_position_2">
         <h1>VENUS</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
@@ -27,14 +27,10 @@ const Venus = () => {
         <div className="venus_background_img_1"></div>
         <div className="venus_overlay"></div>
         <div className="venus_text_position_2">
-          <h1>
-            BUTTERFLY MATRIMONIAL <br />
-            YOUR PARFECT MATCH MAKER
-          </h1>
+          <h1>BUTTERFLY MATRIMONIAL YOUR PARFECT MATCH MAKER</h1>
           <br />
           <h6>
             Butterfly Matrimonial is a digital platform, we use machine-learning
-            <br />
             algorithm paired with artificial intelligence to generate
             personalized recommendations.
           </h6>
@@ -65,23 +61,22 @@ const Venus = () => {
               <img src={communication} alt="communication" />{' '}
               <h3>Communication</h3>{' '}
               <h6>
-                Any problem with registration, please send your <br />
-                NID, Resume & Photos to butterflymatrimonial@gmail.com
+                Any problem with registration, please send your NID, Resume &
+                Photos to butter@gmail.com
               </h6>
             </div>
           </Col>
         </Row>
       </Container>
       <div className="getVenus">
-        <a href="/" id="venusButtonGet">
+        <Link to="/venus" id="venusButtonGet">
           Get Venus
-        </a>
+        </Link>
       </div>
-      <div className="text_position_3">
+      <div className="about_text_position_2">
         <h1>Lorem Ipsum</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
@@ -94,23 +89,24 @@ const Venus = () => {
             </div>
           </Col>
           <Col xs={12} md={6}>
-            <div className="venus_text_position_1">
-              <h1>Lorem Ipsum</h1>
-              <h6>
-                Butterfly Matrimonial is a digital platform, we use
-                machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.Butterfly Matrimonial
-                is a digital platform,we use machine-learning algorithm.
-              </h6>
+            <div className="venus_text_position_1_outside">
+              <div className="venus_text_position_1">
+                <h1>Lorem Ipsum</h1>
+                <h6>
+                  Butterfly Matrimonial is a digital platform, we use
+                  machine-learning algorithm paired with artificial intelligence
+                  to generate personalized recommendations.Butterfly Matrimonial
+                  is a digital platform,we use machine-learning algorithm.
+                </h6>
+              </div>
             </div>
           </Col>
         </Row>
       </Container>
-      <div className="text_position_3" id="text_position_31">
+      <div className="about_text_position_2" id="text_position_31">
         <h1>SUCCESS STORIES</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>

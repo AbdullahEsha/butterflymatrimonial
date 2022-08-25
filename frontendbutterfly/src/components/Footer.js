@@ -34,18 +34,12 @@ const Footer = () => {
                   <img
                     src={apple}
                     alt="imgggg"
-                    height={'40px'}
-                    width={'150px'}
                     style={{ paddingRight: '10px' }}
+                    className="app_icon_size"
                   />
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US">
-                  <img
-                    src={google}
-                    alt="imgaaa"
-                    height={'40px'}
-                    width={'150px'}
-                  />
+                  <img src={google} alt="imgaaa" className="app_icon_size" />
                 </a>
               </div>
               <br />

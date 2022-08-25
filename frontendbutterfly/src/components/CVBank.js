@@ -695,11 +695,10 @@ const CVBank = (props) => {
   return (
     <div style={{ backgroundColor: '#ededed' }}>
       <MainNav />
-      <div className="text_position_3">
+      <div className="about_text_position_2">
         <h1>CV BANK</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
