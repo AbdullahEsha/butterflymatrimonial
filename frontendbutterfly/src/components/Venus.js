@@ -15,7 +15,7 @@ const Venus = () => {
   return (
     <>
       <MainNav />
-      <div className="about_text_position_2">
+      <div className="text_position_3">
         <h1>VENUS</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
@@ -24,16 +24,19 @@ const Venus = () => {
         </h6>
       </div>
       <Container>
-        <div className="venus_background_img_1"></div>
-        <div className="venus_overlay"></div>
-        <div className="venus_text_position_2">
-          <h1>BUTTERFLY MATRIMONIAL YOUR PARFECT MATCH MAKER</h1>
-          <br />
-          <h6>
-            Butterfly Matrimonial is a digital platform, we use machine-learning
-            algorithm paired with artificial intelligence to generate
-            personalized recommendations.
-          </h6>
+        <div className="venus_background_img_1">
+          <div className="venus_text_position_2">
+            <h1>
+              BUTTERFLY MATRIMONIAL <br />
+              YOUR PARFECT MATCH MAKER
+            </h1>
+            <br id="hide_br" />
+            <h6>
+              Butterfly Matrimonial is a digital platform, we use
+              machine-learning algorithm paired with artificial intelligence to
+              generate personalized recommendations.
+            </h6>
+          </div>
         </div>
       </Container>
       <Container align="center">
@@ -47,7 +50,7 @@ const Venus = () => {
               </h6>
             </div>
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={4} id="card_3">
             <div className="card_3">
               <img src={uil_processor} alt="uil_processor" /> <h3>Process</h3>{' '}
               <h6>
@@ -56,7 +59,7 @@ const Venus = () => {
               </h6>
             </div>
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={4} id="card_3">
             <div className="card_3">
               <img src={communication} alt="communication" />{' '}
               <h3>Communication</h3>{' '}
@@ -73,7 +76,7 @@ const Venus = () => {
           Get Venus
         </Link>
       </div>
-      <div className="about_text_position_2">
+      <div className="venus_text_position_3">
         <h1>Lorem Ipsum</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
@@ -83,12 +86,12 @@ const Venus = () => {
       </div>
       <Container>
         <Row>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={6} id="venus_text">
             <div align="center">
               <img src={venus_img} alt="venus_img" className="venus_img_1" />
             </div>
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={6} id="venus_text">
             <div className="venus_text_position_1_outside">
               <div className="venus_text_position_1">
                 <h1>Lorem Ipsum</h1>
@@ -103,7 +106,7 @@ const Venus = () => {
           </Col>
         </Row>
       </Container>
-      <div className="about_text_position_2" id="text_position_31">
+      <div className="venus_text_position_4">
         <h1>SUCCESS STORIES</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
@@ -120,7 +123,7 @@ const Venus = () => {
               <h6>
                 Butterfly Matrimonial is a digital platform, we use
                 machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                to generate many personalized recommendations.
               </h6>
             </div>
           </Col>
@@ -131,7 +134,7 @@ const Venus = () => {
               <h6>
                 Butterfly Matrimonial is a digital platform, we use
                 machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                to generate many personalized recommendations.
               </h6>
             </div>
           </Col>
@@ -142,7 +145,7 @@ const Venus = () => {
               <h6>
                 Butterfly Matrimonial is a digital platform, we use
                 machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                to generate many personalized recommendations.
               </h6>
             </div>
           </Col>

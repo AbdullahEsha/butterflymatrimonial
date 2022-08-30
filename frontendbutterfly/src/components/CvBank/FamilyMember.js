@@ -205,7 +205,6 @@ const FamilyMember = (props) => {
                     onChange={(event) => handleInput(index, event)}
                   ></textarea>
                 </div>
-                <br />
                 <div align="right">
                   {sibling.length - 1 === index &&
                     sibling.length > 1 &&

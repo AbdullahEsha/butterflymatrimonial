@@ -57,19 +57,19 @@ const About = () => {
   return (
     <>
       <MainNav />
-      <div className="about_background-img_1"></div>
-      <div className="about_overlay_1"></div>
-      <div className="about_text_position_1">
-        <h1>
-          BUTTERFLY MATRIMONIAL <br />
-          YOUR PARFECT MATCH MAKER
-        </h1>
-        <br />
-        <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
-        </h6>
+      <div className="about_background-img_1">
+        <div className="about_text_position_1">
+          <h1>
+            BUTTERFLY MATRIMONIAL <br />
+            YOUR PARFECT MATCH MAKER
+          </h1>
+          <br id="hide_br" />
+          <h6>
+            Butterfly Matrimonial is a digital platform, we use machine-learning
+            algorithm paired with artificial intelligence to generate
+            personalized recommendations.
+          </h6>
+        </div>
       </div>
       <div className="about_text_position_2">
         <h1>HOW IT’S WORKS?</h1>
@@ -94,7 +94,7 @@ const About = () => {
                 </h6>
               </div>
             </Col>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={4} id="pairing">
               <div className="berPadd">
                 <img src={uil_processor} alt="diamond" />
                 <br />
@@ -106,7 +106,7 @@ const About = () => {
                 </h6>
               </div>
             </Col>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={4} id="pairing">
               <div className="berPadd">
                 <img src={communication} alt="pairing" />
                 <br />
@@ -121,7 +121,7 @@ const About = () => {
           </Row>
         </Container>
       </div>
-      <div className="about_text_position_2">
+      <div className="about_text_position_13">
         <h1>OUR TEAM</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
@@ -129,7 +129,7 @@ const About = () => {
           recommendations.
         </h6>
       </div>
-      {width > 600 ? (
+      {width > 767 ? (
         <Container id="teamPosition">
           <Row>
             <Col xs={12} md={4}>

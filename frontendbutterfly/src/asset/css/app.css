@@ -21,6 +21,12 @@ em {
 .berPadd h1 {
   font-weight: 700;
 }
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-light .navbar-toggler {
+  border-color: transparent;
+}
 .berPadd img {
   height: 75px;
 }
@@ -88,23 +94,19 @@ em {
   top: -20px;
   border-radius: 0px 0px 50px 50px;
 }
-.text_position_1 {
-  height: 800px;
-  width: 100%;
-  border-radius: 0px 0px 50px 50px;
-  background-color: rgba(0, 0, 0, 0.466);
-  position: absolute;
-  top: 66px;
-}
+
 .text_position_2 {
   color: #ffffff;
-  position: absolute;
-  top: 250px;
+  position: relative;
+  top: 280px;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  text-align: center;
+  text-align: -webkit-center;
+}
+a#badge img {
+  height: 40px;
 }
 #venusButton {
   text-decoration: none;
@@ -140,9 +142,14 @@ em {
   background-repeat: no-repeat;
   transition: 0.4s;
 }
+.venus_text_position_3,
+.venus_text_position_4,
+.cvbank_text_position_1 {
+  text-align: -webkit-center;
+}
 .getVenus {
   text-align: center;
-  margin-top: -350px;
+  margin-top: 390px;
 }
 #venusButtonGet:hover {
   background-size: 100% 100%;
@@ -154,10 +161,10 @@ h1 {
 }
 .ber_position {
   color: #ffffff;
-  position: absolute;
+  position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -8%;
+  margin-top: -150px;
   left: 0;
   right: 0;
   text-align: center;
@@ -170,10 +177,6 @@ h1 {
 .h6padding {
   padding-top: 30px;
   padding-bottom: 30px;
-}
-.text_padding_2 {
-  margin-top: 200px;
-  text-align: center;
 }
 .background-img_2 {
   width: 100%;
@@ -218,9 +221,13 @@ div.text_2 {
 }
 .text_position_3 {
   text-align: -webkit-center;
-  margin-top: 95px;
+  margin-top: 60px;
 }
-div.text_position_3 h6 {
+.venus_text_position_2 h6,
+.cvbank_text_position_1 h6,
+div.text_position_3 h6,
+.venus_text_position_3 h6,
+.venus_text_position_4 h6 {
   max-width: 722px;
 }
 .card_2 {
@@ -247,11 +254,10 @@ div.text_position_3 h6 {
 }
 .card_3 {
   position: relative;
-  top: -460px;
+  top: 320px;
   text-align: center;
   border-style: hidden;
   border-radius: 12px;
-  height: 315px;
   width: 373px;
   padding: 30px;
   background-color: #ff566b;
@@ -283,6 +289,9 @@ div.text_position_3 h6 {
   position: relative;
   bottom: 48.7px;
 }
+.text_3 h6 {
+  max-width: 500px;
+}
 div.home_text_3_outside {
   height: 550px;
   width: 100%;
@@ -297,7 +306,7 @@ div.text_3 {
   color: #ffffff;
 }
 .card {
-  margin-top: 75px;
+  margin-top: 50px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 14px 26px rgba(0, 0, 0, 0.151);
@@ -311,9 +320,12 @@ div.text_3 {
   box-shadow: 0 18px 28px rgba(0, 0, 0, 0.363);
   transform: scale(1.02);
 }
-.card h3,
-h6 {
+.card h3 {
   padding: 0px 20px 10px 20px;
+}
+.card h6 {
+  padding: 0px 20px 10px 20px;
+  text-align: justify;
 }
 .card h3 {
   padding-top: 20px;
@@ -375,18 +387,10 @@ li a {
   top: -20px;
   border-radius: 0px 0px 25px 25px;
 }
-.about_overlay_1 {
-  width: 100%;
-  height: 540px;
-  border-radius: 0px 0px 25px 25px;
-  background-color: rgba(0, 0, 0, 0.466);
-  position: absolute;
-  top: 66px;
-}
 .about_text_position_1 {
   color: #ffffff;
-  position: absolute;
-  top: 250px;
+  position: relative;
+  top: 200px;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -398,9 +402,32 @@ li a {
 }
 .about_text_position_2 {
   text-align: -webkit-center;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 .about_text_position_2 h6 {
+  max-width: 722px;
+}
+.about_text_position_13 {
+  text-align: -webkit-center;
+  margin-top: 60px;
+}
+.swiper-pagination {
+  margin-bottom: 10px;
+}
+.venus_text_position_4,
+.venus_text_position_3,
+.cvbank_text_position_1,
+.text_padding_2 {
+  margin-top: 60px;
+}
+.venus_text_position_2 h6,
+.cvbank_text_position_1 h6,
+.text_position_2 h6,
+.about_text_position_13 h6,
+.venus_text_position_3 h6,
+.venus_text_position_4 h6,
+.cvbank_text_position_1 h6,
+.text_padding_2 h6 {
   max-width: 722px;
 }
 .venus_text_position_2 {
@@ -412,7 +439,7 @@ li a {
   margin-right: auto;
   left: 0;
   right: 0;
-  top: -733px;
+  top: 260px;
 }
 .venus_text_position_2 h1 {
   max-width: 606px;
@@ -453,7 +480,7 @@ li a {
   margin-top: 50px;
   width: 100%;
   height: 600px;
-  background: url('../image/background_img_1.png');
+  background: url('../image/background_img_1.png') center center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 25px;
@@ -478,7 +505,6 @@ div.venus_text_position_1 {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   text-align: -webkit-center;
-  color: #000;
 }
 .venus_text_position_1 h6 {
   max-width: 500px;
@@ -911,6 +937,9 @@ td {
   .card_3 {
     width: 340px;
   }
+  .ber_position {
+    margin-top: -160px;
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -918,8 +947,33 @@ td {
     margin-left: 10px;
     width: 86%;
   }
+  .ber_position {
+    margin-top: -125px;
+  }
+  .cv_bank_container {
+    margin-top: 55px;
+  }
+  .educationAdd {
+    margin-top: 15px;
+  }
+  .berPaddtop h1 {
+    font-size: 28px;
+  }
+  .h6padding {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
   .text_padding_2 {
-    margin-top: 245px;
+    margin-top: 75px;
+  }
+  .background-img_2 {
+    margin-bottom: 40px;
+  }
+  .about_text_position_2 {
+    margin-top: 45px;
+  }
+  .text_position_3 {
+    margin-top: 60px;
   }
   .berPadd img {
     height: 50px;
@@ -927,9 +981,11 @@ td {
   .card {
     margin-top: 55px;
   }
-  .card h3,
-  h6 {
+  .card h6 {
     padding: 10px;
+  }
+  .card h3 {
+    padding: 10px 10px 0px 10px;
   }
   .card_3 {
     width: 300px;
@@ -959,6 +1015,26 @@ td {
   div.text_3 {
     top: 55%;
   }
+  .card_3 img {
+    height: 80px;
+    width: 80px;
+  }
+  .card_3 h3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24px;
+  }
+  .card_3 {
+    width: 260px;
+    height: 235px;
+    padding: 10px;
+  }
+  .getVenus {
+    margin-top: 385px;
+  }
+  .cv_bank_container ul {
+    font-size: 14px;
+  }
   .card_2 {
     height: 195px;
     width: 220px;
@@ -974,6 +1050,206 @@ td {
     margin-left: 10px;
     width: 80%;
   }
+  .background-img_1 {
+    height: 550px;
+  }
+  .about_text_position_13,
+  .venus_text_position_4 {
+    margin-top: 40px;
+  }
+  .text_position_2 {
+    top: 135px;
+  }
+  .text_position_2 h1 {
+    font-size: 35px;
+  }
+  .text_position_2 h6 {
+    font-size: 15px;
+  }
+  .berPaddtop h1 {
+    font-size: 28px;
+  }
+  .ber_position {
+    margin-top: -118px;
+  }
+  .text_position_3_milestone {
+    margin-bottom: 0px;
+    margin-top: 60px;
+  }
+  .h6padding {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .text_padding_2 {
+    margin-top: 80px;
+  }
+  .background-img_2 {
+    margin-bottom: 40px;
+  }
+  .text_position_2 h6,
+  .about_text_position_2 h6,
+  .about_text_position_13 h6 {
+    max-width: 600px;
+    font-size: 13px;
+  }
+  .about_text_position_2 h1,
+  .about_text_position_13 h1 {
+    font-size: 24px;
+  }
+  .text_position_3 {
+    margin-top: 60px;
+  }
+  .text_2 h1 {
+    font-size: 24px;
+  }
+  .text_2 h6 {
+    font-size: 13px;
+  }
+  .img_1 img {
+    max-width: 75%;
+    margin-top: -16%;
+  }
+  .card_2 h1 {
+    font-size: 25px;
+  }
+  .card_2 h4 {
+    font-size: 20px;
+  }
+  .card_2 {
+    height: 160px;
+    width: 160px;
+    padding: 10px;
+  }
+  .card_2 img {
+    width: 36px;
+    height: 36px;
+    margin-top: 10px;
+  }
+  .background-img_3 {
+    height: 450px;
+  }
+  .img_possition_1 {
+    height: 450px;
+    bottom: -1.5px;
+  }
+  div.text_3 {
+    top: 55%;
+  }
+  .text_3 h1 {
+    font-size: 24px;
+  }
+  .text_3 h6 {
+    font-size: 14px;
+  }
+  .card h3 {
+    padding: 10px 10px 0px 10px;
+    font-size: 20px;
+  }
+  .card h6 {
+    padding: 0px 10px 10px 10px;
+    font-size: 13px;
+  }
+  .logosize img {
+    height: 150px;
+    width: 150px;
+  }
+  .app_icon_size {
+    height: 30px;
+    width: 100px;
+  }
+  .ber_position_about {
+    margin-top: 6%;
+  }
+  .berPadd img {
+    height: 50px;
+    width: 50px;
+  }
+  .berPadd h2 {
+    font-size: 24px;
+  }
+  .berPadd h6 {
+    font-size: 14px;
+  }
+  #rds_about {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .card_3 img {
+    height: 50px;
+    width: 50px;
+  }
+  .card_3 h3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24px;
+  }
+  .card_3 h6 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+  }
+  .card_3 {
+    width: 205px;
+    height: 205px;
+    padding: 10px;
+  }
+  .img_uploader input {
+    width: 160%;
+  }
+  #buttonCV {
+    width: 112px;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  .getVenus {
+    margin-top: 385px;
+  }
+  .cv_bank_container ul {
+    font-size: 14px;
+  }
+  div.text_position_3 h6 {
+    max-width: 600px;
+    font-size: 13px;
+  }
+  div.text_position_3 h1 {
+    font-size: 24px;
+  }
+  .text_position_3_milestone h6 {
+    max-width: 600px;
+    font-size: 13px;
+  }
+  .text_position_3_milestone h1 {
+    font-size: 24px;
+  }
+  .cvbank_text_position_1 h1,
+  .text_padding_2 h1,
+  .venus_text_position_1 h1,
+  .venus_text_position_3 h1,
+  .venus_text_position_4 h1 {
+    font-size: 24px;
+  }
+  .venus_text_position_2 h6,
+  .cvbank_text_position_1 h6,
+  .text_padding_2 h6,
+  .venus_text_position_1 h6,
+  .venus_text_position_3 h6,
+  .venus_text_position_4 h6 {
+    max-width: 600px;
+    font-size: 13px;
+  }
+  .team_position img {
+    height: 150px;
+  }
+  .team_position h3 {
+    font-size: 22px;
+  }
+  .team_position h6 {
+    font-size: 13px;
+  }
+  .reaervePosition {
+    font-size: 15px;
+  }
   #hide_top {
     display: none;
   }
@@ -987,66 +1263,104 @@ td {
   #hide_top {
     display: none;
   }
-}
-
-@media only screen and (min-width: 361px) and (max-width: 600px) {
+  #apu_img_content {
+    width: 50%;
+  }
+  #pairing {
+    width: 50%;
+  }
+  #venus_text {
+    width: 50%;
+  }
+  div.home_text_3_outside {
+    height: 350px;
+  }
+  .about_background-img_1 {
+    height: 450px;
+  }
+  div.text_3 {
+    top: 65%;
+  }
+  .about_text_position_13,
+  .venus_text_position_4 {
+    margin-top: 30px;
+  }
+  .cvbank_text_position_1 h1,
+  .venus_text_position_1 h1,
+  .venus_text_position_4 h1,
+  .venus_text_position_3 h1,
+  .venus_text_position_2 h1,
+  .about_text_position_13 h1,
+  .about_text_position_2 h1,
+  .text_3 h1,
+  .text_padding_2 h1,
+  .text_2 h1,
+  .text_position_3_milestone h1,
+  .text_position_3 h1 {
+    font-size: 24px;
+  }
+  .venus_text_position_2 h6,
+  .cvbank_text_position_1 h6,
+  .venus_text_position_1 h6,
+  .venus_text_position_4 h6,
+  .venus_text_position_3 h6,
+  .about_text_position_13 h6,
+  .about_text_position_2 h6,
+  .about_text_position_1 h6,
+  .text_position_2 h6,
+  .text_3 h6,
+  .text_padding_2 h6,
+  .text_2 h6,
+  .text_position_3_milestone h6,
+  .text_position_3 h6,
+  .venus_text_position_2 h6 {
+    font-size: 13px;
+    max-width: 600px !important;
+  }
   .cv_bank_container {
     padding-bottom: 50px;
   }
-
   .form-groupx input {
     margin-left: 10px;
     width: 82%;
   }
-
   .row-padding {
     padding-bottom: 0px;
   }
-
   .background-img_1 {
-    height: 700px;
-  }
-
-  .text_position_1 {
-    position: relative;
-    height: 700px;
-    top: -720px;
+    height: 450px;
   }
 
   .ber_position {
-    margin-top: -1100px;
+    margin-top: -76px;
   }
-
-  .text_padding_2 {
-    margin-top: -455px;
-  }
-
   .text_position_2 {
     position: relative;
-    top: -1290px;
+    top: 96px;
   }
-
-  .background-img_2 {
-    margin-top: -215px;
+  .text_position_3_milestone {
+    margin-bottom: 0px;
   }
-
-  .img_1 {
-    height: 400px;
+  .img_1 img {
+    max-width: 60%;
+    margin-top: 0;
     position: relative;
-    top: -120px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 68%;
+    top: -42px;
   }
-  .text_2 {
-    visibility: hidden;
+  div.home_text_2_outside {
+    height: 160px;
+  }
+  #home-content-2 {
+    width: 50%;
   }
   .text_position_3 {
     margin-top: 50px;
   }
-  #text_position_3 {
-    margin-top: -95px;
+  .text_2 h1 {
+    font-size: 20px;
+  }
+  .text_2 h6 {
+    font-size: 12px;
   }
   .container_position_1 {
     margin-top: 30px;
@@ -1057,6 +1371,35 @@ td {
   .card {
     margin-top: 20px;
   }
+  #badge {
+    text-decoration: none;
+    padding: 0px 0px 0px 5px;
+  }
+  a#badge img {
+    height: 20px;
+  }
+  .badge_psition {
+    margin-top: -5px;
+  }
+  .card_2 h1 {
+    font-size: 25px;
+  }
+  .card_2 h4 {
+    font-size: 20px;
+  }
+  .card_2 {
+    height: 160px;
+    width: 160px;
+    padding: 10px;
+  }
+  .card_2 img {
+    width: 36px;
+    height: 36px;
+    margin-top: 10px;
+  }
+  #card_2 {
+    width: 50%;
+  }
   .ber_position_about {
     background-color: #ffffff;
   }
@@ -1064,8 +1407,11 @@ td {
     background-color: #fc6375;
     border-style: hidden;
     border-radius: 12px;
-    padding: 20px;
-    max-width: 275px;
+    padding: 15px;
+    max-width: 190px;
+  }
+  .berPadd img {
+    height: 50px;
   }
   .berPaddtop {
     background-color: #fc6375;
@@ -1073,23 +1419,31 @@ td {
     border-radius: 12px;
     padding: 10px;
   }
+  .background-img_2 {
+    height: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  #home-do-content {
+    width: 50%;
+  }
   #rds_about {
     margin-top: -25px;
+    padding-bottom: 0px;
   }
   #buttonCV {
     width: 112px;
   }
   .img_possition_1 {
-    height: 500px;
-    bottom: -51px;
+    height: 320px;
+    bottom: -31px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
   }
-  .about_overlay_1 {
-    position: relative;
-    top: -560px;
+  .app_icon_size {
+    height: 35px;
+    width: auto;
   }
   .team_position {
     margin-top: 0px;
@@ -1103,25 +1457,20 @@ td {
     margin-top: 70px;
   }
   .about_text_position_2 {
-    margin-top: -730px;
+    margin-top: 24px;
   }
   .about_text_position_21 {
     margin-top: 0px;
   }
   .about_text_position_1 {
-    position: relative;
-    top: -900px;
+    top: 150px;
   }
   .venus_img_1 {
-    height: 360px;
+    height: 285px;
   }
   .card_3 {
-    height: 280px;
-    width: 338px;
+    width: 203px;
     padding: 5px;
-  }
-  .venus_text_position_1 {
-    visibility: hidden;
   }
   #text_position_31 {
     margin-top: -185px;
@@ -1129,73 +1478,67 @@ td {
   .footerposition h4 {
     margin-top: 0px;
   }
-  #hide_top {
-    visibility: hidden;
-  }
   .img_uploader {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     width: 40%;
-    text-align: -webkit-center;
-  }
-  .cv_bank_container2 {
-    position: relative;
-    top: -180px;
-  }
-  .nextbtnposition {
-    margin-top: -180px;
   }
   .hideyear {
     visibility: hidden;
   }
-
   .positionQualification {
     margin-top: -50px;
   }
-
   .venus_background_img_1 {
     height: 300px;
   }
-
   .venus_overlay {
     height: 300px;
-    top: -300px;
+    top: -60px;
   }
-
-  #card-position {
-    margin-top: 30px;
+  /* #card-position {
+    margin-top: 280px;
+  } */
+  .card_3 img {
+    height: 50px;
+    width: 50px;
   }
-
-  .venus_text_position_2 {
-    position: relative;
-    top: -530px;
-    max-width: 320px;
+  .card_3 h6 {
+    font-size: 13px;
   }
-
-  .venus_text_position_2 h1 {
-    font-weight: 700;
+  .card_3 h3 {
+    padding-top: 10px;
+    padding-bottom: 5px;
     font-size: 20px;
   }
-
+  .venus_text_position_2 {
+    position: relative;
+    top: 85px;
+    max-width: 320px;
+  }
+  .venus_text_position_2 h1 {
+    font-size: 20px;
+  }
   .background-img_3 {
     margin-top: -30px;
+    height: 350px;
   }
-
+  #card_3 {
+    width: 50%;
+  }
   #rds {
     background-color: #ffffff;
+    margin-top: 58px;
   }
-
   .getVenus {
-    margin-top: -400px;
+    margin-top: 380px;
   }
-
   .berPaddtop {
     background-color: #ffffff;
     color: #000;
     padding: 0px;
   }
-
+  .berPaddtop h1 {
+    font-size: 28px;
+  }
   .h6padding {
     padding-bottom: 0px;
   }
@@ -1203,55 +1546,766 @@ td {
     padding-left: 0px;
     padding-right: 0px;
   }
-
   .cv_bank_container21 h4 {
     font-size: large;
   }
-
   .logosize img {
     height: 150px;
     width: 150px;
   }
-
   .socialLogoPosition {
     text-align: center;
     position: relative;
   }
-
   .reaervePosition {
     text-align: center;
   }
-
   .img_uploader input {
-    width: 100%;
+    width: 70%;
+    height: 57%;
   }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (min-width: 380px) and (max-width: 600px) {
+  .form-groupx input {
+    margin-left: 10px;
+    width: 86%;
+  }
   #hide_top {
     display: none;
   }
-
+  #apu_img_content {
+    width: 50%;
+  }
+  #pairing {
+    width: 50%;
+  }
+  #venus_text {
+    width: 50%;
+  }
+  #hide_br {
+    display: none;
+  }
+  div.home_text_3_outside {
+    height: 350px;
+  }
+  .about_background-img_1 {
+    height: 350px;
+  }
+  div.text_3 {
+    top: 48%;
+  }
+  .about_text_position_13,
+  .venus_text_position_4 {
+    margin-top: 30px;
+  }
+  .cvbank_text_position_1 h1,
+  .venus_text_position_1 h1,
+  .venus_text_position_4 h1,
+  .venus_text_position_3 h1,
+  .venus_text_position_2 h1,
+  .about_text_position_13 h1,
+  .about_text_position_2 h1,
+  .text_3 h1,
+  .text_padding_2 h1,
+  .text_position_3_milestone h1,
+  .text_position_3 h1 {
+    font-size: 20px;
+  }
+  .venus_text_position_2 h6,
+  .cvbank_text_position_1 h6,
+  .venus_text_position_1 h6,
+  .venus_text_position_4 h6,
+  .venus_text_position_3 h6,
+  .about_text_position_13 h6,
+  .about_text_position_2 h6,
+  .about_text_position_1 h6,
+  .text_position_2 h6,
+  .text_3 h6,
+  .text_padding_2 h6,
+  .text_position_3_milestone h6,
+  .text_position_3 h6,
+  .venus_text_position_2 h6 {
+    font-size: 12px;
+    max-width: 321px !important;
+  }
+  .venus_text_position_4,
+  .venus_text_position_3,
+  .cvbank_text_position_1,
+  .text_padding_2 {
+    margin-top: 30px;
+  }
   .cv_bank_container {
     padding-bottom: 50px;
   }
+  .form-groupx input {
+    margin-left: 10px;
+    width: 82%;
+  }
+  .row-padding {
+    padding-bottom: 0px;
+  }
+  .background-img_1 {
+    height: 350px;
+  }
+  #venusButton {
+    padding: 6px 10px 6px 10px;
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 6px;
+    border-width: 1px;
+  }
+  .ber_position {
+    margin-top: -74px;
+  }
+  .text_position_2 {
+    top: 60px;
+  }
+  .text_position_2 h1,
+  .about_text_position_1 h1 {
+    font-size: 22px;
+  }
+  div.home_text_2_outside {
+    height: 160px;
+  }
+  #home-content-2 {
+    width: 50%;
+  }
+  .text_position_3 {
+    margin-top: 30px;
+  }
+  .text_2 h1 {
+    font-size: 16px;
+  }
+  .text_2 h6 {
+    font-size: 10px;
+  }
+  .container_position_1 {
+    margin-top: 30px;
+  }
+  .col-12 {
+    padding-bottom: 20px;
+  }
+  .card {
+    margin-top: 20px;
+  }
+  #badge {
+    text-decoration: none;
+    padding: 0px 0px 0px 5px;
+  }
+  a#badge img {
+    height: 20px;
+  }
+  .badge_psition {
+    margin-top: -5px;
+  }
+  .card_2 h1 {
+    font-size: 25px;
+  }
+  .card_2 h4 {
+    font-size: 20px;
+  }
+  .card_2 {
+    height: 160px;
+    width: 160px;
+    padding: 10px;
+  }
+  .card_2 img {
+    width: 36px;
+    height: 36px;
+    margin-top: 10px;
+  }
+  #card_2 {
+    width: 50%;
+  }
+  .ber_position_about {
+    background-color: #ffffff;
+  }
+  .berPadd {
+    background-color: #fc6375;
+    border-style: hidden;
+    border-radius: 12px;
+    padding: 8px;
+    width: 150px;
+  }
+  .berPadd img {
+    height: 50px;
+  }
+  .berPaddtop {
+    background-color: #fc6375;
+    border-style: hidden;
+    border-radius: 12px;
+    padding: 10px;
+  }
+  .background-img_2 {
+    height: 160px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+  }
+  .text_position_3_milestone {
+    margin-bottom: 0px;
+  }
+  #home-do-content {
+    width: 50%;
+  }
+  #buttonCV {
+    width: 112px;
+  }
+  .img_possition_1 {
+    height: 220px;
+    bottom: -31px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .app_icon_size {
+    height: 28px;
+    width: auto;
+  }
+  .team_position {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .team_position img {
+    height: 130px;
+    object-fit: cover;
+  }
+  #teamPosition {
+    margin-top: 70px;
+  }
+  .about_text_position_2 {
+    margin-top: 18px;
+  }
+  .berPadd h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .berPadd h6 {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .about_text_position_21 {
+    margin-top: 0px;
+  }
+  .about_text_position_1 {
+    top: 155px;
+  }
+  #rds_about {
+    padding-top: 10px;
+    padding-bottom: 0px;
+  }
+  .venus_img_1 {
+    height: 210px;
+  }
+  .card_3 {
+    width: 150px;
+    padding: 5px;
+    top: -60px;
+  }
+  #text_position_31 {
+    margin-top: -185px;
+  }
+  .footerposition h4 {
+    margin-top: 0px;
+  }
+  .img_uploader {
+    width: 40%;
+  }
+  .hideyear {
+    visibility: hidden;
+  }
+  .positionQualification {
+    margin-top: -50px;
+  }
+  .venus_background_img_1 {
+    height: 300px;
+  }
+  .venus_overlay {
+    height: 300px;
+    top: -60px;
+  }
+  #card-position {
+    margin-top: 350px;
+  }
+  .card_3 img {
+    height: 50px;
+    width: 50px;
+  }
+  .card_3 h6 {
+    font-size: 12px;
+  }
+  .card_3 h3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+  }
+  .venus_text_position_2 {
+    top: 115px;
+    max-width: 320px;
+  }
+  .venus_text_position_2 h1 {
+    font-size: 20px;
+  }
+  .background-img_3 {
+    margin-top: -30px;
+    height: 250px;
+  }
+  #card_3 {
+    width: 50%;
+  }
+  #rds {
+    background-color: #ffffff;
+    margin-top: 58px;
+  }
+  .getVenus {
+    margin-top: -25px;
+  }
+  #venusButtonGet {
+    padding: 6px 10px 6px 10px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 7px;
+    border-width: 1px;
+  }
+  .berPaddtop {
+    background-color: #ffffff;
+    color: #000;
+    padding: 0px;
+  }
+  .berPaddtop h1 {
+    font-size: 24px;
+  }
+  .h6padding {
+    padding-bottom: 0px;
+  }
+  .cv_bank_container21 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .cv_bank_container21 h4 {
+    font-size: large;
+  }
+  .logosize img {
+    height: 150px;
+    width: 150px;
+  }
+  .socialLogoPosition {
+    text-align: center;
+    position: relative;
+  }
+  .reaervePosition {
+    text-align: center;
+  }
+  .img_uploader input {
+    width: 105%;
+  }
+  .h6padding {
+    padding-top: 10px;
+  }
+}
 
+@media only screen and (max-width: 379px) {
+  #hide_top {
+    display: none;
+  }
+  .cv_bank_container {
+    padding-bottom: 50px;
+  }
+  .h6padding {
+    padding-top: 10px;
+  }
   .form-groupx input {
     align-self: center;
     width: 60%;
   }
-
   .row-padding {
     padding-bottom: 0px;
   }
-
-  .venus_img_1 {
-    height: 280px;
+  #apu_img_content {
+    width: 50%;
   }
-
+  #pairing {
+    width: 50%;
+  }
+  #venus_text {
+    width: 50%;
+  }
+  div.home_text_3_outside {
+    height: 350px;
+  }
+  .about_background-img_1 {
+    height: 350px;
+  }
+  div.text_3 {
+    top: 48%;
+  }
+  .about_text_position_13,
+  .venus_text_position_4 {
+    margin-top: 30px;
+  }
+  .cvbank_text_position_1 h1,
+  .venus_text_position_1 h1,
+  .venus_text_position_4 h1,
+  .venus_text_position_3 h1,
+  .venus_text_position_2 h1,
+  .about_text_position_13 h1,
+  .about_text_position_2 h1,
+  .text_padding_2 h1,
+  .text_position_3_milestone h1,
+  .text_position_3 h1 {
+    font-size: 20px;
+  }
+  .venus_text_position_2 h6,
+  .cvbank_text_position_1 h6,
+  .venus_text_position_4 h6,
+  .venus_text_position_3 h6,
+  .about_text_position_13 h6,
+  .about_text_position_2 h6,
+  .about_text_position_1 h6,
+  .text_position_2 h6,
+  .text_padding_2 h6,
+  .text_position_3_milestone h6,
+  .text_position_3 h6,
+  .venus_text_position_2 h6 {
+    font-size: 12px;
+    max-width: 321px !important;
+  }
+  .text_3 h1 {
+    font-size: 16px;
+  }
+  .text_3 h6,
+  .venus_text_position_1 h6 {
+    font-size: 10px;
+  }
+  .venus_text_position_4,
+  .venus_text_position_3,
+  .cvbank_text_position_1,
+  .text_padding_2 {
+    margin-top: 30px;
+  }
+  .form-groupx input {
+    margin-left: 10px;
+    width: 82%;
+  }
+  .background-img_1 {
+    height: 350px;
+  }
+  #venusButton {
+    padding: 6px 10px 6px 10px;
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 6px;
+    border-width: 1px;
+  }
+  .ber_position {
+    margin-top: -75px;
+  }
+  .text_position_2 {
+    top: 96px;
+  }
+  .text_position_2 h1,
+  .about_text_position_1 h1 {
+    font-size: 22px;
+  }
+  #hide_br {
+    display: none;
+  }
+  .img_1 img {
+    max-width: 90%;
+    margin-top: 0;
+    position: relative;
+    top: -42px;
+  }
+  div.home_text_2_outside {
+    height: 160px;
+  }
+  #home-content-2 {
+    width: 50%;
+  }
+  .text_position_3 {
+    margin-top: 30px;
+  }
+  .text_2 h1 {
+    font-size: 16px;
+  }
+  .text_2 h6 {
+    font-size: 10px;
+  }
+  .container_position_1 {
+    margin-top: 30px;
+  }
+  .col-12 {
+    padding-bottom: 20px;
+  }
+  .card {
+    margin-top: 20px;
+  }
+  #badge {
+    text-decoration: none;
+    padding: 0px 0px 0px 5px;
+  }
+  a#badge img {
+    height: 18px;
+  }
+  .badge_psition {
+    margin-top: -5px;
+  }
+  .card_2 h1 {
+    font-size: 25px;
+  }
+  .card_2 h4 {
+    font-size: 20px;
+  }
+  .card_2 {
+    height: 160px;
+    width: 160px;
+    padding: 10px;
+  }
+  .card_2 img {
+    width: 36px;
+    height: 36px;
+    margin-top: 10px;
+  }
+  #card_2 {
+    width: 50%;
+  }
+  .ber_position_about {
+    background-color: #ffffff;
+  }
+  .berPadd {
+    background-color: #fc6375;
+    border-style: hidden;
+    border-radius: 12px;
+    padding: 8px;
+    width: 150px;
+  }
+  .berPadd img {
+    height: 50px;
+  }
+  .berPaddtop {
+    background-color: #fc6375;
+    border-style: hidden;
+    border-radius: 12px;
+    padding: 10px;
+  }
+  .background-img_2 {
+    height: 160px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+  }
+  .text_position_3_milestone {
+    margin-bottom: 0px;
+  }
+  #home-do-content {
+    width: 50%;
+  }
+  #rds_about {
+    padding-top: 30px;
+    padding-bottom: 0px;
+  }
+  #buttonCV {
+    width: 112px;
+  }
+  .img_possition_1 {
+    height: 220px;
+    bottom: -31px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .app_icon_size {
+    height: 28px;
+    width: auto;
+  }
+  .team_position {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .team_position img {
+    height: 130px;
+    object-fit: cover;
+  }
+  #teamPosition {
+    margin-top: 70px;
+  }
+  .about_text_position_2 {
+    margin-top: 18px;
+  }
+  .berPadd h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .berPadd h6 {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .about_text_position_21 {
+    margin-top: 0px;
+  }
+  .about_text_position_1 {
+    top: 190px;
+  }
+  .venus_img_1 {
+    height: 210px;
+  }
   .card_3 {
-    height: 250px;
-    width: 308px;
+    width: 150px;
     padding: 5px;
+    top: -73px;
+  }
+  #text_position_31 {
+    margin-top: -185px;
+  }
+  .footerposition h4 {
+    margin-top: 0px;
+  }
+  .img_uploader {
+    width: 40%;
+  }
+  .hideyear {
+    visibility: hidden;
+  }
+  .positionQualification {
+    margin-top: -50px;
+  }
+  .venus_background_img_1 {
+    height: 300px;
+  }
+  .venus_overlay {
+    height: 300px;
+    top: -60px;
+  }
+  #card-position {
+    margin-top: 350px;
+  }
+  .card_3 img {
+    height: 50px;
+    width: 50px;
+  }
+  .card_3 h6 {
+    font-size: 12px;
+  }
+  .card_3 h3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+  }
+  .venus_text_position_2 {
+    top: 110px;
+    max-width: 320px;
+  }
+  .venus_text_position_2 h1 {
+    font-size: 20px;
+  }
+  .background-img_3 {
+    margin-top: -30px;
+    height: 250px;
+  }
+  #card_3 {
+    width: 50%;
+  }
+  #rds {
+    background-color: #ffffff;
+    margin-top: 58px;
+  }
+  .getVenus {
+    margin-top: -45px;
+  }
+  #venusButtonGet {
+    padding: 6px 10px 6px 10px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 7px;
+    border-width: 1px;
+  }
+  .berPaddtop {
+    background-color: #ffffff;
+    color: #000;
+    padding: 0px;
+  }
+  .berPaddtop h1 {
+    font-size: 24px;
+  }
+  .h6padding {
+    padding-bottom: 0px;
+  }
+  .cv_bank_container21 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .cv_bank_container21 h4 {
+    font-size: large;
+  }
+  .logosize img {
+    height: 150px;
+    width: 150px;
+  }
+  .socialLogoPosition {
+    text-align: center;
+    position: relative;
+  }
+  .reaervePosition {
+    text-align: center;
+  }
+  .img_uploader input {
+    width: 105%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 600px) {
+  .img_1 img {
+    max-width: 60%;
+    margin-top: 0;
+    position: relative;
+    top: -42px;
+  }
+}
+@media only screen and (min-width: 540px) and (max-width: 575px) {
+  .img_1 img {
+    max-width: 60%;
+    margin-top: 0;
+    position: relative;
+    top: -42px;
+  }
+}
+@media only screen and (min-width: 500px) and (max-width: 539px) {
+  .img_1 img {
+    max-width: 65%;
+    margin-top: 0;
+    position: relative;
+    top: -42px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 499px) {
+  .img_1 img {
+    max-width: 68%;
+    margin-top: 0;
+    position: relative;
+    top: -42px;
+  }
+}
+@media only screen and (min-width: 460px) and (max-width: 479px) {
+  .img_1 img {
+    max-width: 70%;
+    margin-top: 0;
+    position: relative;
+    top: -42px;
+  }
+}
+@media only screen and (min-width: 380px) and (max-width: 459px) {
+  div.img_1_outside {
+    height: 100%;
+    width: 100%;
+  }
+  div.img_1 {
+    position: relative;
+    bottom: -40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .img_1 img {
+    max-width: 77%;
+    margin-top: 0;
   }
 }

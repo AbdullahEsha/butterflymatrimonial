@@ -14,8 +14,7 @@ a.nav-link {
   background-color: #ff566b;
   color: #fff;
   padding: 7px 25px 7px;
-  position: relative;
-  bottom: 7px;
+  margin-top: -8px;
 }
 .navbar-light .navbar-nav .nav-link {
   color: #000;
@@ -25,11 +24,9 @@ a.nav-link {
   .navpaddingleft {
     padding-left: 5%;
   }
-
   .navpaddingright {
     padding-right: 5%;
   }
-
   .nav-link {
     padding: 0.5rem 1rem;
     vertical-align: middle;

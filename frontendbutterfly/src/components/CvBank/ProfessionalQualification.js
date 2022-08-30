@@ -74,12 +74,6 @@ const ProfessionalQulification = (props) => {
     setToDate(values)
   }
 
-  // const DATE_OPTIONS = {
-  //   year: 'numeric',
-  //   month: 'short',
-  //   day: 'numeric',
-  // }
-
   return (
     <>
       <Container className="cv_bank_container21">

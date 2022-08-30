@@ -27,19 +27,17 @@ function Home() {
   return (
     <>
       <MainNav />
-      <div className="background-img_1"></div>
-      <div align="center" className="text_position_1"></div>
-      <div id="main_position">
+      <div className="background-img_1">
         <div className="text_position_2">
           <h1>
             BUTTERFLY MATRIMONIAL
             <br /> YOUR PARFECT MATCH MAKER
           </h1>
-          <br />
+          <br id="hide_br" />
           <h6>
             Butterfly Matrimonial is a digital platform, we use machine-learning
-            algorithm paired with <br />
-            artificial intelligence to generate personalized recommendations.
+            algorithm paired with artificial intelligence to generate
+            personalized recommendations.
           </h6>
           <br />
           <Link to="/venus" id="venusButton">
@@ -47,24 +45,23 @@ function Home() {
           </Link>
           <br />
           <br />
-          <br />
+          <br id="hide_br" />
           <div>
             <a
               href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
               style={{ textDecoration: 'none', paddingRight: '10px' }}
             >
-              <img src={apple} alt="apple" height="50px" />{' '}
+              <img src={apple} alt="apple" className="app_icon_size" />{' '}
             </a>
             <a
               href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US"
               style={{ textDecoration: 'none' }}
             >
-              <img src={google} alt="google" height="50px" />
+              <img src={google} alt="google" className="app_icon_size" />
             </a>
           </div>
         </div>
       </div>
-
       <div className="ber_position">
         <Container>
           <Row id="rds" align="center">
@@ -73,25 +70,25 @@ function Home() {
                 <h1 className="h6padding">What we do?</h1>
               </div>
             </Col>
-            <Col xs={12} md={3}>
+            <Col xs={12} md={3} id="home-do-content">
               <div className="berPadd">
                 <img src={consultancy} alt="consultancy" />
                 <h6 className="h6padding">Consultancy</h6>
               </div>
             </Col>
-            <Col xs={12} md={3}>
+            <Col xs={12} md={3} id="home-do-content">
               <div className="berPadd">
                 <img src={diamond} alt="diamond" />
                 <h6 className="h6padding">Matchmaking</h6>
               </div>
             </Col>
-            <Col xs={12} md={3}>
+            <Col xs={12} md={3} id="home-do-content">
               <div className="berPadd">
                 <img src={pairing} alt="pairing" />
                 <h6 className="h6padding">Pairing</h6>
               </div>
             </Col>
-            <Col xs={12} md={3}>
+            <Col xs={12} md={3} id="home-do-content">
               <div className="berPadd">
                 <img src={othars} alt="othars" height="75px" />
                 <h6 className="h6padding">Others</h6>
@@ -100,17 +97,15 @@ function Home() {
           </Row>
         </Container>
       </div>
-
       <Container>
         <Row>
           <Col xs={12} md={12} align="center">
             <div className="text_padding_2">
               <h1>DOWNLOAD THE APP</h1>
               <h6>
-                Butterfly Matrimonial is a digital platform, we use
-                machine-learning <br />
-                algorithm paired with artificial intelligence to generate
-                personalized recommendations.
+                Butterfly Matrimonial is a digital platform, we use algorithm
+                paired with artificial intelligence to generate personalized
+                recommendations.
               </h6>
             </div>
           </Col>
@@ -120,8 +115,10 @@ function Home() {
         <Container>
           <Row>
             <Col xs={12} md={6} id="home-content-2">
-              <div className="img_1">
-                <img src={swipe} alt="swipe" />
+              <div className="img_1_outside">
+                <div className="img_1">
+                  <img src={swipe} alt="swipe" />
+                </div>
               </div>
             </Col>
             <Col xs={12} md={6} id="home-content-2">
@@ -138,13 +135,13 @@ function Home() {
                       href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
                       id="badge"
                     >
-                      <img src={apple} alt="apple" height="40px" />{' '}
+                      <img src={apple} alt="apple" />{' '}
                     </a>
                     <a
                       href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US"
                       id="badge"
                     >
-                      <img src={google} alt="google" height="40px" />
+                      <img src={google} alt="google" />
                     </a>
                   </div>
                 </div>
@@ -164,24 +161,24 @@ function Home() {
 
       <Container>
         <Row className="container_position_1" align="center">
-          <Col xs={12} md={3}>
+          <Col xs={12} md={3} id="card_2">
             <div className="card_2">
               <img src={happy} alt="happy" /> <h1>105+</h1>{' '}
               <h4>Happy Clients</h4>
             </div>
           </Col>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={3} id="card_2">
             <div className="card_2">
               <img src={successfull} alt="successfull" /> <h1>105+</h1>{' '}
               <h4>Successfull</h4>
             </div>
           </Col>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={3} id="card_2">
             <div className="card_2">
               <img src={solve} alt="solve" /> <h1>84+</h1> <h4>Solve Case</h4>
             </div>
           </Col>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={3} id="card_2">
             <div className="card_2">
               <img src={more} alt="more" /> <h1>240+</h1> <h4>More Help</h4>
             </div>
@@ -199,10 +196,10 @@ function Home() {
       <div className="background-img_3">
         <Container>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} id="apu_img_content">
               <img src={apu} alt="apu" className="img_possition_1" />
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} id="apu_img_content">
               <div className="home_text_3_outside">
                 <div className="text_3">
                   <h1>Huraira Shishir</h1>

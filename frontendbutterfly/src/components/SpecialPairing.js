@@ -23,19 +23,19 @@ const SpecialPairing = () => {
         </h6>
       </div>
       <Container>
-        <div className="venus_background_img_1"></div>
-        <div className="venus_overlay"></div>
-        <div className="venus_text_position_2">
-          <h1>
-            BUTTERFLY MATRIMONIAL <br />
-            YOUR PARFECT MATCH MAKER
-          </h1>
-          <br />
-          <h6>
-            Butterfly Matrimonial is a digital platform, we use machine-learning
-            algorithm paired with artificial intelligence to generate
-            personalized recommendations.
-          </h6>
+        <div className="venus_background_img_1">
+          <div className="venus_text_position_2">
+            <h1>
+              BUTTERFLY MATRIMONIAL <br />
+              YOUR PARFECT MATCH MAKER
+            </h1>
+            <br id="hide_br" />
+            <h6>
+              Butterfly Matrimonial is a digital platform, we use
+              machine-learning algorithm paired with artificial intelligence to
+              generate personalized recommendations.
+            </h6>
+          </div>
         </div>
       </Container>
       <Container align="center">
@@ -49,7 +49,7 @@ const SpecialPairing = () => {
               </h6>
             </div>
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={4} id="venus_text">
             <div className="card_3">
               <img src={uil_processor} alt="uil_processor" /> <h3>Process</h3>{' '}
               <h6>
@@ -58,7 +58,7 @@ const SpecialPairing = () => {
               </h6>
             </div>
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={4} id="venus_text">
             <div className="card_3">
               <img src={communication} alt="communication" />{' '}
               <h3>Communication</h3>{' '}
@@ -86,10 +86,10 @@ const SpecialPairing = () => {
       <div className="background-img_3">
         <Container>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} id="apu_img_content">
               <img src={apu} alt="apu" className="img_possition_1" />
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} id="apu_img_content">
               <div className="home_text_3_outside">
                 <div className="text_3">
                   <h1>Huraira Shishir</h1>
@@ -123,7 +123,7 @@ const SpecialPairing = () => {
               <h6>
                 Butterfly Matrimonial is a digital platform, we use
                 machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                to generate many personalized recommendations.
               </h6>
             </div>
           </Col>
@@ -134,7 +134,7 @@ const SpecialPairing = () => {
               <h6>
                 Butterfly Matrimonial is a digital platform, we use
                 machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                to generate many personalized recommendations.
               </h6>
             </div>
           </Col>
@@ -145,7 +145,7 @@ const SpecialPairing = () => {
               <h6>
                 Butterfly Matrimonial is a digital platform, we use
                 machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                to generate many personalized recommendations.
               </h6>
             </div>
           </Col>

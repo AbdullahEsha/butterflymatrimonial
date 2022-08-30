@@ -54,7 +54,6 @@ const Contact = () => {
         <h1>HOW CAN WE HELP?</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
-          <br />
           algorithm paired with artificial intelligence to generate personalized
           recommendations.
         </h6>
