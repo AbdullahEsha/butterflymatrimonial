@@ -5,6 +5,8 @@ import FamilyMember from './CvBank/FamilyMember'
 import PersonalInformation from './CvBank/PersonalInformation'
 import ProfessionalQualification from './CvBank/ProfessionalQualification'
 import ProfileInFormation from './CvBank/ProfileInformation'
+import { useDispatch } from 'react-redux'
+import { addCvData } from '../actions/index'
 import axios from 'axios'
 import Preview from './CvBank/Preview'
 import Footer from './Footer'
@@ -13,10 +15,10 @@ import Swal from 'sweetalert2'
 import jsPDF from 'jspdf'
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 
-const CVBank = (props) => {
+const CVBank = () => {
+  const dispatch = useDispatch()
   const [data, setData] = useState('ProfileInformation')
   const [cvData, setCvData] = useState([])
-
   const [profileData, setProfileData] = useState({})
   const [professionalData, setProfessionalData] = useState({})
   const [personalData, setPersonalData] = useState({})
@@ -690,7 +692,7 @@ const CVBank = (props) => {
       })
   }
 
-  // console.log('profileData', profileData)
+  console.log('profileData', profileData)
 
   return (
     <div style={{ backgroundColor: '#ededed' }}>
@@ -822,10 +824,7 @@ const CVBank = (props) => {
       <Container className="cv_bank_container21">
         <div className="cv_bank_container2">
           {data === 'ProfileInformation' && (
-            <ProfileInFormation
-              updateProfileData={updateProfileData}
-              updatePreferenceData={updatePreferenceData}
-            />
+            <ProfileInFormation updateProfileData={updateProfileData} />
           )}
           {data === 'PersonalInformation' && (
             <PersonalInformation updatePersonalData={updatePersonalData} />
@@ -885,7 +884,23 @@ const CVBank = (props) => {
           <Col align="right">
             <div>
               {data !== 'FamilyMember' && data !== 'Preview' && (
-                <button className="cv_bankButton_BackNext" onClick={validation}>
+                <button
+                  className="cv_bankButton_BackNext"
+                  onClick={() => {
+                    validation()
+                    dispatch(
+                      addCvData(
+                        profileData,
+                        professionalData,
+                        personalData,
+                        familyData,
+                        educationalData,
+                        siblingData,
+                        preferenceData,
+                      ),
+                    )
+                  }}
+                >
                   Next
                 </button>
               )}
@@ -894,7 +909,20 @@ const CVBank = (props) => {
                 <div>
                   <button
                     className="cv_bankButton_BackNext"
-                    onClick={validation}
+                    onClick={() => {
+                      validation()
+                      dispatch(
+                        addCvData(
+                          profileData,
+                          professionalData,
+                          personalData,
+                          familyData,
+                          educationalData,
+                          siblingData,
+                          preferenceData,
+                        ),
+                      )
+                    }}
                   >
                     Preview
                   </button>

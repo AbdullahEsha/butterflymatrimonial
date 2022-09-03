@@ -16,31 +16,41 @@ import Guide from './components/FooterComponent/Guide'
 import Pricing from './components/FooterComponent/Pricing'
 import PrivacyPolicy from './components/FooterComponent/PrivacyPolicy'
 import Terms from './components/FooterComponent/Terms'
+import Success from './components/Success'
+import Cancel from './components/Cancel'
+import Failed from './components/Failed'
+import { Provider } from 'react-redux'
+import store from './store'
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/special-pairing" element={<SpecialPairing />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/venus" element={<Venus />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/cv-bank" element={<CVBank />} />
-        <Route
-          path="/acceptable-use-policy"
-          element={<AcceptableUsePolicy />}
-        />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/cookie-policy" element={<CookiePolicy />} />
-        <Route path="/guide" element={<Guide />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="*" element={<Notfound />} />
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="special-pairing" element={<SpecialPairing />} />
+          <Route path="about" element={<About />} />
+          <Route path="venus" element={<Venus />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="cv-bank" element={<CVBank />} />
+          <Route
+            path="acceptable-use-policy"
+            element={<AcceptableUsePolicy />}
+          />
+          <Route path="blog" element={<Blog />} />
+          <Route path="career" element={<Career />} />
+          <Route path="cookie-policy" element={<CookiePolicy />} />
+          <Route path="guide" element={<Guide />} />
+          <Route path="pricing" element={<Pricing />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="success" element={<Success />} />
+          <Route path="cancel" element={<Cancel />} />
+          <Route path="failed" element={<Failed />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      </Router>
+    </Provider>
   )
 }
 

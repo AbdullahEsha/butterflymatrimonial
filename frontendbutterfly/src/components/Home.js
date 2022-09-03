@@ -31,7 +31,8 @@ function Home() {
         <div className="text_position_2">
           <h1>
             BUTTERFLY MATRIMONIAL
-            <br /> YOUR PARFECT MATCH MAKER
+            <br />
+            FIND YOUR PARFECT MATCH
           </h1>
           <br id="hide_br" />
           <h6>

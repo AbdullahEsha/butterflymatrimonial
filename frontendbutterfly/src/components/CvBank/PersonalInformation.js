@@ -1,52 +1,48 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-//import Select from 'react-select'
+import { useSelector } from 'react-redux'
+import Select from 'react-select'
 
 const PersonalInformation = (props) => {
-  //const [city, setCity] = useState([])
+  const personalData_ = useSelector((state) => state.cvDataReducer.personalData)
+  const [city, setCity] = useState([])
   const [personalInformation, setPersonalInformation] = useState({
-    height: '',
-    weight: '',
-    bloodGroup: '',
-    grownUpAt: '',
-    specialCondition: '',
+    height: personalData_ ? personalData_.height : '',
+    weight: personalData_ ? personalData_.weight : '',
+    bloodGroup: personalData_ ? personalData_.bloodGroup : '',
+    grownUpAt: personalData_ ? personalData_.grownUpAt : '',
+    specialCondition: personalData_ ? personalData_.specialCondition : '',
   })
 
   const { updatePersonalData } = props
 
   useEffect(() => {
-    //getAllCity()
+    getAllCity()
     updatePersonalData(personalInformation)
   }, [personalInformation, updatePersonalData])
 
-  // const getAllCity = async () => {
-  //   fetch(`https://countriesnow.space/api/v0.1/countries`, {})
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.error) {
-  //         console.log('vul')
-  //       } else {
-  //         const countryInfo = [...data.data]
-  //         let requiredCountryInfo = []
-  //         countryInfo.map((item, index) =>
-  //           item.cities.map((value, ind) =>
-  //             requiredCountryInfo.push({
-  //               label: `${item.country},${value}`,
-  //               value: `${item.country},${value}`,
-  //             }),
-  //           ),
-  //         )
-  //         console.log('required info ', requiredCountryInfo)
-  //         setCity(requiredCountryInfo)
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log('pro erro', err)
-  //     })
-  // }
-
-  //console.log(city)
-
+  const getAllCity = async () => {
+    fetch(`https://countriesnow.space/api/v0.1/countries`, {})
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          const countryInfo = [...data.data]
+          let requiredCountryInfo = []
+          countryInfo.map((item, index) =>
+            requiredCountryInfo.push({
+              label: `${item.country}`,
+              value: `${item.country}`,
+            }),
+          )
+          setCity(requiredCountryInfo)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
   return (
     <>
       <Container className="cv_bank_container21">
@@ -62,6 +58,7 @@ const PersonalInformation = (props) => {
             <select
               class="form-control height"
               placeholder="Choose One"
+              value={personalInformation.height}
               onChange={(event) =>
                 setPersonalInformation({
                   ...personalInformation,
@@ -114,6 +111,7 @@ const PersonalInformation = (props) => {
               step="5"
               className="form-control weight"
               placeholder="Enter your weight."
+              value={personalInformation.weight}
               onChange={(event) =>
                 setPersonalInformation({
                   ...personalInformation,
@@ -135,6 +133,7 @@ const PersonalInformation = (props) => {
             <select
               class="form-control bloodGroup"
               placeholder="Choose One"
+              value={personalInformation.bloodGroup}
               onChange={(event) =>
                 setPersonalInformation({
                   ...personalInformation,
@@ -176,6 +175,10 @@ const PersonalInformation = (props) => {
             />
             {/* <Select
               options={city}
+              defaultValue={{
+                label: `${personalInformation.grownUpAt}`,
+                value: `${personalInformation.grownUpAt}`,
+              }}
               theme={(theme) => ({
                 ...theme,
                 borderRadius: 3,
@@ -185,6 +188,12 @@ const PersonalInformation = (props) => {
                   primary: '#ff566b',
                 },
               })}
+              onChange={(event) => {
+                setPersonalInformation({
+                  ...personalInformation,
+                  grownUpAt: event.target.value,
+                })
+              }}
             /> */}
           </Col>
         </Row>
@@ -203,6 +212,7 @@ const PersonalInformation = (props) => {
                 placeholder="Please share if you have any disabilities, low eye vision etc."
                 aria-label="With textarea"
                 rows="7"
+                value={personalInformation.specialCondition}
                 onChange={(event) => {
                   setPersonalInformation({
                     ...personalInformation,
