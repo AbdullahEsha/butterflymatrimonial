@@ -53,9 +53,11 @@ const Contact = () => {
       <div className="text_position_3">
         <h1>HOW CAN WE HELP?</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
+          Butterfly aims only to facilitate personal advertisement for a lawful
+          marriage alliance between persons who are legally competent to enter
+          into matrimony under the laws to which they are subject. Through
+          Facebook inbox, Instagram, call, and email, You can easily communicate
+          with the team for our assistance.
         </h6>
       </div>
       <br />

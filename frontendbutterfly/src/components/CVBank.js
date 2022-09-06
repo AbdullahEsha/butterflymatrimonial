@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import EducationalQulification from './CvBank/EducationalQualification'
 import FamilyMember from './CvBank/FamilyMember'
-import PersonalInformation from './CvBank/PersonalInformation'
+import PreferenceInformation from './CvBank/PreferenceInformation'
 import ProfessionalQualification from './CvBank/ProfessionalQualification'
 import ProfileInFormation from './CvBank/ProfileInformation'
 import { useDispatch } from 'react-redux'
@@ -21,11 +21,13 @@ const CVBank = () => {
   const [cvData, setCvData] = useState([])
   const [profileData, setProfileData] = useState({})
   const [professionalData, setProfessionalData] = useState({})
-  const [personalData, setPersonalData] = useState({})
   const [familyData, setFamilyData] = useState({})
   const [educationalData, setEducationalData] = useState({})
   const [siblingData, setSiblingData] = useState({})
   const [preferenceData, setPreferenceData] = useState({})
+  const [preferenceInfoData, setPreferenceInfoData] = useState({})
+
+  // console.log(educationalData)
 
   const validation = () => {
     if (data === 'ProfileInformation') {
@@ -33,117 +35,244 @@ const CVBank = () => {
       // var fileName = file.files[0].name
       // var idxDot = fileName.lastIndexOf('.') + 1
       // var extFile = fileName.substr(idxDot, fileName.length).toLowerCase()
-      if (profileData.image === '') {
+      if (profileData.image === undefined || profileData.image === '') {
         document.querySelector('.imageFile').style.border = '1px solid red'
-      } else if (profileData.name === '') {
+      } else if (profileData.name === undefined || profileData.name === '') {
         document.querySelector('.name').style.border = '1px solid red'
-      } else if (profileData.gender === '') {
+      } else if (
+        profileData.gender === undefined ||
+        profileData.gender === ''
+      ) {
         document.querySelector('.gender').style.display = 'block'
       } else if (
-        profileData.phone === '' ||
+        profileData.phone === undefined ||
         profileData.phone.match(/\d/g).length !== 11
       ) {
         document.querySelector('.phone').style.border = '1px solid red'
-      } else if (profileData.religion === '') {
+      } else if (
+        profileData.religion === undefined ||
+        profileData.religion === ''
+      ) {
         document.querySelector('.religion').style.borderColor = 'red'
-      } else if (profileData.email === '') {
+      } else if (profileData.email === undefined || profileData.email === '') {
         document.querySelector('.email').style.borderColor = 'red'
-      } else if (profileData.age === '') {
+      } else if (profileData.age === undefined || profileData.age === '') {
         document.querySelector('.age').style.borderColor = 'red'
-      } else if (profileData.presentAddress === '') {
+      } else if (
+        profileData.presentAddress === undefined ||
+        profileData.presentAddress === ''
+      ) {
         document.querySelector('.presentAddress').style.borderColor = 'red'
-      } else if (profileData.divisionPresent === '') {
+      } else if (
+        profileData.divisionPresent === undefined ||
+        profileData.divisionPresent === ''
+      ) {
         document.querySelector('.divisionPresent').style.border =
           '1px solid red'
-      } else if (profileData.dristrictPresent === '') {
+      } else if (
+        profileData.dristrictPresent === undefined ||
+        profileData.dristrictPresent === ''
+      ) {
         document.querySelector('.dristrictPresent').style.borderColor = 'red'
-      } else if (profileData.parmanentAddress === '') {
+      } else if (
+        profileData.parmanentAddress === undefined ||
+        profileData.parmanentAddress === ''
+      ) {
         document.querySelector('.parmanentAddress').style.borderColor = 'red'
-      } else if (profileData.divisionParmanent === '') {
+      } else if (
+        profileData.divisionParmanent === undefined ||
+        profileData.divisionParmanent === ''
+      ) {
         document.querySelector('.divisionParmanent').style.borderColor = 'red'
-      } else if (profileData.dristrictParmanent === '') {
+      } else if (
+        profileData.dristrictParmanent === undefined ||
+        profileData.dristrictParmanent === ''
+      ) {
         document.querySelector('.dristrictParmanent').style.borderColor = 'red'
-      } else if (profileData.specialCase === '') {
-        document.querySelector('.specialCase').style.border = '1px solid red'
-      } else if (preferenceData.length <= 0) {
-        document.querySelector('.preference').style.border = '1px solid red'
-      } else if (profileData.spousePreference === '') {
-        document.querySelector('.spousePreference').style.border =
-          '1px solid red'
-      } else if (profileData.about === '') {
-        document.querySelector('.about').style.borderColor = 'red'
-      } else {
-        setData('PersonalInformation')
       }
-    } else if (data === 'PersonalInformation') {
-      if (personalData.height === '') {
+      // else if (profileData.spousePreference === undefined) {
+      //   document.querySelector('.spousePreference').style.border =
+      //     '1px solid red'
+      // }
+      else if (profileData.height === undefined || profileData.height === '') {
         document.querySelector('.height').style.borderColor = 'red'
-      } else if (personalData.weight === '') {
+      } else if (
+        profileData.weight === undefined ||
+        profileData.weight === ''
+      ) {
         document.querySelector('.weight').style.borderColor = 'red'
-      } else if (personalData.bloodGroup === '') {
+      } else if (
+        profileData.bloodGroup === undefined ||
+        profileData.bloodGroup === ''
+      ) {
         document.querySelector('.bloodGroup').style.borderColor = 'red'
-      } else if (personalData.grownUpAt === '') {
+      } else if (
+        profileData.grownUpAt === undefined ||
+        profileData.grownUpAt === ''
+      ) {
         document.querySelector('.grownUpAt').style.borderColor = 'red'
-      } else if (personalData.specialCondition === '') {
+      } else if (
+        profileData.specialCase === undefined ||
+        profileData.specialCase === ''
+      ) {
+        document.querySelector('.specialCaseCheck').style.display = 'block'
+      } else if (
+        profileData.specialCondition === undefined ||
+        profileData.specialCondition === ''
+      ) {
         document.querySelector('.specialCondition').style.borderColor = 'red'
+      } else if (profileData.about === undefined || profileData.about === '') {
+        document.querySelector('.about').style.borderColor = 'red'
       } else {
         setData('EducationalQulification')
       }
     } else if (data === 'EducationalQulification') {
-      if (educationalData.map((item) => item.levelOfEducation)[0] === '') {
-        document.querySelector('.levelOfEducation').style.borderColor = 'red'
-      } else if (educationalData.map((item) => item.group)[0] === '') {
-        document.querySelector('.group_0').style.borderColor = 'red'
-      } else if (educationalData.map((item) => item.instituteName)[0] === '') {
-        document.querySelector('.instituteName').style.borderColor = 'red'
-      } else if (
-        educationalData.map((item) => item.instituteLocation)[0] === ''
-      ) {
-        document.querySelector('.instituteLocation').style.borderColor = 'red'
-      } else if (educationalData.map((item) => item.passingYear)[0] === '') {
-        document.querySelector('.passingYear').style.borderColor = 'red'
-      } else {
-        setData('ProfessionalQualification')
-      }
+      educationalData.forEach((item) => {
+        if (
+          item.levelOfEducation === undefined ||
+          item.levelOfEducation === ''
+        ) {
+          document.querySelector('.levelOfEducation').style.borderColor = 'red'
+        } else if (item.group === undefined || item.group === '') {
+          document.querySelector('.css-1bi0jn-control').style.borderColor =
+            'red'
+        } else if (
+          item.instituteName === undefined ||
+          item.instituteName === ''
+        ) {
+          document.querySelector('.instituteName').style.borderColor = 'red'
+        } else if (
+          item.instituteLocation === undefined ||
+          item.instituteLocation === ''
+        ) {
+          document.querySelector('.instituteLocation').style.borderColor = 'red'
+        } else if (item.passingYear === undefined || item.passingYear === '') {
+          document.querySelector('.passingYear').style.borderColor = 'red'
+        } else {
+          setData('ProfessionalQualification')
+        }
+      })
     } else if (data === 'ProfessionalQualification') {
-      if (professionalData.map((item) => item.designation)[0] === '') {
-        document.querySelector('.designation').style.borderColor = 'red'
-      } else if (
-        professionalData.map((item) => item.organizationName)[0] === ''
-      ) {
-        document.querySelector('.organizationName').style.borderColor = 'red'
-      } else if (
-        professionalData.map((item) => item.com_department)[0] === ''
-      ) {
-        document.querySelector('.com_department').style.borderColor = 'red'
-      } else if (professionalData.map((item) => item.com_location)[0] === '') {
-        document.querySelector('.com_location').style.borderColor = 'red'
-      } else if (
-        professionalData.map((item) => item.from_employment)[0] === ''
-      ) {
-        document.querySelector('.from_employment').style.borderColor = 'red'
-      } else if (professionalData.map((item) => item.to_employment)[0] === '') {
-        document.querySelector('.to_employment').style.borderColor = 'red'
-      } else if (professionalData.map((item) => item.com_reference)[0] === '') {
-        document.querySelector('.com_reference').style.borderColor = 'red'
-      } else {
-        setData('FamilyMember')
-      }
+      professionalData.forEach((item) => {
+        if (item.designation === undefined || item.designation === '') {
+          document.querySelector('.designation').style.borderColor = 'red'
+        } else if (
+          item.organizationName === undefined ||
+          item.organizationName === ''
+        ) {
+          document.querySelector('.organizationName').style.borderColor = 'red'
+        } else if (
+          item.com_department === undefined ||
+          item.com_department === ''
+        ) {
+          document.querySelector('.com_department').style.borderColor = 'red'
+        } else if (
+          item.com_location === undefined ||
+          item.com_location === ''
+        ) {
+          document.querySelector('.com_location').style.borderColor = 'red'
+        } else if (
+          item.from_employment === undefined ||
+          item.from_employment === ''
+        ) {
+          document.querySelector('.from_employment').style.borderColor = 'red'
+        } else if (
+          item.to_employment === undefined ||
+          item.to_employment === ''
+        ) {
+          document.querySelector('.to_employment').style.borderColor = 'red'
+        } else if (
+          item.com_reference === undefined ||
+          item.com_reference === ''
+        ) {
+          document.querySelector('.com_reference').style.borderColor = 'red'
+        } else {
+          setData('FamilyMember')
+        }
+      })
     } else if (data === 'FamilyMember') {
-      if (familyData.fatherName === '') {
+      if (familyData.fatherName === undefined) {
         document.querySelector('.fatherName').style.borderColor = 'red'
-      } else if (familyData.fatherOcupation === '') {
+      } else if (familyData.fatherOcupation === undefined) {
         document.querySelector('.fatherOcupation').style.borderColor = 'red'
-      } else if (familyData.motherName === '') {
+      } else if (familyData.motherName === undefined) {
         document.querySelector('.motherName').style.borderColor = 'red'
-      } else if (familyData.motherOcupation === '') {
+      } else if (familyData.motherOcupation === undefined) {
         document.querySelector('.motherOcupation').style.borderColor = 'red'
-      } else if (siblingData.map((item) => item.name)[0] === '') {
+      } else if (
+        siblingData.map((item) => item.name)[0] === undefined ||
+        siblingData.map((item) => item.name)[0] === ''
+      ) {
         document.querySelector('.sibname').style.borderColor = 'red'
-      } else if (siblingData.map((item) => item.ocupation)[0] === '') {
+      } else if (
+        siblingData.map((item) => item.ocupation)[0] === undefined ||
+        siblingData.map((item) => item.ocupation)[0] === ''
+      ) {
         document.querySelector('.sibocupation').style.borderColor = 'red'
-      } else if (siblingData.map((item) => item.details)[0] === '') {
+      } else if (
+        siblingData.map((item) => item.details)[0] === undefined ||
+        siblingData.map((item) => item.details)[0] === ''
+      ) {
         document.querySelector('.sibdetails').style.borderColor = 'red'
+      } else {
+        setData('PreferenceInformation')
+      }
+    } else if (data === 'PreferenceInformation') {
+      if (
+        preferenceInfoData.profession === undefined ||
+        preferenceInfoData.profession === ''
+      ) {
+        document.querySelector('.profession').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.skinTone === undefined ||
+        preferenceInfoData.skinTone === ''
+      ) {
+        document.querySelector('.skinTone').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.ageMinimum === undefined ||
+        preferenceInfoData.ageMinimum === ''
+      ) {
+        document.querySelector('.ageMinimum').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.ageMaximum === undefined ||
+        preferenceInfoData.ageMaximum === ''
+      ) {
+        document.querySelector('.ageMaximum').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.heightMinimum === undefined ||
+        preferenceInfoData.heightMinimum === ''
+      ) {
+        document.querySelector('.heightMinimum').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.heightMaximum === undefined ||
+        preferenceInfoData.heightMaximum === ''
+      ) {
+        document.querySelector('.heightMaximum').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.religionPreference === undefined ||
+        preferenceInfoData.religionPreference === ''
+      ) {
+        document.querySelector('.religionPreference').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.districtPreference === undefined ||
+        preferenceInfoData.districtPreference === ''
+      ) {
+        document.querySelector('.districtPreference').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.physicalStatus === undefined ||
+        preferenceInfoData.physicalStatus === ''
+      ) {
+        document.querySelector('.physicalStatusCheck').style.display = 'block'
+      } else if (
+        preferenceInfoData.preference === undefined ||
+        preferenceInfoData.preference === ''
+      ) {
+        document.querySelector('.preferenceCheck').style.display = 'block'
+      } else if (
+        preferenceInfoData.spousePreference === undefined ||
+        preferenceInfoData.spousePreference === ''
+      ) {
+        document.querySelector('.spousePreferenceCheck').style.display = 'block'
       } else {
         setData('Preview')
       }
@@ -156,8 +285,8 @@ const CVBank = () => {
   const updateProfessionalData = (b) => {
     setProfessionalData(b)
   }
-  const updatePersonalData = (c) => {
-    setPersonalData(c)
+  const updatePreferenceInfoData = (c) => {
+    setPreferenceInfoData(c)
   }
   const updateFamilyData = (d) => {
     setFamilyData(d)
@@ -171,6 +300,8 @@ const CVBank = () => {
   const updatePreferenceData = (g) => {
     setPreferenceData(g)
   }
+
+  //console.log('preferenceInfoData', preferenceInfoData)
 
   const exportPdf = () => {
     var doc = new jsPDF('p', 'mm', 'a4')
@@ -306,13 +437,13 @@ const CVBank = () => {
     doc.text(20, y, 'Height:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(33, y, `${personalData.height}`, 'left')
+    doc.text(33, y, `${profileData.height}`, 'left')
 
     doc.setFont(undefined, 'bold')
     doc.text(110, y, 'Weight:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(124, y, `${personalData.weight + '(kg)'}`, 'left')
+    doc.text(124, y, `${profileData.weight + '(kg)'}`, 'left')
 
     y = y + 8
 
@@ -320,13 +451,13 @@ const CVBank = () => {
     doc.text(20, y, 'Blood Group:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(43.5, y, `${personalData.bloodGroup}`, 'left')
+    doc.text(43.5, y, `${profileData.bloodGroup}`, 'left')
 
     doc.setFont(undefined, 'bold')
     doc.text(110, y, 'Grown Up At:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(134, y, `${personalData.grownUpAt}`, 'left')
+    doc.text(134, y, `${profileData.grownUpAt}`, 'left')
 
     y = y + 8
 
@@ -334,8 +465,8 @@ const CVBank = () => {
     doc.text(20, y, 'Special Condition:', 'left')
 
     doc.setFont(undefined, 'normal')
-    text_width = doc.getTextWidth(personalData.specialCondition)
-    splitTitle = doc.splitTextToSize(personalData.specialCondition, 170)
+    text_width = doc.getTextWidth(profileData.specialCondition)
+    splitTitle = doc.splitTextToSize(profileData.specialCondition, 170)
     doc.text(20, y + 5, splitTitle, 'left')
     y = y + text_width / 25
 
@@ -550,15 +681,25 @@ const CVBank = () => {
     formData.append('specialCase', profileData.specialCase)
     formData.append('spousePreference', profileData.spousePreference)
     formData.append('about', profileData.about)
-    formData.append('height', personalData.height)
-    formData.append('weight', personalData.weight)
-    formData.append('bloodGroup', personalData.bloodGroup)
-    formData.append('grownUpAt', personalData.grownUpAt)
-    formData.append('specialCondition', personalData.specialCondition)
+    formData.append('height', profileData.height)
+    formData.append('weight', profileData.weight)
+    formData.append('bloodGroup', profileData.bloodGroup)
+    formData.append('grownUpAt', profileData.grownUpAt)
+    formData.append('specialCondition', profileData.specialCondition)
     formData.append('fatherName', familyData.fatherName)
     formData.append('fatherOcupation', familyData.fatherOcupation)
     formData.append('motherName', familyData.motherName)
     formData.append('motherOcupation', familyData.motherOcupation)
+    formData.append('profession', preferenceInfoData.profession)
+    formData.append('districtPreference', preferenceInfoData.districtPreference)
+    formData.append('religionPreference', preferenceInfoData.religionPreference)
+    formData.append('physicalStatus', preferenceInfoData.physicalStatus)
+    formData.append('ageMinimum', preferenceInfoData.ageMinimum)
+    formData.append('ageMaximum', preferenceInfoData.ageMaximum)
+    formData.append('heightMinimum', preferenceInfoData.heightMinimum)
+    formData.append('heightMaximum', preferenceInfoData.heightMaximum)
+    formData.append('skinTone', preferenceInfoData.skinTone)
+    formData.append('preference', preferenceInfoData.preference)
 
     Swal.fire({
       title: 'Are you sure?',
@@ -579,20 +720,7 @@ const CVBank = () => {
           .then((data) => {
             console.log('data', data)
             if (data.data.message === 'Your CV has just been stored.') {
-              preferenceData.map((item, index) =>
-                axios
-                  .post(
-                    `https://api.butterflymatrimonial.com/api/post/preference`,
-                    {
-                      preference: item,
-                      cvdata_id: cvData.length + 1,
-                    },
-                  )
-                  .catch(({ response }) => {
-                    console.log('Preference ', response)
-                  }),
-              )
-              siblingData.map((item, index) =>
+              siblingData.map((item) =>
                 axios
                   .post(
                     `https://api.butterflymatrimonial.com/api/post/sibling`,
@@ -607,7 +735,7 @@ const CVBank = () => {
                     console.log('Sibling ', response)
                   }),
               )
-              educationalData.map((item, index) =>
+              educationalData.map((item) =>
                 axios
                   .post(
                     `https://api.butterflymatrimonial.com/api/post/education/qualification`,
@@ -624,7 +752,7 @@ const CVBank = () => {
                     console.log('Educational ', response)
                   }),
               )
-              professionalData.map((item, index) =>
+              professionalData.map((item) =>
                 axios
                   .post(
                     `https://api.butterflymatrimonial.com/api/post/professional`,
@@ -643,10 +771,14 @@ const CVBank = () => {
                     console.log('Educational ', response)
                   }),
               )
-              exportPdf()
+              // exportPdf()
               //submission confirmation
               Swal.fire({
-                title: 'Success',
+                title: `${
+                  'Your CV Link: https://www.butterflymatrimonial.com/butterfly-cv-bank/' +
+                  cvData.length +
+                  1
+                }`,
                 icon: 'success',
                 text: data.data.message,
               })
@@ -692,17 +824,15 @@ const CVBank = () => {
       })
   }
 
-  console.log('profileData', profileData)
-
   return (
     <div style={{ backgroundColor: '#ededed' }}>
       <MainNav />
       <div className="cvbank_text_position_1">
         <h1>CV BANK</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
+          Butterfly Matrimonial is a digital platform, working for complete
+          match-making for selective profiles, an app for self-driven matching
+          service, pre-post marriage counselling and many more.
         </h6>
       </div>
       <Container id="hide_top">
@@ -731,28 +861,6 @@ const CVBank = () => {
               )}
             </li>
             <li>
-              {data === 'PersonalInformation' || data === 'Preview' ? (
-                <button
-                  onClick={() => setData('PersonalInformation')}
-                  id="borderbottomline"
-                >
-                  <IoMdCheckmarkCircleOutline
-                    size={20}
-                    color="white"
-                    style={{ marginBottom: '4px' }}
-                  />{' '}
-                  Personal Information
-                </button>
-              ) : (
-                <button
-                  onClick={() => setData('PersonalInformation')}
-                  className="borderbottomlinehover"
-                >
-                  Personal Information
-                </button>
-              )}
-            </li>
-            <li>
               {data === 'EducationalQulification' || data === 'Preview' ? (
                 <button
                   onClick={() => setData('EducationalQulification')}
@@ -763,14 +871,14 @@ const CVBank = () => {
                     color="white"
                     style={{ marginBottom: '4px' }}
                   />{' '}
-                  Educational Qualification
+                  Educational Information
                 </button>
               ) : (
                 <button
                   onClick={() => setData('EducationalQulification')}
                   className="borderbottomlinehover"
                 >
-                  Educational Qualification
+                  Educational Information
                 </button>
               )}
             </li>
@@ -785,14 +893,14 @@ const CVBank = () => {
                     color="white"
                     style={{ marginBottom: '4px' }}
                   />{' '}
-                  Professional Qualification
+                  Professional Information
                 </button>
               ) : (
                 <button
                   onClick={() => setData('ProfessionalQualification')}
                   className="borderbottomlinehover"
                 >
-                  Professional Qualification
+                  Professional Information
                 </button>
               )}
             </li>
@@ -807,14 +915,36 @@ const CVBank = () => {
                     color="white"
                     style={{ marginBottom: '4px' }}
                   />{' '}
-                  Family Member
+                  Family Information
                 </button>
               ) : (
                 <button
                   onClick={() => setData('FamilyMember')}
                   className="borderbottomlinehover"
                 >
-                  Family Member
+                  Family Information
+                </button>
+              )}
+            </li>
+            <li>
+              {data === 'PreferenceInformation' || data === 'Preview' ? (
+                <button
+                  onClick={() => setData('PreferenceInformation')}
+                  id="borderbottomline"
+                >
+                  <IoMdCheckmarkCircleOutline
+                    size={20}
+                    color="white"
+                    style={{ marginBottom: '4px' }}
+                  />{' '}
+                  Preference Information
+                </button>
+              ) : (
+                <button
+                  onClick={() => setData('PreferenceInformation')}
+                  className="borderbottomlinehover"
+                >
+                  Preference Information
                 </button>
               )}
             </li>
@@ -825,9 +955,6 @@ const CVBank = () => {
         <div className="cv_bank_container2">
           {data === 'ProfileInformation' && (
             <ProfileInFormation updateProfileData={updateProfileData} />
-          )}
-          {data === 'PersonalInformation' && (
-            <PersonalInformation updatePersonalData={updatePersonalData} />
           )}
           {data === 'EducationalQulification' && (
             <EducationalQulification
@@ -845,15 +972,21 @@ const CVBank = () => {
               updateSiblingData={updateSiblingData}
             />
           )}
+          {data === 'PreferenceInformation' && (
+            <PreferenceInformation
+              updatePreferenceData={updatePreferenceData}
+              updatePreferenceInfoData={updatePreferenceInfoData}
+            />
+          )}
           {data === 'Preview' && (
             <Preview
               profileData={profileData}
               professionalData={professionalData}
-              personalData={personalData}
               familyData={familyData}
               educationalData={educationalData}
               siblingData={siblingData}
               preferenceData={preferenceData}
+              preferenceInfoData={preferenceInfoData}
             />
           )}
         </div>
@@ -866,15 +999,14 @@ const CVBank = () => {
               <button
                 className="cv_bankButton_BackNext"
                 onClick={() => {
-                  data === 'PersonalInformation' &&
-                    setData('ProfileInformation')
                   data === 'EducationalQulification' &&
-                    setData('PersonalInformation')
+                    setData('ProfileInformation')
                   data === 'ProfessionalQualification' &&
                     setData('EducationalQulification')
                   data === 'FamilyMember' &&
                     setData('ProfessionalQualification')
-                  data === 'Preview' && setData('FamilyMember')
+                  data === 'PreferenceInformation' && setData('FamilyMember')
+                  data === 'Preview' && setData('PreferenceInformation')
                 }}
               >
                 Go Back
@@ -883,7 +1015,7 @@ const CVBank = () => {
           </Col>
           <Col align="right">
             <div>
-              {data !== 'FamilyMember' && data !== 'Preview' && (
+              {data !== 'PreferenceInformation' && data !== 'Preview' && (
                 <button
                   className="cv_bankButton_BackNext"
                   onClick={() => {
@@ -892,11 +1024,11 @@ const CVBank = () => {
                       addCvData(
                         profileData,
                         professionalData,
-                        personalData,
                         familyData,
                         educationalData,
                         siblingData,
                         preferenceData,
+                        preferenceInfoData,
                       ),
                     )
                   }}
@@ -904,8 +1036,7 @@ const CVBank = () => {
                   Next
                 </button>
               )}
-
-              {data === 'FamilyMember' && (
+              {data === 'PreferenceInformation' && (
                 <div>
                   <button
                     className="cv_bankButton_BackNext"
@@ -915,11 +1046,11 @@ const CVBank = () => {
                         addCvData(
                           profileData,
                           professionalData,
-                          personalData,
                           familyData,
                           educationalData,
                           siblingData,
                           preferenceData,
+                          preferenceInfoData,
                         ),
                       )
                     }}
@@ -936,7 +1067,7 @@ const CVBank = () => {
                       addCV(event)
                     }}
                   >
-                    Submit & Download PDF
+                    Submit
                   </button>
                 </div>
               )}

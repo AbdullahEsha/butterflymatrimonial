@@ -65,18 +65,18 @@ const About = () => {
           </h1>
           <br id="hide_br" />
           <h6>
-            Butterfly Matrimonial is a digital platform, we use machine-learning
-            algorithm paired with artificial intelligence to generate
-            personalized recommendations.
+            Butterfly Matrimonial is a digital platform, working for complete
+            match-making for selective profiles, an app for self-driven matching
+            service, pre-post marriage counselling and many more.
           </h6>
         </div>
       </div>
       <div className="about_text_position_2">
         <h1>HOW IT’S WORKS?</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
+          Butterfly Matrimonial offers matrimonial service, consultancy and a
+          smart platform where every adult can join in searching for soulmates.
+          It’s a digital matchmaking platform not dating.
         </h6>
       </div>
       <div className="ber_position_about">
@@ -87,10 +87,11 @@ const About = () => {
                 <img src={codicon} alt="consultancy" />
                 <br />
                 <br />
-                <h2>Lorem Ipsum</h2>
+                <h2>Venus</h2>
                 <h6>
-                  Register for Butterfly Venus for an exclusive and complete
-                  manual matching system.
+                  Traditional and confidential one to one matchmaking service,
+                  where we focus on preferences, Family structure, and
+                  personality.
                 </h6>
               </div>
             </Col>
@@ -99,10 +100,11 @@ const About = () => {
                 <img src={uil_processor} alt="diamond" />
                 <br />
                 <br />
-                <h2>Lorem Ipsum</h2>
+                <h2>Matrimonial Apps</h2>
                 <h6>
-                  Register for Butterfly Venus for an exclusive and complete
-                  manual matching system.
+                  Apps for both Android and IOS device. as an individuals can
+                  contact and connect easily and have conversation as their
+                  desire selective one.
                 </h6>
               </div>
             </Col>
@@ -111,10 +113,11 @@ const About = () => {
                 <img src={communication} alt="pairing" />
                 <br />
                 <br />
-                <h2>Lorem Ipsum</h2>
+                <h2>Consultancy</h2>
                 <h6>
-                  Register for Butterfly Venus for an exclusive and complete
-                  manual matching system.
+                  Pre and post marriage counselling service, which helps
+                  individuals and couple to have, make and maintain long term
+                  valued relationship.
                 </h6>
               </div>
             </Col>
@@ -124,9 +127,7 @@ const About = () => {
       <div className="about_text_position_13">
         <h1>OUR TEAM</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
+          It's a very dynamic and creative young team for creating a difference.
         </h6>
       </div>
       {width > 767 ? (

@@ -48,6 +48,16 @@ class cvdataController extends Controller
             $cvStore->fatherOcupation = $req->fatherOcupation;
             $cvStore->motherName = $req->motherName;
             $cvStore->motherOcupation = $req->motherOcupation;
+            $cvStore->profession = $req->profession;
+            $cvStore->districtPreference = $req->districtPreference;
+            $cvStore->religionPreference = $req->religionPreference;
+            $cvStore->physicalStatus = $req->physicalStatus;
+            $cvStore->ageMinimum = $req->ageMinimum;
+            $cvStore->ageMaximum = $req->ageMaximum;
+            $cvStore->heightMinimum = $req->heightMinimum;
+            $cvStore->heightMaximum = $req->heightMaximum;
+            $cvStore->skinTone = $req->skinTone;
+            $cvStore->preference = $req->preference;
             $cvStore->maritalStatus = 'Unmarried';
 
             $rename =

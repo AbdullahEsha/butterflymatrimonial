@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 
 const FamilyMember = (props) => {
+  const familyData_ = useSelector((state) => state.cvDataReducer.familyData)
+  const siblingData_ = useSelector((state) => state.cvDataReducer.siblingData)
   const [sibling, setSibling] = useState([
     {
-      name: '',
-      ocupation: '',
-      details: '',
+      name: siblingData_[0] ? siblingData_[0].name : '',
+      ocupation: siblingData_[0] ? siblingData_[0].ocupation : '',
+      details: siblingData_[0] ? siblingData_[0].details : '',
     },
   ])
 
-  const handleServiceAdd = () => {
+  const handleServiceAdd = (index) => {
+    var updateIndex = index + 1
     setSibling([
       ...sibling,
       {
-        name: '',
-        ocupation: '',
-        details: '',
+        name: siblingData_[updateIndex] ? siblingData_[updateIndex].name : '',
+        ocupation: siblingData_[updateIndex]
+          ? siblingData_[updateIndex].ocupation
+          : '',
+        details: siblingData_[updateIndex]
+          ? siblingData_[updateIndex].details
+          : '',
       },
     ])
   }
@@ -28,10 +36,10 @@ const FamilyMember = (props) => {
   }
 
   const [familyMember, setFamilyMember] = useState({
-    fatherName: '',
-    fatherOcupation: '',
-    motherName: '',
-    motherOcupation: '',
+    fatherName: familyData_ ? familyData_.fatherName : '',
+    fatherOcupation: familyData_ ? familyData_.fatherOcupation : '',
+    motherName: familyData_ ? familyData_.motherName : '',
+    motherOcupation: familyData_ ? familyData_.motherOcupation : '',
   })
 
   const { updateFamilyData } = props
@@ -55,15 +63,13 @@ const FamilyMember = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Father’s Name
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
               className="form-control fatherName"
               placeholder="Enter your father’s Name"
+              value={familyMember.fatherName}
               onChange={(event) =>
                 setFamilyMember({
                   ...familyMember,
@@ -75,15 +81,13 @@ const FamilyMember = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Ocupation
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
               className="form-control fatherOcupation"
               placeholder="Enter father’s Ocupation."
+              value={familyMember.fatherOcupation}
               onChange={(event) =>
                 setFamilyMember({
                   ...familyMember,
@@ -97,15 +101,13 @@ const FamilyMember = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Mother’s Name
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
               className="form-control motherName"
               placeholder="Enter your Mother’s Name."
+              value={familyMember.motherName}
               onChange={(event) =>
                 setFamilyMember({
                   ...familyMember,
@@ -117,15 +119,13 @@ const FamilyMember = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Ocupation
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
               className="form-control motherOcupation"
               placeholder="Enter Mother’s Ocupation."
+              value={familyMember.motherOcupation}
               onChange={(event) =>
                 setFamilyMember({
                   ...familyMember,
@@ -154,16 +154,13 @@ const FamilyMember = (props) => {
                   <div className="col-12 col-sm-6">
                     <h5>
                       Name
-                      <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                        *
-                      </span>
-                      :
+                      <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                     </h5>
                     <input
                       type="text"
                       className="form-control sibname"
                       placeholder="Enter name."
-                      value={sibling.name}
+                      value={sibling[index].name}
                       name="name"
                       onChange={(event) => handleInput(index, event)}
                     />
@@ -171,17 +168,14 @@ const FamilyMember = (props) => {
                   <div className="col-12 col-sm-6">
                     <h5>
                       Ocupation
-                      <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                        *
-                      </span>
-                      :
+                      <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                     </h5>
                     <input
                       type="text"
                       className="form-control sibocupation"
                       name="ocupation"
                       placeholder="Enter ocupation."
-                      value={sibling.ocupation}
+                      value={sibling[index].ocupation}
                       onChange={(event) => handleInput(index, event)}
                     />
                   </div>
@@ -189,10 +183,7 @@ const FamilyMember = (props) => {
                 <br />
                 <h5>
                   Details
-                  <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                    *
-                  </span>
-                  :
+                  <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                 </h5>
                 <div class="input-group">
                   <textarea
@@ -201,7 +192,7 @@ const FamilyMember = (props) => {
                     aria-label="With textarea"
                     rows="7"
                     name="details"
-                    value={sibling.details}
+                    value={sibling[index].details}
                     onChange={(event) => handleInput(index, event)}
                   ></textarea>
                 </div>
@@ -221,7 +212,7 @@ const FamilyMember = (props) => {
                     <button
                       className="educationAdd"
                       title="Add More"
-                      onClick={handleServiceAdd}
+                      onClick={() => handleServiceAdd(index)}
                     >
                       <FaPlus size={15} color="white" /> Add More
                     </button>

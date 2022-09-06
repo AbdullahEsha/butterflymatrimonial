@@ -25,8 +25,9 @@ const Footer = () => {
               />
               <br />
               <br />
-              Ullamcorper feugiat morbi volutpat vulputate fringilla ultrices
-              scelerisque eget amet, arcu nisl, diam proin hendrerit duis
+              Butterfly Matrimonial is a digital platform, working for complete
+              match-making for selective profiles, an app for self-driven
+              matching service, pre-post marriage counselling and many more.
               <br />
               <br />
               <div>

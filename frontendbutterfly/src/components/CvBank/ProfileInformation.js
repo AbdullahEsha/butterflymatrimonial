@@ -5,12 +5,10 @@ import { useSelector } from 'react-redux'
 
 const ProfileInformation = (props) => {
   const profileData_ = useSelector((state) => state.cvDataReducer.profileData)
-
   // const [city, setCity] = useState([])
-  const [checkOther, setCheckOther] = useState('none')
-
+  const [checkOther, setCheckOther] = useState('None')
   const [profileInformation, setProfileInformation] = useState({
-    image: profileData_ ? profileData_.image : '',
+    image: profileData_.image ? profileData_.image : '',
     name: profileData_ ? profileData_.name : '',
     gender: profileData_ ? profileData_.gender : '',
     phone: profileData_ ? profileData_.phone : '',
@@ -145,6 +143,8 @@ const ProfileInformation = (props) => {
   //     })
   // }
 
+  // console.log(profileInformation)
+
   return (
     <>
       <Container className="cv_bank_container21">
@@ -152,10 +152,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={2} className="img_uploader image">
             <h5>
               Image
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <em style={{ color: '#fc6375', fontSize: '14px' }} id="warning">
               (Size 310*310px)*
@@ -178,10 +175,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={12}>
             <h5>
               Name
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -201,15 +195,12 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={12}>
             <h5>
               Gender
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="inlineRadioOptions"
                   id="inlineRadio1 male-check"
@@ -222,13 +213,13 @@ const ProfileInformation = (props) => {
                     })
                   }
                 />
-                <label class="form-check-label" for="inlineRadio1">
+                <label className="form-check-label" for="inlineRadio1">
                   Male
                 </label>
               </div>
-              <div class="form-check form-check-inline ">
+              <div className="form-check form-check-inline ">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="inlineRadioOptions"
                   id="inlineRadio2 female-check"
@@ -243,7 +234,7 @@ const ProfileInformation = (props) => {
                     })
                   }}
                 />
-                <label class="form-check-label" for="inlineRadio2">
+                <label className="form-check-label" for="inlineRadio2">
                   Female
                 </label>
               </div>
@@ -257,13 +248,10 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Phone
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <div class="form-groupx form-control phone">
-              <span class="border-end country-code px-2">+88</span>
+            <div className="form-groupx form-control phone">
+              <span className="border-end country-code px-2">+88</span>
 
               <input
                 type="number"
@@ -283,13 +271,10 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Religion
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <select
-              class="form-control religion"
+              className="form-control religion"
               placeholder="Choose One"
               value={profileInformation.religion}
               onChange={(event) =>
@@ -314,10 +299,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Email
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="email"
@@ -335,10 +317,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Date Of Birth
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="date"
@@ -359,10 +338,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={12}>
             <h5>
               Present Address
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -382,10 +358,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Division
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -404,10 +377,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Dristrict
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -427,10 +397,7 @@ const ProfileInformation = (props) => {
           <Col>
             <h5>
               Parmanent Address
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -450,10 +417,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Division
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -471,10 +435,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Dristrict
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -494,10 +455,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Height
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <select
               class="form-control height"
@@ -543,10 +501,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Weight in (kg)
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="number"
@@ -569,13 +524,10 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Blood Group
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <select
-              class="form-control bloodGroup"
+              className="form-control bloodGroup"
               placeholder="Choose One"
               value={profileInformation.bloodGroup}
               onChange={(event) =>
@@ -601,10 +553,7 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Where You Grown Up?
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
@@ -646,18 +595,20 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={12}>
             <h5>
               Limitations Or Special Case
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input specialCase"
+                  className="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="Addiction"
+                  checked={
+                    profileInformation.specialCase === 'Addiction'
+                      ? true
+                      : false
+                  }
                   onChange={(event) => {
                     setProfileInformation({
                       ...profileInformation,
@@ -666,16 +617,21 @@ const ProfileInformation = (props) => {
                     setCheckOther(event.target.value)
                   }}
                 />
-                <label class="form-check-label" for="exampleRadios1">
+                <label className="form-check-label" for="exampleRadios1">
                   Addiction
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input specialCase"
+                  className="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="Diabetics"
+                  checked={
+                    profileInformation.specialCase === 'Diabetics'
+                      ? true
+                      : false
+                  }
                   onChange={(event) => {
                     setProfileInformation({
                       ...profileInformation,
@@ -684,16 +640,19 @@ const ProfileInformation = (props) => {
                     setCheckOther(event.target.value)
                   }}
                 />
-                <label class="form-check-label" for="exampleRadios2">
+                <label className="form-check-label" for="exampleRadios2">
                   Diabetics
                 </label>
               </div>
               <div class="form-check">
                 <input
-                  class="form-check-input specialCase"
+                  className="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="Smoker"
+                  checked={
+                    profileInformation.specialCase === 'Smoker' ? true : false
+                  }
                   onChange={(event) => {
                     setProfileInformation({
                       ...profileInformation,
@@ -702,16 +661,19 @@ const ProfileInformation = (props) => {
                     setCheckOther(event.target.value)
                   }}
                 />
-                <label class="form-check-label" for="exampleRadios2">
+                <label className="form-check-label" for="exampleRadios2">
                   Smoker
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input specialCase"
+                  className="form-check-input specialCase"
                   type="radio"
                   name="exampleRadios"
                   value="None"
+                  checked={
+                    profileInformation.specialCase === 'None' ? true : false
+                  }
                   onChange={(event) => {
                     setProfileInformation({
                       ...profileInformation,
@@ -720,19 +682,19 @@ const ProfileInformation = (props) => {
                     setCheckOther(event.target.value)
                   }}
                 />
-                <label class="form-check-label" for="exampleRadios2">
+                <label className="form-check-label" for="exampleRadios2">
                   None
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input specialCase"
+                  className="form-check-input specialCaseOther"
                   type="radio"
                   name="exampleRadios"
                   value="Other"
                   onChange={() => setCheckOther('Other')}
                 />
-                <label class="form-check-label" for="exampleRadios2">
+                <label className="form-check-label" for="exampleRadios2">
                   Other
                 </label>
                 {checkOther === 'Other' && (
@@ -740,7 +702,6 @@ const ProfileInformation = (props) => {
                     type="text"
                     className="form-control otherSpacialCase"
                     placeholder="Other Spacial Case."
-                    value={profileInformation.specialCase}
                     onChange={(event) =>
                       setProfileInformation({
                         ...profileInformation,
@@ -750,6 +711,9 @@ const ProfileInformation = (props) => {
                   />
                 )}
               </div>
+              <label className="specialCaseCheck" style={{ color: 'red' }}>
+                Please select at least one.
+              </label>
             </div>
           </Col>
         </Row>
@@ -757,14 +721,11 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={12}>
             <h5>
               Special Condition
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <div class="input-group">
+            <div className="input-group">
               <textarea
-                class="form-control specialCondition"
+                className="form-control specialCondition"
                 placeholder="Please share if you have any disabilities, low eye vision etc."
                 aria-label="With textarea"
                 rows="7"
@@ -783,14 +744,11 @@ const ProfileInformation = (props) => {
           <Col xs={12} md={12}>
             <h5>
               About
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <div class="input-group">
+            <div className="input-group">
               <textarea
-                class="form-control about"
+                className="form-control about"
                 placeholder="Write about yourself."
                 aria-label="With textarea"
                 rows="7"

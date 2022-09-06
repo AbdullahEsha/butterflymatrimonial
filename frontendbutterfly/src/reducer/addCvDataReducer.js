@@ -1,11 +1,11 @@
 const initialData = {
   profileData: {},
   professionalData: {},
-  personalData: {},
   familyData: {},
   educationalData: {},
   siblingData: {},
   preferenceData: {},
+  preferenceInfoData: {},
 }
 
 const cvDataReducer = (state = initialData, action) => {

@@ -15,10 +15,10 @@ import apu from '../asset/image/apu.png'
 import card_1 from '../asset/image/card_1.png'
 import card_2 from '../asset/image/card_2.png'
 import card_3 from '../asset/image/card_3.png'
-import logo_1 from '../asset/image/logo_1.png'
-import logo_2 from '../asset/image/logo_2.png'
-import logo_3 from '../asset/image/logo_3.png'
-import logo_4 from '../asset/image/logo_4.png'
+// import logo_1 from '../asset/image/logo_1.png'
+// import logo_2 from '../asset/image/logo_2.png'
+// import logo_3 from '../asset/image/logo_3.png'
+// import logo_4 from '../asset/image/logo_4.png'
 import MainNav from './MainNav'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
@@ -36,9 +36,9 @@ function Home() {
           </h1>
           <br id="hide_br" />
           <h6>
-            Butterfly Matrimonial is a digital platform, we use machine-learning
-            algorithm paired with artificial intelligence to generate
-            personalized recommendations.
+            Butterfly Matrimonial is a digital platform, working for complete
+            match-making for selective profiles, an app for self-driven matching
+            service, pre-post marriage counselling and many more.
           </h6>
           <br />
           <Link to="/venus" id="venusButton">
@@ -104,9 +104,8 @@ function Home() {
             <div className="text_padding_2">
               <h1>DOWNLOAD THE APP</h1>
               <h6>
-                Butterfly Matrimonial is a digital platform, we use algorithm
-                paired with artificial intelligence to generate personalized
-                recommendations.
+                Digital self-driven matching tools to find the best one for
+                marrying by different preferences and priorities
               </h6>
             </div>
           </Col>
@@ -127,9 +126,9 @@ function Home() {
                 <div className="text_2">
                   <h1>Download Here</h1>
                   <h6>
-                    Butterfly Matrimonial is a digital platform, we use
-                    machine-learning algorithm paired withartificial
-                    intelligence to generate personalized recommendations.
+                    Apps for both platform - Android and IOS for your comfort
+                    and easy use, download the app for simple communication and
+                    smart pairing
                   </h6>
                   <div className="badge_psition">
                     <a
@@ -154,9 +153,11 @@ function Home() {
       <div className="text_position_3_milestone" id="text_position_3">
         <h1>MILESTONE</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
+          Butterfly matrimonials introduce a new concept for matrimonial service
+          where all services are under one roof which is important for every
+          stage of life. Marriage counselling is important for those thinking
+          about marriage and struggling in marriage life like the western
+          country.
         </h6>
       </div>
 
@@ -189,9 +190,8 @@ function Home() {
       <div className="text_position_3">
         <h1>FOUNDER</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
+          Founder dreams of spreading a happy life, making you Happy, and
+          strengthening deep understanding in the relationship.
         </h6>
       </div>
       <div className="background-img_3">
@@ -205,11 +205,11 @@ function Home() {
                 <div className="text_3">
                   <h1>Huraira Shishir</h1>
                   <h6>
-                    Butterfly Matrimonial is a digital platform, we use
-                    machine-learning algorithm paired with artificial
-                    intelligence to generate personalized
-                    recommendations.Butterfly Matrimonial is a digital
-                    platform,we use machine-learning algorithm.
+                    Accomplished professional with a long experience spanning
+                    over the last two decades. Currently, running an online
+                    matrimonial platform and working as a relationship
+                    consultant. She believes simplicity and respectful
+                    relationships are the key to happiness and success.
                   </h6>
                 </div>
               </div>
@@ -220,9 +220,10 @@ function Home() {
       <div className="text_position_3">
         <h1>SUCCESS STORIES</h1>
         <h6>
-          Butterfly Matrimonial is a digital platform, we use machine-learning
-          algorithm paired with artificial intelligence to generate personalized
-          recommendations.
+          Butterfly Matrimonial always focuses and Prioritaiz couple’s
+          happiness, comfort, privacy, and security. Venus package also keeps
+          those promises and relations transparency on social media. Best of
+          Luck.
         </h6>
       </div>
       <Container>
@@ -230,22 +231,25 @@ function Home() {
           <Col xs={12} md={4}>
             <div className="card">
               <img src={card_1} alt="card_1" />
-              <h3>Shuvo & Sanjana</h3>
+              <h3>Shamshad & Sheshir</h3>
               <h6>
-                Butterfly Matrimonial is a digital platform, we use
-                machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                Attainment of your right match is never being that easy. There
+                is always a gap between your expectations & reality, at least in
+                case of selecting your partner. You need to be passionate,
+                confident, honest, aggressive and logical.
               </h6>
             </div>
           </Col>
           <Col xs={12} md={4}>
             <div className="card">
               <img src={card_2} alt="card_2" />
-              <h3>Hasib & Pritty</h3>
+              <h3>Ruzdina & Iftekhar</h3>
               <h6>
-                Butterfly Matrimonial is a digital platform, we use
-                machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                Match making was always a toughest Job but technology brought
+                the changes and internet make this task toughest to tough now.
+                Electronic platforms now enable us to select, cross check,
+                decide & execute in shortest possible time with less effort &
+                money.
               </h6>
             </div>
           </Col>
@@ -254,15 +258,16 @@ function Home() {
               <img src={card_3} alt="card_3" />
               <h3>Salman & Julekha</h3>
               <h6>
-                Butterfly Matrimonial is a digital platform, we use
-                machine-learning algorithm paired with artificial intelligence
-                to generate personalized recommendations.
+                Butterfly & we’ve Kicked of our Journey almost at the same time.
+                Perfection, proper communication, Timeliness and Technological
+                advanced features are their main Key to operate with ultimate
+                success. We got our soulmate through this platform.
               </h6>
             </div>
           </Col>
         </Row>
       </Container>
-      <div className="text_position_3">
+      {/* <div className="text_position_3">
         <h1>AFFILIATION</h1>
         <h6>
           Butterfly Matrimonial is a digital platform, we use machine-learning
@@ -293,7 +298,7 @@ function Home() {
             </div>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
       <br />
       <Footer />
     </>

@@ -1,33 +1,66 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 
 const ProfessionalQulification = (props) => {
   const [fromdate, setFromDate] = useState([{ dateset: '' }])
   const [todate, setToDate] = useState([{ dateset: '' }])
   const [current, setCurrent] = useState('NotChacked')
+  const professionalData_ = useSelector(
+    (state) => state.cvDataReducer.professionalData,
+  )
 
   const [professionalQulification, setProfessionalQulification] = useState([
     {
-      designation: '',
-      organizationName: '',
-      com_department: '',
-      com_location: '',
-      from_employment: '',
-      to_employment: '',
-      com_reference: '',
+      designation: professionalData_[0] ? professionalData_[0].designation : '',
+      organizationName: professionalData_[0]
+        ? professionalData_[0].organizationName
+        : '',
+      com_department: professionalData_[0]
+        ? professionalData_[0].com_department
+        : '',
+      com_location: professionalData_[0]
+        ? professionalData_[0].com_location
+        : '',
+      from_employment: professionalData_[0]
+        ? professionalData_[0].from_employment
+        : '',
+      to_employment: professionalData_[0]
+        ? professionalData_[0].to_employment
+        : '',
+      com_reference: professionalData_[0]
+        ? professionalData_[0].com_reference
+        : '',
     },
   ])
 
-  const handleServiceAdd = () => {
+  const handleServiceAdd = (index) => {
+    var updateIndex = index + 1
     setProfessionalQulification([
       ...professionalQulification,
       {
-        instituteName: '',
-        passingYear: '',
-        levelOfEducation: '',
-        instituteLocation: '',
-        group: '',
+        designation: professionalData_[updateIndex]
+          ? professionalData_[updateIndex].designation
+          : '',
+        organizationName: professionalData_[updateIndex]
+          ? professionalData_[updateIndex].organizationName
+          : '',
+        com_department: professionalData_[updateIndex]
+          ? professionalData_[updateIndex].com_department
+          : '',
+        com_location: professionalData_[updateIndex]
+          ? professionalData_[updateIndex].com_location
+          : '',
+        from_employment: professionalData_[updateIndex]
+          ? professionalData_[updateIndex].from_employment
+          : '',
+        to_employment: professionalData_[updateIndex]
+          ? professionalData_[updateIndex].to_employment
+          : '',
+        com_reference: professionalData_[updateIndex]
+          ? professionalData_[updateIndex].com_reference
+          : '',
       },
     ])
     setFromDate([
@@ -105,6 +138,7 @@ const ProfessionalQulification = (props) => {
                     className="form-control designation"
                     placeholder="Enter your designation."
                     name="designation"
+                    value={professionalQulification[index].designation}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
@@ -121,6 +155,7 @@ const ProfessionalQulification = (props) => {
                     className="form-control organizationName"
                     placeholder="Enter company name."
                     name="organizationName"
+                    value={professionalQulification[index].organizationName}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
@@ -139,6 +174,7 @@ const ProfessionalQulification = (props) => {
                     className="form-control com_department"
                     placeholder="Enter department."
                     name="com_department"
+                    value={professionalQulification[index].com_department}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
@@ -155,6 +191,7 @@ const ProfessionalQulification = (props) => {
                     className="form-control com_location"
                     placeholder="Enter location."
                     name="com_location"
+                    value={professionalQulification[index].com_location}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
@@ -174,7 +211,11 @@ const ProfessionalQulification = (props) => {
                         type="text"
                         className="form-control input-background from_employment"
                         placeholder="From Date (M DD, YYYY)"
-                        value={fromdate.map((item) => item.dateset)[index]}
+                        value={
+                          fromdate.map((item) => item.dateset)[index] !== ''
+                            ? fromdate.map((item) => item.dateset)[index]
+                            : professionalQulification[index].from_employment
+                        }
                         disabled
                       />
                       <div class="input-group-prepend">
@@ -200,7 +241,11 @@ const ProfessionalQulification = (props) => {
                         <input
                           type="text"
                           className="form-control input-background to_employment"
-                          value={todate.map((item) => item.dateset)[index]}
+                          value={
+                            todate.map((item) => item.dateset)[index] !== ''
+                              ? todate.map((item) => item.dateset)[index]
+                              : professionalQulification[index].to_employment
+                          }
                           placeholder="To Date (MM, DD, YYYY)"
                           disabled
                         />
@@ -262,8 +307,9 @@ const ProfessionalQulification = (props) => {
                       className="form-control com_reference"
                       placeholder="Please share your immediate superior name, email/phone number."
                       aria-label="With textarea"
-                      rows="3"
+                      rows="5"
                       name="com_reference"
+                      value={professionalQulification[index].com_reference}
                       onChange={(event) => handleInput(index, event)}
                     ></textarea>
                   </div>
@@ -287,7 +333,7 @@ const ProfessionalQulification = (props) => {
                       <button
                         className="educationAdd"
                         title="Add More"
-                        onClick={handleServiceAdd}
+                        onClick={() => handleServiceAdd(index)}
                       >
                         <FaPlus size={15} color="white" /> Add More
                       </button>

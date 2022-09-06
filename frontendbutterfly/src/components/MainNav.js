@@ -32,9 +32,9 @@ const MainNav = () => {
             <Link to="/venus" className="nav-link">
               Venus
             </Link>
-            <Link to="/special-pairing" className="nav-link">
+            {/* <Link to="/special-pairing" className="nav-link">
               Special Pairing
-            </Link>
+            </Link> */}
             <Link
               to="/contact"
               style={{ paddingRight: '30px' }}

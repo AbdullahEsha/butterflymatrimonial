@@ -15,6 +15,7 @@ class CvData extends Model
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'image',
         'name',
@@ -37,17 +38,20 @@ class CvData extends Model
         'bloodGroup',
         'grownUpAt',
         'specialCondition',
-        'designation',
-        'organizationName',
-        'com_department',
-        'com_location',
-        'from_employment',
-        'to_employment',
-        'com_reference',
         'fatherName',
         'fatherOcupation',
         'motherName',
         'motherOcupation',
+        'profession',
+        'districtPreference',
+        'religionPreference',
+        'physicalStatus',
+        'ageMinimum',
+        'ageMaximum',
+        'heightMinimum',
+        'heightMaximum',
+        'skinTone',
+        'preference',
         'maritalStatus',
     ];
 }

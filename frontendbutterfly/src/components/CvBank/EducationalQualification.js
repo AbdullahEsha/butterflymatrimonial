@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import Select from 'react-select'
+import { useSelector } from 'react-redux'
 
 const options = [
   { label: 'Bangla', value: 'Bangla', name: 'group' },
@@ -81,13 +82,11 @@ const options = [
   },
   { label: 'LL.B', value: 'LL.B', name: 'group' },
   { label: 'Law', value: 'Law', name: 'group' },
-
   { label: 'Agronomy', value: 'Agronomy', name: 'group' },
   { label: 'Pharmacy', value: 'Pharmacy', name: 'group' },
   { label: 'Civil Engineering', value: 'Civil Engineering', name: 'group' },
   { label: 'Pathology', value: 'Pathology', name: 'group' },
   { label: 'Paramedical', value: 'Paramedical', name: 'group' },
-
   { label: 'Animation', value: 'Animation', name: 'group' },
   { label: 'Vocational', value: 'Vocational', name: 'group' },
   { label: 'Aviation', value: 'Aviation', name: 'group' },
@@ -96,25 +95,36 @@ const options = [
 ]
 
 const EducationalQulification = (props) => {
+  const eduData_ = useSelector((state) => state.cvDataReducer.educationalData)
+
   const [educationalQulification, setEducationalQulification] = useState([
     {
-      instituteName: '',
-      passingYear: '',
-      levelOfEducation: '',
-      instituteLocation: '',
-      group: '',
+      instituteName: eduData_[0] ? eduData_[0].instituteName : '',
+      passingYear: eduData_[0] ? eduData_[0].passingYear : '',
+      levelOfEducation: eduData_[0] ? eduData_[0].levelOfEducation : '',
+      instituteLocation: eduData_[0] ? eduData_[0].instituteLocation : '',
+      group: eduData_[0] ? eduData_[0].group : '',
     },
   ])
 
-  const handleServiceAdd = () => {
+  const handleServiceAdd = (index) => {
+    var updateIndex = index + 1
     setEducationalQulification([
       ...educationalQulification,
       {
-        instituteName: '',
-        passingYear: '',
-        levelOfEducation: '',
-        instituteLocation: '',
-        group: '',
+        instituteName: eduData_[updateIndex]
+          ? eduData_[updateIndex].instituteName
+          : '',
+        passingYear: eduData_[updateIndex]
+          ? eduData_[updateIndex].passingYear
+          : '',
+        levelOfEducation: eduData_[updateIndex]
+          ? eduData_[updateIndex].levelOfEducation
+          : '',
+        instituteLocation: eduData_[updateIndex]
+          ? eduData_[updateIndex].instituteLocation
+          : '',
+        group: eduData_[updateIndex] ? eduData_[updateIndex].group : '',
       },
     ])
   }
@@ -172,6 +182,7 @@ const EducationalQulification = (props) => {
                   <select
                     className="form-control levelOfEducation"
                     name="levelOfEducation"
+                    value={educationalQulification[index].levelOfEducation}
                     onChange={(event) => handleInput(index, event)}
                   >
                     <option value="" disabled selected>
@@ -197,6 +208,16 @@ const EducationalQulification = (props) => {
                     <Select
                       options={options}
                       className={`group_${index}`}
+                      defaultValue={{
+                        label:
+                          educationalQulification[index].group === ''
+                            ? 'Choose one.'
+                            : educationalQulification[index].group,
+                        value:
+                          educationalQulification[index].group === ''
+                            ? 'Choose one.'
+                            : educationalQulification[index].group,
+                      }}
                       theme={(theme) => ({
                         ...theme,
                         borderRadius: 3,
@@ -225,7 +246,7 @@ const EducationalQulification = (props) => {
                     className="form-control instituteName"
                     placeholder="Enter your institute name."
                     name="instituteName"
-                    value={educationalQulification.instituteName}
+                    value={educationalQulification[index].instituteName}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
@@ -244,7 +265,7 @@ const EducationalQulification = (props) => {
                     className="form-control instituteLocation"
                     placeholder="Enter your institute location."
                     name="instituteLocation"
-                    value={educationalQulification.instituteLocation}
+                    value={educationalQulification[index].instituteLocation}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
@@ -261,7 +282,7 @@ const EducationalQulification = (props) => {
                     className="form-control passingYear"
                     name="passingYear"
                     placeholder="mm/yyyy"
-                    value={educationalQulification.passingYear}
+                    value={educationalQulification[index].passingYear}
                     onChange={(event) => handleInput(index, event)}
                   />
                 </Col>
@@ -284,7 +305,7 @@ const EducationalQulification = (props) => {
                       <button
                         className="educationAdd"
                         title="Add More"
-                        onClick={handleServiceAdd}
+                        onClick={() => handleServiceAdd(index)}
                       >
                         <FaPlus size={15} color="white" /> Add More
                       </button>

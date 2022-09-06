@@ -39,6 +39,16 @@ return new class extends Migration {
             $table->text('fatherOcupation');
             $table->text('motherName');
             $table->text('motherOcupation');
+            $table->text('profession');
+            $table->text('districtPreference');
+            $table->text('religionPreference');
+            $table->text('physicalStatus');
+            $table->text('ageMinimum');
+            $table->text('ageMaximum');
+            $table->text('heightMinimum');
+            $table->text('heightMaximum');
+            $table->text('skinTone');
+            $table->text('preference');
             $table->text('maritalStatus');
             $table->timestamps();
         });

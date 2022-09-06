@@ -1,8 +1,90 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Row, Col, Container } from 'react-bootstrap'
 
-const Preview = (props) => {
-  const img = `${URL.createObjectURL(props.profileData.image)}`
+const ButterflyCvBank = () => {
+  const [cvdata, setCvData] = useState([])
+  const [edudata, setEduData] = useState([])
+  const [siblingData, setSiblingData] = useState([])
+  const [professionData, setProfessionData] = useState([])
+
+  const { id } = useParams()
+
+  useEffect(() => {
+    getCv()
+    getEdu()
+    getSibling()
+    getProfession()
+    return () => {
+      //console.log("removing...", e);
+    }
+  }, [])
+
+  const getCv = async () => {
+    fetch(`https://api.butterflymatrimonial.com/api/get/cv/${id}`, {})
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          setCvData(data)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
+
+  const getEdu = async () => {
+    fetch(
+      `https://api.butterflymatrimonial.com/api/get/education/qualification/${id}`,
+      {},
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          setEduData(data)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
+
+  const getSibling = async () => {
+    fetch(`https://api.butterflymatrimonial.com/api/get/sibling/${id}`, {})
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          setSiblingData(data)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
+  const getProfession = async () => {
+    fetch(`https://api.butterflymatrimonial.com/api/get/professional/${id}`, {})
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          setProfessionData(data)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
+
+  const img = `${URL.createObjectURL(
+    'https://api.butterflymatrimonial.com/' + cvdata.image,
+  )}`
 
   return (
     <>
@@ -29,69 +111,69 @@ const Preview = (props) => {
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Name:</b> {props.profileData.name}
+              <b>Name:</b> {cvdata.name}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Gender:</b> {props.profileData.gender}
+              <b>Gender:</b> {cvdata.gender}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Phone:</b> {props.profileData.phone}
+              <b>Phone:</b> {cvdata.phone}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Religion:</b> {props.profileData.religion}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h6>
-              <b>Email:</b> {props.profileData.email}
+              <b>Religion:</b> {cvdata.religion}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col>
             <h6>
-              <b>Present Address:</b> {props.profileData.presentAddress}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Division:</b> {props.profileData.divisionPresent}
-            </h6>
-          </Col>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Dristrict:</b> {props.profileData.dristrictPresent}
+              <b>Email:</b> {cvdata.email}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col>
             <h6>
-              <b>Permanent Address:</b> {props.profileData.parmanentAddress}
+              <b>Present Address:</b> {cvdata.presentAddress}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Division:</b> {props.profileData.divisionParmanent}
+              <b>Division:</b> {cvdata.divisionPresent}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Dristrict:</b> {props.profileData.dristrictParmanent}
+              <b>Dristrict:</b> {cvdata.dristrictPresent}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h6>
+              <b>Permanent Address:</b> {cvdata.parmanentAddress}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Division:</b> {cvdata.divisionParmanent}
+            </h6>
+          </Col>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Dristrict:</b> {cvdata.dristrictParmanent}
             </h6>
           </Col>
         </Row>
@@ -100,8 +182,8 @@ const Preview = (props) => {
             <h6>
               <b>Date Of Birth:</b>{' '}
               {`${
-                props.profileData.age
-                  ? new Date(props.profileData.age).toLocaleString('en-GB', {
+                cvdata.age
+                  ? new Date(cvdata.age).toLocaleString('en-GB', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
@@ -112,46 +194,45 @@ const Preview = (props) => {
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Limitations Or Special Case:</b>{' '}
-              {props.profileData.specialCase}
+              <b>Limitations Or Special Case:</b> {cvdata.specialCase}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Height:</b> {props.profileData.height}
+              <b>Height:</b> {cvdata.height}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Weight:</b> {props.profileData.weight}
+              <b>Weight:</b> {cvdata.weight}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Blood Group:</b> {props.profileData.bloodGroup}
+              <b>Blood Group:</b> {cvdata.bloodGroup}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Grown Up At:</b> {props.profileData.grownUpAt}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h6>
-              <b>Special Condition:</b> {props.profileData.specialCondition}
+              <b>Grown Up At:</b> {cvdata.grownUpAt}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col>
             <h6>
-              <b>About:</b> {props.profileData.about}
+              <b>Special Condition:</b> {cvdata.specialCondition}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h6>
+              <b>About:</b> {cvdata.about}
             </h6>
           </Col>
         </Row>
@@ -164,7 +245,7 @@ const Preview = (props) => {
             <hr />
           </Col>
         </Row>
-        {props.professionalData.map((item, index) => {
+        {professionData.map((item, index) => {
           return (
             <>
               <label>Profession {index + 1}</label>
@@ -224,7 +305,7 @@ const Preview = (props) => {
             <hr />
           </Col>
         </Row>
-        {props.educationalData.map((item, index) => {
+        {edudata.map((item, index) => {
           return (
             <>
               <label>Academic {index + 1}</label>
@@ -269,29 +350,29 @@ const Preview = (props) => {
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Father Name:</b> {props.familyData.fatherName}
+              <b>Father Name:</b> {cvdata.fatherName}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Ocupation:</b> {props.familyData.fatherOcupation}
+              <b>Ocupation:</b> {cvdata.fatherOcupation}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Mother Name:</b> {props.familyData.motherName}
+              <b>Mother Name:</b> {cvdata.motherName}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Ocupation:</b> {props.familyData.motherOcupation}
+              <b>Ocupation:</b> {cvdata.motherOcupation}
             </h6>
           </Col>
         </Row>
 
-        {props.siblingData.map((item, index) => {
+        {siblingData.map((item, index) => {
           return (
             <>
               <label>Sibling {index + 1}</label>
@@ -329,59 +410,56 @@ const Preview = (props) => {
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Profession:</b> {props.preferenceInfoData.profession}
+              <b>Profession:</b> {cvdata.profession}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Skin Tone:</b> {props.preferenceInfoData.skinTone}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Spouse Preference:</b>{' '}
-              {props.preferenceInfoData.spousePreference}
-            </h6>
-          </Col>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Preference:</b> {props.preferenceInfoData.preference}
+              <b>Skin Tone:</b> {cvdata.skinTone}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Religion:</b> {props.preferenceInfoData.religionPreference}
+              <b>Spouse Preference:</b> {cvdata.spousePreference}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Physical Status:</b> {props.preferenceInfoData.physicalStatus}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Age Range:</b> {props.preferenceInfoData.ageMinimum} to{' '}
-              {props.preferenceInfoData.ageMaximum}
-            </h6>
-          </Col>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Height Range:</b> {props.preferenceInfoData.heightMinimum} to{' '}
-              {props.preferenceInfoData.heightMaximum}
+              <b>Preference:</b> {cvdata.preference}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>District Preference:</b>{' '}
-              {props.preferenceInfoData.districtPreference}
+              <b>Religion:</b> {cvdata.religionPreference}
+            </h6>
+          </Col>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Physical Status:</b> {cvdata.physicalStatus}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Age Range:</b> {cvdata.ageMinimum} to {cvdata.ageMaximum}
+            </h6>
+          </Col>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Height Range:</b> {cvdata.heightMinimum} to{' '}
+              {cvdata.heightMaximum}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>District Preference:</b> {cvdata.districtPreference}
             </h6>
           </Col>
         </Row>
@@ -390,4 +468,4 @@ const Preview = (props) => {
   )
 }
 
-export default Preview
+export default ButterflyCvBank

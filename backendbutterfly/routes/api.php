@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\cvdataController;
 use App\Http\Controllers\edu_qualificationdataController;
-use App\Http\Controllers\preferencedataController;
 use App\Http\Controllers\siblingdataController;
 use App\Http\Controllers\professionaldataController;
 use App\Http\Controllers\contactController;
@@ -42,15 +41,6 @@ Route::post('/post/education/qualification', [
     Edu_qualificationdataController::class,
     'store',
 ]);
-//
-//
-//============================== Preference data api start ====================================================//
-Route::get('/get/preference/{id}', [
-    PreferencedataController::class,
-    'getDataByCvId',
-]);
-Route::get('/get/preference', [PreferencedataController::class, 'getData']);
-Route::post('/post/preference', [PreferencedataController::class, 'store']);
 //
 //
 //============================== Sibling data api end =========================================================//

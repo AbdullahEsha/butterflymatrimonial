@@ -40,14 +40,14 @@ em {
   background-color: #fff;
   border-color: #fc6375;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  box-shadow: 0 0 0 0.25rem #fc637538;
 }
 .form-groupx:active {
   color: #212529;
   background-color: #fff;
   border-color: #fc6375;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  box-shadow: 0 0 0 0.25rem #fc637538;
 }
 .form-groupx input {
   margin-left: 10px;
@@ -58,7 +58,22 @@ em {
 .form-groupx input:focus {
   box-shadow: none;
 }
+input#phoneNumber:active {
+  background-color: #fff;
+}
 .gender {
+  display: none;
+}
+.specialCaseCheck {
+  display: none;
+}
+.physicalStatusCheck {
+  display: none;
+}
+.preferenceCheck {
+  display: none;
+}
+.spousePreferenceCheck {
   display: none;
 }
 #date-change {
@@ -214,21 +229,21 @@ div.text_2 {
 }
 .text_position_3_milestone {
   text-align: -webkit-center;
-  margin-bottom: -20px;
+  margin-top: 100px;
 }
 .text_position_3_milestone h6 {
-  max-width: 722px;
+  max-width: 803px;
 }
 .text_position_3 {
   text-align: -webkit-center;
-  margin-top: 60px;
+  margin-top: 90px;
 }
-.venus_text_position_2 h6,
-.cvbank_text_position_1 h6,
-div.text_position_3 h6,
-.venus_text_position_3 h6,
-.venus_text_position_4 h6 {
+
+.venus_text_position_3 h6 {
   max-width: 722px;
+}
+div.text_position_3 h6 {
+  max-width: 682px;
 }
 .card_2 {
   text-align: center;
@@ -304,7 +319,7 @@ div.text_3 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  text-align: center;
+  text-align: -webkit-center;
   color: #ffffff;
 }
 .card {
@@ -400,14 +415,14 @@ li a {
   text-align: -webkit-center;
 }
 .about_text_position_1 h6 {
-  max-width: 722px;
+  max-width: 771px;
 }
 .about_text_position_2 {
   text-align: -webkit-center;
   margin-top: 70px;
 }
 .about_text_position_2 h6 {
-  max-width: 722px;
+  max-width: 755px;
 }
 .about_text_position_13 {
   text-align: -webkit-center;
@@ -420,17 +435,24 @@ li a {
 .venus_text_position_3,
 .cvbank_text_position_1,
 .text_padding_2 {
-  margin-top: 60px;
+  margin-top: 85px;
 }
-.venus_text_position_2 h6,
-.cvbank_text_position_1 h6,
-.text_position_2 h6,
+
 .about_text_position_13 h6,
-.venus_text_position_3 h6,
-.venus_text_position_4 h6,
-.cvbank_text_position_1 h6,
 .text_padding_2 h6 {
   max-width: 722px;
+}
+.cvbank_text_position_1 h6 {
+  max-width: 771px;
+}
+.venus_text_position_4 h6 {
+  max-width: 865px;
+}
+.venus_text_position_3 h6 {
+  max-width: 727px;
+}
+.text_position_2 h6 {
+  max-width: 771px;
 }
 .venus_text_position_2 {
   color: #ffffff;
@@ -447,7 +469,7 @@ li a {
   max-width: 606px;
 }
 .venus_text_position_2 h6 {
-  max-width: 722px;
+  max-width: 771px;
 }
 .ber_position_about {
   color: #ffffff;
