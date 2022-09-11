@@ -80,6 +80,18 @@ class cvdataController extends Controller
         }
     }
 
+    public function cvDestroyById($id)
+    {
+        try {
+            $CvDataDelete = CvData::find($id);
+            $CvDataDelete->delete();
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
     public function getCvById($id)
     {
         try {
@@ -103,6 +115,18 @@ class cvdataController extends Controller
             return response()->json([
                 'message' => 'Marital Status has just been updated to Married.',
             ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function getMaxId()
+    {
+        try {
+            $maxid = CvData::max('id');
+            return $maxid;
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),

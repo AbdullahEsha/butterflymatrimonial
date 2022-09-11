@@ -18,7 +18,7 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 const CVBank = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState('ProfileInformation')
-  const [cvData, setCvData] = useState([])
+  const [cvMaxId, setCvMaxId] = useState()
   const [profileData, setProfileData] = useState({})
   const [professionalData, setProfessionalData] = useState({})
   const [familyData, setFamilyData] = useState({})
@@ -26,8 +26,7 @@ const CVBank = () => {
   const [siblingData, setSiblingData] = useState({})
   const [preferenceData, setPreferenceData] = useState({})
   const [preferenceInfoData, setPreferenceInfoData] = useState({})
-
-  // console.log(educationalData)
+  const [galleryData, setGalleryData] = useState({})
 
   const validation = () => {
     if (data === 'ProfileInformation') {
@@ -300,8 +299,14 @@ const CVBank = () => {
   const updatePreferenceData = (g) => {
     setPreferenceData(g)
   }
+  const updateGalleryData = (h) => {
+    setGalleryData(h)
+  }
 
-  //console.log('preferenceInfoData', preferenceInfoData)
+  // console.log(galleryData.imageFill ? typeof galleryData.imageFill : '')
+  if (galleryData.imageFill) {
+    galleryData.imageFill.map((item) => console.log(item))
+  }
 
   const exportPdf = () => {
     var doc = new jsPDF('p', 'mm', 'a4')
@@ -662,6 +667,7 @@ const CVBank = () => {
     doc.save(profileData.name + ' Cv.pdf')
   }
 
+  console.log('profileData', profileData.image)
   const addCV = (event) => {
     event.preventDefault()
     const formData = new FormData()
@@ -711,76 +717,106 @@ const CVBank = () => {
       confirmButtonText: 'Yes, submit it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        //insert cvdata
+        // insert cvdata
         axios
-          .post(
-            `https://api.butterflymatrimonial.com/api/post/cv/new`,
-            formData,
-          )
+          .post(`http://localhost:8000/api/post/cv/new`, formData)
           .then((data) => {
-            console.log('data', data)
             if (data.data.message === 'Your CV has just been stored.') {
               siblingData.map((item) =>
                 axios
-                  .post(
-                    `https://api.butterflymatrimonial.com/api/post/sibling`,
-                    {
-                      name: item.name,
-                      ocupation: item.ocupation,
-                      details: item.details,
-                      cvdata_id: cvData.length + 1,
-                    },
-                  )
+                  .post(`http://localhost:8000/api/post/sibling`, {
+                    name: item.name,
+                    ocupation: item.ocupation,
+                    details: item.details,
+                    cvdata_id: cvMaxId + 1,
+                  })
+                  .then((data) => {
+                    if (
+                      data.data.message ===
+                      'Your sibling data has just been stored.'
+                    ) {
+                      educationalData.map((item) =>
+                        axios
+                          .post(
+                            `http://localhost:8000/api/post/education/qualification`,
+                            {
+                              instituteName: item.instituteName,
+                              passingYear: item.passingYear,
+                              levelOfEducation: item.levelOfEducation,
+                              instituteLocation: item.instituteLocation,
+                              group: item.group,
+                              cvdata_id: cvMaxId + 1,
+                            },
+                          )
+                          .then((data) => {
+                            if (
+                              data.data.message ===
+                              'Education qualification data has just been stored.'
+                            ) {
+                              professionalData.map((item) =>
+                                axios
+                                  .post(
+                                    `http://localhost:8000/api/post/professional`,
+                                    {
+                                      designation: item.designation,
+                                      organizationName: item.organizationName,
+                                      com_department: item.com_department,
+                                      com_location: item.com_location,
+                                      from_employment: item.from_employment,
+                                      to_employment: item.to_employment,
+                                      com_reference: item.com_reference,
+                                      cvdata_id: cvMaxId + 1,
+                                    },
+                                  )
+                                  .then((data) => {
+                                    if (
+                                      data.data.message ===
+                                      'Your professional data has just been stored.'
+                                    ) {
+                                      galleryData.imageFill.forEach((item) => {
+                                        const formData2 = new FormData()
+                                        formData2.append('imageFill', item)
+                                        formData2.append(
+                                          'cvdata_id',
+                                          cvMaxId + 1,
+                                        )
+                                        axios
+                                          .post(
+                                            `http://localhost:8000/api/post/gallery-image`,
+                                            formData2,
+                                          )
+                                          .catch(({ response }) => {
+                                            console.log('galleryData', response)
+                                          })
+                                      })
+                                    }
+                                  })
+                                  .catch(({ response }) => {
+                                    console.log('professionalData', response)
+                                  }),
+                              )
+                            }
+                          })
+                          .catch(({ response }) => {
+                            console.log('Educational ', response)
+                          }),
+                      )
+                    }
+                  })
                   .catch(({ response }) => {
                     console.log('Sibling ', response)
                   }),
               )
-              educationalData.map((item) =>
-                axios
-                  .post(
-                    `https://api.butterflymatrimonial.com/api/post/education/qualification`,
-                    {
-                      instituteName: item.instituteName,
-                      passingYear: item.passingYear,
-                      levelOfEducation: item.levelOfEducation,
-                      instituteLocation: item.instituteLocation,
-                      group: item.group,
-                      cvdata_id: cvData.length + 1,
-                    },
-                  )
-                  .catch(({ response }) => {
-                    console.log('Educational ', response)
-                  }),
-              )
-              professionalData.map((item) =>
-                axios
-                  .post(
-                    `https://api.butterflymatrimonial.com/api/post/professional`,
-                    {
-                      designation: item.designation,
-                      organizationName: item.organizationName,
-                      com_department: item.com_department,
-                      com_location: item.com_location,
-                      from_employment: item.from_employment,
-                      to_employment: item.to_employment,
-                      com_reference: item.com_reference,
-                      cvdata_id: cvData.length + 1,
-                    },
-                  )
-                  .catch(({ response }) => {
-                    console.log('Educational ', response)
-                  }),
-              )
+
               // exportPdf()
               //submission confirmation
               Swal.fire({
-                title: `${
-                  'Your CV Link: https://www.butterflymatrimonial.com/butterfly-cv-bank/' +
-                  cvData.length +
-                  1
-                }`,
+                title: `Success.`,
                 icon: 'success',
                 text: data.data.message,
+                footer: `<a href="https://butterflymatrimonial.com/butterfly-cv-bank/${
+                  cvMaxId + 1
+                }">Please check Your CV url.</a>`,
               })
             } else {
               Swal.fire({
@@ -810,20 +846,19 @@ const CVBank = () => {
   }, [])
 
   const getAllCv = async () => {
-    fetch(`https://api.butterflymatrimonial.com/api/get/all/cv`, {})
+    fetch(`https://api.butterflymatrimonial.com/api/get/getMaxId`, {})
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
           console.log('vul')
         } else {
-          setCvData(data)
+          setCvMaxId(data)
         }
       })
       .catch((err) => {
         console.log('pro erro', err)
       })
   }
-
   return (
     <div style={{ backgroundColor: '#ededed' }}>
       <MainNav />
@@ -968,6 +1003,7 @@ const CVBank = () => {
           )}
           {data === 'FamilyMember' && (
             <FamilyMember
+              updateGalleryData={updateGalleryData}
               updateFamilyData={updateFamilyData}
               updateSiblingData={updateSiblingData}
             />

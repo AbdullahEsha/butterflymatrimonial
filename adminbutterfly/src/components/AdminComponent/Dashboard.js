@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col } from 'react-bootstrap'
 import logo from '../../asset/image/butterfly.png'
 import { AiOutlineUser } from 'react-icons/ai'
 import { FaFemale, FaMale } from 'react-icons/fa'

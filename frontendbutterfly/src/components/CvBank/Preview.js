@@ -8,7 +8,7 @@ const Preview = (props) => {
     <>
       <Container
         style={{ marginRight: '50px' }}
-        className="cv_bank_container21"
+        className="cv_bank_container21 preview-content"
       >
         <Row>
           <Col>

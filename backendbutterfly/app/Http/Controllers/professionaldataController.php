@@ -51,7 +51,7 @@ class professionaldataController extends Controller
             $professionaldataStore->save();
 
             return response()->json([
-                'message' => 'Your data has just been stored.',
+                'message' => 'Your professional data has just been stored.',
             ]);
         } catch (\Exception $e) {
             return response()->json([

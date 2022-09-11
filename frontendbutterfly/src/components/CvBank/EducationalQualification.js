@@ -39,7 +39,7 @@ const options = [
   { label: 'Sociology', value: 'Sociology', name: 'group' },
   { label: 'Studies of Islam', value: 'Studies of Islam', name: 'group' },
   { label: 'Home Economics ', value: 'Home Economics ', name: 'group' },
-  { label: 'General Science', value: 'General Science', name: 'group' },
+  { label: 'Science', value: 'Science', name: 'group' },
   {
     label: 'Computer Application',
     value: 'Computer Application',
@@ -171,13 +171,10 @@ const EducationalQulification = (props) => {
               </div>
 
               <Row className="row-padding custom-font-size">
-                <Col xs={12} md={6} className="">
+                <Col xs={12} md={6}>
                   <h5>
                     Level of Education
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <select
                     className="form-control levelOfEducation"
@@ -199,10 +196,7 @@ const EducationalQulification = (props) => {
                 <Col xs={0} md={6}>
                   <h5>
                     Concentration/Major/Group
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <div className="App2">
                     <Select
@@ -236,10 +230,7 @@ const EducationalQulification = (props) => {
                 <Col xs={12} md={12}>
                   <h5>
                     Institute Name
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
                     type="text"
@@ -255,10 +246,7 @@ const EducationalQulification = (props) => {
                 <Col xs={12} md={6}>
                   <h5>
                     Institute Location
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
                     type="text"
@@ -272,10 +260,7 @@ const EducationalQulification = (props) => {
                 <Col xs={12} md={6}>
                   <h5>
                     Year of Passing
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
                     type="month"

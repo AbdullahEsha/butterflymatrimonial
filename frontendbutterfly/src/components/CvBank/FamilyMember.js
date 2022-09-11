@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
+import ImageUploader from 'react-images-upload'
 
 const FamilyMember = (props) => {
   const familyData_ = useSelector((state) => state.cvDataReducer.familyData)
   const siblingData_ = useSelector((state) => state.cvDataReducer.siblingData)
+  const [galleryImage, setGalleryImage] = useState({ imageFill: '' })
   const [sibling, setSibling] = useState([
     {
       name: siblingData_[0] ? siblingData_[0].name : '',
@@ -42,8 +44,7 @@ const FamilyMember = (props) => {
     motherOcupation: familyData_ ? familyData_.motherOcupation : '',
   })
 
-  const { updateFamilyData } = props
-  const { updateSiblingData } = props
+  const { updateFamilyData, updateSiblingData, updateGalleryData } = props
 
   const handleInput = (index, event) => {
     const values = [...sibling]
@@ -52,9 +53,17 @@ const FamilyMember = (props) => {
   }
 
   useEffect(() => {
+    updateGalleryData(galleryImage)
     updateFamilyData(familyMember)
     updateSiblingData(sibling)
-  }, [familyMember, updateFamilyData, sibling, updateSiblingData])
+  }, [
+    familyMember,
+    updateFamilyData,
+    sibling,
+    updateSiblingData,
+    galleryImage,
+    updateGalleryData,
+  ])
 
   return (
     <>
@@ -132,6 +141,29 @@ const FamilyMember = (props) => {
                   motherOcupation: event.target.value,
                 })
               }
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={6}>
+            <h5>
+              Add Image To Gallery
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <ImageUploader
+              withIcon={false}
+              withPreview={true}
+              buttonText="Choose Images"
+              label="Max file size: 2mb | accepted: jpg, png, jpeg"
+              // value={data.images}
+              // defaultImages={data.images}
+              name="images"
+              onChange={(image) => {
+                setGalleryImage({ ...galleryImage, imageFill: image })
+              }}
+              imgExtension={['.jpg', '.png', '.jpeg']}
+              maxFileSize={2097152}
+              className="mb-4"
             />
           </Col>
         </Row>

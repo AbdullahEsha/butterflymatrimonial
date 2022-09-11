@@ -258,6 +258,7 @@ const ProfileInformation = (props) => {
                 className="form-control phone"
                 placeholder="013********"
                 id="phoneNumber"
+                name="phone"
                 value={profileInformation.phone}
                 onChange={(event) => {
                   setProfileInformation({
@@ -276,6 +277,7 @@ const ProfileInformation = (props) => {
             <select
               className="form-control religion"
               placeholder="Choose One"
+              name="religion"
               value={profileInformation.religion}
               onChange={(event) =>
                 setProfileInformation({
@@ -305,6 +307,7 @@ const ProfileInformation = (props) => {
               type="email"
               className="form-control email"
               placeholder="Enter your email id."
+              name="email"
               value={profileInformation.email}
               onChange={(event) =>
                 setProfileInformation({
@@ -323,6 +326,7 @@ const ProfileInformation = (props) => {
               type="date"
               data-date-format="mm/dd/yyyy"
               title="mm/dd/yyyy"
+              name="dob"
               className="form-control age"
               value={profileInformation.age}
               onChange={(event) =>
@@ -344,6 +348,7 @@ const ProfileInformation = (props) => {
               type="text"
               className="form-control presentAddress"
               placeholder="Enter your present address."
+              name="present-address"
               value={profileInformation.presentAddress}
               onChange={(event) =>
                 setProfileInformation({
@@ -365,6 +370,7 @@ const ProfileInformation = (props) => {
               className="form-control divisionPresent"
               id="divisionPresent"
               placeholder="Enter your division."
+              name="present-division"
               value={profileInformation.divisionPresent}
               onChange={(event) =>
                 setProfileInformation({
@@ -383,6 +389,7 @@ const ProfileInformation = (props) => {
               type="text"
               className="form-control dristrictPresent"
               placeholder="Enter your dristrict."
+              name="present-dristrict"
               value={profileInformation.dristrictPresent}
               onChange={(event) =>
                 setProfileInformation({
@@ -403,6 +410,7 @@ const ProfileInformation = (props) => {
               type="text"
               className="form-control parmanentAddress"
               placeholder="Enter your present address."
+              name="parmanent-address"
               value={profileInformation.parmanentAddress}
               onChange={(event) =>
                 setProfileInformation({
@@ -423,6 +431,7 @@ const ProfileInformation = (props) => {
               type="text"
               className="form-control divisionParmanent"
               placeholder="Enter your division."
+              name="parmanent-division"
               value={profileInformation.divisionParmanent}
               onChange={(event) =>
                 setProfileInformation({
@@ -441,6 +450,7 @@ const ProfileInformation = (props) => {
               type="text"
               className="form-control dristrictParmanent"
               placeholder="Enter your dristrict."
+              name="parmanent-dristrict"
               value={profileInformation.dristrictParmanent}
               onChange={(event) =>
                 setProfileInformation({
@@ -460,6 +470,7 @@ const ProfileInformation = (props) => {
             <select
               class="form-control height"
               placeholder="Choose One"
+              name="height"
               value={profileInformation.height}
               onChange={(event) =>
                 setProfileInformation({
@@ -510,6 +521,7 @@ const ProfileInformation = (props) => {
               step="5"
               className="form-control weight"
               placeholder="Enter your weight."
+              name="weight"
               value={profileInformation.weight}
               onChange={(event) =>
                 setProfileInformation({
@@ -529,6 +541,7 @@ const ProfileInformation = (props) => {
             <select
               className="form-control bloodGroup"
               placeholder="Choose One"
+              name="blood-group"
               value={profileInformation.bloodGroup}
               onChange={(event) =>
                 setProfileInformation({
@@ -559,6 +572,7 @@ const ProfileInformation = (props) => {
               type="text"
               className="form-control grownUpAt"
               placeholder="Enter the Country and City name."
+              name="grownUpAt"
               value={profileInformation.grownUpAt}
               onChange={(event) => {
                 setProfileInformation({
@@ -728,6 +742,7 @@ const ProfileInformation = (props) => {
                 className="form-control specialCondition"
                 placeholder="Please share if you have any disabilities, low eye vision etc."
                 aria-label="With textarea"
+                name="special-condition"
                 rows="7"
                 value={profileInformation.specialCondition}
                 onChange={(event) => {
@@ -751,6 +766,7 @@ const ProfileInformation = (props) => {
                 className="form-control about"
                 placeholder="Write about yourself."
                 aria-label="With textarea"
+                name="about"
                 rows="7"
                 value={profileInformation.about}
                 onChange={(event) =>

@@ -27,7 +27,11 @@ const Contact = () => {
           icon: 'success',
           text: data.message,
         }).then(function () {
-          window.location = 'https://butterflymatrimonial.com/contact'
+          setContactData({
+            name: '',
+            email: '',
+            question: '',
+          })
         })
       })
       .catch(({ response }) => {

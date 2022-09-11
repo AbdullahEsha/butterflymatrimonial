@@ -4,6 +4,7 @@ use App\Http\Controllers\cvdataController;
 use App\Http\Controllers\edu_qualificationdataController;
 use App\Http\Controllers\siblingdataController;
 use App\Http\Controllers\professionaldataController;
+use App\Http\Controllers\galleryImageController;
 use App\Http\Controllers\contactController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 //============================== Cv data api start ============================================================//
+Route::get('/get/getMaxId', [CvdataController::class, 'getMaxId']);
 Route::get('/get/all/cv', [CvdataController::class, 'getData']);
 Route::post('/post/cv/new', [CvdataController::class, 'store']);
 Route::get('/get/cv/{id}', [CvdataController::class, 'getCvById']);
@@ -26,6 +28,7 @@ Route::post('/update/cv/married/{id}', [
     CvdataController::class,
     'updateCvToMarried',
 ]);
+Route::post('/destroy-cv/{id}', [CvdataController::class, 'cvDestroyById']);
 //
 //
 //============================== Education Qualification data api start ========================================//
@@ -58,6 +61,17 @@ Route::get('/get/professional/{id}', [
     'getDataByCvId',
 ]);
 Route::post('/post/professional', [ProfessionaldataController::class, 'store']);
+//
+//
+//============================== Gallery Image api end =========================================================//
+Route::get('/get/gallery-image/{id}', [
+    galleryImageController::class,
+    'getGalleryImageByCvId',
+]);
+Route::post('/post/gallery-image', [
+    galleryImageController::class,
+    'storeGalleryImage',
+]);
 //
 //
 //============================== Contact data api end =========================================================//

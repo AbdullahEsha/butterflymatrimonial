@@ -256,7 +256,7 @@ function Home() {
           <Col xs={12} md={4}>
             <div className="card">
               <img src={card_3} alt="card_3" />
-              <h3>Salman & Julekha</h3>
+              <h3>Pritty & Hasib</h3>
               <h6>
                 Butterfly & we’ve Kicked of our Journey almost at the same time.
                 Perfection, proper communication, Timeliness and Technological

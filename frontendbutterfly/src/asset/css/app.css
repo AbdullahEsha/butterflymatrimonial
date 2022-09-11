@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;900&display=swap');
 
 * {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Urbanist', sans-serif !important;
 }
 h1 {
   letter-spacing: 1px;
@@ -29,6 +29,16 @@ em {
 }
 .berPadd img {
   height: 75px;
+}
+.gallery-image img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.butterfly-gallery-link {
+  color: #fc6375;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.158);
+  font-weight: 500;
 }
 .form-groupx {
   border: 1px solid #ced4da;
@@ -437,7 +447,31 @@ li a {
 .text_padding_2 {
   margin-top: 85px;
 }
-
+.cv-bank-butterfly {
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 7px 7px 7px #0c0c0c4f;
+}
+.cv-bank-butterfly div div h6 {
+  line-height: 25px;
+}
+.fileContainer {
+  border: 0.5px solid #0000002e;
+  border-radius: 5px !important;
+}
+.cv-bank-butterfly label,
+.preview-content label {
+  color: #fc6375;
+  font-size: 18px;
+  font-weight: 600;
+}
+.cv-bank-butterfly-outside {
+  background-color: #ced4da;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  height: 100%;
+}
 .about_text_position_13 h6,
 .text_padding_2 h6 {
   max-width: 722px;

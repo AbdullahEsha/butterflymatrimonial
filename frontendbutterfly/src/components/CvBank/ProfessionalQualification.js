@@ -128,10 +128,7 @@ const ProfessionalQulification = (props) => {
                 <Col xs={12} md={6}>
                   <h5>
                     Designation
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
                     type="text"
@@ -145,10 +142,7 @@ const ProfessionalQulification = (props) => {
                 <Col xs={12} md={6}>
                   <h5>
                     Company Name
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
                     type="text"
@@ -164,10 +158,7 @@ const ProfessionalQulification = (props) => {
                 <Col xs={12} md={6}>
                   <h5>
                     Department
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
                     type="text"
@@ -181,10 +172,7 @@ const ProfessionalQulification = (props) => {
                 <Col xs={12} md={6}>
                   <h5>
                     Location
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
                     type="text"
@@ -199,10 +187,7 @@ const ProfessionalQulification = (props) => {
               <Row className="row-padding">
                 <h5>
                   Employment Period
-                  <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                    *
-                  </span>
-                  :
+                  <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                 </h5>
                 <Col xs={12} md={6}>
                   <div class="from-group">
@@ -297,10 +282,7 @@ const ProfessionalQulification = (props) => {
                 <Col xs={12} md={12}>
                   <h5>
                     Reference
-                    <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                      *
-                    </span>
-                    :
+                    <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <div class="input-group">
                     <textarea

@@ -7,6 +7,7 @@ const PreferenceInformation = (props) => {
   const preferenceInfoData_ = useSelector(
     (state) => state.cvDataReducer.preferenceInfoData,
   )
+  const profileData_ = useSelector((state) => state.cvDataReducer.profileData)
   const [preferenceInformation, setPreferenceInformation] = useState({
     profession: preferenceInfoData_ ? preferenceInfoData_.profession : '',
     districtPreference: preferenceInfoData_
@@ -72,14 +73,12 @@ const PreferenceInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Profession
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <select
               class="form-control profession"
               placeholder="Choose One"
+              name="profession"
               value={preferenceInformation.profession}
               onChange={(event) => {
                 setPreferenceInformation({
@@ -102,14 +101,12 @@ const PreferenceInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Skin Tone
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <select
               class="form-control skinTone"
               placeholder="Choose One"
+              name="skin-tone"
               value={preferenceInformation.skinTone}
               onChange={(event) => {
                 setPreferenceInformation({
@@ -134,16 +131,14 @@ const PreferenceInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Age Range(kg)
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <div className="row">
               <div className="col-sm-6">
                 <select
                   class="form-control ageMinimum"
                   placeholder="Choose One"
+                  name="minimum-age"
                   value={preferenceInformation.ageMinimum}
                   onChange={(event) => {
                     setPreferenceInformation({
@@ -178,6 +173,7 @@ const PreferenceInformation = (props) => {
                 <select
                   class="form-control ageMaximum"
                   placeholder="Choose One"
+                  name="maximum-age"
                   value={preferenceInformation.ageMaximum}
                   onChange={(event) => {
                     setPreferenceInformation({
@@ -214,16 +210,14 @@ const PreferenceInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Height Range
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <div className="row">
               <div className="col-sm-6">
                 <select
                   class="form-control heightMinimum"
                   placeholder="Choose One"
+                  name="minimum-height"
                   value={preferenceInformation.heightMinimum}
                   onChange={(event) => {
                     setPreferenceInformation({
@@ -266,6 +260,7 @@ const PreferenceInformation = (props) => {
                 <select
                   class="form-control heightMaximum"
                   placeholder="Choose One"
+                  name="maximum-height"
                   value={preferenceInformation.heightMaximum}
                   onChange={(event) => {
                     setPreferenceInformation({
@@ -311,14 +306,12 @@ const PreferenceInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Religion
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <select
               class="form-control religionPreference"
               placeholder="Choose One"
+              name="religionPreference"
               value={preferenceInformation.religionPreference}
               onChange={(event) => {
                 setPreferenceInformation({
@@ -331,21 +324,19 @@ const PreferenceInformation = (props) => {
                 Choose One
               </option>
               <option value="Practicing">Practicing</option>
-              <option value="Modern">Modern</option>
               <option value="Neutral">Neutral</option>
+              <option value="Modern">Modern</option>
             </select>
           </Col>
           <Col xs={12} md={6}>
             <h5>
               District
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <select
               class="form-control districtPreference"
               placeholder="Choose One"
+              name="district-preference"
               value={preferenceInformation.districtPreference}
               onChange={(event) => {
                 setPreferenceInformation({
@@ -360,7 +351,11 @@ const PreferenceInformation = (props) => {
               <option value="Inside Barisal, Noakhali, Comilla, Chandpur">
                 Inside Barisal, Noakhali, Comilla, Chandpur
               </option>
-              <option value="Own">Own</option>
+              <option
+                value={profileData_ ? profileData_.divisionParmanent : 'Dhaka'}
+              >
+                {profileData_ ? profileData_.divisionParmanent : 'Dhaka'}
+              </option>
               <option value="Neutral">Neutral</option>
             </select>
           </Col>
@@ -369,7 +364,7 @@ const PreferenceInformation = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Annual Income Range
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
+              <span  style={{ color: 'red', fontSize: '24px' }}>
                 *
               </span>
               :
@@ -490,10 +485,7 @@ const PreferenceInformation = (props) => {
           <Col xs={12} md={12}>
             <h5>
               Preference
-              <span class="" style={{ color: 'red', fontSize: '24px' }}>
-                *
-              </span>
-              :
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <div class="form-check">
               <input

@@ -39,6 +39,7 @@ return new class extends Migration {
             $table->text('fatherOcupation');
             $table->text('motherName');
             $table->text('motherOcupation');
+            $table->json('galleryImage');
             $table->text('profession');
             $table->text('districtPreference');
             $table->text('religionPreference');

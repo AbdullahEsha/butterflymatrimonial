@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom'
 import { useAuth } from './auth'
 import { useNavigate } from 'react-router-dom'
 import Fuse from 'fuse.js'
+import axios from 'axios'
 import { MdDeleteForever, MdOutlineCalendarViewDay } from 'react-icons/md'
 import Select from 'react-select'
+import Swal from 'sweetalert2'
 
 const options = [
   { label: 'Secondary', value: 'Secondary', name: 'group' },
@@ -92,6 +94,30 @@ const DisplayAllCV = () => {
       .catch((err) => {
         console.log('pro erro', err)
       })
+  }
+
+  const removeOneCv = async (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .post(`https://api.butterflymatrimonial.com/api/destroy-cv/${id}`)
+          .then(() => {
+            Swal.fire('Deleted!', 'Cv has been deleted.', 'success')
+            getAllCv()
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+    })
   }
 
   const handleInput = async (event) => {
@@ -476,6 +502,7 @@ const DisplayAllCV = () => {
                             <button
                               className="btn btn-outline-danger"
                               title="Delete"
+                              onClick={() => removeOneCv(item.id)}
                             >
                               <MdDeleteForever size={20} />
                             </button>

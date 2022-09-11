@@ -32,7 +32,7 @@ class siblingdataController extends Controller
             $siblingDataStore->save();
 
             return response()->json([
-                'message' => 'Your data has just been stored.',
+                'message' => 'Your sibling data has just been stored.',
             ]);
         } catch (\Exception $e) {
             return response()->json([

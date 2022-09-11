@@ -42,6 +42,7 @@ class CvData extends Model
         'fatherOcupation',
         'motherName',
         'motherOcupation',
+        'galleryImage',
         'profession',
         'districtPreference',
         'religionPreference',

@@ -22,6 +22,7 @@ import Failed from './components/Failed'
 import { Provider } from 'react-redux'
 import store from './store'
 import ButterflyCvBank from './components/ButterflyCvBank'
+import ButterflyGallery from './components/ButterflyGallery'
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="cv-bank" element={<CVBank />} />
           <Route path="butterfly-cv-bank/:id" element={<ButterflyCvBank />} />
+          <Route path="butterfly-gallery/:id" element={<ButterflyGallery />} />
           <Route
             path="acceptable-use-policy"
             element={<AcceptableUsePolicy />}

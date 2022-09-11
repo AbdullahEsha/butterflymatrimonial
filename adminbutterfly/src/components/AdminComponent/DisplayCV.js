@@ -11,7 +11,6 @@ import jsPDF from 'jspdf'
 const DisplayCV = () => {
   const [cvdata, setCvData] = useState([])
   const [edudata, setEduData] = useState([])
-  const [preferenceData, setPreferenceData] = useState([])
   const [siblingData, setSiblingData] = useState([])
   const [professionData, setProfessionData] = useState([])
 
@@ -32,7 +31,6 @@ const DisplayCV = () => {
   useEffect(() => {
     getCv()
     getEdu()
-    getPreference()
     getSibling()
     getProfession()
     return () => {
@@ -66,21 +64,6 @@ const DisplayCV = () => {
           console.log('vul')
         } else {
           setEduData(data)
-        }
-      })
-      .catch((err) => {
-        console.log('pro erro', err)
-      })
-  }
-
-  const getPreference = async () => {
-    fetch(`https://api.butterflymatrimonial.com/api/get/preference/${id}`, {})
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          console.log('vul')
-        } else {
-          setPreferenceData(data)
         }
       })
       .catch((err) => {
@@ -265,12 +248,7 @@ const DisplayCV = () => {
 
     doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(
-      127.5,
-      124,
-      `${preferenceData.map((item) => item.preference)}`,
-      'left',
-    )
+    doc.text(127.5, 124, `${cvdata.preference}`, 'left')
 
     doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
@@ -563,6 +541,7 @@ const DisplayCV = () => {
     doc.save(cvdata.name + ' Cv.pdf')
   }
 
+  console.log(cvdata)
   return (
     <>
       <div class="sidebar">
@@ -602,19 +581,17 @@ const DisplayCV = () => {
           </Row>
           <Row>
             <Col>
-              <img
-                src={'https://api.butterflymatrimonial.com/' + cvdata.image}
-                id="image"
-                alt="mage"
-                height="150px"
-              />
-              <br />
+              <div className="previewImg">
+                <img
+                  src={'https://api.butterflymatrimonial.com/' + cvdata.image}
+                  alt="previewImg"
+                />
+              </div>
               <br />
             </Col>
           </Row>
           <Row>
             <Col xs={6} md={6}>
-              {' '}
               <h6>
                 <b>Name:</b> {cvdata.name}
               </h6>
@@ -666,7 +643,7 @@ const DisplayCV = () => {
           <Row>
             <Col>
               <h6>
-                <b>Parmanent Address:</b> {cvdata.parmanentAddress}
+                <b>Permanent Address:</b> {cvdata.parmanentAddress}
               </h6>
             </Col>
           </Row>
@@ -706,131 +683,6 @@ const DisplayCV = () => {
           <Row>
             <Col xs={6} md={6}>
               <h6>
-                <b>Spouse Preference:</b> {cvdata.spousePreference}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Preference:</b>{' '}
-                {preferenceData.map((item) => {
-                  return item.preference + ' '
-                })}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
-                <b>About:</b> {cvdata.about}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Professional Qualification:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          {professionData.map((item, index) => {
-            return (
-              <>
-                <h5 style={{ color: '#ff425c' }}>Company {index + 1}</h5>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Company Name:</b> {item.organizationName}
-                    </h6>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Designation:</b> {item.designation}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Company Department:</b> {item.com_department}
-                    </h6>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Company Location:</b> {item.com_location}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Employment Period:</b> {item.from_employment} to{' '}
-                      {item.to_employment}
-                    </h6>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Reference:</b> {item.com_reference}
-                    </h6>
-                  </Col>
-                </Row>
-              </>
-            )
-          })}
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Educational Qualification:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          {edudata.map((item, index) => {
-            return (
-              <>
-                <h5 style={{ color: '#ff425c' }}>Academic {index + 1}</h5>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Institute Name:</b> {item.instituteName}(
-                      {item.passingYear})
-                    </h6>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Institute Location:</b> {item.instituteLocation}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Group:</b> {item.group}
-                    </h6>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Level Of Education:</b> {item.levelOfEducation}
-                    </h6>
-                  </Col>
-                </Row>
-              </>
-            )
-          })}
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Personal Information:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
                 <b>Height:</b> {cvdata.height}
               </h6>
             </Col>
@@ -859,6 +711,115 @@ const DisplayCV = () => {
               </h6>
             </Col>
           </Row>
+          <Row>
+            <Col>
+              <h6>
+                <b>About:</b> {cvdata.about}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <br />
+              <h4>
+                <b>Professional Information:</b>
+              </h4>
+              <hr />
+            </Col>
+          </Row>
+          {professionData.map((item, index) => {
+            return (
+              <>
+                <label>Profession {index + 1}</label>
+                <Row>
+                  <Col xs="12" md="6">
+                    <h6>
+                      <b>Designation:</b>
+                      {item.designation}
+                    </h6>
+                  </Col>
+                  <Col xs="12" md="6">
+                    <h6>
+                      <b>Organization Name:</b>
+                      {item.organizationName}
+                    </h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs="12" md="6">
+                    <h6>
+                      <b>Department:</b>
+                      {item.com_department}
+                    </h6>
+                  </Col>
+                  <Col xs="12" md="6">
+                    <h6>
+                      <b>Location:</b>
+                      {item.com_location}
+                    </h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs="12" md="12">
+                    <h6>
+                      <b>Employment Period:</b> {item.from_employment} to{' '}
+                      {item.to_employment}
+                    </h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs="12" md="12">
+                    <h6>
+                      <b>Reference:</b>
+                      {item.com_reference}
+                    </h6>
+                  </Col>
+                </Row>
+              </>
+            )
+          })}
+          <Row>
+            <Col>
+              <br />
+              <h4>
+                <b>Educational Information:</b>
+              </h4>
+              <hr />
+            </Col>
+          </Row>
+          {edudata.map((item, index) => {
+            return (
+              <>
+                <label>Academic {index + 1}</label>
+                <Row>
+                  <Col xs={12} md={6}>
+                    <h6>
+                      <b>Institute Name:</b> {item.instituteName}(
+                      {item.passingYear})
+                    </h6>
+                  </Col>
+                  <Col xs={12} md={6}>
+                    <h6>
+                      <b>Concentration/Major/Group:</b> {item.group}
+                    </h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12} md={6}>
+                    <h6>
+                      <b>Level of Education:</b> {item.levelOfEducation}(
+                      {item.passingYear})
+                    </h6>
+                  </Col>
+                  <Col xs={12} md={6}>
+                    <h6>
+                      <b>Institute Location:</b> {item.instituteLocation}
+                    </h6>
+                  </Col>
+                </Row>
+              </>
+            )
+          })}
           <Row>
             <Col>
               <br />
@@ -892,10 +853,11 @@ const DisplayCV = () => {
               </h6>
             </Col>
           </Row>
+
           {siblingData.map((item, index) => {
             return (
               <>
-                <h5 style={{ color: '#ff425c' }}>Sibling {index + 1}</h5>
+                <label>Sibling {index + 1}</label>
                 <Row>
                   <Col xs={6} md={6}>
                     <h6>
@@ -918,6 +880,71 @@ const DisplayCV = () => {
               </>
             )
           })}
+          <Row>
+            <Col>
+              <br />
+              <h4>
+                <b>Preference Information:</b>
+              </h4>
+              <hr />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Profession:</b> {cvdata.profession}
+              </h6>
+            </Col>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Skin Tone:</b> {cvdata.skinTone}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Spouse Preference:</b> {cvdata.spousePreference}
+              </h6>
+            </Col>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Preference:</b> {cvdata.preference}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Religion:</b> {cvdata.religionPreference}
+              </h6>
+            </Col>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Physical Status:</b> {cvdata.physicalStatus}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Age Range:</b> {cvdata.ageMinimum} to {cvdata.ageMaximum}
+              </h6>
+            </Col>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Height Range:</b> {cvdata.heightMinimum} to{' '}
+                {cvdata.heightMaximum}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>District Preference:</b> {cvdata.districtPreference}
+              </h6>
+            </Col>
+          </Row>
         </div>
       </div>
 
