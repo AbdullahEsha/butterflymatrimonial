@@ -303,11 +303,6 @@ const CVBank = () => {
     setGalleryData(h)
   }
 
-  // console.log(galleryData.imageFill ? typeof galleryData.imageFill : '')
-  if (galleryData.imageFill) {
-    galleryData.imageFill.map((item) => console.log(item))
-  }
-
   const exportPdf = () => {
     var doc = new jsPDF('p', 'mm', 'a4')
 
@@ -667,7 +662,6 @@ const CVBank = () => {
     doc.save(profileData.name + ' Cv.pdf')
   }
 
-  console.log('profileData', profileData.image)
   const addCV = (event) => {
     event.preventDefault()
     const formData = new FormData()
@@ -719,17 +713,23 @@ const CVBank = () => {
       if (result.isConfirmed) {
         // insert cvdata
         axios
-          .post(`http://localhost:8000/api/post/cv/new`, formData)
+          .post(
+            `https://api.butterflymatrimonial.com/api/post/cv/new`,
+            formData,
+          )
           .then((data) => {
             if (data.data.message === 'Your CV has just been stored.') {
               siblingData.map((item) =>
                 axios
-                  .post(`http://localhost:8000/api/post/sibling`, {
-                    name: item.name,
-                    ocupation: item.ocupation,
-                    details: item.details,
-                    cvdata_id: cvMaxId + 1,
-                  })
+                  .post(
+                    `https://api.butterflymatrimonial.com/api/post/sibling`,
+                    {
+                      name: item.name,
+                      ocupation: item.ocupation,
+                      details: item.details,
+                      cvdata_id: cvMaxId + 1,
+                    },
+                  )
                   .then((data) => {
                     if (
                       data.data.message ===
@@ -738,7 +738,7 @@ const CVBank = () => {
                       educationalData.map((item) =>
                         axios
                           .post(
-                            `http://localhost:8000/api/post/education/qualification`,
+                            `https://api.butterflymatrimonial.com/api/post/education/qualification`,
                             {
                               instituteName: item.instituteName,
                               passingYear: item.passingYear,
@@ -756,7 +756,7 @@ const CVBank = () => {
                               professionalData.map((item) =>
                                 axios
                                   .post(
-                                    `http://localhost:8000/api/post/professional`,
+                                    `https://api.butterflymatrimonial.com/api/post/professional`,
                                     {
                                       designation: item.designation,
                                       organizationName: item.organizationName,
@@ -782,7 +782,7 @@ const CVBank = () => {
                                         )
                                         axios
                                           .post(
-                                            `http://localhost:8000/api/post/gallery-image`,
+                                            `https://api.butterflymatrimonial.com/api/post/gallery-image`,
                                             formData2,
                                           )
                                           .catch(({ response }) => {
@@ -989,7 +989,10 @@ const CVBank = () => {
       <Container className="cv_bank_container21">
         <div className="cv_bank_container2">
           {data === 'ProfileInformation' && (
-            <ProfileInFormation updateProfileData={updateProfileData} />
+            <ProfileInFormation
+              updateProfileData={updateProfileData}
+              updateGalleryData={updateGalleryData}
+            />
           )}
           {data === 'EducationalQulification' && (
             <EducationalQulification
@@ -1003,7 +1006,6 @@ const CVBank = () => {
           )}
           {data === 'FamilyMember' && (
             <FamilyMember
-              updateGalleryData={updateGalleryData}
               updateFamilyData={updateFamilyData}
               updateSiblingData={updateSiblingData}
             />

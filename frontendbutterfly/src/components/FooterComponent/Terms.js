@@ -11,199 +11,187 @@ const Terms = () => {
         <br />
         <h2>Terms of service</h2>
         <hr />
-        <p>
-          These terms of use (these “Terms”) set out the legally binding terms
-          and conditions. Your access to and use of the service website, mobile
-          site, mobile application, products or services (the “Services”)
-          offered by SWOP, a company registered. (“SWOP”, “us”, “our”, and “we”)
-          & SWOP, a company registered in ------------ with registration no
-          ----------- Located 6205 King George dr Charlotte, NC 28213. The
-          “Customer”, “you”, “yours” shall refer to any natural person or entity
-          and it's authorized users that subscribe or uses the Services. Certain
-          attributes of the service may be subject to additional guidelines,
-          terms, or rules, which will be updated on the Site related to such
-          features. All such additional terms, guidelines, and rules are
-          subsumed by reference into these Terms. By accessing or using the
-          service, you are taking on these Terms (on behalf of yourself or the
-          entity that you represent), and you represent and warrant that you
-          have the privilege, authority, and capacity to enter into these Terms
-          (on behalf of yourself or the entity that you represent). You may not
-          access or use the Site or accept the Terms if you are not 13 years old
-          or not able to use the service as per prevailing laws. If you do not
-          acknowledge all of the provisions of these Terms, do not access and/or
-          use the Site. These terms require the use of arbitration to resolve
-          disputes, rather than jury trials or class actions and also limit the
-          remedies available to you in the event of a dispute. We may alter or
-          modify the Terms related to the Services from time to time. Amendments
-          will come into action upon our posting of such updated Terms. If you
-          carry on access or use of the Services after such modifications
-          constitutes your consent to be liable to the Terms, as amended.
-        </p>
-        1. Who may use the service There are certain requirements to use the
-        service.
-        <br></br>1.1 Age Requirement Your age must be above 13 to use the
-        service. If you are a minor as per your country's applicable laws then
-        you are required to access the service through Parent or legal Guardian.
-        <br></br>1.2 Sound Mind You are required to be sound mind to use the
-        service, to make sure that you understand all the terms and conditions
-        and all other applicable policies
-        <br></br>1.3 Confidential Information It’s your prime responsibility to
-        keep secure your purchase process information; in case of any
-        mishandling, you are required to inform SWOP. You further agree to
-        notify SWOP, in case of violation of the above-cited requirements. SWOP
-        cannot and will not be responsible, for any loss or damage if you fail
-        to comply with this provision.
-        <br></br>2. Access to service Subject to these and other applied terms
-        SWOP permitted you a limited license to use the service and content in
-        accordance with applicable terms. In addition to these terms, there are
-        some other restrictions that SWOP. requires you to follow; The following
-        limitations apply to your use of the Service. You are not allowed to:
-        SWOP contains copyrighted and trademarked material so SWOP access,
-        reproduce, download, distribute, transmit, broadcast, display, sell,
-        license, alter, modify or otherwise use any part of the Service or any
-        Content except (a) as expressly authorized by the Service; or (b) with
-        prior written permission from SWOP and, if applicable, the respective
-        rights holders; circumvent, disable, fraudulently engage with, or
-        otherwise interfere with any part of the Service (or attempt to do any
-        of these things), including security-related features or features that
-        (a) prevent or restrict the copying or other use of Content or (b) limit
-        or disable the use of the Service or Content; use the Service to
-        distribute unsolicited promotional e.g. hate speech, harassment, money
-        laundering, etc. or commercial content or other unwanted or mass
-        solicitations;
-        <br></br>2.1 Reservation SWOP reserves all the rights of ownership.
-        Using the service does not entitle you to any right or claim of
-        ownership in any aspect.
-        <br></br>2.2 Modifications or changes SWOP is constantly changing and
-        improving the Service. We may also need to alter or discontinue the
-        Service, or any part of it, in order to make performance or security
-        improvements, change functionality and features, make changes to comply
-        with the law, or prevent illegal activities on or abuse of our systems.
-        These changes may affect all users, some users or even an individual
-        user. Whenever reasonably possible, we will provide notice when we
-        discontinue or make material changes to our Service that will have an
-        adverse impact on the use of our Service. However, you understand and
-        agree that there will be times when we make such changes without notice,
-        such as where we feel we need to take action to improve the security and
-        operability of our Service, prevent abuse, or comply with legal
-        requirements.
-        <br></br>3. Intellectual Property Claims
-        <br></br>3.1 TRADEMARKS AND COPYRIGHTS If anyone has any claim regarding
-        intellectual property e.g. content claim, copyright claim and trademark
-        claim shall be dealt with by the arbitration tribunal. The arbitration
-        meeting will be conducted at under the supervision of one appointed
-        arbitrator. If the problem is not solved then the court has jurisdiction
-        to adjudicate the issue.
-        <br></br>4. Orders and cancellations
-        <br></br>4.1 Orders and Contract The contract shall not become effective
-        merely upon your order for goods, the agreement will become effective
-        when we accept your order against the consideration amount and your
-        order are dispatched from our warehouse then the agreement becomes a
-        contract. For security reasons, we may restrict the volume of a certain
-        item in one transaction.
-        <br></br>4.2 Cancelling Your Order Under Consumer Regulations our valued
-        customers have the right to cancel the order but not later than 14 days,
-        if you wish to cancel your order due to specific reasons as per company
-        policy, you should inform us in writing whether by mail. If you wish to
-        return goods to us, must return the goods in original packaging, during
-        the transit to our any loss or damage caused to the product we may
-        charge you against that damage. We advised using the secure transit
-        method.
-        <br></br>5. Delivery Terms Your order will be delivered to your desired
-        address which you fill on the checkout page. Please fill in the postal
-        address very carefully we may not be held accountable for any wrong
-        delivery made due to your wrong address provided.
-        <br></br>6. Returns & Refunds
-        <br></br>6.1 Returning to a Store You may return the goods in a new and
-        unused condition and wherever possible in the original packaging. If you
-        want to cancel/return your order you must tell us within 14 days
-        (beginning on the day after the day you receive the goods), and you then
-        have 14 days to return the goods. SWOP shall not accept returns if you
-        made customized orders.
-        <br></br>6.2 Refunds You may claim refunds in less than 30 days, but if
-        the NFC shipped to you then the company may refund you half payment of
-        the claim with subject to standard charges.
-        <br></br>7. Termination and suspension If SWOP found any type of
-        violation of the policies from your side may suspend or terminate your
-        access to use the service.
-        <br></br>7.1 Notice for Termination or Suspension We will notify you of
-        the reason for termination or suspension by SWOP unless we reasonably
-        believe that to do so, where reasonably possible, you will be provided
-        with sufficient time to export your data from the Service. If you
-        believe your SWOP account has been terminated or suspended in error, you
-        can file an appeal.
-        <br></br>8. Warranty Disclaimer OTHER THAN AS EXPRESSLY STATED IN THIS
-        AGREEMENT OR AS REQUIRED BY LAW, THE SERVICE IS PROVIDED “AS IS” AND “AS
-        AVAILABLE”.SWOP EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES AND
-        CONDITIONS OF ANY TYPE WHETHER EXPRESS OR IMPLIED STATUTORY, INCLUDING
-        ALL WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A
-        PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, ACCURACY, OR
-        NON-INFRINGEMENT. SWOP AND THIRD-PARTY PROVIDER ALSO FORECAST NO
-        RESPONSIBILITY AND SHALL NOT BE LIABLE FOR ANY DAMAGES OR VIRUSES THAT
-        MAY CAUSE INFECTION TO YOUR COMPUTER EQUIPMENT OR OTHER PROPERTY ARISING
-        FROM OR RELATED TO, ACCESS TO, USE OF, OR THE DOWNLOADING OF ANY
-        MATERIALS, DATA, TEXT, IMAGES, VIDEO OR AUDIO FROM THE SERVICE. SWOP
-        SHALL NOT BE LIABLE FOR ANY LOSS OR DAMAGE WHATEVER NATURE (DIRECT OR
-        INDIRECT NATURE) WHETHER ARISING IN CONTRACT, TORT OR OTHERWISE, WHICH
-        MAY ARISE AS A RESULT OF THE USE OF TO (INABILITY TO USE) THIS
-        WEBSITE/APP. THE CONTENTS OF THIS WEBSITE/ APP, LIKE AUDIO/VIDEO CALL,
-        TEXT, GRAPHICS, IMAGES, VIDEOS AND OTHER SERVICES CONTAINED ON THIS
-        WEBSITE/APP OR RELATED INFORMATION OR THIRD PARTY CONTENT CONTAINED ON
-        THIS WEBSITE FOR ANY PURPOSE. THE USERS OF OUR SITE/APP SHALL BE LIABLE
-        FOR THEIR OWN VIRUS AND SECURITY ISSUES AND SHALL NOT USE OUR WEBSITE IN
-        ANY ILLEGAL, FRAUDULENT, OR HARMFUL WAY. WE DON'T GUARANTEE THE
-        ACCURACY, TIMELINESS, COMPLETENESS OR FITNESS FOR THE PURPOSE OF THE
-        THIRD-PARTY CONTENT PROVIDED BY THIS WEBSITE/APP OR THAT USE OF THIS
-        WEBSITE/APP IS GOING TO BE UNINTERRUPTED, VIRUS-FREE OR ERROR-FREE. WE
-        DON'T ACCEPT ANY RESPONSIBILITY FOR ANY ERRORS, OMISSIONS OR INACCURATE
-        INFORMATION SUPPLIED BY THIRD PARTIES. YOU ACKNOWLEDGE AND AGREE THAT WE
-        AREN'T LIABLE FOR THE SUPPLY OF SUCH EXTERNAL WEBSITES OR RESOURCES,
-        WHICH WE DON'T ENDORSE AND CANNOT BE RESPONSIBLE FOR ANY SERVICE,
-        ADVERTISING, PRODUCTS, OR OTHER MATERIALS ON OR AVAILABLE FROM SUCH
-        WEBSITES OR RESOURCES. YOU EXTRA ACKNOWLEDGE AND AGREE THAT WE AREN'T
-        RESPONSIBLE, DIRECTLY OR INDIRECTLY, FOR ANY DAMAGE OR LOSS CAUSED OR
-        IMAGINED TO BE CAUSED BY OR ABOUT THE USE OF OR RELIANCE ON ANY SUCH
-        SERVICE AVAILABLE ON OR THROUGH ANY SUCH WEBSITE/APP OR RESOURCE. WE
-        CANNOT AND DON'T TAKE RESPONSIBILITY FOR THE GATHERING OR USE OF PRIVATE
-        DATA FROM ANY THIRD PARTY. ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED
-        THROUGH THE UTILIZATION OF THIS WEBSITE/APP IS COMPLETED AT YOUR OWN
-        DISCRETION AND RISK AND YOU'LL BE SOLELY LIABLE FOR ANY DAMAGE TO YOUR
-        COMPUTING SYSTEM OR LOSS OF KNOWLEDGE THAT RESULTS FROM THE DOWNLOAD OF
-        ANY SUCH MATERIAL. EVERY EFFORT IS FORMED TO STAY THIS WEBSITE/APP UP
-        AND RUNNING SMOOTHLY. HOWEVER, WE TAKE NO RESPONSIBILITY FOR, AND CANNOT
-        BE RESPONSIBLE FOR, THIS WEBSITE/APP BEING TEMPORARILY UNAVAILABLE
-        THANKS TO TECHNICAL ISSUES BEYOND OUR CONTROL.
-        <br></br>9. Limitation of Liability EXCEPT AS REQUIRED BY PREVAILING
-        LAW, SWOP, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES AND AGENTS
-        WILL NOT BE LIABLE FOR ANY LOSS OF PROFITS, REVENUES, BUSINESS
-        OPPORTUNITIES, GOODWILL, OR ANTICIPATED SAVINGS; LOSS OR CORRUPTION OF
-        DATA OR CONTENT; INDIRECT OR CONSEQUENTIAL LOSS; PUNITIVE DAMAGES CAUSED
-        BY: ERRORS, MISTAKES, OR INACCURACIES ON THE SERVICE; PERSONAL INJURY OR
-        PROPERTY DAMAGE RESULTING FROM YOUR USE OF THE SERVICE; ANY UNAUTHORIZED
-        USE OF THE SERVICE; ANY INTERRUPTION OR CESSATION OF THE SERVICE; ANY
-        SERVICE WHETHER DISPLAYED BY SWOP, INCLUDING YOUR USE OF SERVICE; AND/OR
-        THE REMOVAL OR UNAVAILABILITY OR SUSPENSION OF ANY SERVICE. THIS
-        PROVISION APPLIES TO ANY CLAIM, REGARDLESS OF WHETHER THE CLAIM IS
-        ASSERTED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY. SOME
-        JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE
-        ABOVE EXCLUSION MAY NOT APPLY TO YOU. SOME JURISDICTIONS DO NOT ALLOW
-        LIMITATIONS ON HOW LONG AN IMPLIED WARRANTY LASTS, SO THE ABOVE
-        LIMITATION MAY NOT APPLY TO YOU.
-        <br></br>10. About Agreement These Terms constitute the entire agreement
-        between you and SWOP, no other agreement either written or oral exists
-        between the parties, (SWOP) If it turns out that a particular term of
-        this Agreement is not enforceable for any reason, this will not affect
-        the rest of the agreement. If you fail to comply with the terms and we
-        do not take action, this action does not waive our right to the action.
-        In these terms, “include” or “including” means “including but not
-        limited to,” and any examples we give are for illustrative purposes.
-        <br></br>11. Governing Law -------------- Law will govern all disputes
-        arising out of or relating to these terms or the Service, regardless of
-        conflict of laws rules. These disputes will be resolved exclusively in
-        the federal or state courts of Santa Clara County, California, the USA,
-        and you and SWOP, consent to personal jurisdiction in those courts. If
-        applicable local law prevents these disputes from being resolved in a
-        California court, then you can file these disputes in your local courts.
+        Butterfly Mmatrimonial (hereinafter refer as butterfly) is purely
+        marriage related social site.This is a platform for the unmarried /
+        Divorce / widower who are interested to visit this site and choose
+        his/her life partner as he/she likes the best with his or her own taste.
+        <br />
+        Butterfly will provide all possible assistance to the Government law
+        enforcement agency or any other statutory investigation agency to tackle
+        fraudulent users of Butterfly, on being specifically instructed by the
+        said authorities to do so.
+        <br></br>Access to the Butterfly website is free for the time being.
+        However, the subscription and browsing fee may be modified from time to
+        time by the authority.
+        <br></br>To register as a member of Butterfly or use this Site, you must
+        be legally competent and of legal marriageable age as per the laws of
+        Bangladesh (currently, 18 years or over for females and 21 years or over
+        for males). Butterfly aimsis only to facilitate personal advertisement
+        for lawful marriage alliance between persons who are legally competent
+        to enter into matrimony under the laws to which they are subject.
+        <br></br>User/members are responsible for maintaining the
+        confidentiality of your the login credentials. Yyou designate during the
+        registration process, and you are solely responsible for all the
+        activities that occur within under your account. You agree to
+        immediately notify us of any disclosure or unauthorized use of your
+        account or any other breach of security, and ensure that you log out
+        from your account at the end of each session. <br></br>This Agreement
+        will be effective, valid and subsisting as long as you use our Site.
+        <br></br>You may terminate your membership at any time, for any reason
+        what so ever.
+        <br></br>This Agreement may be modified by Butterfly authority from time
+        to time. The membership and rights of admissions are reserved
+        <br></br>
+        <b>Disclaimer:</b>
+        <br></br>Authority is not liable for any false statement given by any
+        user. Authority is not liable for any sort of illegal activities done by
+        the usersif any.
+        <br></br>Authority will not take the responsibility for any kind of
+        unwanted and unsocial activity.<br></br>Under no circumstances
+        Bbutterfly will be responsible for any loss or damage resulting from
+        anyone’s use of the Site or the Service and/or any Content posted on the
+        Bbutterfly Site. You should not provide your financial information (for
+        example, your credit card or bank account information), or otherwise
+        send money, to other mMembers.
+        <br></br>Butterfly is not responsible for any incorrect or inaccurate
+        cContent/listing posted on the sSite, whether caused by uUsers or
+        mMembers whether online or offline.
+        <br></br>Authority is not liablefor any kind of , any act or omission
+        which is was not done by them.
+        <br></br>
+        <b>Butterfly Users Login Plan &amp; FAQs</b>
+        <br></br>Butterfly understands the value of the relationship and
+        respects all the of every honorable users. Every condition, limitations,
+        status &amp; case are mutually considerable if the reasons are valid and
+        understandable to the Bbutterfly users and could create a woeful
+        relationship. This site is mainly designed to help those souls who wants
+        to fulfill their life by keeping and sharing every true information.
+        Otherwise, the journey of searching for the perfect match will not be
+        achievable.
+        <br></br>
+        <b>Am Do I eligible for the service from this site?</b>
+        <br></br>Yes, if you are in of required age. (For male: 27 years and for
+        female: 23 years).
+        <br></br>
+        <b>Why there is age limit to login?</b>
+        <br></br>Marriageable age is the minimum age at which a person is
+        allowed by law to get married marry. It Which is minimum 21 years for
+        boys and 18 years for girls by law. Age and other prerequisites to
+        marriage vary between jurisdictions, but Butterfly has been designed in
+        as a creative mannerway where someone can independently search his/her
+        perfect match but at the same time, and as well as he/she needs to be in
+        a considerable and established stage of life. And at this kind of age,
+        we expect mature ones to build the strong base of a relationship.
+        Discussion and information sharing shouldn’t be like amateur which might
+        hurt the opposite one. So, these are some of the it’s prerequisites that
+        the users need to have with some understanding and maturity of users. A
+        person should surely be of Open minded and have a simple way to look
+        life.
+        <br></br>
+        <b>What is the objective of the site?</b>
+        <br></br>Creating a valuable platform where people can find someone who
+        shares the same purpose of life or at least want to enter a journey of
+        mutual understanding for to possess a perfect become a one in life where
+        sacrifice and compromise will be made when needed. None will t feel
+        pressurized e and forced to carry on life and the relationship. Life is
+        beautiful and precious and so . Butterfly wants to make it best in the
+        best possible way.
+        <br></br>
+        <b>Why mutual trust is important?</b>
+        <br></br>Mutual trust is very It’s iImportant while getting into a
+        commitment and and it is a risky journey as well. If you hide yourself,
+        you will never trust anyone and think that the opposite one is
+        alsoabsolutely hiding information. Trust and dependency is are like
+        mirror in a relationship if you don’t belief believe anyone, then how
+        can anyone can start trusting and depending on you. So, you should be
+        clear and straight.
+        <br></br>
+        <b>Before login what values I should to keep in my mind?</b>
+        <br></br>Always remember, hHuman is for hHumanity. So, we expect the
+        required and courteous human behaviour from everyone. There are lots of
+        sites and apps for to making date or other kinds of relationship which
+        can only bring harm to the society as they are just for the time being
+        not for any trustworthy commitment. This site is completely
+        developcreated for those honesttrue souls who are trying to complete
+        their life and want to live in a life of joy with their partner by law.
+        We expect those who wants to plant the seed and nurture the tree of
+        relationship so the flower can spread its beautiful fragrance with
+        proper growth.
+        <br></br>
+        <b>How do I keep my information secure and private?</b>
+        <br></br>Butterfly believes in the value of secrecy of your information.
+        So, in this site, you are the only owner of your information. But before
+        sharing your information to with other users, you need to be careful
+        enough to understand the maturity and mental state from the opposite
+        side as well because if the level of understanding doesn’t match then it
+        may be misleading to some extent. And it is not good for any of you for
+        sure. So, please dDon’t be a clown proactively and provoke anyone to be
+        a fool.
+        <br></br>
+        <b>What is the trust factor of the site?</b>
+        <br></br>Butterfly aims to share and care for your real status and your
+        feelings. So, no need to attract someone by artificial attitude and
+        illusion. Try to filter by your choice and not by other’ss preference.
+        Be yourself and let people know your true identity.
+        <br></br>
+        <b>Why marriage is important?</b>
+        <br></br>Simple:
+        <br></br>Marriage is the beginning—the beginning of the family—and is a
+        life-a long commitment with many responsibilities as well
+        <br></br>It gives us a life partner, a teammate, as we move through the
+        challenges of life together.
+        <br></br>Marriage is designed for the purity of the relationship. We are
+        under at risk by different temptation nearly every minute and from many
+        directions. The bond of marriage gives us the support to defeat that
+        temptation by engaging in deep, soothing and satisfying love—a love that
+        gives to, and receives from, our mate physically, emotionally, and
+        spiritually.
+        <br></br>Marriage makes you grow up really fast with the proper flow of
+        emotions, handling many responsibilities and growing mutual
+        understanding with that. You get matured because, you now have another
+        human being apart from yourself to deal with in almost all the segments
+        of your life. The growing up lessons you learn in marriage can be well
+        applied to other areas of life as well because it teaches you many
+        suitable lessons that are required to deal in other areas.
+        <br></br>A nation with strong marriages is a really strong one with high
+        social status. Good marriages are the bedrock of any solid society.
+        <br></br>
+        <b>What is the main objective or Beauty or focus of the site?</b>
+        <br></br>Butterfly is for every true soul out there in the world of the
+        human being. Our extensive category and segments will never give you the
+        thought that there is no one like you. We prefer in the way so that you
+        don’t need to pressurizee your mind and compromise with yourself and
+        your desires. Just log in and search right one who is also probably
+        waiting only for you for quite a long time. But again we respect mutual
+        understanding and compromises between partners of life.
+        <br></br>
+        <b>What information and documents I can share with users?</b>
+        <br></br>For login purpose you need to share your National ID/ Passport
+        copy, Birth certificate, Utility bill copy of current address and police
+        verification if needed. But Bbutterfly will not share this information
+        to with anyone and even not to with your partner. Butterfly will be
+        responsible for the secrecy of your provided documents. And we will
+        prefer not to share your sensitive or personal information in between
+        the conversation with the opposite side user before fixing or finalizing
+        anything. Please don’t share any sensitive pictures or emotional
+        conversation which can cause for future threat and insecurity. Remember,
+        Because Bbutterfly does not have no authority in your conversation as
+        because it is self-driven. Only You you will be responsible for your
+        talk.
+        <br></br>
+        <b>Can I log in for my family members?</b>
+        <br></br>Yes, you can log in for your sisters, brothers and children
+        only if they are unable to login. But you have to provide all the
+        required documents (National ID/ Passport copy, Birth certificate,
+        Utility bill copy of current address and police verification if needed).
+        Butterfly appreciates everyone’s choice and also respect anyone’s
+        inability because life is precious. Disability is not the conditions of
+        anyone by choice.If you have any AFor any more queries, then do not
+        hesitate Yyou all are welcome to write us to
+        Info@butterflymatrimonial.com. Our Blog and story boards are for real
+        story how someone survives and continues a happy life and struggling to
+        be happy.
+        <br></br>
       </Container>
       <br />
       <Footer />

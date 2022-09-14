@@ -23,6 +23,10 @@ const DisplayAllCV = () => {
   const [cvdata, setCvData] = useState([])
   const [cvdataTemp, setCvDataTemp] = useState([])
   const [edudata, setEdudata] = useState([])
+  const [ageRange, setAgeRange] = useState({
+    minAge: 0,
+    maxAge: 0,
+  })
   const [professionaldata, setProfessionaldata] = useState([])
   const [found, setFound] = useState(true)
   const [edu, setEdu] = useState([])
@@ -48,7 +52,9 @@ const DisplayAllCV = () => {
   }, [])
 
   const arrpro = professionaldata.map((item) => item.designation)
+  const arrDistrict = cvdata.map((item) => item.districtPreference)
   const respro = [...new Set(arrpro)]
+  const resDistrict = [...new Set(arrDistrict)]
 
   const getAllCv = async () => {
     fetch(`https://api.butterflymatrimonial.com/api/get/all/cv`, {})
@@ -210,6 +216,11 @@ const DisplayAllCV = () => {
     // Search in `author` and in `tags` array
     keys: ['designation'],
   }
+  const optionsDistrict = {
+    threshold: 0,
+    // Search in `author` and in `tags` array
+    keys: ['districtPreference'],
+  }
 
   let cvDataArr = []
   let cvDataTemp = cvdata
@@ -323,6 +334,70 @@ const DisplayAllCV = () => {
     }
   }
 
+  // const searchDataDistrict = (searchDistrict) => {
+  //   if (searchDistrict !== '') {
+  //     const fuse = new Fuse(cvdata, optionsDistrict)
+  //     const result = fuse.search(searchDistrict)
+
+  //     result.forEach((data) => {
+  //       let dataedu = cvdata.filter((item) => item.id === data.item.cvdata_id)
+  //       const obj = {
+  //         id: dataedu.map((x) => x.id)[0],
+  //         name: dataedu.map((y) => y.name)[0],
+  //         phone: dataedu.map((z) => z.phone)[0],
+  //         created_at: dataedu.map((p) => p.created_at)[0],
+  //       }
+  //       cvDataArr.push(obj)
+  //     })
+
+  //     if (cvDataArr.length > 0) {
+  //       setFound(true)
+  //       setCvDataTemp(cvDataArr)
+  //     } else {
+  //       setFound(false)
+  //     }
+  //   } else {
+  //     setFound(true)
+  //     getAllCv()
+  //   }
+  // }
+
+  const searchDataDistrict = (searchDistrict) => {
+    if (searchDistrict !== '') {
+      const fuse = new Fuse(cvdata, optionsDistrict)
+      const result = fuse.search(searchDistrict)
+
+      result.forEach((data) => {
+        const obj = {
+          id: data.item.id,
+          name: data.item.name,
+          phone: data.item.phone,
+          created_at: data.item.created_at,
+        }
+        cvDataArr.push(obj)
+      })
+
+      if (cvDataArr.length > 0) {
+        setFound(true)
+        setCvDataTemp(cvDataArr)
+      } else {
+        setFound(false)
+      }
+    } else {
+      setFound(true)
+      getAllCv()
+    }
+  }
+
+  const ageRangeSearch = () => {
+    let filterAge4 = cvdata.filter(
+      (item4) =>
+        (new Date() - new Date(item4.age)) / 31557600000 >= ageRange.minAge &&
+        (new Date() - new Date(item4.age)) / 31557600000 < ageRange.maxAge,
+    )
+    setCvDataTemp(filterAge4)
+  }
+
   return (
     <>
       <div class="sidebar">
@@ -339,14 +414,13 @@ const DisplayAllCV = () => {
       </div>
 
       <div
-        class="content"
+        className="content"
         style={{ backgroundColor: '#ededed', padding: '20px' }}
       >
         <div
           style={{
             width: '10%',
             float: 'right',
-            paddingRight: '20px',
           }}
         >
           <select
@@ -453,8 +527,60 @@ const DisplayAllCV = () => {
               onChange={(event) => handleInput(event)}
             />
           </div>
+          <br />
         </div>
-
+        <div className="bottom-search">
+          <div
+            style={{
+              width: '29.7%',
+            }}
+          >
+            <select
+              class="form-control"
+              aria-label="Default select example"
+              onChange={(event) => searchDataDistrict(event.target.value)}
+            >
+              <option value="" selected>
+                Choose District
+              </option>
+              {resDistrict.map((item) => {
+                return <option value={item}>{item}</option>
+              })}
+            </select>
+          </div>
+          <div
+            style={{
+              width: '10%',
+              paddingLeft: '20px',
+            }}
+          >
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Min Age"
+              onChange={(event) => {
+                setAgeRange({ ...ageRange, minAge: event.target.value })
+                ageRangeSearch()
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: '11.3%',
+              paddingLeft: '20px',
+            }}
+          >
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Max Age"
+              onChange={(event) => {
+                setAgeRange({ ...ageRange, maxAge: event.target.value })
+                ageRangeSearch()
+              }}
+            />
+          </div>
+        </div>
         <br />
         <br />
         <div style={{ backgroundColor: '#fff', padding: '20px' }}>

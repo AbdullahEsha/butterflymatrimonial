@@ -356,7 +356,7 @@ const PreferenceInformation = (props) => {
               >
                 {profileData_ ? profileData_.divisionParmanent : 'Dhaka'}
               </option>
-              <option value="Neutral">Neutral</option>
+              <option value="Any">Any</option>
             </select>
           </Col>
         </Row>
@@ -458,9 +458,9 @@ const PreferenceInformation = (props) => {
                   className="form-check-input"
                   type="radio"
                   name="redioPhysicalStatus"
-                  value="Both"
+                  value="Any"
                   checked={
-                    preferenceInformation.physicalStatus === 'Both'
+                    preferenceInformation.physicalStatus === 'Any'
                       ? true
                       : false
                   }
@@ -472,7 +472,7 @@ const PreferenceInformation = (props) => {
                   }
                 />
                 <label className="form-check-label" for="exampleRadios2">
-                  Both
+                  Any
                 </label>
               </div>
               <label className="physicalStatusCheck" style={{ color: 'red' }}>
@@ -592,9 +592,9 @@ const PreferenceInformation = (props) => {
                   className="form-check-input"
                   type="radio"
                   name="redioJob"
-                  value="Neutral"
+                  value="Any"
                   checked={
-                    preferenceInformation.spousePreference === 'Neutral'
+                    preferenceInformation.spousePreference === 'Any'
                       ? true
                       : false
                   }
@@ -606,7 +606,7 @@ const PreferenceInformation = (props) => {
                   }
                 />
                 <label className="form-check-label" for="exampleRadios2">
-                  Neutral
+                  Any
                 </label>
               </div>
               <label className="spousePreferenceCheck" style={{ color: 'red' }}>

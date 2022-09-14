@@ -107,12 +107,32 @@ const ProfessionalQulification = (props) => {
     setToDate(values)
   }
 
+  const autofill = () => {
+    setProfessionalQulification([
+      {
+        designation: 'none',
+        organizationName: 'none',
+        com_department: 'none',
+        com_location: 'none',
+        from_employment: 'none',
+        to_employment: 'none',
+        com_reference: 'none',
+      },
+    ])
+    document.querySelector('.hide_profession').style.display = 'none'
+  }
+
+  console.log(professionalQulification)
+
   return (
     <>
       <Container className="cv_bank_container21">
+        <p className="skip-content" onClick={autofill}>
+          Skip Profession
+        </p>
         {professionalQulification.map((item, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="hide_profession">
               <div>
                 <br />
                 <h5

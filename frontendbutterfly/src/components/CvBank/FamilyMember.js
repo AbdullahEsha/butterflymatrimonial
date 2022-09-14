@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
-import ImageUploader from 'react-images-upload'
 
 const FamilyMember = (props) => {
   const familyData_ = useSelector((state) => state.cvDataReducer.familyData)
   const siblingData_ = useSelector((state) => state.cvDataReducer.siblingData)
-  const [galleryImage, setGalleryImage] = useState({ imageFill: '' })
+
   const [sibling, setSibling] = useState([
     {
       name: siblingData_[0] ? siblingData_[0].name : '',
@@ -44,7 +43,7 @@ const FamilyMember = (props) => {
     motherOcupation: familyData_ ? familyData_.motherOcupation : '',
   })
 
-  const { updateFamilyData, updateSiblingData, updateGalleryData } = props
+  const { updateFamilyData, updateSiblingData } = props
 
   const handleInput = (index, event) => {
     const values = [...sibling]
@@ -53,17 +52,20 @@ const FamilyMember = (props) => {
   }
 
   useEffect(() => {
-    updateGalleryData(galleryImage)
     updateFamilyData(familyMember)
     updateSiblingData(sibling)
-  }, [
-    familyMember,
-    updateFamilyData,
-    sibling,
-    updateSiblingData,
-    galleryImage,
-    updateGalleryData,
-  ])
+  }, [familyMember, updateFamilyData, sibling, updateSiblingData])
+
+  const autofill = () => {
+    setSibling([
+      {
+        name: 'none',
+        ocupation: 'none',
+        details: 'none',
+      },
+    ])
+    document.querySelector('.sibling_info').style.display = 'none'
+  }
 
   return (
     <>
@@ -144,33 +146,13 @@ const FamilyMember = (props) => {
             />
           </Col>
         </Row>
-        <Row>
-          <Col xs={12} md={6}>
-            <h5>
-              Add Image To Gallery
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <ImageUploader
-              withIcon={false}
-              withPreview={true}
-              buttonText="Choose Images"
-              label="Max file size: 2mb | accepted: jpg, png, jpeg"
-              // value={data.images}
-              // defaultImages={data.images}
-              name="images"
-              onChange={(image) => {
-                setGalleryImage({ ...galleryImage, imageFill: image })
-              }}
-              imgExtension={['.jpg', '.png', '.jpeg']}
-              maxFileSize={2097152}
-              className="mb-4"
-            />
-          </Col>
-        </Row>
         <Row className="row-padding">
+          <p className="skip-content" onClick={autofill}>
+            Skip sibling info
+          </p>
           {sibling.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="sibling_info">
                 <div>
                   <br />
                   <h5

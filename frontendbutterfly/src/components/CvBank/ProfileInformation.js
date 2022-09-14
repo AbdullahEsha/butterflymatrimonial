@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 // import Select from 'react-select'
+import ImageUploader from 'react-images-upload'
 
 const ProfileInformation = (props) => {
+  const [galleryImage, setGalleryImage] = useState({ imageFill: '' })
   const profileData_ = useSelector((state) => state.cvDataReducer.profileData)
   // const [city, setCity] = useState([])
   const [checkOther, setCheckOther] = useState('None')
@@ -113,12 +115,13 @@ const ProfileInformation = (props) => {
     }
   }
 
-  const { updateProfileData } = props
+  const { updateProfileData, updateGalleryData } = props
 
   useEffect(() => {
     // getAllCity()
+    updateGalleryData(galleryImage)
     updateProfileData(profileInformation)
-  }, [profileInformation, updateProfileData])
+  }, [profileInformation, updateProfileData, galleryImage, updateGalleryData])
 
   // const getAllCity = async () => {
   //   fetch(`https://countriesnow.space/api/v0.1/countries`, {})
@@ -154,10 +157,6 @@ const ProfileInformation = (props) => {
               Image
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <em style={{ color: '#fc6375', fontSize: '14px' }} id="warning">
-              (Size 310*310px)*
-            </em>
-
             <input
               type="file"
               accept="image/png"
@@ -606,7 +605,7 @@ const ProfileInformation = (props) => {
           </Col>
         </Row>
         <Row className="row-padding">
-          <Col xs={12} md={12}>
+          <Col xs={12} md={6}>
             <h5>
               Limitations Or Special Case
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
@@ -732,7 +731,7 @@ const ProfileInformation = (props) => {
           </Col>
         </Row>
         <Row className="row-padding">
-          <Col xs={12} md={12}>
+          <Col xs={12} md={6}>
             <h5>
               Special Condition
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
@@ -754,9 +753,7 @@ const ProfileInformation = (props) => {
               ></textarea>
             </div>
           </Col>
-        </Row>
-        <Row className="row-padding">
-          <Col xs={12} md={12}>
+          <Col xs={12} md={6}>
             <h5>
               About
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
@@ -777,6 +774,30 @@ const ProfileInformation = (props) => {
                 }
               ></textarea>
             </div>
+          </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={0} md={3} id="hide_br"></Col>
+          <Col xs={12} md={6}>
+            <h5>
+              Add Image To Gallery
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <ImageUploader
+              withIcon={false}
+              withPreview={true}
+              buttonText="Choose Images"
+              label="Max file size: 2mb | accepted: jpg, png, jpeg"
+              // value={data.images}
+              // defaultImages={data.images}
+              name="images"
+              onChange={(image) => {
+                setGalleryImage({ ...galleryImage, imageFill: image })
+              }}
+              imgExtension={['.jpg', '.png', '.jpeg']}
+              maxFileSize={2097152}
+              className="mb-4"
+            />
           </Col>
         </Row>
       </Container>

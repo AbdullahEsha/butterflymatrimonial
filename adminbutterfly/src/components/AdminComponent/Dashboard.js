@@ -21,7 +21,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const Dashboard = () => {
   const [cvdata, setCvData] = useState([])
-  const [preferencedata, setPreferencedata] = useState([])
+
   var monthName = [
     'Jan',
     'Feb',
@@ -51,7 +51,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     getAllCv()
-    getAllPreference()
     return () => {
       //console.log("removing...", e);
     }
@@ -65,20 +64,6 @@ const Dashboard = () => {
           console.log('vul')
         } else {
           setCvData(data)
-        }
-      })
-      .catch((err) => {
-        console.log('pro erro', err)
-      })
-  }
-  const getAllPreference = async () => {
-    fetch(`https://api.butterflymatrimonial.com/api/get/preference`, {})
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          console.log('vul')
-        } else {
-          setPreferencedata(data)
         }
       })
       .catch((err) => {
@@ -166,18 +151,47 @@ const Dashboard = () => {
   let countTotal =
     filterAge1 + filterAge2 + filterAge3 + filterAge4 + filterAge5
 
-  let filterPreference1 = preferencedata.filter(
-    (pre1) => pre1.preference === 'Single',
-  ).length
-  let filterPreference2 = preferencedata.filter(
-    (pre2) => pre2.preference === 'Divorce',
-  ).length
-  let filterPreference3 = preferencedata.filter(
-    (pre3) => pre3.preference === 'Divorce without child',
-  ).length
-  let filterPreference4 = preferencedata.filter(
-    (pre4) => pre4.preference === 'Divorce with child',
-  ).length
+  let demoArray = []
+  if (cvdata.length > 0) {
+    cvdata.forEach((elem, index) => {
+      let stringInput = elem.preference
+      let arrdata = stringInput.split(', ')
+      demoArray.push(arrdata)
+    })
+  }
+
+  let countPreference1 = 0
+  let countPreference2 = 0
+  let countPreference3 = 0
+  let countPreference4 = 0
+
+  demoArray.forEach((item) => {
+    let singledata = item.find((elem) => elem === 'Single')
+    if (singledata === 'Single') {
+      countPreference1++
+    }
+  })
+  demoArray.forEach((item) => {
+    let singledata = item.find((elem) => elem === 'Divorce')
+    if (singledata === 'Divorce') {
+      countPreference2++
+    }
+  })
+  demoArray.forEach((item) => {
+    let singledata = item.find((elem) => elem === 'Divorce without child')
+    if (singledata === 'Divorce without child') {
+      countPreference3++
+    }
+  })
+  demoArray.forEach((item) => {
+    let singledata = item.find((elem) => elem === 'Divorce with child')
+    if (singledata === 'Divorce with child') {
+      countPreference4++
+    }
+  })
+
+  let countPreference =
+    countPreference1 + countPreference2 + countPreference3 + countPreference4
 
   return (
     <>
@@ -435,10 +449,7 @@ const Dashboard = () => {
               <h5>Preference Data</h5>
               <div className="progress-outer">
                 <p style={{ float: 'right' }}>
-                  {((filterPreference1 / preferencedata.length) * 100).toFixed(
-                    2,
-                  )}
-                  %
+                  {((countPreference1 / countPreference) * 100).toFixed(2)}%
                 </p>
                 <p>Single</p>
                 <div className="progress progress-extra">
@@ -446,9 +457,7 @@ const Dashboard = () => {
                     class="progress-bar"
                     role="progressbar"
                     style={{
-                      width: `${
-                        (filterPreference1 / preferencedata.length) * 100
-                      }%`,
+                      width: `${(countPreference1 / countPreference) * 100}%`,
                     }}
                     aria-valuenow="50"
                     aria-valuemin="0"
@@ -458,10 +467,7 @@ const Dashboard = () => {
               </div>
               <div className="progress-outer">
                 <p style={{ float: 'right' }}>
-                  {((filterPreference2 / preferencedata.length) * 100).toFixed(
-                    2,
-                  )}
-                  %
+                  {((countPreference2 / countPreference) * 100).toFixed(2)}%
                 </p>
                 <p>Divorce</p>
                 <div className="progress progress-extra">
@@ -469,9 +475,7 @@ const Dashboard = () => {
                     class="progress-bar"
                     role="progressbar"
                     style={{
-                      width: `${
-                        (filterPreference2 / preferencedata.length) * 100
-                      }%`,
+                      width: `${(countPreference2 / countPreference) * 100}%`,
                     }}
                     aria-valuenow="50"
                     aria-valuemin="0"
@@ -481,10 +485,7 @@ const Dashboard = () => {
               </div>
               <div className="progress-outer">
                 <p style={{ float: 'right' }}>
-                  {((filterPreference3 / preferencedata.length) * 100).toFixed(
-                    2,
-                  )}
-                  %
+                  {((countPreference3 / countPreference) * 100).toFixed(2)}%
                 </p>
                 <p>Divorce without child</p>
                 <div className="progress progress-extra">
@@ -492,9 +493,7 @@ const Dashboard = () => {
                     class="progress-bar"
                     role="progressbar"
                     style={{
-                      width: `${
-                        (filterPreference3 / preferencedata.length) * 100
-                      }%`,
+                      width: `${(countPreference3 / countPreference) * 100}%`,
                     }}
                     aria-valuenow="50"
                     aria-valuemin="0"
@@ -504,10 +503,7 @@ const Dashboard = () => {
               </div>
               <div className="progress-outer">
                 <p style={{ float: 'right' }}>
-                  {((filterPreference4 / preferencedata.length) * 100).toFixed(
-                    2,
-                  )}
-                  %
+                  {((countPreference4 / countPreference) * 100).toFixed(2)}%
                 </p>
                 <p>Divorce with child</p>
                 <div className="progress progress-extra">
@@ -515,9 +511,7 @@ const Dashboard = () => {
                     class="progress-bar"
                     role="progressbar"
                     style={{
-                      width: `${
-                        (filterPreference4 / preferencedata.length) * 100
-                      }%`,
+                      width: `${(countPreference4 / countPreference) * 100}%`,
                     }}
                     aria-valuenow="50"
                     aria-valuemin="0"

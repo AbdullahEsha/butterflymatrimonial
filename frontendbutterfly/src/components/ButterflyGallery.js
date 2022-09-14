@@ -14,7 +14,10 @@ const ButterflyGallery = () => {
     }
   }, [])
   const getImageData = async () => {
-    fetch(`http://localhost:8000/api/get/gallery-image/${id}`, {})
+    fetch(
+      `https://api.butterflymatrimonial.com/api/get/gallery-image/${id}`,
+      {},
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -36,7 +39,10 @@ const ButterflyGallery = () => {
             {imageData.map((elem) => (
               <div className="col-sm-12 col-md-3">
                 <div className="gallery-image">
-                  <img src={`http://localhost:8000/${elem.imageFill}`} alt="" />
+                  <img
+                    src={`https://api.butterflymatrimonial.com/${elem.imageFill}`}
+                    alt=""
+                  />
                 </div>
               </div>
             ))}

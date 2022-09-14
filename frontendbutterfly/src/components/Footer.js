@@ -65,19 +65,25 @@ const Footer = () => {
             <br />
           </Col>
           <Col xs={6} md={2} className="footerposition" align="center">
-            <h4>Product</h4>
+            <h4>Services</h4>
             <ul>
               <li>
-                <a href="/">Demo product</a>
+                <Link to="/venus">Venus</Link>
               </li>
               <li>
-                <a href="/">Demo product</a>
+                APP{' '}
+                <a href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627">
+                  IOS
+                </a>{' '}
+                <a href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US">
+                  Android
+                </a>
               </li>
               <li>
-                <a href="/">Demo product</a>
+                <Link to="/contact">Find Us</Link>
               </li>
               <li>
-                <a href="/">Demo product</a>
+                <a href="/cv-bank">CV Bank</a>
               </li>
             </ul>
             <br />

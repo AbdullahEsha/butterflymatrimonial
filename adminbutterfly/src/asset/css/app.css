@@ -31,6 +31,12 @@ em {
 .berPadd img {
   height: 75px;
 }
+.bottom-search {
+  text-align: end;
+}
+.bottom-search div {
+  display: inline-block;
+}
 
 .form-groupx {
   border: 1px solid #ced4da;

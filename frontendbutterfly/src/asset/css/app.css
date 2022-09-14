@@ -65,6 +65,17 @@ em {
   width: 90%;
   border: none;
 }
+.fileContainer .chooseFileButton {
+  background: #fc6375 !important;
+}
+.skip-content {
+  color: #fc6375;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
 .form-groupx input:focus {
   box-shadow: none;
 }
@@ -467,10 +478,15 @@ li a {
   font-weight: 600;
 }
 .cv-bank-butterfly-outside {
-  background-color: #ced4da;
+  background-color: rgb(237, 237, 237);
   padding-top: 100px;
   padding-bottom: 100px;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
 }
 .about_text_position_13 h6,
 .text_padding_2 h6 {

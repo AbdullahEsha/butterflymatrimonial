@@ -15,10 +15,6 @@ import apu from '../asset/image/apu.png'
 import card_1 from '../asset/image/card_1.png'
 import card_2 from '../asset/image/card_2.png'
 import card_3 from '../asset/image/card_3.png'
-// import logo_1 from '../asset/image/logo_1.png'
-// import logo_2 from '../asset/image/logo_2.png'
-// import logo_3 from '../asset/image/logo_3.png'
-// import logo_4 from '../asset/image/logo_4.png'
 import MainNav from './MainNav'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
@@ -256,12 +252,13 @@ function Home() {
           <Col xs={12} md={4}>
             <div className="card">
               <img src={card_3} alt="card_3" />
-              <h3>Pritty & Hasib</h3>
+              <h3>Tithi & Mahfuz</h3>
               <h6>
-                Butterfly & we’ve Kicked of our Journey almost at the same time.
-                Perfection, proper communication, Timeliness and Technological
-                advanced features are their main Key to operate with ultimate
-                success. We got our soulmate through this platform.
+                As the Founder of Butterfly has quality skills, experiences and
+                social contact, we just trust on her expertise and depends.
+                Result, we have found our soulmate. If you want the same with
+                privacy. Yes you can confidently depends on Butterfly Venus
+                Package .
               </h6>
             </div>
           </Col>
