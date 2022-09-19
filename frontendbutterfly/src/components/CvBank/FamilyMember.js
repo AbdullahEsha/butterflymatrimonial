@@ -10,7 +10,7 @@ const FamilyMember = (props) => {
   const [sibling, setSibling] = useState([
     {
       name: siblingData_[0] ? siblingData_[0].name : '',
-      ocupation: siblingData_[0] ? siblingData_[0].ocupation : '',
+      occupation: siblingData_[0] ? siblingData_[0].occupation : '',
       details: siblingData_[0] ? siblingData_[0].details : '',
     },
   ])
@@ -21,8 +21,8 @@ const FamilyMember = (props) => {
       ...sibling,
       {
         name: siblingData_[updateIndex] ? siblingData_[updateIndex].name : '',
-        ocupation: siblingData_[updateIndex]
-          ? siblingData_[updateIndex].ocupation
+        occupation: siblingData_[updateIndex]
+          ? siblingData_[updateIndex].occupation
           : '',
         details: siblingData_[updateIndex]
           ? siblingData_[updateIndex].details
@@ -38,9 +38,11 @@ const FamilyMember = (props) => {
 
   const [familyMember, setFamilyMember] = useState({
     fatherName: familyData_ ? familyData_.fatherName : '',
-    fatherOcupation: familyData_ ? familyData_.fatherOcupation : '',
+    fatherOccupation: familyData_ ? familyData_.fatherOccupation : '',
+    fatherDetails: familyData_ ? familyData_.fatherDetails : '',
     motherName: familyData_ ? familyData_.motherName : '',
-    motherOcupation: familyData_ ? familyData_.motherOcupation : '',
+    motherOccupation: familyData_ ? familyData_.motherOccupation : '',
+    motherDetails: familyData_ ? familyData_.motherDetails : '',
   })
 
   const { updateFamilyData, updateSiblingData } = props
@@ -60,7 +62,7 @@ const FamilyMember = (props) => {
     setSibling([
       {
         name: 'none',
-        ocupation: 'none',
+        occupation: 'none',
         details: 'none',
       },
     ])
@@ -91,18 +93,35 @@ const FamilyMember = (props) => {
           </Col>
           <Col xs={12} md={6}>
             <h5>
-              Ocupation
+              Occupation
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
-              className="form-control fatherOcupation"
-              placeholder="Enter father’s Ocupation."
-              value={familyMember.fatherOcupation}
+              className="form-control fatherOccupation"
+              placeholder="Enter father’s occupation."
+              value={familyMember.fatherOccupation}
               onChange={(event) =>
                 setFamilyMember({
                   ...familyMember,
-                  fatherOcupation: event.target.value,
+                  fatherOccupation: event.target.value,
+                })
+              }
+            />
+          </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={12} md={12}>
+            <h5>Details:</h5>
+            <input
+              type="text"
+              className="form-control fatherDetails"
+              placeholder="Write more about your father."
+              value={familyMember.fatherDetails}
+              onChange={(event) =>
+                setFamilyMember({
+                  ...familyMember,
+                  fatherDetails: event.target.value,
                 })
               }
             />
@@ -129,35 +148,52 @@ const FamilyMember = (props) => {
           </Col>
           <Col xs={12} md={6}>
             <h5>
-              Ocupation
+              Occupation
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
-              className="form-control motherOcupation"
-              placeholder="Enter Mother’s Ocupation."
-              value={familyMember.motherOcupation}
+              className="form-control motherOccupation"
+              placeholder="Enter mother’s occupation."
+              value={familyMember.motherOccupation}
               onChange={(event) =>
                 setFamilyMember({
                   ...familyMember,
-                  motherOcupation: event.target.value,
+                  motherOccupation: event.target.value,
                 })
               }
             />
           </Col>
         </Row>
         <Row className="row-padding">
-          <p className="skip-content" onClick={autofill}>
-            Skip sibling info
-          </p>
+          <Col xs={12} md={12}>
+            <h5>Details:</h5>
+            <input
+              type="text"
+              className="form-control motherDetails"
+              placeholder="Write more about your mother."
+              value={familyMember.motherDetails}
+              onChange={(event) =>
+                setFamilyMember({
+                  ...familyMember,
+                  motherDetails: event.target.value,
+                })
+              }
+            />
+          </Col>
+        </Row>
+        {/* <Row className="row-padding">
+          <h5>Brother:</h5>
+          <h5>Sister:</h5>
+        </Row> */}
+        <Row className="row-padding">
           {sibling.map((item, index) => {
             return (
               <div key={index} className="sibling_info">
-                <div>
+                <div className="font-form-size">
                   <br />
                   <h5
                     style={{
-                      borderBottom: '0.2px solid #ff566b',
                       color: '#ff566b',
                     }}
                   >
@@ -166,10 +202,7 @@ const FamilyMember = (props) => {
                 </div>
                 <div className="row">
                   <div className="col-12 col-sm-6">
-                    <h5>
-                      Name
-                      <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-                    </h5>
+                    <h5>Name:</h5>
                     <input
                       type="text"
                       className="form-control sibname"
@@ -180,25 +213,19 @@ const FamilyMember = (props) => {
                     />
                   </div>
                   <div className="col-12 col-sm-6">
-                    <h5>
-                      Ocupation
-                      <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-                    </h5>
+                    <h5>Occupation:</h5>
                     <input
                       type="text"
-                      className="form-control sibocupation"
-                      name="ocupation"
-                      placeholder="Enter ocupation."
-                      value={sibling[index].ocupation}
+                      className="form-control sibOccupation"
+                      name="occupation"
+                      placeholder="Enter occupation."
+                      value={sibling[index].occupation}
                       onChange={(event) => handleInput(index, event)}
                     />
                   </div>
                 </div>
                 <br />
-                <h5>
-                  Details
-                  <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-                </h5>
+                <h5>Details:</h5>
                 <div class="input-group">
                   <textarea
                     className="form-control sibdetails"
@@ -210,27 +237,37 @@ const FamilyMember = (props) => {
                     onChange={(event) => handleInput(index, event)}
                   ></textarea>
                 </div>
-                <div align="right">
-                  {sibling.length - 1 === index &&
-                    sibling.length > 1 &&
-                    sibling.length < 7 && (
+                <br />
+                <div className="cv_bank_add_button">
+                  {sibling.length === 1 ? (
+                    <label className="skip-content" onClick={autofill}>
+                      Skip Sibling
+                    </label>
+                  ) : (
+                    ''
+                  )}
+                  <div className="cv_bank_button_inside">
+                    {sibling.length - 1 === index &&
+                      sibling.length > 1 &&
+                      sibling.length < 7 && (
+                        <button
+                          className="educationAdd"
+                          title="Remove One"
+                          onClick={() => handleServiceRemove(index)}
+                        >
+                          <FaMinus size={15} color="white" /> Close
+                        </button>
+                      )}{' '}
+                    {sibling.length - 1 === index && sibling.length < 6 && (
                       <button
                         className="educationAdd"
-                        title="Remove one"
-                        onClick={() => handleServiceRemove(index)}
+                        title="Add More"
+                        onClick={() => handleServiceAdd(index)}
                       >
-                        <FaMinus size={15} color="white" /> Close
+                        <FaPlus size={15} color="white" /> Add More
                       </button>
-                    )}{' '}
-                  {sibling.length - 1 === index && sibling.length < 6 && (
-                    <button
-                      className="educationAdd"
-                      title="Add More"
-                      onClick={() => handleServiceAdd(index)}
-                    >
-                      <FaPlus size={15} color="white" /> Add More
-                    </button>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             )

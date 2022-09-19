@@ -4,7 +4,6 @@ export const addCvData = (
   familyData,
   educationalData,
   siblingData,
-  preferenceData,
   preferenceInfoData,
 ) => {
   return {
@@ -15,7 +14,6 @@ export const addCvData = (
       familyData: familyData,
       educationalData: educationalData,
       siblingData: siblingData,
-      preferenceData: preferenceData,
       preferenceInfoData: preferenceInfoData,
     },
   }

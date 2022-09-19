@@ -10,6 +10,7 @@ const Preview = (props) => {
         style={{ marginRight: '50px' }}
         className="cv_bank_container21 preview-content"
       >
+        {console.log(props.profileData)}
         <Row>
           <Col>
             <h3>
@@ -51,9 +52,14 @@ const Preview = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col xs={6} md={6}>
             <h6>
               <b>Email:</b> {props.profileData.email}
+            </h6>
+          </Col>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Annual Income:</b> {props.profileData.annualIncome}
             </h6>
           </Col>
         </Row>
@@ -67,41 +73,10 @@ const Preview = (props) => {
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Division:</b> {props.profileData.divisionPresent}
-            </h6>
-          </Col>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Dristrict:</b> {props.profileData.dristrictPresent}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h6>
-              <b>Permanent Address:</b> {props.profileData.parmanentAddress}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Division:</b> {props.profileData.divisionParmanent}
-            </h6>
-          </Col>
-          <Col xs={6} md={6}>
-            <h6>
-              <b>Dristrict:</b> {props.profileData.dristrictParmanent}
-            </h6>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={6}>
-            <h6>
               <b>Date Of Birth:</b>{' '}
               {`${
-                props.profileData.age
-                  ? new Date(props.profileData.age).toLocaleString('en-GB', {
+                props.profileData.dob
+                  ? new Date(props.profileData.dob).toLocaleString('en-GB', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
@@ -142,9 +117,45 @@ const Preview = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col xs={6} md={6}>
             <h6>
-              <b>Special Condition:</b> {props.profileData.specialCondition}
+              <b>Citizenship:</b> {props.profileData.citizenship}
+            </h6>
+          </Col>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Complexion:</b> {props.profileData.complexion}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Family Status:</b> {props.profileData.familyStatus}
+            </h6>
+          </Col>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Hobby:</b> {props.profileData.hobby}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Hometown:</b> {props.profileData.hometown}
+            </h6>
+          </Col>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Marital Status:</b> {props.profileData.maritalStatus}
+            </h6>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={6}>
+            <h6>
+              <b>Physical Status:</b> {props.profileData.physicalStatus}
             </h6>
           </Col>
         </Row>
@@ -178,37 +189,21 @@ const Preview = (props) => {
                 <Col xs="12" md="6">
                   <h6>
                     <b>Organization Name:</b>
-                    {item.organizationName}
+                    {item.companyName}
                   </h6>
                 </Col>
               </Row>
               <Row>
-                <Col xs="12" md="6">
-                  <h6>
-                    <b>Department:</b>
-                    {item.com_department}
-                  </h6>
-                </Col>
                 <Col xs="12" md="6">
                   <h6>
                     <b>Location:</b>
                     {item.com_location}
                   </h6>
                 </Col>
-              </Row>
-              <Row>
-                <Col xs="12" md="12">
+                <Col xs="12" md="6">
                   <h6>
                     <b>Employment Period:</b> {item.from_employment} to{' '}
                     {item.to_employment}
-                  </h6>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs="12" md="12">
-                  <h6>
-                    <b>Reference:</b>
-                    {item.com_reference}
                   </h6>
                 </Col>
               </Row>
@@ -248,11 +243,6 @@ const Preview = (props) => {
                     {item.passingYear})
                   </h6>
                 </Col>
-                <Col xs={12} md={6}>
-                  <h6>
-                    <b>Institute Location:</b> {item.instituteLocation}
-                  </h6>
-                </Col>
               </Row>
             </>
           )
@@ -274,7 +264,12 @@ const Preview = (props) => {
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Ocupation:</b> {props.familyData.fatherOcupation}
+              <b>Ocupation:</b> {props.familyData.fatherOccupation}
+            </h6>
+          </Col>
+          <Col xs={6} md={12}>
+            <h6>
+              <b>Details:</b> {props.familyData.fatherDetails}
             </h6>
           </Col>
         </Row>
@@ -286,11 +281,15 @@ const Preview = (props) => {
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Ocupation:</b> {props.familyData.motherOcupation}
+              <b>Ocupation:</b> {props.familyData.motherOccupation}
+            </h6>
+          </Col>
+          <Col xs={6} md={12}>
+            <h6>
+              <b>Details:</b> {props.familyData.motherDetails}
             </h6>
           </Col>
         </Row>
-
         {props.siblingData.map((item, index) => {
           return (
             <>
@@ -303,7 +302,7 @@ const Preview = (props) => {
                 </Col>
                 <Col xs={6} md={6}>
                   <h6>
-                    <b>Ocupation:</b> {item.ocupation}
+                    <b>Ocupation:</b> {item.occupation}
                   </h6>
                 </Col>
               </Row>
@@ -329,25 +328,25 @@ const Preview = (props) => {
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Profession:</b> {props.preferenceInfoData.profession}
+              <b>Education:</b> {props.preferenceInfoData.educationPreference}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Skin Tone:</b> {props.preferenceInfoData.skinTone}
+              <b>Complexion:</b> {props.preferenceInfoData.complexionPreference}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Spouse Preference:</b>{' '}
-              {props.preferenceInfoData.spousePreference}
+              <b>Marital Status:</b>{' '}
+              {props.preferenceInfoData.maritalStatusPreference}
             </h6>
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Preference:</b> {props.preferenceInfoData.preference}
+              <b>Occupation:</b> {props.preferenceInfoData.occupationPreference}
             </h6>
           </Col>
         </Row>
@@ -359,7 +358,7 @@ const Preview = (props) => {
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Physical Status:</b> {props.preferenceInfoData.physicalStatus}
+              <b>Location:</b> {props.preferenceInfoData.location}
             </h6>
           </Col>
         </Row>
@@ -380,8 +379,7 @@ const Preview = (props) => {
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>District Preference:</b>{' '}
-              {props.preferenceInfoData.districtPreference}
+              <b>Details:</b> {props.preferenceInfoData.preferenceDetails}
             </h6>
           </Col>
         </Row>

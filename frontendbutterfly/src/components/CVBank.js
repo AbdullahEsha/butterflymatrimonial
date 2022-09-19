@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import EducationalQulification from './CvBank/EducationalQualification'
+import Qulification from './CvBank/Qualification'
 import FamilyMember from './CvBank/FamilyMember'
 import PreferenceInformation from './CvBank/PreferenceInformation'
-import ProfessionalQualification from './CvBank/ProfessionalQualification'
 import ProfileInFormation from './CvBank/ProfileInformation'
 import { useDispatch } from 'react-redux'
 import { addCvData } from '../actions/index'
@@ -24,7 +23,6 @@ const CVBank = () => {
   const [familyData, setFamilyData] = useState({})
   const [educationalData, setEducationalData] = useState({})
   const [siblingData, setSiblingData] = useState({})
-  const [preferenceData, setPreferenceData] = useState({})
   const [preferenceInfoData, setPreferenceInfoData] = useState({})
   const [galleryData, setGalleryData] = useState({})
 
@@ -37,7 +35,7 @@ const CVBank = () => {
       if (profileData.image === undefined || profileData.image === '') {
         document.querySelector('.imageFile').style.border = '1px solid red'
       } else if (profileData.name === undefined || profileData.name === '') {
-        document.querySelector('.name').style.border = '1px solid red'
+        document.querySelector('.name').style.borderColor = 'red'
       } else if (
         profileData.gender === undefined ||
         profileData.gender === ''
@@ -48,52 +46,14 @@ const CVBank = () => {
         profileData.phone.match(/\d/g).length !== 11
       ) {
         document.querySelector('.phone').style.border = '1px solid red'
-      } else if (
-        profileData.religion === undefined ||
-        profileData.religion === ''
-      ) {
-        document.querySelector('.religion').style.borderColor = 'red'
       } else if (profileData.email === undefined || profileData.email === '') {
         document.querySelector('.email').style.borderColor = 'red'
-      } else if (profileData.age === undefined || profileData.age === '') {
-        document.querySelector('.age').style.borderColor = 'red'
+      } else if (profileData.dob === undefined || profileData.age === '') {
+        document.querySelector('.dob').style.borderColor = 'red'
       } else if (
-        profileData.presentAddress === undefined ||
-        profileData.presentAddress === ''
+        profileData.height === undefined ||
+        profileData.height === ''
       ) {
-        document.querySelector('.presentAddress').style.borderColor = 'red'
-      } else if (
-        profileData.divisionPresent === undefined ||
-        profileData.divisionPresent === ''
-      ) {
-        document.querySelector('.divisionPresent').style.border =
-          '1px solid red'
-      } else if (
-        profileData.dristrictPresent === undefined ||
-        profileData.dristrictPresent === ''
-      ) {
-        document.querySelector('.dristrictPresent').style.borderColor = 'red'
-      } else if (
-        profileData.parmanentAddress === undefined ||
-        profileData.parmanentAddress === ''
-      ) {
-        document.querySelector('.parmanentAddress').style.borderColor = 'red'
-      } else if (
-        profileData.divisionParmanent === undefined ||
-        profileData.divisionParmanent === ''
-      ) {
-        document.querySelector('.divisionParmanent').style.borderColor = 'red'
-      } else if (
-        profileData.dristrictParmanent === undefined ||
-        profileData.dristrictParmanent === ''
-      ) {
-        document.querySelector('.dristrictParmanent').style.borderColor = 'red'
-      }
-      // else if (profileData.spousePreference === undefined) {
-      //   document.querySelector('.spousePreference').style.border =
-      //     '1px solid red'
-      // }
-      else if (profileData.height === undefined || profileData.height === '') {
         document.querySelector('.height').style.borderColor = 'red'
       } else if (
         profileData.weight === undefined ||
@@ -106,65 +66,99 @@ const CVBank = () => {
       ) {
         document.querySelector('.bloodGroup').style.borderColor = 'red'
       } else if (
+        profileData.religion === undefined ||
+        profileData.religion === ''
+      ) {
+        document.querySelector('.religion').style.borderColor = 'red'
+      } else if (
+        profileData.complexion === undefined ||
+        profileData.complexion === ''
+      ) {
+        document.querySelector('.complexion').style.borderColor = 'red'
+      } else if (
+        profileData.maritalStatus === undefined ||
+        profileData.maritalStatus === ''
+      ) {
+        document.querySelector('.maritalStatus').style.borderColor = 'red'
+      } else if (
+        profileData.hometown === undefined ||
+        profileData.hometown === ''
+      ) {
+        document.querySelector('.hometown').style.borderColor = 'red'
+      } else if (
+        profileData.presentAddress === undefined ||
+        profileData.presentAddress === ''
+      ) {
+        document.querySelector('.presentAddress').style.borderColor = 'red'
+      } else if (
         profileData.grownUpAt === undefined ||
         profileData.grownUpAt === ''
       ) {
-        document.querySelector('.grownUpAt').style.borderColor = 'red'
+        document.querySelector(
+          '.grownUpAt .css-1bi0jn-control',
+        ).style.borderColor = 'red'
+      } else if (
+        profileData.citizenship === undefined ||
+        profileData.citizenship === ''
+      ) {
+        document.querySelector(
+          '.citizenship .css-1bi0jn-control',
+        ).style.borderColor = 'red'
+      } else if (
+        profileData.familyStatus === undefined ||
+        profileData.familyStatus === ''
+      ) {
+        document.querySelector('.familyStatus').style.borderColor = 'red'
+      } else if (
+        profileData.annualIncome === undefined ||
+        profileData.annualIncome === ''
+      ) {
+        document.querySelector('.annualIncome').style.borderColor = 'red'
+      } else if (profileData.hobby === undefined || profileData.hobby === '') {
+        document.querySelector('.hobby .css-1bi0jn-control').style.borderColor =
+          'red'
+      } else if (
+        profileData.physicalStatus === undefined ||
+        profileData.physicalStatus === ''
+      ) {
+        document.querySelector('.physicalStatus').style.borderColor = 'red'
       } else if (
         profileData.specialCase === undefined ||
         profileData.specialCase === ''
       ) {
-        document.querySelector('.specialCaseCheck').style.display = 'block'
-      } else if (
-        profileData.specialCondition === undefined ||
-        profileData.specialCondition === ''
-      ) {
-        document.querySelector('.specialCondition').style.borderColor = 'red'
+        document.querySelector('.specialCase').style.borderColor = 'red'
       } else if (profileData.about === undefined || profileData.about === '') {
         document.querySelector('.about').style.borderColor = 'red'
+      } else if (galleryData.imageFill[0] === undefined) {
+        document.querySelector('.fileContainer').style.borderColor = 'red'
       } else {
-        setData('EducationalQulification')
+        setData('Qulification')
       }
-    } else if (data === 'EducationalQulification') {
-      educationalData.forEach((item) => {
+    } else if (data === 'Qulification') {
+      educationalData.forEach((item, index) => {
         if (
           item.levelOfEducation === undefined ||
           item.levelOfEducation === ''
         ) {
           document.querySelector('.levelOfEducation').style.borderColor = 'red'
         } else if (item.group === undefined || item.group === '') {
-          document.querySelector('.css-1bi0jn-control').style.borderColor =
-            'red'
+          document.querySelector(
+            `.group_${index} .css-1bi0jn-control`,
+          ).style.borderColor = 'red'
         } else if (
           item.instituteName === undefined ||
           item.instituteName === ''
         ) {
           document.querySelector('.instituteName').style.borderColor = 'red'
-        } else if (
-          item.instituteLocation === undefined ||
-          item.instituteLocation === ''
-        ) {
-          document.querySelector('.instituteLocation').style.borderColor = 'red'
         } else if (item.passingYear === undefined || item.passingYear === '') {
           document.querySelector('.passingYear').style.borderColor = 'red'
-        } else {
-          setData('ProfessionalQualification')
         }
       })
-    } else if (data === 'ProfessionalQualification') {
       professionalData.forEach((item) => {
-        if (item.designation === undefined || item.designation === '') {
+        if (item.companyName === undefined || item.companyName === '') {
+          document.querySelector('.companyName').style.borderColor = 'red'
+        } else if (item.designation === undefined || item.designation === '') {
           document.querySelector('.designation').style.borderColor = 'red'
-        } else if (
-          item.organizationName === undefined ||
-          item.organizationName === ''
-        ) {
-          document.querySelector('.organizationName').style.borderColor = 'red'
-        } else if (
-          item.com_department === undefined ||
-          item.com_department === ''
-        ) {
-          document.querySelector('.com_department').style.borderColor = 'red'
         } else if (
           item.com_location === undefined ||
           item.com_location === ''
@@ -180,54 +174,53 @@ const CVBank = () => {
           item.to_employment === ''
         ) {
           document.querySelector('.to_employment').style.borderColor = 'red'
-        } else if (
-          item.com_reference === undefined ||
-          item.com_reference === ''
-        ) {
-          document.querySelector('.com_reference').style.borderColor = 'red'
         } else {
           setData('FamilyMember')
         }
       })
     } else if (data === 'FamilyMember') {
-      if (familyData.fatherName === undefined) {
+      if (familyData.fatherName === undefined || familyData.fatherName === '') {
         document.querySelector('.fatherName').style.borderColor = 'red'
-      } else if (familyData.fatherOcupation === undefined) {
-        document.querySelector('.fatherOcupation').style.borderColor = 'red'
-      } else if (familyData.motherName === undefined) {
+      } else if (
+        familyData.fatherOccupation === undefined ||
+        familyData.fatherOccupation === ''
+      ) {
+        document.querySelector('.fatherOccupation').style.borderColor = 'red'
+      } else if (
+        familyData.fatherDetails === undefined ||
+        familyData.fatherDetails === ''
+      ) {
+        document.querySelector('.fatherDetails').style.borderColor = 'red'
+      } else if (
+        familyData.motherName === undefined ||
+        familyData.motherName === ''
+      ) {
         document.querySelector('.motherName').style.borderColor = 'red'
-      } else if (familyData.motherOcupation === undefined) {
-        document.querySelector('.motherOcupation').style.borderColor = 'red'
       } else if (
-        siblingData.map((item) => item.name)[0] === undefined ||
-        siblingData.map((item) => item.name)[0] === ''
+        familyData.motherOccupation === undefined ||
+        familyData.motherOccupation === ''
       ) {
-        document.querySelector('.sibname').style.borderColor = 'red'
+        document.querySelector('.motherOccupation').style.borderColor = 'red'
       } else if (
-        siblingData.map((item) => item.ocupation)[0] === undefined ||
-        siblingData.map((item) => item.ocupation)[0] === ''
+        familyData.motherDetails === undefined ||
+        familyData.motherDetails === ''
       ) {
-        document.querySelector('.sibocupation').style.borderColor = 'red'
-      } else if (
-        siblingData.map((item) => item.details)[0] === undefined ||
-        siblingData.map((item) => item.details)[0] === ''
-      ) {
-        document.querySelector('.sibdetails').style.borderColor = 'red'
+        document.querySelector('.motherDetails').style.borderColor = 'red'
       } else {
-        setData('PreferenceInformation')
+        siblingData.forEach((item) => {
+          if (item.name === undefined || item.name === '') {
+            document.querySelector('.sibname').style.borderColor = 'red'
+          } else if (item.occupation === undefined || item.occupation === '') {
+            document.querySelector('.sibOccupation').style.borderColor = 'red'
+          } else if (item.details === undefined || item.details === '') {
+            document.querySelector('.sibdetails').style.borderColor = 'red'
+          } else {
+            setData('PreferenceInformation')
+          }
+        })
       }
     } else if (data === 'PreferenceInformation') {
       if (
-        preferenceInfoData.profession === undefined ||
-        preferenceInfoData.profession === ''
-      ) {
-        document.querySelector('.profession').style.borderColor = 'red'
-      } else if (
-        preferenceInfoData.skinTone === undefined ||
-        preferenceInfoData.skinTone === ''
-      ) {
-        document.querySelector('.skinTone').style.borderColor = 'red'
-      } else if (
         preferenceInfoData.ageMinimum === undefined ||
         preferenceInfoData.ageMinimum === ''
       ) {
@@ -248,30 +241,44 @@ const CVBank = () => {
       ) {
         document.querySelector('.heightMaximum').style.borderColor = 'red'
       } else if (
+        preferenceInfoData.maritalStatusPreference === undefined ||
+        preferenceInfoData.maritalStatusPreference === ''
+      ) {
+        document.querySelector(
+          '.maritalStatusPreference .css-1bi0jn-control',
+        ).style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.complexionPreference === undefined ||
+        preferenceInfoData.complexionPreference === ''
+      ) {
+        document.querySelector('.complexionPreference').style.borderColor =
+          'red'
+      } else if (
+        preferenceInfoData.occupationPreference === undefined ||
+        preferenceInfoData.occupationPreference === ''
+      ) {
+        document.querySelector('.occupationPreference').style.borderColor =
+          'red'
+      } else if (
+        preferenceInfoData.educationPreference === undefined ||
+        preferenceInfoData.educationPreference === ''
+      ) {
+        document.querySelector('.educationPreference').style.borderColor = 'red'
+      } else if (
+        preferenceInfoData.location === undefined ||
+        preferenceInfoData.location === ''
+      ) {
+        document.querySelector('.location').style.borderColor = 'red'
+      } else if (
         preferenceInfoData.religionPreference === undefined ||
         preferenceInfoData.religionPreference === ''
       ) {
         document.querySelector('.religionPreference').style.borderColor = 'red'
       } else if (
-        preferenceInfoData.districtPreference === undefined ||
-        preferenceInfoData.districtPreference === ''
+        preferenceInfoData.preferenceDetails === undefined ||
+        preferenceInfoData.preferenceDetails === ''
       ) {
-        document.querySelector('.districtPreference').style.borderColor = 'red'
-      } else if (
-        preferenceInfoData.physicalStatus === undefined ||
-        preferenceInfoData.physicalStatus === ''
-      ) {
-        document.querySelector('.physicalStatusCheck').style.display = 'block'
-      } else if (
-        preferenceInfoData.preference === undefined ||
-        preferenceInfoData.preference === ''
-      ) {
-        document.querySelector('.preferenceCheck').style.display = 'block'
-      } else if (
-        preferenceInfoData.spousePreference === undefined ||
-        preferenceInfoData.spousePreference === ''
-      ) {
-        document.querySelector('.spousePreferenceCheck').style.display = 'block'
+        document.querySelector('.preferenceDetails').style.borderColor = 'red'
       } else {
         setData('Preview')
       }
@@ -296,13 +303,12 @@ const CVBank = () => {
   const updateSiblingData = (f) => {
     setSiblingData(f)
   }
-  const updatePreferenceData = (g) => {
-    setPreferenceData(g)
-  }
+
   const updateGalleryData = (h) => {
     setGalleryData(h)
   }
 
+  // console.log(preferenceInfoData)
   const exportPdf = () => {
     var doc = new jsPDF('p', 'mm', 'a4')
 
@@ -407,9 +413,6 @@ const CVBank = () => {
 
     doc.setFont(undefined, 'bold')
     doc.text(110, 124, 'Preference:', 'left')
-
-    doc.setFont(undefined, 'normal')
-    doc.text(130, 124, `${preferenceData.map((item) => item)}`, 'left')
 
     doc.setFont(undefined, 'bold')
     doc.text(20, 132, 'About:', 'left')
@@ -896,9 +899,9 @@ const CVBank = () => {
               )}
             </li>
             <li>
-              {data === 'EducationalQulification' || data === 'Preview' ? (
+              {data === 'Qulification' || data === 'Preview' ? (
                 <button
-                  onClick={() => setData('EducationalQulification')}
+                  onClick={() => setData('Qulification')}
                   id="borderbottomline"
                 >
                   <IoMdCheckmarkCircleOutline
@@ -906,36 +909,14 @@ const CVBank = () => {
                     color="white"
                     style={{ marginBottom: '4px' }}
                   />{' '}
-                  Educational Information
+                  Educational & Professional Information
                 </button>
               ) : (
                 <button
-                  onClick={() => setData('EducationalQulification')}
+                  onClick={() => setData('Qulification')}
                   className="borderbottomlinehover"
                 >
-                  Educational Information
-                </button>
-              )}
-            </li>
-            <li>
-              {data === 'ProfessionalQualification' || data === 'Preview' ? (
-                <button
-                  onClick={() => setData('ProfessionalQualification')}
-                  id="borderbottomline"
-                >
-                  <IoMdCheckmarkCircleOutline
-                    size={20}
-                    color="white"
-                    style={{ marginBottom: '4px' }}
-                  />{' '}
-                  Professional Information
-                </button>
-              ) : (
-                <button
-                  onClick={() => setData('ProfessionalQualification')}
-                  className="borderbottomlinehover"
-                >
-                  Professional Information
+                  Educational & Professional Information
                 </button>
               )}
             </li>
@@ -994,13 +975,9 @@ const CVBank = () => {
               updateGalleryData={updateGalleryData}
             />
           )}
-          {data === 'EducationalQulification' && (
-            <EducationalQulification
+          {data === 'Qulification' && (
+            <Qulification
               updateEducationalData={updateEducationalData}
-            />
-          )}
-          {data === 'ProfessionalQualification' && (
-            <ProfessionalQualification
               updateProfessionalData={updateProfessionalData}
             />
           )}
@@ -1012,7 +989,6 @@ const CVBank = () => {
           )}
           {data === 'PreferenceInformation' && (
             <PreferenceInformation
-              updatePreferenceData={updatePreferenceData}
               updatePreferenceInfoData={updatePreferenceInfoData}
             />
           )}
@@ -1023,7 +999,6 @@ const CVBank = () => {
               familyData={familyData}
               educationalData={educationalData}
               siblingData={siblingData}
-              preferenceData={preferenceData}
               preferenceInfoData={preferenceInfoData}
             />
           )}
@@ -1037,10 +1012,9 @@ const CVBank = () => {
               <button
                 className="cv_bankButton_BackNext"
                 onClick={() => {
-                  data === 'EducationalQulification' &&
-                    setData('ProfileInformation')
+                  data === 'Qulification' && setData('ProfileInformation')
                   data === 'ProfessionalQualification' &&
-                    setData('EducationalQulification')
+                    setData('Qulification')
                   data === 'FamilyMember' &&
                     setData('ProfessionalQualification')
                   data === 'PreferenceInformation' && setData('FamilyMember')
@@ -1065,7 +1039,6 @@ const CVBank = () => {
                         familyData,
                         educationalData,
                         siblingData,
-                        preferenceData,
                         preferenceInfoData,
                       ),
                     )
@@ -1087,7 +1060,6 @@ const CVBank = () => {
                           familyData,
                           educationalData,
                           siblingData,
-                          preferenceData,
                           preferenceInfoData,
                         ),
                       )

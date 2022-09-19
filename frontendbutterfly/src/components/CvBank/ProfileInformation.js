@@ -1,34 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, KeyboardEventHandler } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-// import Select from 'react-select'
+import CreatableSelect from 'react-select/creatable'
+import Select from 'react-select'
 import ImageUploader from 'react-images-upload'
 
 const ProfileInformation = (props) => {
+  const options = [
+    { label: 'Cycling', value: 'Cycling' },
+    { label: 'Swimming', value: 'Swimming' },
+    { label: 'Gardening', value: 'Gardening' },
+  ]
+
   const [galleryImage, setGalleryImage] = useState({ imageFill: '' })
   const profileData_ = useSelector((state) => state.cvDataReducer.profileData)
-  // const [city, setCity] = useState([])
+  const [city, setCity] = useState([])
   const [checkOther, setCheckOther] = useState('None')
+
   const [profileInformation, setProfileInformation] = useState({
     image: profileData_.image ? profileData_.image : '',
     name: profileData_ ? profileData_.name : '',
     gender: profileData_ ? profileData_.gender : '',
     phone: profileData_ ? profileData_.phone : '',
-    religion: profileData_ ? profileData_.religion : '',
     email: profileData_ ? profileData_.email : '',
-    presentAddress: profileData_ ? profileData_.presentAddress : '',
-    divisionPresent: profileData_ ? profileData_.divisionPresent : '',
-    dristrictPresent: profileData_ ? profileData_.dristrictPresent : '',
-    parmanentAddress: profileData_ ? profileData_.divisionParmanent : '',
-    divisionParmanent: profileData_ ? profileData_.divisionParmanent : '',
-    dristrictParmanent: profileData_ ? profileData_.dristrictParmanent : '',
-    age: profileData_ ? profileData_.age : '',
-    specialCase: profileData_ ? profileData_.specialCase : '',
+    dob: profileData_ ? profileData_.dob : '',
     height: profileData_ ? profileData_.height : '',
     weight: profileData_ ? profileData_.weight : '',
     bloodGroup: profileData_ ? profileData_.bloodGroup : '',
-    grownUpAt: profileData_ ? profileData_.grownUpAt : '',
-    specialCondition: profileData_ ? profileData_.specialCondition : '',
+    religion: profileData_ ? profileData_.religion : '',
+    complexion: profileData_ ? profileData_.complexion : '',
+    maritalStatus: profileData_ ? profileData_.maritalStatus : '',
+    hometown: profileData_ ? profileData_.hometown : '',
+    presentAddress: profileData_ ? profileData_.presentAddress : '',
+    grownUpAt: profileData_.grownUpAt ? profileData_.grownUpAt : '',
+    citizenship: profileData_.citizenship ? profileData_.citizenship : '',
+    familyStatus: profileData_ ? profileData_.familyStatus : '',
+    annualIncome: profileData_ ? profileData_.annualIncome : '',
+    hobby: profileData_ ? profileData_.hobby : '',
+    physicalStatus: profileData_ ? profileData_.physicalStatus : '',
+    specialCase: profileData_ ? profileData_.specialCase : '',
     about: profileData_ ? profileData_.about : '',
   })
 
@@ -91,8 +101,6 @@ const ProfileInformation = (props) => {
     return new File([u8arr], filename, { type: mime })
   }
 
-  //Usage example:
-
   const loadFile = async (event) => {
     document.querySelector('.uploadImg').style.backgroundImage =
       'url(' + URL.createObjectURL(event.target.files[0]) + ')'
@@ -105,6 +113,7 @@ const ProfileInformation = (props) => {
       new_img.src = resized
       new_img.onload = function (event) {
         var file = dataURLtoFile(resized, `${Date.now()}.png`)
+
         setProfileInformation({
           ...profileInformation,
           image: file,
@@ -118,35 +127,33 @@ const ProfileInformation = (props) => {
   const { updateProfileData, updateGalleryData } = props
 
   useEffect(() => {
-    // getAllCity()
+    getAllCity()
     updateGalleryData(galleryImage)
     updateProfileData(profileInformation)
   }, [profileInformation, updateProfileData, galleryImage, updateGalleryData])
 
-  // const getAllCity = async () => {
-  //   fetch(`https://countriesnow.space/api/v0.1/countries`, {})
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.error) {
-  //         console.log('vul')
-  //       } else {
-  //         const countryInfo = [...data.data]
-  //         let requiredCountryInfo = []
-  //         countryInfo.map((item, index) =>
-  //           requiredCountryInfo.push({
-  //             label: `${item.country}`,
-  //             value: `${item.country}`,
-  //           }),
-  //         )
-  //         setCity(requiredCountryInfo)
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log('pro erro', err)
-  //     })
-  // }
-
-  // console.log(profileInformation)
+  const getAllCity = async () => {
+    fetch(`https://countriesnow.space/api/v0.1/countries`, {})
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          const countryInfo = [...data.data]
+          let requiredCountryInfo = []
+          countryInfo.map((item, index) =>
+            requiredCountryInfo.push({
+              label: `${item.country}`,
+              value: `${item.country}`,
+            }),
+          )
+          setCity(requiredCountryInfo)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
 
   return (
     <>
@@ -173,13 +180,14 @@ const ProfileInformation = (props) => {
         <Row className="row-padding">
           <Col xs={12} md={12}>
             <h5>
-              Name
+              Full Name
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
               type="text"
               className="form-control name"
               placeholder="Enter your name."
+              name="name"
               value={profileInformation.name}
               onChange={(event) =>
                 setProfileInformation({
@@ -246,7 +254,7 @@ const ProfileInformation = (props) => {
         <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
-              Phone
+              Contact Number
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <div className="form-groupx form-control phone">
@@ -255,7 +263,7 @@ const ProfileInformation = (props) => {
               <input
                 type="number"
                 className="form-control phone"
-                placeholder="013********"
+                placeholder="01*********"
                 id="phoneNumber"
                 name="phone"
                 value={profileInformation.phone}
@@ -270,36 +278,7 @@ const ProfileInformation = (props) => {
           </Col>
           <Col xs={12} md={6}>
             <h5>
-              Religion
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <select
-              className="form-control religion"
-              placeholder="Choose One"
-              name="religion"
-              value={profileInformation.religion}
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  religion: event.target.value,
-                })
-              }
-            >
-              <option value="" disabled selected>
-                Choose One
-              </option>
-              <option value="Muslim">Muslim</option>
-              <option value="Hindu">Hindu</option>
-              <option value="Buddhist">Buddhist</option>
-              <option value="Christian">Christian</option>
-              <option value="Other">Other</option>
-            </select>
-          </Col>
-        </Row>
-        <Row className="row-padding">
-          <Col xs={12} md={6}>
-            <h5>
-              Email
+              Email Address
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <input
@@ -316,6 +295,8 @@ const ProfileInformation = (props) => {
               }
             />
           </Col>
+        </Row>
+        <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
               Date Of Birth
@@ -326,141 +307,16 @@ const ProfileInformation = (props) => {
               data-date-format="mm/dd/yyyy"
               title="mm/dd/yyyy"
               name="dob"
-              className="form-control age"
-              value={profileInformation.age}
+              className="form-control dob"
+              value={profileInformation.dob}
               onChange={(event) =>
                 setProfileInformation({
                   ...profileInformation,
-                  age: event.target.value,
+                  dob: event.target.value,
                 })
               }
             />
           </Col>
-        </Row>
-        <Row className="row-padding">
-          <Col xs={12} md={12}>
-            <h5>
-              Present Address
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <input
-              type="text"
-              className="form-control presentAddress"
-              placeholder="Enter your present address."
-              name="present-address"
-              value={profileInformation.presentAddress}
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  presentAddress: event.target.value,
-                })
-              }
-            />
-          </Col>
-        </Row>
-        <Row className="row-padding">
-          <Col xs={12} md={6}>
-            <h5>
-              Division
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <input
-              type="text"
-              className="form-control divisionPresent"
-              id="divisionPresent"
-              placeholder="Enter your division."
-              name="present-division"
-              value={profileInformation.divisionPresent}
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  divisionPresent: event.target.value,
-                })
-              }
-            />
-          </Col>
-          <Col xs={12} md={6}>
-            <h5>
-              Dristrict
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <input
-              type="text"
-              className="form-control dristrictPresent"
-              placeholder="Enter your dristrict."
-              name="present-dristrict"
-              value={profileInformation.dristrictPresent}
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  dristrictPresent: event.target.value,
-                })
-              }
-            />
-          </Col>
-        </Row>
-        <Row className="row-padding">
-          <Col>
-            <h5>
-              Parmanent Address
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <input
-              type="text"
-              className="form-control parmanentAddress"
-              placeholder="Enter your present address."
-              name="parmanent-address"
-              value={profileInformation.parmanentAddress}
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  parmanentAddress: event.target.value,
-                })
-              }
-            />
-          </Col>
-        </Row>
-        <Row className="row-padding">
-          <Col xs={12} md={6}>
-            <h5>
-              Division
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <input
-              type="text"
-              className="form-control divisionParmanent"
-              placeholder="Enter your division."
-              name="parmanent-division"
-              value={profileInformation.divisionParmanent}
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  divisionParmanent: event.target.value,
-                })
-              }
-            />
-          </Col>
-          <Col xs={12} md={6}>
-            <h5>
-              Dristrict
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <input
-              type="text"
-              className="form-control dristrictParmanent"
-              placeholder="Enter your dristrict."
-              name="parmanent-dristrict"
-              value={profileInformation.dristrictParmanent}
-              onChange={(event) =>
-                setProfileInformation({
-                  ...profileInformation,
-                  dristrictParmanent: event.target.value,
-                })
-              }
-            />
-          </Col>
-        </Row>
-        <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
               Height
@@ -508,6 +364,8 @@ const ProfileInformation = (props) => {
               <option value="6ft 5">6ft 5</option>
             </select>
           </Col>
+        </Row>
+        <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
               Weight in (kg)
@@ -530,8 +388,6 @@ const ProfileInformation = (props) => {
               }
             />
           </Col>
-        </Row>
-        <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
               Blood Group
@@ -562,30 +418,152 @@ const ProfileInformation = (props) => {
               <option value="AB-">AB-</option>
             </select>
           </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={12} md={6}>
+            <h5>
+              Religion
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <select
+              className="form-control religion"
+              placeholder="Choose One"
+              name="religion"
+              value={profileInformation.religion}
+              onChange={(event) =>
+                setProfileInformation({
+                  ...profileInformation,
+                  religion: event.target.value,
+                })
+              }
+            >
+              <option value="" disabled selected>
+                Choose One
+              </option>
+              <option value="Muslim">Muslim</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Buddhist">Buddhist</option>
+              <option value="Christian">Christian</option>
+              <option value="Other">Other</option>
+            </select>
+          </Col>
+          <Col xs={12} md={6}>
+            <h5>
+              Complexion
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <select
+              className="form-control complexion"
+              placeholder="Choose One"
+              name="complexion"
+              value={profileInformation.complexion}
+              onChange={(event) =>
+                setProfileInformation({
+                  ...profileInformation,
+                  complexion: event.target.value,
+                })
+              }
+            >
+              <option value="" disabled selected>
+                Choose One
+              </option>
+              <option value="Extremely Fair Skin">Extremely Fair Skin</option>
+              <option value="Fair Skin">Fair Skin</option>
+              <option value="Medium Skin">Medium Skin</option>
+              <option value="Olive Skin">Olive Skin</option>
+              <option value="Brown Skin">Brown Skin</option>
+              <option value="Dark Skin">Dark Skin</option>
+            </select>
+          </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={12} md={6}>
+            <h5>
+              Marital Status
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <select
+              className="form-control maritalStatus"
+              placeholder="Choose One"
+              name="maritalStatus"
+              value={profileInformation.maritalStatus}
+              onChange={(event) =>
+                setProfileInformation({
+                  ...profileInformation,
+                  maritalStatus: event.target.value,
+                })
+              }
+            >
+              <option value="" disabled selected>
+                Choose One
+              </option>
+              <option value="Unmarried">Unmarried</option>
+              <option value="Widow/Widower">Widow/Widower</option>
+              <option value="Divorced">Divorced</option>
+              <option value="Separated">Separated</option>
+              <option value="Married">Married</option>
+              <option value="With Child">With Child</option>
+            </select>
+          </Col>
+          <Col xs={12} md={6}>
+            <h5>
+              Home town
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <input
+              type="text"
+              className="form-control hometown"
+              placeholder="Enter your home town."
+              name="hometown"
+              value={profileInformation.hometown}
+              onChange={(event) =>
+                setProfileInformation({
+                  ...profileInformation,
+                  hometown: event.target.value,
+                })
+              }
+            />
+          </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={12} md={12}>
+            <h5>
+              Present Address
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <textarea
+              type="text"
+              rows={2}
+              className="form-control presentAddress"
+              placeholder="Enter your present address."
+              name="present-address"
+              value={profileInformation.presentAddress}
+              onChange={(event) =>
+                setProfileInformation({
+                  ...profileInformation,
+                  presentAddress: event.target.value,
+                })
+              }
+            />
+          </Col>
+        </Row>
+        <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
               Where You Grown Up?
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <input
-              type="text"
-              className="form-control grownUpAt"
-              placeholder="Enter the Country and City name."
-              name="grownUpAt"
-              value={profileInformation.grownUpAt}
-              onChange={(event) => {
-                setProfileInformation({
-                  ...profileInformation,
-                  grownUpAt: event.target.value,
-                })
-              }}
-            />
-            {/* <Select
+            <Select
+              className="grownUpAt"
               options={city}
-              defaultValue={{
-                label: `${profileInformation.grownUpAt}`,
-                value: `${profileInformation.grownUpAt}`,
-              }}
+              defaultValue={
+                profileData_.grownUpAt
+                  ? {
+                      label: `${profileInformation.grownUpAt}`,
+                      value: `${profileInformation.grownUpAt}`,
+                    }
+                  : false
+              }
               theme={(theme) => ({
                 ...theme,
                 borderRadius: 3,
@@ -598,10 +576,155 @@ const ProfileInformation = (props) => {
               onChange={(event) => {
                 setProfileInformation({
                   ...profileInformation,
-                  grownUpAt: event.target.value,
+                  grownUpAt: event.value,
                 })
               }}
-            /> */}
+            />
+          </Col>
+          <Col xs={12} md={6}>
+            <h5>
+              Citizenship
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <Select
+              className="citizenship"
+              options={city}
+              isMulti={true}
+              defaultValue={
+                profileData_.citizenship
+                  ? {
+                      label: `${profileInformation.citizenship}`,
+                      value: `${profileInformation.citizenship}`,
+                    }
+                  : false
+              }
+              placeholder="Choose one."
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 3,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#ff566a56',
+                  primary: '#ff566b',
+                },
+              })}
+              onChange={(event) => {
+                setProfileInformation({
+                  ...profileInformation,
+                  citizenship: event.map((item) => item.label).join(),
+                })
+              }}
+            />
+          </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={12} md={6}>
+            <h5>
+              Family Status
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <select
+              className="form-control familyStatus"
+              placeholder="Choose One"
+              name="familyStatus"
+              value={profileInformation.familyStatus}
+              onChange={(event) =>
+                setProfileInformation({
+                  ...profileInformation,
+                  familyStatus: event.target.value,
+                })
+              }
+            >
+              <option value="" disabled selected>
+                Choose One
+              </option>
+              <option value="Upper">Upper</option>
+              <option value="Upper Middle">Upper Middle</option>
+              <option value="Middle">Middle</option>
+              <option value="Working">Working </option>
+              <option value="Lower">Lower</option>
+            </select>
+          </Col>
+          <Col xs={12} md={6}>
+            <h5>
+              Annual Income (BDT)
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <input
+              type="number"
+              className="form-control annualIncome"
+              placeholder="Enter approximate annual income."
+              name="annualIncome"
+              value={profileInformation.annualIncome}
+              onChange={(event) => {
+                setProfileInformation({
+                  ...profileInformation,
+                  annualIncome: event.target.value,
+                })
+              }}
+            />
+          </Col>
+        </Row>
+        <Row className="row-padding">
+          <Col xs={12} md={6}>
+            <h5>
+              Hobby
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <CreatableSelect
+              className="hobby"
+              options={options}
+              isMulti={true}
+              defaultValue={
+                profileData_.hobby
+                  ? {
+                      label: `${profileInformation.hobby}`,
+                      value: `${profileInformation.hobby}`,
+                    }
+                  : false
+              }
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 3,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#ff566a56',
+                  primary: '#ff566b',
+                },
+              })}
+              onChange={(event) => {
+                setProfileInformation({
+                  ...profileInformation,
+                  hobby: event.map((item) => item.label).join(),
+                })
+              }}
+            />
+          </Col>
+          <Col xs={12} md={6}>
+            <h5>
+              Physical Status
+              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+            </h5>
+            <select
+              className="form-control physicalStatus"
+              placeholder="Choose One"
+              name="physicalStatus"
+              value={profileInformation.physicalStatus}
+              onChange={(event) =>
+                setProfileInformation({
+                  ...profileInformation,
+                  physicalStatus: event.target.value,
+                })
+              }
+            >
+              <option value="" disabled selected>
+                Choose One
+              </option>
+              <option value="Normal">Normal</option>
+              <option value="Physically challenged">
+                Physically challenged
+              </option>
+            </select>
           </Col>
         </Row>
         <Row className="row-padding">
@@ -729,30 +852,6 @@ const ProfileInformation = (props) => {
               </label>
             </div>
           </Col>
-        </Row>
-        <Row className="row-padding">
-          <Col xs={12} md={6}>
-            <h5>
-              Special Condition
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
-            <div className="input-group">
-              <textarea
-                className="form-control specialCondition"
-                placeholder="Please share if you have any disabilities, low eye vision etc."
-                aria-label="With textarea"
-                name="special-condition"
-                rows="7"
-                value={profileInformation.specialCondition}
-                onChange={(event) => {
-                  setProfileInformation({
-                    ...profileInformation,
-                    specialCondition: event.target.value,
-                  })
-                }}
-              ></textarea>
-            </div>
-          </Col>
           <Col xs={12} md={6}>
             <h5>
               About
@@ -764,7 +863,7 @@ const ProfileInformation = (props) => {
                 placeholder="Write about yourself."
                 aria-label="With textarea"
                 name="about"
-                rows="7"
+                rows="5"
                 value={profileInformation.about}
                 onChange={(event) =>
                   setProfileInformation({
@@ -777,8 +876,7 @@ const ProfileInformation = (props) => {
           </Col>
         </Row>
         <Row className="row-padding">
-          <Col xs={0} md={3} id="hide_br"></Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={12}>
             <h5>
               Add Image To Gallery
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:

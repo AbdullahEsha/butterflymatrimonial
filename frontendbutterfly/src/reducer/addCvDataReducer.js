@@ -4,7 +4,6 @@ const initialData = {
   familyData: {},
   educationalData: {},
   siblingData: {},
-  preferenceData: {},
   preferenceInfoData: {},
 }
 

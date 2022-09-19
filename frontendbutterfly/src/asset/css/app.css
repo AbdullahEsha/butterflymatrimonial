@@ -73,8 +73,9 @@ em {
   font-size: 20px;
   cursor: pointer;
   font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 10px;
+}
+.font-form-size h5 {
+  font-size: 22px;
 }
 .form-groupx input:focus {
   box-shadow: none;
@@ -240,6 +241,18 @@ div.text_2 {
   transform: translateY(-50%);
   text-align: center;
   color: #ffffff;
+}
+.cv_bank_add_button {
+  display: flex;
+  width: 100%;
+}
+.fileContainer .uploadPictureContainer {
+  width: 10% !important;
+  padding: 0px !important;
+  border: 0 !important;
+}
+.cv_bank_button_inside {
+  margin-left: auto;
 }
 #badge {
   text-decoration: none;
@@ -649,7 +662,7 @@ a:hover {
 }
 .cv_bank_container li {
   display: inline-block;
-  width: calc(100% / 5);
+  width: calc(100% / 4);
   text-align: center;
 }
 .cv_bank_container2 {
@@ -704,7 +717,6 @@ a:hover {
   background-color: #ff566b;
 }
 .educationAdd {
-  margin-top: 30px;
   background-color: #ff566b;
   color: #ffffff;
   border: 2px solid #ff566b;
@@ -712,10 +724,17 @@ a:hover {
   height: 30px;
   width: 120px;
   cursor: pointer;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.37);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
+.multi-select input[type='checkbox'] {
+  display: none;
+}
+.rmsc {
+  --rmsc-main: #ff566b !important;
+}
+
 .educationAdd:hover {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.384);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.24);
 }
 .app_icon_size {
   height: 40px;
