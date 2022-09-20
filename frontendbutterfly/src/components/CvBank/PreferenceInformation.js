@@ -6,9 +6,41 @@ import Select from 'react-select'
 const options = [
   { label: 'Unmarried', value: 'Unmarried' },
   { label: 'Widow/Widower', value: 'Widow/Widower' },
-  { label: 'Divorced', value: 'Divorced' },
   { label: 'Separated', value: 'Separated' },
+  { label: 'Divorced Without Child', value: 'Divorced Without Child' },
+  { label: 'Divorced With Child', value: 'Divorced With Child' },
   { label: 'Married', value: 'Married' },
+]
+
+const optionComplexion = [
+  { label: 'Extremely Fair', value: 'Extremely fair' },
+  { label: 'Fair', value: 'Medium' },
+  { label: 'Olive', value: 'Olive' },
+  { label: 'Brown', value: 'Brown' },
+  { label: 'Dark', value: 'Dark' },
+]
+
+const optionOccupation = [
+  { label: 'Gov. Employee', value: 'Gov. Employee' },
+  { label: 'Private Job', value: 'Private Job' },
+  { label: 'Business', value: 'Business' },
+  { label: 'Physiotherapists', value: 'Physiotherapists' },
+  { label: 'Engineer', value: 'Engineer' },
+  { label: 'Pharmacist', value: 'Pharmacist' },
+  { label: 'Bank Employee', value: 'Bank Employee' },
+  { label: 'Doctor', value: 'Doctor' },
+  { label: 'Journalist', value: 'Journalist' },
+  { label: 'No Specific', value: 'No Specific' },
+]
+
+const optionEducation = [
+  { label: 'Secondary', value: 'Secondary' },
+  { label: 'Higher Secondary', value: 'Higher Secondary' },
+  { label: 'Diploma', value: 'Diploma' },
+  { label: 'Bachelor Honors', value: 'Bachelor Honors' },
+  { label: 'Masters', value: 'Masters' },
+  { label: 'PhD', value: 'PhD' },
+  { label: 'No Specific', value: 'No Specific' },
 ]
 
 const PreferenceInformation = (props) => {
@@ -17,10 +49,18 @@ const PreferenceInformation = (props) => {
   )
 
   const [preferenceInformation, setPreferenceInformation] = useState({
-    ageMinimum: preferenceInfoData_ ? preferenceInfoData_.ageMinimum : '',
-    ageMaximum: preferenceInfoData_ ? preferenceInfoData_.ageMaximum : '',
-    heightMinimum: preferenceInfoData_ ? preferenceInfoData_.heightMinimum : '',
-    heightMaximum: preferenceInfoData_ ? preferenceInfoData_.heightMaximum : '',
+    ageMinimum: preferenceInfoData_.ageMinimum
+      ? preferenceInfoData_.ageMinimum
+      : 0,
+    ageMaximum: preferenceInfoData_.ageMaximum
+      ? preferenceInfoData_.ageMaximum
+      : 0,
+    heightMinimum: preferenceInfoData_.heightMinimum
+      ? preferenceInfoData_.heightMinimum
+      : 0,
+    heightMaximum: preferenceInfoData_.heightMaximum
+      ? preferenceInfoData_.heightMaximum
+      : 0,
     maritalStatusPreference: preferenceInfoData_
       ? preferenceInfoData_.maritalStatusPreference
       : '',
@@ -51,10 +91,14 @@ const PreferenceInformation = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
+        <div align="center" className="hide_title">
+          <h3>Preference Information</h3>
+        </div>
+        <br className="hide_title" />
         <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
-              Age Range(kg)
+              Age Range
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
             <div className="row">
@@ -74,6 +118,8 @@ const PreferenceInformation = (props) => {
                   <option value="" disabled selected>
                     Choose Minimum
                   </option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
                   <option value="20">20</option>
                   <option value="21">21</option>
                   <option value="22">22</option>
@@ -196,7 +242,6 @@ const PreferenceInformation = (props) => {
                   <option value="" disabled selected>
                     Choose Maximum
                   </option>
-                  <option value="4ft 5">4ft 5</option>
                   <option value="4ft 6">4ft 6</option>
                   <option value="4ft 6">4ft 7</option>
                   <option value="4ft 8">4ft 8</option>
@@ -269,28 +314,35 @@ const PreferenceInformation = (props) => {
               Complexion
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <select
-              class="form-control complexionPreference"
-              placeholder="Choose One"
-              name="complexionPreference"
-              value={preferenceInformation.complexionPreference}
+            <Select
+              className="complexionPreference"
+              options={optionComplexion}
+              isMulti={true}
+              defaultValue={
+                preferenceInformation.complexionPreference === ''
+                  ? {
+                      label: `${preferenceInformation.complexionPreference}`,
+                      value: `${preferenceInformation.complexionPreference}`,
+                    }
+                  : false
+              }
+              placeholder="Choose one."
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 3,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#ff566a56',
+                  primary: '#ff566b',
+                },
+              })}
               onChange={(event) => {
                 setPreferenceInformation({
                   ...preferenceInformation,
-                  complexionPreference: event.target.value,
+                  complexionPreference: event.map((item) => item.label).join(),
                 })
               }}
-            >
-              <option value="" disabled selected>
-                Choose One
-              </option>
-              <option value="Extremely fair">Extremely Fair</option>
-              <option value="Fair">Fair</option>
-              <option value="Medium">Medium</option>
-              <option value="Olive">Olive</option>
-              <option value="Brown">Brown</option>
-              <option value="Dark">Dark</option>
-            </select>
+            />
           </Col>
         </Row>
         <Row className="row-padding">
@@ -299,50 +351,70 @@ const PreferenceInformation = (props) => {
               Occupation
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <select
-              class="form-control occupationPreference"
-              placeholder="Choose One"
-              name="profession"
-              value={preferenceInformation.occupationPreference}
+            <Select
+              className="occupationPreference"
+              options={optionOccupation}
+              isMulti={true}
+              defaultValue={
+                preferenceInformation.occupationPreference === ''
+                  ? {
+                      label: `${preferenceInformation.occupationPreference}`,
+                      value: `${preferenceInformation.occupationPreference}`,
+                    }
+                  : false
+              }
+              placeholder="Choose one."
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 3,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#ff566a56',
+                  primary: '#ff566b',
+                },
+              })}
               onChange={(event) => {
                 setPreferenceInformation({
                   ...preferenceInformation,
-                  occupationPreference: event.target.value,
+                  occupationPreference: event.map((item) => item.label).join(),
                 })
               }}
-            >
-              <option value="" disabled selected>
-                Choose One
-              </option>
-              <option value="Gov. Employee">Gov. Job</option>
-              <option value="Private Job">Private Job</option>
-              <option value="Business">Business</option>
-              <option value="Physiotherapists">Physiotherapists</option>
-              <option value="Engineer">Engineer</option>
-              <option value="Pharmacist">Pharmacist</option>
-              <option value="Bank Employee">Bank Employee</option>
-              <option value="Doctor">Doctor</option>
-              <option value="Scientist">Scientist</option>
-              <option value="No Specific">No Specific</option>
-            </select>
+            />
           </Col>
           <Col xs={12} md={6}>
             <h5>
               Education
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <input
-              class="form-control educationPreference"
-              placeholder="Enter education preference"
-              name="education"
-              value={preferenceInformation.educationPreference}
+            <Select
+              className="educationPreference"
+              options={optionEducation}
+              isMulti={true}
+              defaultValue={
+                preferenceInformation.educationPreference === ''
+                  ? {
+                      label: `${preferenceInformation.educationPreference}`,
+                      value: `${preferenceInformation.educationPreference}`,
+                    }
+                  : false
+              }
+              placeholder="Choose one."
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 3,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#ff566a56',
+                  primary: '#ff566b',
+                },
+              })}
               onChange={(event) => {
                 setPreferenceInformation({
                   ...preferenceInformation,
-                  educationPreference: event.target.value,
+                  educationPreference: event.map((item) => item.label).join(),
                 })
               }}
-            ></input>
+            />
           </Col>
         </Row>
         <Row className="row-padding">
@@ -394,10 +466,7 @@ const PreferenceInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>
-              Details
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
+            <h5>Details:</h5>
             <textarea
               rows="3"
               className="form-control preferenceDetails"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, KeyboardEventHandler } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import CreatableSelect from 'react-select/creatable'
@@ -15,6 +15,7 @@ const ProfileInformation = (props) => {
   const [galleryImage, setGalleryImage] = useState({ imageFill: '' })
   const profileData_ = useSelector((state) => state.cvDataReducer.profileData)
   const [city, setCity] = useState([])
+  const [preferenceData, setPreferenceData] = useState([])
   const [checkOther, setCheckOther] = useState('None')
 
   const [profileInformation, setProfileInformation] = useState({
@@ -155,9 +156,37 @@ const ProfileInformation = (props) => {
       })
   }
 
+  const checkSpecialCase = (event, name) => {
+    if (event) {
+      let prefData = [...preferenceData, name]
+      setPreferenceData(prefData)
+      setProfileInformation({
+        ...profileInformation,
+        specialCase: prefData.join(','),
+      })
+    } else {
+      preferenceData.forEach((item, index) => {
+        if (item === name) {
+          preferenceData.splice(index, 1)
+          setPreferenceData(preferenceData)
+          setProfileInformation({
+            ...profileInformation,
+            specialCase: preferenceData.join(','),
+          })
+        }
+      })
+    }
+  }
+
+  console.log('profileInformation', profileInformation)
+
   return (
     <>
       <Container className="cv_bank_container21">
+        <div align="center" className="hide_title">
+          <h3>Profile Information</h3>
+        </div>
+        <br className="hide_title" />
         <Row>
           <Col xs={12} md={2} className="img_uploader image">
             <h5>
@@ -166,7 +195,7 @@ const ProfileInformation = (props) => {
             </h5>
             <input
               type="file"
-              accept="image/png"
+              accept="image/*"
               title="Choose Image"
               name="image"
               className="uploadImg imageFile"
@@ -440,10 +469,10 @@ const ProfileInformation = (props) => {
               <option value="" disabled selected>
                 Choose One
               </option>
-              <option value="Muslim">Muslim</option>
-              <option value="Hindu">Hindu</option>
-              <option value="Buddhist">Buddhist</option>
-              <option value="Christian">Christian</option>
+              <option value="Islam">Islam</option>
+              <option value="Hinduism">Hinduism</option>
+              <option value="Christianity">Christianity</option>
+              <option value="Buddhism">Buddhism</option>
               <option value="Other">Other</option>
             </select>
           </Col>
@@ -499,10 +528,12 @@ const ProfileInformation = (props) => {
               </option>
               <option value="Unmarried">Unmarried</option>
               <option value="Widow/Widower">Widow/Widower</option>
-              <option value="Divorced">Divorced</option>
               <option value="Separated">Separated</option>
+              <option value="Divorced Without Child">
+                Divorced Without Child
+              </option>
+              <option value="Divorced With Child">Divorced With Child</option>
               <option value="Married">Married</option>
-              <option value="With Child">With Child</option>
             </select>
           </Col>
           <Col xs={12} md={6}>
@@ -553,32 +584,18 @@ const ProfileInformation = (props) => {
               Where You Grown Up?
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <Select
-              className="grownUpAt"
-              options={city}
-              defaultValue={
-                profileData_.grownUpAt
-                  ? {
-                      label: `${profileInformation.grownUpAt}`,
-                      value: `${profileInformation.grownUpAt}`,
-                    }
-                  : false
-              }
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: 3,
-                colors: {
-                  ...theme.colors,
-                  primary25: '#ff566a56',
-                  primary: '#ff566b',
-                },
-              })}
-              onChange={(event) => {
+            <input
+              type="text"
+              className="form-control grownUpAt"
+              placeholder="Enter city or country name."
+              name="grownUpAt"
+              value={profileInformation.grownUpAt}
+              onChange={(event) =>
                 setProfileInformation({
                   ...profileInformation,
-                  grownUpAt: event.value,
+                  grownUpAt: event.target.value,
                 })
-              }}
+              }
             />
           </Col>
           <Col xs={12} md={6}>
@@ -638,11 +655,10 @@ const ProfileInformation = (props) => {
               <option value="" disabled selected>
                 Choose One
               </option>
-              <option value="Upper">Upper</option>
-              <option value="Upper Middle">Upper Middle</option>
-              <option value="Middle">Middle</option>
-              <option value="Working">Working </option>
-              <option value="Lower">Lower</option>
+              <option value="Upper Class">Upper Class</option>
+              <option value="Upper Middle Class">Upper Middle Class</option>
+              <option value="Middle Class">Middle Class</option>
+              <option value="Lower Class">Lower Class</option>
             </select>
           </Col>
           <Col xs={12} md={6}>
@@ -733,130 +749,86 @@ const ProfileInformation = (props) => {
               Limitations Or Special Case
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <div>
-              <div className="form-check">
-                <input
-                  className="form-check-input specialCase"
-                  type="radio"
-                  name="exampleRadios"
-                  value="Addiction"
-                  checked={
-                    profileInformation.specialCase === 'Addiction'
-                      ? true
-                      : false
-                  }
-                  onChange={(event) => {
-                    setProfileInformation({
-                      ...profileInformation,
-                      specialCase: event.target.value,
-                    })
-                    setCheckOther(event.target.value)
-                  }}
-                />
-                <label className="form-check-label" for="exampleRadios1">
-                  Addiction
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input specialCase"
-                  type="radio"
-                  name="exampleRadios"
-                  value="Diabetics"
-                  checked={
-                    profileInformation.specialCase === 'Diabetics'
-                      ? true
-                      : false
-                  }
-                  onChange={(event) => {
-                    setProfileInformation({
-                      ...profileInformation,
-                      specialCase: event.target.value,
-                    })
-                    setCheckOther(event.target.value)
-                  }}
-                />
-                <label className="form-check-label" for="exampleRadios2">
-                  Diabetics
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  className="form-check-input specialCase"
-                  type="radio"
-                  name="exampleRadios"
-                  value="Smoker"
-                  checked={
-                    profileInformation.specialCase === 'Smoker' ? true : false
-                  }
-                  onChange={(event) => {
-                    setProfileInformation({
-                      ...profileInformation,
-                      specialCase: event.target.value,
-                    })
-                    setCheckOther(event.target.value)
-                  }}
-                />
-                <label className="form-check-label" for="exampleRadios2">
-                  Smoker
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input specialCase"
-                  type="radio"
-                  name="exampleRadios"
-                  value="None"
-                  checked={
-                    profileInformation.specialCase === 'None' ? true : false
-                  }
-                  onChange={(event) => {
-                    setProfileInformation({
-                      ...profileInformation,
-                      specialCase: event.target.value,
-                    })
-                    setCheckOther(event.target.value)
-                  }}
-                />
-                <label className="form-check-label" for="exampleRadios2">
-                  None
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input specialCaseOther"
-                  type="radio"
-                  name="exampleRadios"
-                  value="Other"
-                  onChange={() => setCheckOther('Other')}
-                />
-                <label className="form-check-label" for="exampleRadios2">
-                  Other
-                </label>
-                {checkOther === 'Other' && (
-                  <input
-                    type="text"
-                    className="form-control otherSpacialCase"
-                    placeholder="Other Spacial Case."
-                    onChange={(event) =>
-                      setProfileInformation({
-                        ...profileInformation,
-                        specialCase: event.target.value,
-                      })
-                    }
-                  />
-                )}
-              </div>
-              <label className="specialCaseCheck" style={{ color: 'red' }}>
-                Please select at least one.
-              </label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Addiction"
+                onChange={(event) =>
+                  checkSpecialCase(event.target.checked, event.target.value)
+                }
+              />
+              <label class="form-check-label">Addiction</label>
             </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Diabetics"
+                onChange={(event) =>
+                  checkSpecialCase(event.target.checked, event.target.value)
+                }
+              />
+              <label class="form-check-label">Diabetics</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Smoker"
+                onChange={(event) =>
+                  checkSpecialCase(event.target.checked, event.target.value)
+                }
+              />
+              <label class="form-check-label">Smoker</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="None"
+                onChange={(event) =>
+                  checkSpecialCase(event.target.checked, event.target.value)
+                }
+              />
+              <label class="form-check-label">None</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Other"
+                onChange={(event) => {
+                  if (event.target.checked) {
+                    setCheckOther('Other')
+                  } else {
+                    setCheckOther('None')
+                  }
+                }}
+              />
+              <label class="form-check-label">Other</label>
+            </div>
+            {checkOther === 'Other' && (
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Write about it."
+                style={{ width: '300px' }}
+                onChange={(event) =>
+                  setProfileInformation({
+                    ...profileInformation,
+                    specialCase: event.target.value,
+                  })
+                }
+              />
+            )}
+
+            <label className="preferenceCheck" style={{ color: 'red' }}>
+              Please select at least one.
+            </label>
           </Col>
           <Col xs={12} md={6}>
-            <h5>
-              About
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
+            <h5>About:</h5>
             <div className="input-group">
               <textarea
                 className="form-control about"

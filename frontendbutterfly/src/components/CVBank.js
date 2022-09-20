@@ -94,9 +94,7 @@ const CVBank = () => {
         profileData.grownUpAt === undefined ||
         profileData.grownUpAt === ''
       ) {
-        document.querySelector(
-          '.grownUpAt .css-1bi0jn-control',
-        ).style.borderColor = 'red'
+        document.querySelector('.grownUpAt').style.borderColor = 'red'
       } else if (
         profileData.citizenship === undefined ||
         profileData.citizenship === ''
@@ -226,20 +224,10 @@ const CVBank = () => {
       ) {
         document.querySelector('.ageMinimum').style.borderColor = 'red'
       } else if (
-        preferenceInfoData.ageMaximum === undefined ||
-        preferenceInfoData.ageMaximum === ''
-      ) {
-        document.querySelector('.ageMaximum').style.borderColor = 'red'
-      } else if (
         preferenceInfoData.heightMinimum === undefined ||
         preferenceInfoData.heightMinimum === ''
       ) {
         document.querySelector('.heightMinimum').style.borderColor = 'red'
-      } else if (
-        preferenceInfoData.heightMaximum === undefined ||
-        preferenceInfoData.heightMaximum === ''
-      ) {
-        document.querySelector('.heightMaximum').style.borderColor = 'red'
       } else if (
         preferenceInfoData.maritalStatusPreference === undefined ||
         preferenceInfoData.maritalStatusPreference === ''
@@ -672,37 +660,62 @@ const CVBank = () => {
     formData.append('name', profileData.name)
     formData.append('gender', profileData.gender)
     formData.append('phone', profileData.phone)
-    formData.append('religion', profileData.religion)
     formData.append('email', profileData.email)
-    formData.append('presentAddress', profileData.presentAddress)
-    formData.append('divisionPresent', profileData.divisionPresent)
-    formData.append('dristrictPresent', profileData.dristrictPresent)
-    formData.append('parmanentAddress', profileData.parmanentAddress)
-    formData.append('divisionParmanent', profileData.divisionParmanent)
-    formData.append('dristrictParmanent', profileData.dristrictParmanent)
-    formData.append('age', profileData.age)
-    formData.append('specialCase', profileData.specialCase)
-    formData.append('spousePreference', profileData.spousePreference)
-    formData.append('about', profileData.about)
+    formData.append('dob', profileData.dob)
     formData.append('height', profileData.height)
     formData.append('weight', profileData.weight)
     formData.append('bloodGroup', profileData.bloodGroup)
+    formData.append('religion', profileData.religion)
+    formData.append('complexion', profileData.complexion)
+    formData.append('maritalStatus', profileData.maritalStatus)
+    formData.append('hometown', profileData.hometown)
+    formData.append('presentAddress', profileData.presentAddress)
     formData.append('grownUpAt', profileData.grownUpAt)
-    formData.append('specialCondition', profileData.specialCondition)
+    formData.append('citizenship', profileData.citizenship)
+    formData.append('familyStatus', profileData.familyStatus)
+    formData.append('annualIncome', profileData.annualIncome)
+    formData.append('hobby', profileData.hobby)
+    formData.append('physicalStatus', profileData.physicalStatus)
+    formData.append('specialCase', profileData.specialCase)
+    formData.append('about', profileData.about)
     formData.append('fatherName', familyData.fatherName)
-    formData.append('fatherOcupation', familyData.fatherOcupation)
+    formData.append('fatherOccupation', familyData.fatherOccupation)
+    formData.append('fatherDetails', familyData.fatherDetails)
     formData.append('motherName', familyData.motherName)
-    formData.append('motherOcupation', familyData.motherOcupation)
-    formData.append('profession', preferenceInfoData.profession)
-    formData.append('districtPreference', preferenceInfoData.districtPreference)
-    formData.append('religionPreference', preferenceInfoData.religionPreference)
-    formData.append('physicalStatus', preferenceInfoData.physicalStatus)
+    formData.append('motherOccupation', familyData.motherOccupation)
+    formData.append('motherDetails', familyData.motherDetails)
+
+    // maritalStatusPreference
+    //
+    // occupationPreference
+    //
+    //
+    //
+    //
+
     formData.append('ageMinimum', preferenceInfoData.ageMinimum)
     formData.append('ageMaximum', preferenceInfoData.ageMaximum)
     formData.append('heightMinimum', preferenceInfoData.heightMinimum)
     formData.append('heightMaximum', preferenceInfoData.heightMaximum)
-    formData.append('skinTone', preferenceInfoData.skinTone)
-    formData.append('preference', preferenceInfoData.preference)
+    formData.append(
+      'maritalStatusPreference',
+      preferenceInfoData.maritalStatusPreference,
+    )
+    formData.append(
+      'complexionPreference',
+      preferenceInfoData.complexionPreference,
+    )
+    formData.append(
+      'occupationPreference',
+      preferenceInfoData.occupationPreference,
+    )
+    formData.append(
+      'educationPreference',
+      preferenceInfoData.educationPreference,
+    )
+    formData.append('location', preferenceInfoData.location)
+    formData.append('religionPreference', preferenceInfoData.religionPreference)
+    formData.append('preferenceDetails', preferenceInfoData.preferenceDetails)
 
     Swal.fire({
       title: 'Are you sure?',
@@ -909,14 +922,14 @@ const CVBank = () => {
                     color="white"
                     style={{ marginBottom: '4px' }}
                   />{' '}
-                  Educational & Professional Information
+                  Education & Profession
                 </button>
               ) : (
                 <button
                   onClick={() => setData('Qulification')}
                   className="borderbottomlinehover"
                 >
-                  Educational & Professional Information
+                  Education & Profession
                 </button>
               )}
             </li>

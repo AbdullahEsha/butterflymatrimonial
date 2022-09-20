@@ -10,7 +10,6 @@ const Preview = (props) => {
         style={{ marginRight: '50px' }}
         className="cv_bank_container21 preview-content"
       >
-        {console.log(props.profileData)}
         <Row>
           <Col>
             <h3>

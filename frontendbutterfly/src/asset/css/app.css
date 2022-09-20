@@ -35,6 +35,19 @@ em {
   height: 100%;
   width: 100%;
 }
+.hide_title {
+  display: none;
+  background-color: #fc6375;
+  padding: 7px 10px 4px;
+  text-align: -webkit-center;
+  margin: auto;
+  color: #fff;
+  border-radius: 25px;
+}
+.hide_title h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
 .butterfly-gallery-link {
   color: #fc6375;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.158);
@@ -69,10 +82,15 @@ em {
   background: #fc6375 !important;
 }
 .skip-content {
-  color: #fc6375;
-  font-size: 20px;
+  text-align: center;
+  background-color: #ff566b;
+  color: #ffffff;
+  border: 2px solid #ff566b;
+  border-radius: 20px;
+  height: 30px;
+  width: 140px;
   cursor: pointer;
-  font-weight: 500;
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
 }
 .font-form-size h5 {
   font-size: 22px;
@@ -1135,6 +1153,9 @@ td {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .hide_title {
+    display: block;
+  }
   .form-groupx input {
     margin-left: 10px;
     width: 80%;
@@ -1343,6 +1364,9 @@ td {
 }
 
 @media only screen and (min-width: 601px) and (max-width: 767px) {
+  .hide_title {
+    display: block;
+  }
   .form-groupx input {
     margin-left: 10px;
     width: 86%;
@@ -1645,6 +1669,9 @@ td {
 }
 
 @media only screen and (min-width: 380px) and (max-width: 600px) {
+  .hide_title {
+    display: block;
+  }
   .form-groupx input {
     margin-left: 10px;
     width: 86%;
@@ -1977,6 +2004,9 @@ td {
 }
 
 @media only screen and (max-width: 379px) {
+  .hide_title {
+    display: block;
+  }
   #hide_top {
     display: none;
   }

@@ -43,6 +43,8 @@ const FamilyMember = (props) => {
     motherName: familyData_ ? familyData_.motherName : '',
     motherOccupation: familyData_ ? familyData_.motherOccupation : '',
     motherDetails: familyData_ ? familyData_.motherDetails : '',
+    brother: familyData_.brother ? familyData_.brother : 0,
+    sister: familyData_.sister ? familyData_.sister : 0,
   })
 
   const { updateFamilyData, updateSiblingData } = props
@@ -72,6 +74,10 @@ const FamilyMember = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
+        <div align="center" className="hide_title">
+          <h3>Family Information</h3>
+        </div>
+        <br className="hide_title" />
         <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
@@ -182,24 +188,48 @@ const FamilyMember = (props) => {
             />
           </Col>
         </Row>
-        {/* <Row className="row-padding">
-          <h5>Brother:</h5>
-          <h5>Sister:</h5>
-        </Row> */}
+        <Row className="row-padding">
+          <Col xs={12} md={6}>
+            <h5>Brother: </h5>
+            <input
+              type="number"
+              min="0"
+              max="10"
+              step="1"
+              value={familyMember.brother}
+              onChange={(event) =>
+                setFamilyMember({
+                  ...familyMember,
+                  brother: event.target.value,
+                })
+              }
+              className="form-control"
+              style={{ width: '200px' }}
+            />
+          </Col>
+          <Col xs={12} md={6}>
+            <h5>Sister:</h5>
+            <input
+              type="number"
+              min="0"
+              max="10"
+              step="1"
+              value={familyMember.sister}
+              onChange={(event) =>
+                setFamilyMember({
+                  ...familyMember,
+                  sister: event.target.value,
+                })
+              }
+              className="form-control"
+              style={{ width: '200px' }}
+            />
+          </Col>
+        </Row>
         <Row className="row-padding">
           {sibling.map((item, index) => {
             return (
               <div key={index} className="sibling_info">
-                <div className="font-form-size">
-                  <br />
-                  <h5
-                    style={{
-                      color: '#ff566b',
-                    }}
-                  >
-                    Sibling {index + 1}
-                  </h5>
-                </div>
                 <div className="row">
                   <div className="col-12 col-sm-6">
                     <h5>Name:</h5>
@@ -231,7 +261,7 @@ const FamilyMember = (props) => {
                     className="form-control sibdetails"
                     placeholder="Write here about your sibling. For example his/her marital status, current study or job detail etc."
                     aria-label="With textarea"
-                    rows="7"
+                    rows="4"
                     name="details"
                     value={sibling[index].details}
                     onChange={(event) => handleInput(index, event)}

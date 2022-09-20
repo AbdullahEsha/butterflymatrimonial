@@ -108,7 +108,7 @@ const Qualification = (props) => {
       levelOfEducation: eduData_[0] ? eduData_[0].levelOfEducation : '',
       group: eduData_[0] ? eduData_[0].group : '',
       instituteName: eduData_[0] ? eduData_[0].instituteName : '',
-      passingYear: eduData_[0] ? eduData_[0].passingYear : '',
+      passingYear: eduData_[0] ? eduData_[0].passingYear : 2022,
     },
   ])
 
@@ -254,6 +254,10 @@ const Qualification = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
+        <div align="center" className="hide_title">
+          <h3>Education & Profession</h3>
+        </div>
+        <br className="hide_title" />
         {educationalQulification.map((item, index) => {
           return (
             <div key={index}>
@@ -343,10 +347,12 @@ const Qualification = (props) => {
                     <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
                   </h5>
                   <input
-                    type="month"
+                    type="number"
+                    min="1900"
+                    max="2022"
+                    step="1"
                     className="form-control passingYear"
                     name="passingYear"
-                    placeholder="mm/yyyy"
                     value={educationalQulification[index].passingYear}
                     onChange={(event) => handleAcademicInput(index, event)}
                   />
