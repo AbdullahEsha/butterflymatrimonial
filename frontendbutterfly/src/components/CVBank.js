@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import Qulification from './CvBank/Qualification'
+import Qualification from './CvBank/Qualification'
 import FamilyMember from './CvBank/FamilyMember'
 import PreferenceInformation from './CvBank/PreferenceInformation'
 import ProfileInFormation from './CvBank/ProfileInformation'
@@ -17,7 +17,6 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 const CVBank = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState('ProfileInformation')
-  const [cvMaxId, setCvMaxId] = useState()
   const [profileData, setProfileData] = useState({})
   const [professionalData, setProfessionalData] = useState({})
   const [familyData, setFamilyData] = useState({})
@@ -120,19 +119,13 @@ const CVBank = () => {
         profileData.physicalStatus === ''
       ) {
         document.querySelector('.physicalStatus').style.borderColor = 'red'
-      } else if (
-        profileData.specialCase === undefined ||
-        profileData.specialCase === ''
-      ) {
-        document.querySelector('.specialCase').style.borderColor = 'red'
-      } else if (profileData.about === undefined || profileData.about === '') {
-        document.querySelector('.about').style.borderColor = 'red'
       } else if (galleryData.imageFill[0] === undefined) {
         document.querySelector('.fileContainer').style.borderColor = 'red'
       } else {
-        setData('Qulification')
+        setData('Qualification')
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
       }
-    } else if (data === 'Qulification') {
+    } else if (data === 'Qualification') {
       educationalData.forEach((item, index) => {
         if (
           item.levelOfEducation === undefined ||
@@ -174,48 +167,20 @@ const CVBank = () => {
           document.querySelector('.to_employment').style.borderColor = 'red'
         } else {
           setData('FamilyMember')
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
         }
       })
     } else if (data === 'FamilyMember') {
       if (familyData.fatherName === undefined || familyData.fatherName === '') {
         document.querySelector('.fatherName').style.borderColor = 'red'
       } else if (
-        familyData.fatherOccupation === undefined ||
-        familyData.fatherOccupation === ''
-      ) {
-        document.querySelector('.fatherOccupation').style.borderColor = 'red'
-      } else if (
-        familyData.fatherDetails === undefined ||
-        familyData.fatherDetails === ''
-      ) {
-        document.querySelector('.fatherDetails').style.borderColor = 'red'
-      } else if (
         familyData.motherName === undefined ||
         familyData.motherName === ''
       ) {
         document.querySelector('.motherName').style.borderColor = 'red'
-      } else if (
-        familyData.motherOccupation === undefined ||
-        familyData.motherOccupation === ''
-      ) {
-        document.querySelector('.motherOccupation').style.borderColor = 'red'
-      } else if (
-        familyData.motherDetails === undefined ||
-        familyData.motherDetails === ''
-      ) {
-        document.querySelector('.motherDetails').style.borderColor = 'red'
       } else {
-        siblingData.forEach((item) => {
-          if (item.name === undefined || item.name === '') {
-            document.querySelector('.sibname').style.borderColor = 'red'
-          } else if (item.occupation === undefined || item.occupation === '') {
-            document.querySelector('.sibOccupation').style.borderColor = 'red'
-          } else if (item.details === undefined || item.details === '') {
-            document.querySelector('.sibdetails').style.borderColor = 'red'
-          } else {
-            setData('PreferenceInformation')
-          }
-        })
+        setData('PreferenceInformation')
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
       }
     } else if (data === 'PreferenceInformation') {
       if (
@@ -239,36 +204,29 @@ const CVBank = () => {
         preferenceInfoData.complexionPreference === undefined ||
         preferenceInfoData.complexionPreference === ''
       ) {
-        document.querySelector('.complexionPreference').style.borderColor =
-          'red'
+        document.querySelector(
+          '.complexionPreference .css-1bi0jn-control',
+        ).style.borderColor = 'red'
       } else if (
         preferenceInfoData.occupationPreference === undefined ||
         preferenceInfoData.occupationPreference === ''
       ) {
-        document.querySelector('.occupationPreference').style.borderColor =
-          'red'
+        document.querySelector(
+          '.occupationPreference .css-1bi0jn-control',
+        ).style.borderColor = 'red'
       } else if (
         preferenceInfoData.educationPreference === undefined ||
         preferenceInfoData.educationPreference === ''
       ) {
         document.querySelector('.educationPreference').style.borderColor = 'red'
       } else if (
-        preferenceInfoData.location === undefined ||
-        preferenceInfoData.location === ''
-      ) {
-        document.querySelector('.location').style.borderColor = 'red'
-      } else if (
         preferenceInfoData.religionPreference === undefined ||
         preferenceInfoData.religionPreference === ''
       ) {
         document.querySelector('.religionPreference').style.borderColor = 'red'
-      } else if (
-        preferenceInfoData.preferenceDetails === undefined ||
-        preferenceInfoData.preferenceDetails === ''
-      ) {
-        document.querySelector('.preferenceDetails').style.borderColor = 'red'
       } else {
         setData('Preview')
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
       }
     }
   }
@@ -296,7 +254,6 @@ const CVBank = () => {
     setGalleryData(h)
   }
 
-  // console.log(preferenceInfoData)
   const exportPdf = () => {
     var doc = new jsPDF('p', 'mm', 'a4')
 
@@ -346,125 +303,120 @@ const CVBank = () => {
     doc.text(32, 76, `${profileData.email}`, 'left')
 
     doc.setFont(undefined, 'bold')
+    doc.text(110, 76, 'Annual Income:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(138, 76, `${profileData.annualIncome}`, 'left')
+
+    doc.setFont(undefined, 'bold')
     doc.text(20, 84, 'Present Address:', 'left')
 
     doc.setFont(undefined, 'normal')
     doc.text(49, 84, `${profileData.presentAddress}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(20, 92, 'Present Division:', 'left')
+    doc.text(20, 94, 'Date Of Birth:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(49, 92, `${profileData.divisionPresent}`, 'left')
+    doc.text(45, 94, `${profileData.dob}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(110, 92, 'Present Dristrict:', 'left')
+    doc.text(110, 94, 'Special Case:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(139, 92, `${profileData.dristrictPresent}`, 'left')
+    doc.text(
+      132.5,
+      94,
+      `${profileData.specialCase ? profileData.specialCase : 'None'}`,
+      'left',
+    )
 
     doc.setFont(undefined, 'bold')
-    doc.text(20, 100, 'Permanent Address:', 'left')
+    doc.text(20, 102, 'Height:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(54, 100, `${profileData.parmanentAddress}`, 'left')
+    doc.text(33.5, 102, `${profileData.height}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(20, 108, 'Permanent Division:', 'left')
+    doc.text(110, 102, 'Weight:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(54, 108, `${profileData.divisionParmanent}`, 'left')
+    doc.text(124, 102, `${profileData.weight}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(110, 108, 'Permanent Dristrict:', 'left')
+    doc.text(20, 110, 'Blood Group:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(145, 108, `${profileData.dristrictParmanent}`, 'left')
+    doc.text(43.5, 110, `${profileData.bloodGroup}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(20, 116, 'Date Of Birth:', 'left')
+    doc.text(110, 110, 'Grown Up At:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(44, 116, `${profileData.age}`, 'left')
+    doc.text(134.5, 110, `${profileData.grownUpAt}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(110, 116, 'Limitations Or Species Case:', 'left')
+    doc.text(20, 118, 'Citizenship:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(158.5, 116, `${profileData.specialCase}`, 'left')
+    doc.text(41, 118, `${profileData.citizenship}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(20, 124, 'Spouse Preference:', 'left')
+    doc.text(110, 118, 'Complexion:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(52, 124, `${profileData.spousePreference}`, 'left')
+    doc.text(132, 118, `${profileData.complexion}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(110, 124, 'Preference:', 'left')
-
-    doc.setFont(undefined, 'bold')
-    doc.text(20, 132, 'About:', 'left')
-
-    var y = 132
+    doc.text(20, 126, 'Family Status:', 'left')
 
     doc.setFont(undefined, 'normal')
-    var text_width = doc.getTextWidth(profileData.about)
-    var splitTitle = doc.splitTextToSize(profileData.about, 170)
-    doc.text(20, y + 5, splitTitle, 'left')
-    y = y + text_width / 25
+    doc.text(45, 126, `${profileData.familyStatus}`, 'left')
 
-    y = y + 8
-    doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Personal Information:', 'left')
-
-    y = y + 2
-    doc.setDrawColor(255, 0, 0)
-    doc.rect(20, y, 170, 0.1, 'F') // black line
-
-    y = y + 5
-    doc.setFontSize(11)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Height:', 'left')
+    doc.text(110, 126, 'Hobby:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(33, y, `${profileData.height}`, 'left')
+    doc.text(123, 126, `${profileData.hobby}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(110, y, 'Weight:', 'left')
+    doc.text(20, 134, 'Home Town:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(124, y, `${profileData.weight + '(kg)'}`, 'left')
-
-    y = y + 8
+    doc.text(42, 134, `${profileData.hometown}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Blood Group:', 'left')
+    doc.text(110, 134, 'Marital Status:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(43.5, y, `${profileData.bloodGroup}`, 'left')
+    doc.text(136, 134, `${profileData.maritalStatus}`, 'left')
 
     doc.setFont(undefined, 'bold')
-    doc.text(110, y, 'Grown Up At:', 'left')
+    doc.text(20, 142, 'Physical Status:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(134, y, `${profileData.grownUpAt}`, 'left')
-
-    y = y + 8
+    doc.text(47, 142, `${profileData.physicalStatus}`, 'left') //
 
     doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Special Condition:', 'left')
+    doc.text(20, 150, 'About:', 'left')
+
+    var y = 150
 
     doc.setFont(undefined, 'normal')
-    text_width = doc.getTextWidth(profileData.specialCondition)
-    splitTitle = doc.splitTextToSize(profileData.specialCondition, 170)
+    var text_width = doc.getTextWidth(
+      profileData.about ? profileData.about : 'None',
+    )
+    var splitTitle = doc.splitTextToSize(
+      profileData.about ? profileData.about : 'None',
+      170,
+    )
     doc.text(20, y + 5, splitTitle, 'left')
     y = y + text_width / 25
 
     y = y + 12
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Educational Qualification:', 'left')
+    doc.text(20, y, 'Educational Information:', 'left')
 
     y = y + 2
     doc.setDrawColor(255, 0, 0)
@@ -473,14 +425,14 @@ const CVBank = () => {
     let x = 20
     y = y + 5
 
-    doc.setFontSize(10)
+    doc.setFontSize(11)
     educationalData.forEach((item, index) => {
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Institute Name:', 'left')
 
       doc.setFont(undefined, 'normal')
       doc.text(
-        x + 24,
+        x + 27,
         y,
         `${item.instituteName + '(' + item.passingYear + ')'}`,
         'left',
@@ -490,35 +442,22 @@ const CVBank = () => {
       doc.text(x + 90, y, 'Concentration/Major/Group:', 'left')
 
       doc.setFont(undefined, 'normal')
-      doc.text(x + 135, y, `${item.group}`, 'left')
+      doc.text(x + 139.5, y, `${item.group}`, 'left')
 
-      y = y + 8
+      y = y + 6
 
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Level of Education:', 'left')
 
       doc.setFont(undefined, 'normal')
-      doc.text(x + 30, y, `${item.levelOfEducation}`, 'left')
-
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Institute Location:', 'left')
-
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 118.5, y, `${item.instituteLocation}`, 'left')
+      doc.text(x + 33, y, `${item.levelOfEducation}`, 'left')
 
       y += 8
     })
 
-    if (y >= 260) {
-      doc.addPage()
-      y = 20 // Restart height position
-    } else {
-      y = y + 2
-    }
-
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Professional Qualification:', 'left')
+    doc.text(20, y, 'Professional Information:', 'left')
 
     y = y + 2
     doc.setDrawColor(255, 0, 0)
@@ -528,7 +467,7 @@ const CVBank = () => {
     doc.setFontSize(11)
     professionalData.forEach((item, index) => {
       doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Designation:', 'left')
+      doc.text(x, y, 'designation:', 'left')
 
       doc.setFont(undefined, 'normal')
       doc.text(x + 21.5, y, `${item.designation}`, 'left')
@@ -537,23 +476,17 @@ const CVBank = () => {
       doc.text(x + 90, y, 'Company Name:', 'left')
 
       doc.setFont(undefined, 'normal')
-      doc.text(x + 118.5, y, `${item.organizationName}`, 'left')
+      doc.text(x + 118.5, y, `${item.companyName}`, 'left')
 
-      y = y + 8
-
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Department:', 'left')
-
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 22, y, `${item.com_department}`, 'left')
+      y = y + 6
 
       doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Company Location:', 'left')
+      doc.text(x, y, 'Company Location:', 'left')
 
       doc.setFont(undefined, 'normal')
-      doc.text(x + 123.5, y, `${item.com_location}`, 'left')
+      doc.text(x + 34, y, `${item.com_location}`, 'left')
 
-      y = y + 8
+      y = y + 6
 
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Employment Period:', 'left')
@@ -565,22 +498,17 @@ const CVBank = () => {
         `${item.from_employment} to ${item.to_employment}`,
         'left',
       )
-
       y = y + 8
-
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Reference:', 'left')
-
-      doc.setFont(undefined, 'normal')
-      text_width = doc.getTextWidth(item.com_reference)
-      splitTitle = doc.splitTextToSize(item.com_reference, 170)
-      doc.text(x, y + 5, splitTitle, 'left')
-      y = y + text_width / 25
-
-      y += 8
     })
 
-    y += 4
+    if (y >= 230) {
+      doc.addPage()
+      y = 20 // Restart height position
+    } else {
+      y = y + 8
+    }
+
+    // y += 8
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
     doc.text(20, y, 'Family Member:', 'left')
@@ -601,7 +529,25 @@ const CVBank = () => {
     doc.text(x + 90, y, 'Father Ocupation:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(x + 121, y, `${familyData.fatherOcupation}`, 'left')
+    doc.text(
+      x + 121,
+      y,
+      `${familyData.fatherOccupation ? familyData.fatherOccupation : 'None'}`,
+      'left',
+    )
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Details:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(
+      x + 13,
+      y,
+      `${familyData.fatherDetails ? familyData.fatherDetails : 'None'}`,
+      'left',
+    )
 
     y = y + 8
 
@@ -615,7 +561,25 @@ const CVBank = () => {
     doc.text(x + 90, y, 'Mother Ocupation:', 'left')
 
     doc.setFont(undefined, 'normal')
-    doc.text(x + 122.5, y, `${familyData.motherOcupation}`, 'left')
+    doc.text(
+      x + 122.5,
+      y,
+      `${familyData.motherOccupation ? familyData.motherOccupation : 'None'}`,
+      'left',
+    )
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Details:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(
+      x + 13,
+      y,
+      `${familyData.motherDetails ? familyData.motherDetails : 'None'}`,
+      'left',
+    )
 
     y = y + 8
     doc.setFontSize(12)
@@ -634,7 +598,7 @@ const CVBank = () => {
       doc.text(x + 90, y, 'Ocupation:', 'left')
 
       doc.setFont(undefined, 'normal')
-      doc.text(x + 111, y, `${item.ocupation}`, 'left')
+      doc.text(x + 111, y, `${item.occupation}`, 'left')
 
       y = y + 8
 
@@ -646,16 +610,122 @@ const CVBank = () => {
       splitTitle = doc.splitTextToSize(item.details, 170)
       doc.text(x, y + 5, splitTitle, 'left')
       y = y + text_width / 25
-
       y += 8
     })
+
+    y += 8
+
+    doc.setFontSize(16)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Preference Information:', 'left')
+
+    y += 2
+    doc.setDrawColor(255, 0, 0)
+    doc.rect(20, y, 170, 0.1, 'F') // black line
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Age Range:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(
+      x + 20,
+      y,
+      `${preferenceInfoData.ageMinimum} to ${preferenceInfoData.ageMaximum}`,
+      'left',
+    )
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Height Range:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(
+      x + 115,
+      y,
+      `${preferenceInfoData.heightMinimum} to ${preferenceInfoData.heightMaximum}`,
+      'left',
+    )
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Marital Status:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 26, y, `${preferenceInfoData.maritalStatusPreference}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Complexion:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 112, y, `${preferenceInfoData.complexionPreference}`, 'left')
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Occupation:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 21, y, `${preferenceInfoData.occupationPreference}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Education:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 108.5, y, `${preferenceInfoData.educationPreference}`, 'left')
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Location:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 16.5, y, `${preferenceInfoData.location}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Religion:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 106, y, `${preferenceInfoData.religionPreference}`, 'left')
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Details:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    text_width = doc.getTextWidth(
+      preferenceInfoData.preferenceDetails
+        ? preferenceInfoData.preferenceDetails
+        : 'None',
+    )
+    splitTitle = doc.splitTextToSize(
+      preferenceInfoData.preferenceDetails
+        ? preferenceInfoData.preferenceDetails
+        : 'None',
+      170,
+    )
+    doc.text(x, y + 5, splitTitle, 'left')
+    y = y + text_width / 25
+    y += 8
 
     doc.save(profileData.name + ' Cv.pdf')
   }
 
+  const testCopy = () => {}
+
   const addCV = (event) => {
     event.preventDefault()
     const formData = new FormData()
+    const uniqueId =
+      Date.now().toString(36).slice(5) + Math.random().toString(36).slice(5)
+
+    formData.append('u_id', uniqueId)
     formData.append('image', profileData.image)
     formData.append('name', profileData.name)
     formData.append('gender', profileData.gender)
@@ -676,22 +746,32 @@ const CVBank = () => {
     formData.append('annualIncome', profileData.annualIncome)
     formData.append('hobby', profileData.hobby)
     formData.append('physicalStatus', profileData.physicalStatus)
-    formData.append('specialCase', profileData.specialCase)
-    formData.append('about', profileData.about)
-    formData.append('fatherName', familyData.fatherName)
-    formData.append('fatherOccupation', familyData.fatherOccupation)
-    formData.append('fatherDetails', familyData.fatherDetails)
-    formData.append('motherName', familyData.motherName)
-    formData.append('motherOccupation', familyData.motherOccupation)
-    formData.append('motherDetails', familyData.motherDetails)
+    formData.append(
+      'specialCase',
+      profileData.specialCase ? profileData.specialCase : 'None',
+    )
+    formData.append('about', profileData.about ? profileData.about : 'None')
 
-    // maritalStatusPreference
-    //
-    // occupationPreference
-    //
-    //
-    //
-    //
+    formData.append('fatherName', familyData.fatherName)
+    formData.append(
+      'fatherOccupation',
+      familyData.fatherOccupation ? familyData.fatherOccupation : 'None',
+    )
+    formData.append(
+      'fatherDetails',
+      familyData.fatherDetails ? familyData.fatherDetails : 'None',
+    )
+    formData.append('motherName', familyData.motherName)
+    formData.append(
+      'motherOccupation',
+      familyData.motherOccupation ? familyData.motherOccupation : 'None',
+    )
+    formData.append(
+      'motherDetails',
+      familyData.motherDetails ? familyData.motherDetails : 'None',
+    )
+    formData.append('brother', familyData.brother)
+    formData.append('sister', familyData.sister)
 
     formData.append('ageMinimum', preferenceInfoData.ageMinimum)
     formData.append('ageMaximum', preferenceInfoData.ageMaximum)
@@ -713,9 +793,17 @@ const CVBank = () => {
       'educationPreference',
       preferenceInfoData.educationPreference,
     )
-    formData.append('location', preferenceInfoData.location)
+    formData.append(
+      'location',
+      preferenceInfoData.location ? preferenceInfoData.location : 'None',
+    )
     formData.append('religionPreference', preferenceInfoData.religionPreference)
-    formData.append('preferenceDetails', preferenceInfoData.preferenceDetails)
+    formData.append(
+      'preferenceDetails',
+      preferenceInfoData.preferenceDetails
+        ? preferenceInfoData.preferenceDetails
+        : 'None',
+    )
 
     Swal.fire({
       title: 'Are you sure?',
@@ -741,14 +829,14 @@ const CVBank = () => {
                     `https://api.butterflymatrimonial.com/api/post/sibling`,
                     {
                       name: item.name,
-                      ocupation: item.ocupation,
+                      occupation: item.occupation,
                       details: item.details,
-                      cvdata_id: cvMaxId + 1,
+                      u_id: uniqueId,
                     },
                   )
-                  .then((data) => {
+                  .then((dataSib) => {
                     if (
-                      data.data.message ===
+                      dataSib.data.message ===
                       'Your sibling data has just been stored.'
                     ) {
                       educationalData.map((item) =>
@@ -756,83 +844,70 @@ const CVBank = () => {
                           .post(
                             `https://api.butterflymatrimonial.com/api/post/education/qualification`,
                             {
+                              levelOfEducation: item.levelOfEducation,
+                              group: item.group,
                               instituteName: item.instituteName,
                               passingYear: item.passingYear,
-                              levelOfEducation: item.levelOfEducation,
-                              instituteLocation: item.instituteLocation,
-                              group: item.group,
-                              cvdata_id: cvMaxId + 1,
+                              u_id: uniqueId,
                             },
                           )
-                          .then((data) => {
+                          .then((dataEdu) => {
                             if (
-                              data.data.message ===
-                              'Education qualification data has just been stored.'
+                              dataEdu.data.message ===
+                              'Your edu qualification data has just been stored.'
                             ) {
                               professionalData.map((item) =>
                                 axios
                                   .post(
                                     `https://api.butterflymatrimonial.com/api/post/professional`,
                                     {
+                                      companyName: item.companyName,
                                       designation: item.designation,
-                                      organizationName: item.organizationName,
-                                      com_department: item.com_department,
                                       com_location: item.com_location,
                                       from_employment: item.from_employment,
                                       to_employment: item.to_employment,
-                                      com_reference: item.com_reference,
-                                      cvdata_id: cvMaxId + 1,
+                                      u_id: uniqueId,
                                     },
                                   )
-                                  .then((data) => {
-                                    if (
-                                      data.data.message ===
-                                      'Your professional data has just been stored.'
-                                    ) {
-                                      galleryData.imageFill.forEach((item) => {
-                                        const formData2 = new FormData()
-                                        formData2.append('imageFill', item)
-                                        formData2.append(
-                                          'cvdata_id',
-                                          cvMaxId + 1,
-                                        )
-                                        axios
-                                          .post(
-                                            `https://api.butterflymatrimonial.com/api/post/gallery-image`,
-                                            formData2,
-                                          )
-                                          .catch(({ response }) => {
-                                            console.log('galleryData', response)
-                                          })
-                                      })
-                                    }
-                                  })
                                   .catch(({ response }) => {
-                                    console.log('professionalData', response)
+                                    console.log(
+                                      'ProfessionalData error',
+                                      response,
+                                    )
                                   }),
                               )
                             }
                           })
                           .catch(({ response }) => {
-                            console.log('Educational ', response)
+                            console.log('EducationalData error', response)
                           }),
                       )
                     }
                   })
                   .catch(({ response }) => {
-                    console.log('Sibling ', response)
+                    console.log('SiblingData error', response)
                   }),
               )
+              galleryData.imageFill.forEach((item) => {
+                const formData2 = new FormData()
+                formData2.append('imageFill', item)
+                formData2.append('u_id', uniqueId)
+                axios
+                  .post(
+                    `https://api.butterflymatrimonial.com/api/post/gallery-image`,
+                    formData2,
+                  )
+                  .catch(({ response }) => {
+                    console.log('GalleryData error', response)
+                  })
+              })
 
-              // exportPdf()
+              exportPdf()
               //submission confirmation
               Swal.fire({
                 title: `Success.`,
                 icon: 'success',
-                text: data.data.message,
-                footer: `<a href="https://butterflymatrimonial.com/butterfly-cv-bank/${
-                  cvMaxId + 1
-                }">Please check Your CV url.</a>`,
+                html: `<input type="text" value="https://butterflymatrimonial.com/butterfly-cv-bank/${uniqueId}" name="link" class="form-control alert-input-fild"><button class="alert-btn" onClick="${testCopy()}"><img src="https://cdn-icons-png.flaticon.com/512/4355/4355195.png" alt="Snow" style="width:30px"></button>`,
               })
             } else {
               Swal.fire({
@@ -854,27 +929,6 @@ const CVBank = () => {
     })
   }
 
-  useEffect(() => {
-    getAllCv()
-    return () => {
-      //console.log("removing...", e);
-    }
-  }, [])
-
-  const getAllCv = async () => {
-    fetch(`https://api.butterflymatrimonial.com/api/get/getMaxId`, {})
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          console.log('vul')
-        } else {
-          setCvMaxId(data)
-        }
-      })
-      .catch((err) => {
-        console.log('pro erro', err)
-      })
-  }
   return (
     <div style={{ backgroundColor: '#ededed' }}>
       <MainNav />
@@ -912,9 +966,9 @@ const CVBank = () => {
               )}
             </li>
             <li>
-              {data === 'Qulification' || data === 'Preview' ? (
+              {data === 'Qualification' || data === 'Preview' ? (
                 <button
-                  onClick={() => setData('Qulification')}
+                  onClick={() => setData('Qualification')}
                   id="borderbottomline"
                 >
                   <IoMdCheckmarkCircleOutline
@@ -926,7 +980,7 @@ const CVBank = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => setData('Qulification')}
+                  onClick={() => setData('Qualification')}
                   className="borderbottomlinehover"
                 >
                   Education & Profession
@@ -988,8 +1042,8 @@ const CVBank = () => {
               updateGalleryData={updateGalleryData}
             />
           )}
-          {data === 'Qulification' && (
-            <Qulification
+          {data === 'Qualification' && (
+            <Qualification
               updateEducationalData={updateEducationalData}
               updateProfessionalData={updateProfessionalData}
             />
@@ -1025,11 +1079,9 @@ const CVBank = () => {
               <button
                 className="cv_bankButton_BackNext"
                 onClick={() => {
-                  data === 'Qulification' && setData('ProfileInformation')
-                  data === 'ProfessionalQualification' &&
-                    setData('Qulification')
-                  data === 'FamilyMember' &&
-                    setData('ProfessionalQualification')
+                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                  data === 'Qualification' && setData('ProfileInformation')
+                  data === 'FamilyMember' && setData('Qualification')
                   data === 'PreferenceInformation' && setData('FamilyMember')
                   data === 'Preview' && setData('PreferenceInformation')
                 }}
@@ -1053,6 +1105,7 @@ const CVBank = () => {
                         educationalData,
                         siblingData,
                         preferenceInfoData,
+                        galleryData,
                       ),
                     )
                   }}
@@ -1074,6 +1127,7 @@ const CVBank = () => {
                           educationalData,
                           siblingData,
                           preferenceInfoData,
+                          galleryData,
                         ),
                       )
                     }}
@@ -1086,11 +1140,17 @@ const CVBank = () => {
                 <div>
                   <button
                     className="cv_bankButton_BackNext"
+                    onClick={exportPdf}
+                  >
+                    Download
+                  </button>{' '}
+                  <button
+                    className="cv_bankButton_BackNext"
                     onClick={(event) => {
                       addCV(event)
                     }}
                   >
-                    Submit
+                    Save and Download
                   </button>
                 </div>
               )}

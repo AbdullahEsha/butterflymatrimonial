@@ -5,6 +5,7 @@ export const addCvData = (
   educationalData,
   siblingData,
   preferenceInfoData,
+  galleryData,
 ) => {
   return {
     type: 'ADD_CV',
@@ -15,6 +16,7 @@ export const addCvData = (
       educationalData: educationalData,
       siblingData: siblingData,
       preferenceInfoData: preferenceInfoData,
+      galleryData: galleryData,
     },
   }
 }

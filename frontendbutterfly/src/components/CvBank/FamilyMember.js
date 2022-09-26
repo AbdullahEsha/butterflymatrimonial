@@ -69,6 +69,8 @@ const FamilyMember = (props) => {
       },
     ])
     document.querySelector('.sibling_info').style.display = 'none'
+    document.querySelector('.showDetail').style.display = 'block'
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }
 
   return (
@@ -100,7 +102,12 @@ const FamilyMember = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Occupation
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+              <span
+                style={{ color: 'red', fontSize: '24px', visibility: 'hidden' }}
+              >
+                *
+              </span>
+              :
             </h5>
             <input
               type="text"
@@ -118,7 +125,7 @@ const FamilyMember = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Details:</h5>
+            <h5>Details :</h5>
             <input
               type="text"
               className="form-control fatherDetails"
@@ -155,7 +162,12 @@ const FamilyMember = (props) => {
           <Col xs={12} md={6}>
             <h5>
               Occupation
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+              <span
+                style={{ color: 'red', fontSize: '24px', visibility: 'hidden' }}
+              >
+                *
+              </span>
+              :
             </h5>
             <input
               type="text"
@@ -173,7 +185,7 @@ const FamilyMember = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Details:</h5>
+            <h5>Details :</h5>
             <input
               type="text"
               className="form-control motherDetails"
@@ -190,7 +202,7 @@ const FamilyMember = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>Brother: </h5>
+            <h5>Brother : </h5>
             <input
               type="number"
               min="0"
@@ -208,7 +220,7 @@ const FamilyMember = (props) => {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h5>Sister:</h5>
+            <h5>Sister :</h5>
             <input
               type="number"
               min="0"
@@ -226,13 +238,23 @@ const FamilyMember = (props) => {
             />
           </Col>
         </Row>
+        <h5
+          className="showDetail"
+          onClick={() => {
+            document.querySelector('.sibling_info').style.display = 'block'
+            document.querySelector('.showDetail').style.display = 'none'
+            setSibling([{ name: '', occupation: '', details: '' }])
+          }}
+        >
+          Add Sibling Details
+        </h5>
         <Row className="row-padding">
           {sibling.map((item, index) => {
             return (
               <div key={index} className="sibling_info">
                 <div className="row">
                   <div className="col-12 col-sm-6">
-                    <h5>Name:</h5>
+                    <h5>Sibling Name :</h5>
                     <input
                       type="text"
                       className="form-control sibname"
@@ -243,7 +265,7 @@ const FamilyMember = (props) => {
                     />
                   </div>
                   <div className="col-12 col-sm-6">
-                    <h5>Occupation:</h5>
+                    <h5>Occupation :</h5>
                     <input
                       type="text"
                       className="form-control sibOccupation"
@@ -255,7 +277,7 @@ const FamilyMember = (props) => {
                   </div>
                 </div>
                 <br />
-                <h5>Details:</h5>
+                <h5>Details :</h5>
                 <div class="input-group">
                   <textarea
                     className="form-control sibdetails"

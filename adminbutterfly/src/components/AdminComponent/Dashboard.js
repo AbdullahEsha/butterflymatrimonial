@@ -155,7 +155,7 @@ const Dashboard = () => {
   if (cvdata.length > 0) {
     cvdata.forEach((elem, index) => {
       let stringInput = elem.preference
-      let arrdata = stringInput.split(', ')
+      let arrdata = stringInput.split(',')
       demoArray.push(arrdata)
     })
   }

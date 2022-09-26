@@ -53,10 +53,10 @@ const Footer = () => {
                 <Link to="/about">About Us</Link>
               </li>
               <li>
-                <Link to="/career">Career`s</Link>
+                <Link to="">Career`s</Link>
               </li>
               <li>
-                <Link to="/blog">Blog`s</Link>
+                <Link to="">Blog`s</Link>
               </li>
               <li>
                 <Link to="/pricing">Pricing</Link>
@@ -83,7 +83,7 @@ const Footer = () => {
                 <Link to="/contact">Find Us</Link>
               </li>
               <li>
-                <a href="/cv-bank">CV Bank</a>
+                <Link to="/cv-bank">CV Bank</Link>
               </li>
             </ul>
             <br />
@@ -92,7 +92,7 @@ const Footer = () => {
             <h4>Resources</h4>
             <ul>
               <li>
-                <a href="/">API docs</a>
+                <Link to="">API docs</Link>
               </li>
               <li>
                 <Link to="/guide">Guides</Link>

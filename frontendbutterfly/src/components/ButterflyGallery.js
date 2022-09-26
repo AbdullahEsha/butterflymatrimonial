@@ -30,7 +30,6 @@ const ButterflyGallery = () => {
         console.log('pro erro', err)
       })
   }
-  console.log(imageData)
   return (
     <>
       <div className="cv-bank-butterfly-outside">

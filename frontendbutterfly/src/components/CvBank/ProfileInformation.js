@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import CreatableSelect from 'react-select/creatable'
 import Select from 'react-select'
 import ImageUploader from 'react-images-upload'
+import UploadImage from '../../asset/image/img_upload.png'
 
 const ProfileInformation = (props) => {
   const options = [
@@ -12,20 +13,35 @@ const ProfileInformation = (props) => {
     { label: 'Gardening', value: 'Gardening' },
   ]
 
-  const [galleryImage, setGalleryImage] = useState({ imageFill: '' })
+  const optionSpecialCase = [
+    { label: 'Addiction', value: 'Addiction' },
+    { label: 'Diabetics', value: 'Diabetics' },
+    { label: 'Smoker', value: 'Smoker' },
+  ]
+
   const profileData_ = useSelector((state) => state.cvDataReducer.profileData)
+  const galleryData_ = useSelector((state) => state.cvDataReducer.galleryData)
+
   const [city, setCity] = useState([])
-  const [preferenceData, setPreferenceData] = useState([])
-  const [checkOther, setCheckOther] = useState('None')
+  // const [preferenceData, setPreferenceData] = useState([])
+  // const [checkOther, setCheckOther] = useState('None')
+  // const [check, setCheck] = useState(true)
+  const [errorMsg, setErrorMsg] = useState(true)
+
+  const [galleryImage, setGalleryImage] = useState({
+    imageFill: galleryData_.imageFill ? galleryData_.imageFill : [],
+    imageUrl: galleryData_.imageUrl ? galleryData_.imageUrl : [],
+  })
 
   const [profileInformation, setProfileInformation] = useState({
     image: profileData_.image ? profileData_.image : '',
+    imageUrl: profileData_.imageUrl ? profileData_.imageUrl : '',
     name: profileData_ ? profileData_.name : '',
     gender: profileData_ ? profileData_.gender : '',
     phone: profileData_ ? profileData_.phone : '',
     email: profileData_ ? profileData_.email : '',
     dob: profileData_ ? profileData_.dob : '',
-    height: profileData_ ? profileData_.height : '',
+    height: profileData_.height ? profileData_.height : '',
     weight: profileData_ ? profileData_.weight : '',
     bloodGroup: profileData_ ? profileData_.bloodGroup : '',
     religion: profileData_ ? profileData_.religion : '',
@@ -36,7 +52,7 @@ const ProfileInformation = (props) => {
     grownUpAt: profileData_.grownUpAt ? profileData_.grownUpAt : '',
     citizenship: profileData_.citizenship ? profileData_.citizenship : '',
     familyStatus: profileData_ ? profileData_.familyStatus : '',
-    annualIncome: profileData_ ? profileData_.annualIncome : '',
+    annualIncome: profileData_.annualIncome ? profileData_.annualIncome : '',
     hobby: profileData_ ? profileData_.hobby : '',
     physicalStatus: profileData_ ? profileData_.physicalStatus : '',
     specialCase: profileData_ ? profileData_.specialCase : '',
@@ -46,7 +62,7 @@ const ProfileInformation = (props) => {
   async function image_to_base64(file) {
     let result_base64 = await new Promise((resolve) => {
       let fileReader = new FileReader()
-      fileReader.onload = (e) => resolve(fileReader.result)
+      fileReader.onload = () => resolve(fileReader.result)
       fileReader.onerror = (error) => {
         console.log(error)
         alert('An Error occurred please try again, File might be corrupt')
@@ -103,8 +119,11 @@ const ProfileInformation = (props) => {
   }
 
   const loadFile = async (event) => {
-    document.querySelector('.uploadImg').style.backgroundImage =
-      'url(' + URL.createObjectURL(event.target.files[0]) + ')'
+    document.querySelector(
+      '.uploadImg',
+    ).style.backgroundImage = `url( ${URL.createObjectURL(
+      event.target.files[0],
+    )})`
 
     const res = await image_to_base64(event.target.files[0])
 
@@ -118,10 +137,42 @@ const ProfileInformation = (props) => {
         setProfileInformation({
           ...profileInformation,
           image: file,
+          imageUrl: resized,
         })
       }
     } else {
       console.log('return err')
+    }
+  }
+
+  const galleryImageUpload = async (imageFill) => {
+    let resp = []
+    await imageFill.forEach((elem) => {
+      resp.push(image_to_base64(elem))
+    })
+    const imageData = await Promise.all(resp)
+    if (imageData) {
+      let resizedRes = []
+      await imageData.forEach((data) =>
+        resizedRes.push(reduce_image_file_size(data)),
+      )
+      const imageResizedData = await Promise.all(resizedRes)
+
+      let fileData = []
+      imageResizedData.forEach((item, index) => {
+        var gallery_img = new Image()
+        gallery_img.src = item
+        gallery_img.onload = function () {
+          fileData.push(dataURLtoFile(item, `${Date.now()}${index + 10}.png`))
+        }
+      })
+      setGalleryImage({
+        ...galleryImage,
+        imageFill: fileData,
+        imageUrl: imageResizedData,
+      })
+    } else {
+      console.log('return error')
     }
   }
 
@@ -156,30 +207,6 @@ const ProfileInformation = (props) => {
       })
   }
 
-  const checkSpecialCase = (event, name) => {
-    if (event) {
-      let prefData = [...preferenceData, name]
-      setPreferenceData(prefData)
-      setProfileInformation({
-        ...profileInformation,
-        specialCase: prefData.join(','),
-      })
-    } else {
-      preferenceData.forEach((item, index) => {
-        if (item === name) {
-          preferenceData.splice(index, 1)
-          setPreferenceData(preferenceData)
-          setProfileInformation({
-            ...profileInformation,
-            specialCase: preferenceData.join(','),
-          })
-        }
-      })
-    }
-  }
-
-  console.log('profileInformation', profileInformation)
-
   return (
     <>
       <Container className="cv_bank_container21">
@@ -198,6 +225,14 @@ const ProfileInformation = (props) => {
               accept="image/*"
               title="Choose Image"
               name="image"
+              style={
+                profileInformation.imageUrl
+                  ? { backgroundImage: `url( ${profileInformation.imageUrl})` }
+                  : {
+                      background: `url(${UploadImage}) no-repeat #ffffff`,
+                      backgroundSize: 'cover',
+                    }
+              }
               className="uploadImg imageFile"
               id="image2"
               onChange={(event) => {
@@ -668,6 +703,7 @@ const ProfileInformation = (props) => {
             </h5>
             <input
               type="number"
+              min="0"
               className="form-control annualIncome"
               placeholder="Enter approximate annual income."
               name="annualIncome"
@@ -746,17 +782,57 @@ const ProfileInformation = (props) => {
         <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
-              Limitations Or Special Case
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+              About
+              <span
+                style={{ color: 'red', fontSize: '24px', visibility: 'hidden' }}
+              >
+                *
+              </span>
+              :
             </h5>
-            <div class="form-check">
+            <div className="input-group">
+              <textarea
+                className="form-control about"
+                placeholder="Write about yourself."
+                aria-label="With textarea"
+                name="about"
+                rows="4"
+                value={profileInformation.about}
+                onChange={(event) =>
+                  setProfileInformation({
+                    ...profileInformation,
+                    about: event.target.value,
+                  })
+                }
+              ></textarea>
+            </div>
+          </Col>
+          <Col xs={12} md={6}>
+            <h5>
+              Limitations Or Special Case
+              <span
+                style={{ color: 'red', fontSize: '24px', visibility: 'hidden' }}
+              >
+                *
+              </span>
+              :
+            </h5>
+            {/* <div class="form-check">
               <input
                 class="form-check-input"
                 type="checkbox"
                 value="Addiction"
-                onChange={(event) =>
-                  checkSpecialCase(event.target.checked, event.target.value)
+                checked={
+                  profileInformation.specialCase &&
+                  check &&
+                  profileInformation.specialCase.includes('Addiction')
+                    ? true
+                    : false
                 }
+                onChange={(event) => {
+                  setCheck(true)
+                  checkSpecialCase(event.target.checked, event.target.value)
+                }}
               />
               <label class="form-check-label">Addiction</label>
             </div>
@@ -765,9 +841,17 @@ const ProfileInformation = (props) => {
                 class="form-check-input"
                 type="checkbox"
                 value="Diabetics"
-                onChange={(event) =>
-                  checkSpecialCase(event.target.checked, event.target.value)
+                checked={
+                  profileInformation.specialCase &&
+                  check &&
+                  profileInformation.specialCase.includes('Diabetics')
+                    ? true
+                    : false
                 }
+                onChange={(event) => {
+                  setCheck(true)
+                  checkSpecialCase(event.target.checked, event.target.value)
+                }}
               />
               <label class="form-check-label">Diabetics</label>
             </div>
@@ -776,22 +860,19 @@ const ProfileInformation = (props) => {
                 class="form-check-input"
                 type="checkbox"
                 value="Smoker"
-                onChange={(event) =>
-                  checkSpecialCase(event.target.checked, event.target.value)
+                checked={
+                  profileInformation.specialCase &&
+                  check &&
+                  profileInformation.specialCase.includes('Smoker')
+                    ? true
+                    : false
                 }
+                onChange={(event) => {
+                  setCheck(true)
+                  checkSpecialCase(event.target.checked, event.target.value)
+                }}
               />
               <label class="form-check-label">Smoker</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value="None"
-                onChange={(event) =>
-                  checkSpecialCase(event.target.checked, event.target.value)
-                }
-              />
-              <label class="form-check-label">None</label>
             </div>
             <div class="form-check">
               <input
@@ -801,8 +882,14 @@ const ProfileInformation = (props) => {
                 onChange={(event) => {
                   if (event.target.checked) {
                     setCheckOther('Other')
+                    setCheck(false)
                   } else {
                     setCheckOther('None')
+                    setCheck(true)
+                    setProfileInformation({
+                      ...profileInformation,
+                      specialCase: '',
+                    })
                   }
                 }}
               />
@@ -822,29 +909,37 @@ const ProfileInformation = (props) => {
                 }
               />
             )}
-
             <label className="preferenceCheck" style={{ color: 'red' }}>
               Please select at least one.
-            </label>
-          </Col>
-          <Col xs={12} md={6}>
-            <h5>About:</h5>
-            <div className="input-group">
-              <textarea
-                className="form-control about"
-                placeholder="Write about yourself."
-                aria-label="With textarea"
-                name="about"
-                rows="5"
-                value={profileInformation.about}
-                onChange={(event) =>
-                  setProfileInformation({
-                    ...profileInformation,
-                    about: event.target.value,
-                  })
-                }
-              ></textarea>
-            </div>
+            </label> */}
+            <CreatableSelect
+              className="specialCase"
+              options={optionSpecialCase}
+              isMulti={true}
+              defaultValue={
+                profileData_.specialCase
+                  ? {
+                      label: `${profileInformation.specialCase}`,
+                      value: `${profileInformation.specialCase}`,
+                    }
+                  : false
+              }
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 3,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#ff566a56',
+                  primary: '#ff566b',
+                },
+              })}
+              onChange={(event) => {
+                setProfileInformation({
+                  ...profileInformation,
+                  specialCase: event.map((item) => item.label).join(),
+                })
+              }}
+            />
           </Col>
         </Row>
         <Row className="row-padding">
@@ -857,15 +952,26 @@ const ProfileInformation = (props) => {
               withIcon={false}
               withPreview={true}
               buttonText="Choose Images"
-              label="Max file size: 2mb | accepted: jpg, png, jpeg"
+              label={`${
+                errorMsg === true
+                  ? 'Max 10 images | Accepted: jpg, png, jpeg'
+                  : 'Max images limit exceeded'
+              }`}
               // value={data.images}
-              // defaultImages={data.images}
+              defaultImages={
+                galleryImage.imageUrl ? galleryImage.imageUrl : false
+              }
               name="images"
               onChange={(image) => {
-                setGalleryImage({ ...galleryImage, imageFill: image })
+                if (image.length <= 10) {
+                  setErrorMsg(true)
+                  galleryImageUpload(image)
+                } else {
+                  setErrorMsg(false)
+                }
               }}
               imgExtension={['.jpg', '.png', '.jpeg']}
-              maxFileSize={2097152}
+              maxFileSize={15097152}
               className="mb-4"
             />
           </Col>

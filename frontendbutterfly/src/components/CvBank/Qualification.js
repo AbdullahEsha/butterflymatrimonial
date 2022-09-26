@@ -108,7 +108,9 @@ const Qualification = (props) => {
       levelOfEducation: eduData_[0] ? eduData_[0].levelOfEducation : '',
       group: eduData_[0] ? eduData_[0].group : '',
       instituteName: eduData_[0] ? eduData_[0].instituteName : '',
-      passingYear: eduData_[0] ? eduData_[0].passingYear : 2022,
+      passingYear: eduData_[0]
+        ? eduData_[0].passingYear
+        : new Date().getFullYear(),
     },
   ])
 
@@ -142,7 +144,7 @@ const Qualification = (props) => {
           : '',
         passingYear: eduData_[updateIndex]
           ? eduData_[updateIndex].passingYear
-          : '',
+          : new Date().getFullYear(),
       },
     ])
   }
@@ -249,6 +251,7 @@ const Qualification = (props) => {
       },
     ])
     document.querySelector('.hide_profession').style.display = 'none'
+    document.querySelector('.showDetail').style.display = 'block'
   }
 
   return (
@@ -348,8 +351,8 @@ const Qualification = (props) => {
                   </h5>
                   <input
                     type="number"
-                    min="1900"
-                    max="2022"
+                    min="1975"
+                    max={new Date().getFullYear() + 3}
                     step="1"
                     className="form-control passingYear"
                     name="passingYear"
@@ -387,6 +390,25 @@ const Qualification = (props) => {
           )
         })}
         <br />
+        <h5
+          className="showDetail"
+          onClick={() => {
+            document.querySelector('.hide_profession').style.display = 'block'
+            document.querySelector('.showDetail').style.display = 'none'
+            setProfessionalQulification([
+              {
+                designation: '',
+                companyName: '',
+                com_location: '',
+                from_employment: '',
+                to_employment: '',
+                com_reference: '',
+              },
+            ])
+          }}
+        >
+          Add Profession Details
+        </h5>
         {professionalQulification.map((item, index) => {
           return (
             <div key={index} className="hide_profession">
@@ -402,7 +424,7 @@ const Qualification = (props) => {
               </div>
               <Row className="row-padding">
                 <Col xs={12} md={12}>
-                  <h5>Company Name:</h5>
+                  <h5>Company Name :</h5>
                   <input
                     type="text"
                     className="form-control companyName"
@@ -415,7 +437,7 @@ const Qualification = (props) => {
               </Row>
               <Row className="row-padding">
                 <Col xs={12} md={6}>
-                  <h5>Designation:</h5>
+                  <h5>Designation :</h5>
                   <input
                     type="text"
                     className="form-control designation"
@@ -426,7 +448,7 @@ const Qualification = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <h5>Location:</h5>
+                  <h5>Location :</h5>
                   <input
                     type="text"
                     className="form-control com_location"
@@ -438,34 +460,25 @@ const Qualification = (props) => {
                 </Col>
               </Row>
               <Row className="row-padding">
-                <h5>Employment Period:</h5>
+                <h5>Employment Period :</h5>
                 <Col xs={12} md={6}>
                   <div class="from-group">
                     <div class="input-group mb-2">
                       <input
-                        type="text"
-                        className="form-control input-background from_employment"
-                        placeholder="From Date (M DD, YYYY)"
+                        type="date"
+                        id="date-change"
+                        name="from_employment"
+                        className="form-control from_employment"
                         value={
                           fromdate.map((item) => item.dateset)[index] !== ''
                             ? fromdate.map((item) => item.dateset)[index]
                             : professionalQulification[index].from_employment
                         }
-                        disabled
+                        onChange={(event) => {
+                          hendleDateFrom(index, event.target.value)
+                          handleProfessionalInput(index, event)
+                        }}
                       />
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <input
-                            type="date"
-                            id="date-change"
-                            name="from_employment"
-                            onChange={(event) => {
-                              hendleDateFrom(index, event.target.value)
-                              handleProfessionalInput(index, event)
-                            }}
-                          />
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </Col>
@@ -474,29 +487,20 @@ const Qualification = (props) => {
                     <div class="from-group">
                       <div class="input-group mb-2">
                         <input
-                          type="text"
-                          className="form-control input-background to_employment"
+                          type="date"
+                          id="date-change"
+                          name="to_employment"
+                          className="form-control  to_employment"
                           value={
                             todate.map((item) => item.dateset)[index] !== ''
                               ? todate.map((item) => item.dateset)[index]
                               : professionalQulification[index].to_employment
                           }
-                          placeholder="To Date (MM, DD, YYYY)"
-                          disabled
+                          onChange={(event) => {
+                            hendleDateTo(index, event.target.value)
+                            handleProfessionalInput(index, event)
+                          }}
                         />
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <input
-                              type="date"
-                              id="date-change"
-                              name="to_employment"
-                              onChange={(event) => {
-                                hendleDateTo(index, event.target.value)
-                                handleProfessionalInput(index, event)
-                              }}
-                            />
-                          </div>
-                        </div>
                       </div>
                     </div>
                   )}

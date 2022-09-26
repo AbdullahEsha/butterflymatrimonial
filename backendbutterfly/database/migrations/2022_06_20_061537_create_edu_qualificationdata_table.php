@@ -14,12 +14,11 @@ return new class extends Migration {
     {
         Schema::create('edu_qualificationdata', function (Blueprint $table) {
             $table->id();
+            $table->text('levelOfEducation');
+            $table->text('group');
             $table->text('instituteName');
             $table->text('passingYear');
-            $table->text('levelOfEducation');
-            $table->text('instituteLocation');
-            $table->text('group');
-            $table->integer('cvdata_id');
+            $table->text('u_id');
             $table->timestamps();
         });
     }

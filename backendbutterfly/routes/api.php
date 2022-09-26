@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Route;
  */
 
 //============================== Cv data api start ============================================================//
-Route::get('/get/getMaxId', [CvdataController::class, 'getMaxId']);
 Route::get('/get/all/cv', [CvdataController::class, 'getData']);
 Route::post('/post/cv/new', [CvdataController::class, 'store']);
 Route::get('/get/cv/{id}', [CvdataController::class, 'getCvById']);

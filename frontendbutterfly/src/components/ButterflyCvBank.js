@@ -86,12 +86,6 @@ const ButterflyCvBank = () => {
     <>
       <div className="cv-bank-butterfly-outside">
         <Container className="cv-bank-butterfly">
-          <Link
-            to={'/butterfly-gallery/' + cvdata.id}
-            className="butterfly-gallery-link"
-          >
-            <h4>Go to Gallery</h4>
-          </Link>
           <Row>
             <Col>
               <h3>
@@ -108,7 +102,12 @@ const ButterflyCvBank = () => {
                   alt="previewImg"
                 />
               </div>
-              <br />
+              <Link
+                to={'/butterfly-gallery/' + cvdata.u_id}
+                className="butterfly-gallery-link"
+              >
+                <h5 className="show-image-btn">View more image.</h5>
+              </Link>
             </Col>
           </Row>
           <Row>
@@ -152,41 +151,10 @@ const ButterflyCvBank = () => {
           <Row>
             <Col xs={6} md={6}>
               <h6>
-                <b>Division:</b> {cvdata.divisionPresent}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Dristrict:</b> {cvdata.dristrictPresent}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
-                <b>Permanent Address:</b> {cvdata.parmanentAddress}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Division:</b> {cvdata.divisionParmanent}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Dristrict:</b> {cvdata.dristrictParmanent}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
                 <b>Date Of Birth:</b>{' '}
                 {`${
-                  cvdata.age
-                    ? new Date(cvdata.age).toLocaleString('en-GB', {
+                  cvdata.dob
+                    ? new Date(cvdata.dob).toLocaleString('en-GB', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric',
@@ -228,77 +196,10 @@ const ButterflyCvBank = () => {
           <Row>
             <Col>
               <h6>
-                <b>Special Condition:</b> {cvdata.specialCondition}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
                 <b>About:</b> {cvdata.about}
               </h6>
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Professional Information:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          {professionData.map((item, index) => {
-            return (
-              <>
-                <label>Profession {index + 1}</label>
-                <Row>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Designation:</b>
-                      {item.designation}
-                    </h6>
-                  </Col>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Organization Name:</b>
-                      {item.organizationName}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Department:</b>
-                      {item.com_department}
-                    </h6>
-                  </Col>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Location:</b>
-                      {item.com_location}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="12" md="12">
-                    <h6>
-                      <b>Employment Period:</b> {item.from_employment} to{' '}
-                      {item.to_employment}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="12" md="12">
-                    <h6>
-                      <b>Reference:</b>
-                      {item.com_reference}
-                    </h6>
-                  </Col>
-                </Row>
-              </>
-            )
-          })}
           <Row>
             <Col>
               <br />
@@ -328,13 +229,51 @@ const ButterflyCvBank = () => {
                 <Row>
                   <Col xs={12} md={6}>
                     <h6>
-                      <b>Level of Education:</b> {item.levelOfEducation}(
-                      {item.passingYear})
+                      <b>Level of Education:</b> {item.levelOfEducation}
                     </h6>
                   </Col>
-                  <Col xs={12} md={6}>
+                </Row>
+              </>
+            )
+          })}
+          <Row>
+            <Col>
+              <br />
+              <h4>
+                <b>Professional Information:</b>
+              </h4>
+              <hr />
+            </Col>
+          </Row>
+          {professionData.map((item, index) => {
+            return (
+              <>
+                <label>Profession {index + 1}</label>
+                <Row>
+                  <Col xs="12" md="6">
                     <h6>
-                      <b>Institute Location:</b> {item.instituteLocation}
+                      <b>Designation:</b>
+                      {item.designation}
+                    </h6>
+                  </Col>
+                  <Col xs="12" md="6">
+                    <h6>
+                      <b>Company Name:</b>
+                      {item.companyName}
+                    </h6>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs="12" md="6">
+                    <h6>
+                      <b>Employment Period:</b> {item.from_employment} to{' '}
+                      {item.to_employment}
+                    </h6>
+                  </Col>
+                  <Col xs="12" md="6">
+                    <h6>
+                      <b>Location:</b>
+                      {item.com_location}
                     </h6>
                   </Col>
                 </Row>
@@ -358,7 +297,14 @@ const ButterflyCvBank = () => {
             </Col>
             <Col xs={6} md={6}>
               <h6>
-                <b>Ocupation:</b> {cvdata.fatherOcupation}
+                <b>Occupation:</b> {cvdata.fatherOccupation}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} md={12}>
+              <h6>
+                <b>Father Details:</b> {cvdata.fatherDetails}
               </h6>
             </Col>
           </Row>
@@ -370,11 +316,17 @@ const ButterflyCvBank = () => {
             </Col>
             <Col xs={6} md={6}>
               <h6>
-                <b>Ocupation:</b> {cvdata.motherOcupation}
+                <b>Ocupation:</b> {cvdata.motherOccupation}
               </h6>
             </Col>
           </Row>
-
+          <Row>
+            <Col xs={12} md={12}>
+              <h6>
+                <b>Mother Details:</b> {cvdata.motherDetails}
+              </h6>
+            </Col>
+          </Row>
           {siblingData.map((item, index) => {
             return (
               <>
@@ -387,7 +339,7 @@ const ButterflyCvBank = () => {
                   </Col>
                   <Col xs={6} md={6}>
                     <h6>
-                      <b>Ocupation:</b> {item.ocupation}
+                      <b>Ocupation:</b> {item.occupation}
                     </h6>
                   </Col>
                 </Row>
@@ -413,42 +365,6 @@ const ButterflyCvBank = () => {
           <Row>
             <Col xs={6} md={6}>
               <h6>
-                <b>Profession:</b> {cvdata.profession}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Skin Tone:</b> {cvdata.skinTone}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Spouse Preference:</b> {cvdata.spousePreference}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Preference:</b> {cvdata.preference}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Religion:</b> {cvdata.religionPreference}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Physical Status:</b> {cvdata.physicalStatus}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
                 <b>Age Range:</b> {cvdata.ageMinimum} to {cvdata.ageMaximum}
               </h6>
             </Col>
@@ -462,7 +378,43 @@ const ButterflyCvBank = () => {
           <Row>
             <Col xs={6} md={6}>
               <h6>
-                <b>District Preference:</b> {cvdata.districtPreference}
+                <b>Marital Status:</b> {cvdata.maritalStatusPreference}
+              </h6>
+            </Col>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Complexion:</b> {cvdata.complexionPreference}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Occupation:</b> {cvdata.occupationPreference}
+              </h6>
+            </Col>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Education:</b> {cvdata.educationPreference}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Location:</b> {cvdata.location}
+              </h6>
+            </Col>
+            <Col xs={6} md={6}>
+              <h6>
+                <b>Religion:</b> {cvdata.religionPreference}
+              </h6>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} md={12}>
+              <h6>
+                <b>Details:</b> {cvdata.preferenceDetails}
               </h6>
             </Col>
           </Row>

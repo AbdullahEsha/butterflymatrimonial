@@ -154,61 +154,21 @@ const Preview = (props) => {
         <Row>
           <Col xs={6} md={6}>
             <h6>
-              <b>Physical Status:</b> {props.profileData.physicalStatus}
+              <b>Physical Status:</b>{' '}
+              {props.profileData.physicalStatus
+                ? props.profileData.physicalStatus
+                : 'None'}
             </h6>
           </Col>
         </Row>
         <Row>
           <Col>
             <h6>
-              <b>About:</b> {props.profileData.about}
+              <b>About:</b>{' '}
+              {props.profileData.about ? props.profileData.about : 'None'}
             </h6>
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <br />
-            <h4>
-              <b>Professional Information:</b>
-            </h4>
-            <hr />
-          </Col>
-        </Row>
-        {props.professionalData.map((item, index) => {
-          return (
-            <>
-              <label>Profession {index + 1}</label>
-              <Row>
-                <Col xs="12" md="6">
-                  <h6>
-                    <b>Designation:</b>
-                    {item.designation}
-                  </h6>
-                </Col>
-                <Col xs="12" md="6">
-                  <h6>
-                    <b>Organization Name:</b>
-                    {item.companyName}
-                  </h6>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs="12" md="6">
-                  <h6>
-                    <b>Location:</b>
-                    {item.com_location}
-                  </h6>
-                </Col>
-                <Col xs="12" md="6">
-                  <h6>
-                    <b>Employment Period:</b> {item.from_employment} to{' '}
-                    {item.to_employment}
-                  </h6>
-                </Col>
-              </Row>
-            </>
-          )
-        })}
         <Row>
           <Col>
             <br />
@@ -250,6 +210,53 @@ const Preview = (props) => {
           <Col>
             <br />
             <h4>
+              <b>Professional Information:</b>
+            </h4>
+            <hr />
+          </Col>
+        </Row>
+        {props.professionalData.map((item, index) => {
+          return (
+            <>
+              <label>Profession {index + 1}</label>
+              <Row>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Designation:</b>
+                    {item.designation}
+                  </h6>
+                </Col>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Organization Name:</b>
+                    {item.companyName}
+                  </h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Location:</b>
+                    {item.com_location}
+                  </h6>
+                </Col>
+                <Col xs="12" md="6">
+                  <h6>
+                    <b>Employment Period:</b> {item.from_employment} to{' '}
+                    {item.to_employment
+                      ? item.to_employment
+                      : 'Currently working here'}
+                  </h6>
+                </Col>
+              </Row>
+            </>
+          )
+        })}
+
+        <Row>
+          <Col>
+            <br />
+            <h4>
               <b>Family Member:</b>
             </h4>
             <hr />
@@ -263,12 +270,18 @@ const Preview = (props) => {
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Ocupation:</b> {props.familyData.fatherOccupation}
+              <b>Ocupation:</b>{' '}
+              {props.familyData.fatherOccupation
+                ? props.familyData.fatherOccupation
+                : 'None'}
             </h6>
           </Col>
           <Col xs={6} md={12}>
             <h6>
-              <b>Details:</b> {props.familyData.fatherDetails}
+              <b>Details:</b>{' '}
+              {props.familyData.fatherDetails
+                ? props.familyData.fatherDetails
+                : 'None'}
             </h6>
           </Col>
         </Row>
@@ -280,12 +293,18 @@ const Preview = (props) => {
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Ocupation:</b> {props.familyData.motherOccupation}
+              <b>Ocupation:</b>{' '}
+              {props.familyData.motherOccupation
+                ? props.familyData.motherOccupation
+                : 'None'}
             </h6>
           </Col>
           <Col xs={6} md={12}>
             <h6>
-              <b>Details:</b> {props.familyData.motherDetails}
+              <b>Details:</b>{' '}
+              {props.familyData.motherDetails
+                ? props.familyData.motherDetails
+                : 'None'}
             </h6>
           </Col>
         </Row>
@@ -357,7 +376,10 @@ const Preview = (props) => {
           </Col>
           <Col xs={6} md={6}>
             <h6>
-              <b>Location:</b> {props.preferenceInfoData.location}
+              <b>Location:</b>{' '}
+              {props.preferenceInfoData.location
+                ? props.preferenceInfoData.location
+                : 'None'}
             </h6>
           </Col>
         </Row>
@@ -376,9 +398,12 @@ const Preview = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col xs={6} md={6}>
+          <Col xs={12} md={12}>
             <h6>
-              <b>Details:</b> {props.preferenceInfoData.preferenceDetails}
+              <b>Details:</b>{' '}
+              {props.preferenceInfoData.preferenceDetails
+                ? props.preferenceInfoData.preferenceDetails
+                : 'None'}
             </h6>
           </Col>
         </Row>

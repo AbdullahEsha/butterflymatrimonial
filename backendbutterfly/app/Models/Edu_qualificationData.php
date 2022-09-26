@@ -16,11 +16,10 @@ class Edu_qualificationData extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'levelOfEducation',
+        'group',
         'instituteName',
         'passingYear',
-        'cvdata_id',
-        'levelOfEducation',
-        'instituteLocation',
-        'group',
+        'u_id',
     ];
 }

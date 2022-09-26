@@ -10,10 +10,13 @@ h6 {
   letter-spacing: 1px;
 }
 h5 {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 em {
   font-size: 14px;
+}
+.col-range {
+  width: 50%;
 }
 .row-padding {
   padding-bottom: 15px;
@@ -30,10 +33,31 @@ em {
 .berPadd img {
   height: 75px;
 }
+.gallery-image {
+  padding: 10px 0px 10px;
+}
 .gallery-image img {
   display: block;
   height: 100%;
   width: 100%;
+  border-radius: 12px;
+}
+.alert-input-fild {
+  width: 92%;
+}
+.alert-btn {
+  border: 1px solid #ced4da;
+  height: 38.1px;
+  width: 45px;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  float: right;
+  margin-top: -38.1px;
+  margin-right: 3px;
+  background-color: #fff;
+}
+.alert-btn:hover {
+  border: 2px solid #ffa5b2;
 }
 .hide_title {
   display: none;
@@ -48,10 +72,32 @@ em {
   font-size: 24px;
   font-weight: 600;
 }
-.butterfly-gallery-link {
-  color: #fc6375;
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.158);
+.butterfly-gallery-link h5 {
+  background-color: #fc6375;
+  color: #fff;
   font-weight: 500;
+  width: 180px;
+  padding: 7px 10px 7px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.199);
+}
+
+.showDetail {
+  display: none;
+  background-color: rgb(255, 86, 107);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  padding: 4px 10px 4px;
+  width: 180px;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow: 10px 10px 10px rgb(0 0 0 / 24%);
+  cursor: pointer;
+  margin-left: auto;
 }
 .form-groupx {
   border: 1px solid #ced4da;
@@ -64,6 +110,9 @@ em {
   border-color: #fc6375;
   outline: 0;
   box-shadow: 0 0 0 0.25rem #fc637538;
+}
+#inputdata {
+  display: none;
 }
 .form-groupx:active {
   color: #212529;
@@ -89,6 +138,7 @@ em {
   border-radius: 20px;
   height: 30px;
   width: 140px;
+  font-weight: 500;
   cursor: pointer;
   box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
 }
@@ -115,11 +165,6 @@ input#phoneNumber:active {
 }
 .spousePreferenceCheck {
   display: none;
-}
-#date-change {
-  width: 20px;
-  border-style: hidden;
-  background-color: #e9ecef;
 }
 #date-change:focus,
 #date-change:active {
@@ -727,7 +772,7 @@ a:hover {
   border: 2px solid #ff566b;
   padding: 6px 20px 6px;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 .cv_bankButton_BackNext:hover {

@@ -14,5 +14,5 @@ class GalleryImage extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['imageFill', 'cvdata_id'];
+    protected $fillable = ['imageFill', 'u_id'];
 }

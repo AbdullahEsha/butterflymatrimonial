@@ -24,46 +24,49 @@ class cvdataController extends Controller
     {
         $cvStore = new CvData();
         try {
+            $cvStore->u_id = $req->u_id;
             $cvStore->name = $req->name;
             $cvStore->gender = $req->gender;
             $cvStore->phone = $req->phone;
-            $cvStore->religion = $req->religion;
             $cvStore->email = $req->email;
-            $cvStore->presentAddress = $req->presentAddress;
-            $cvStore->divisionPresent = $req->divisionPresent;
-            $cvStore->dristrictPresent = $req->dristrictPresent;
-            $cvStore->parmanentAddress = $req->parmanentAddress;
-            $cvStore->divisionParmanent = $req->divisionParmanent;
-            $cvStore->dristrictParmanent = $req->dristrictParmanent;
-            $cvStore->age = $req->age;
-            $cvStore->specialCase = $req->specialCase;
-            $cvStore->spousePreference = $req->spousePreference;
-            $cvStore->about = $req->about;
+            $cvStore->dob = $req->dob;
             $cvStore->height = $req->height;
             $cvStore->weight = $req->weight;
             $cvStore->bloodGroup = $req->bloodGroup;
+            $cvStore->religion = $req->religion;
+            $cvStore->complexion = $req->complexion;
+            $cvStore->maritalStatus = $req->maritalStatus;
+            $cvStore->hometown = $req->hometown;
+            $cvStore->presentAddress = $req->presentAddress;
             $cvStore->grownUpAt = $req->grownUpAt;
-            $cvStore->specialCondition = $req->specialCondition;
-            $cvStore->fatherName = $req->fatherName;
-            $cvStore->fatherOcupation = $req->fatherOcupation;
-            $cvStore->motherName = $req->motherName;
-            $cvStore->motherOcupation = $req->motherOcupation;
-            $cvStore->profession = $req->profession;
-            $cvStore->districtPreference = $req->districtPreference;
-            $cvStore->religionPreference = $req->religionPreference;
+            $cvStore->citizenship = $req->citizenship;
+            $cvStore->familyStatus = $req->familyStatus;
+            $cvStore->annualIncome = $req->annualIncome;
+            $cvStore->hobby = $req->hobby;
             $cvStore->physicalStatus = $req->physicalStatus;
+            $cvStore->specialCase = $req->specialCase;
+            $cvStore->about = $req->about;
+            $cvStore->fatherName = $req->fatherName;
+            $cvStore->fatherOccupation = $req->fatherOccupation;
+            $cvStore->fatherDetails = $req->fatherDetails;
+            $cvStore->motherName = $req->motherName;
+            $cvStore->motherOccupation = $req->motherOccupation;
+            $cvStore->motherDetails = $req->motherDetails;
+            $cvStore->brother = $req->brother;
+            $cvStore->sister = $req->sister;
             $cvStore->ageMinimum = $req->ageMinimum;
             $cvStore->ageMaximum = $req->ageMaximum;
             $cvStore->heightMinimum = $req->heightMinimum;
             $cvStore->heightMaximum = $req->heightMaximum;
-            $cvStore->skinTone = $req->skinTone;
-            $cvStore->preference = $req->preference;
-            $cvStore->maritalStatus = 'Unmarried';
+            $cvStore->maritalStatusPreference = $req->maritalStatusPreference;
+            $cvStore->complexionPreference = $req->complexionPreference;
+            $cvStore->occupationPreference = $req->occupationPreference;
+            $cvStore->educationPreference = $req->educationPreference;
+            $cvStore->location = $req->location;
+            $cvStore->religionPreference = $req->religionPreference;
+            $cvStore->preferenceDetails = $req->preferenceDetails;
 
-            $rename =
-                time() .
-                '.' .
-                $req->file('image')->getClientOriginalExtension();
+            $rename = $req->file('image')->getClientOriginalName();
             $cvStore->image = 'uploads/images/' . $rename;
 
             $cvStore->save();
@@ -75,7 +78,6 @@ class cvdataController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),
-                $req->file('image'),
             ]);
         }
     }
@@ -95,7 +97,7 @@ class cvdataController extends Controller
     public function getCvById($id)
     {
         try {
-            $cvData = CvData::where('id', $id)->first();
+            $cvData = CvData::where('u_id', $id)->first();
             return $cvData;
         } catch (\Exception $e) {
             return response()->json([
@@ -115,18 +117,6 @@ class cvdataController extends Controller
             return response()->json([
                 'message' => 'Marital Status has just been updated to Married.',
             ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-            ]);
-        }
-    }
-
-    public function getMaxId()
-    {
-        try {
-            $maxid = CvData::max('id');
-            return $maxid;
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),

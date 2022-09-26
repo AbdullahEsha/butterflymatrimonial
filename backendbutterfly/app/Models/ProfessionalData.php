@@ -16,13 +16,11 @@ class ProfessionalData extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'companyName',
         'designation',
-        'organizationName',
-        'com_department',
         'com_location',
         'from_employment',
         'to_employment',
-        'com_reference',
-        'cvdata_id',
+        'u_id',
     ];
 }

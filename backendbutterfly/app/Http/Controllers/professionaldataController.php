@@ -23,10 +23,7 @@ class professionaldataController extends Controller
     public function getDataByCvId($id)
     {
         try {
-            $professionaldata = ProfessionalData::where(
-                'cvdata_id',
-                $id
-            )->get();
+            $professionaldata = ProfessionalData::where('u_id', $id)->get();
             return $professionaldata;
         } catch (\Exception $e) {
             return response()->json([
@@ -39,14 +36,12 @@ class professionaldataController extends Controller
     {
         $professionaldataStore = new ProfessionalData();
         try {
+            $professionaldataStore->companyName = $req->companyName;
             $professionaldataStore->designation = $req->designation;
-            $professionaldataStore->organizationName = $req->organizationName;
-            $professionaldataStore->com_department = $req->com_department;
             $professionaldataStore->com_location = $req->com_location;
             $professionaldataStore->from_employment = $req->from_employment;
             $professionaldataStore->to_employment = $req->to_employment;
-            $professionaldataStore->com_reference = $req->com_reference;
-            $professionaldataStore->cvdata_id = $req->cvdata_id;
+            $professionaldataStore->u_id = $req->u_id;
 
             $professionaldataStore->save();
 

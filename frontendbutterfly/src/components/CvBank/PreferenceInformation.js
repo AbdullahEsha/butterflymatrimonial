@@ -30,17 +30,7 @@ const optionOccupation = [
   { label: 'Bank Employee', value: 'Bank Employee' },
   { label: 'Doctor', value: 'Doctor' },
   { label: 'Journalist', value: 'Journalist' },
-  { label: 'No Specific', value: 'No Specific' },
-]
-
-const optionEducation = [
-  { label: 'Secondary', value: 'Secondary' },
-  { label: 'Higher Secondary', value: 'Higher Secondary' },
-  { label: 'Diploma', value: 'Diploma' },
-  { label: 'Bachelor Honors', value: 'Bachelor Honors' },
-  { label: 'Masters', value: 'Masters' },
-  { label: 'PhD', value: 'PhD' },
-  { label: 'No Specific', value: 'No Specific' },
+  { label: 'Not Specific', value: 'No Specific' },
 ]
 
 const PreferenceInformation = (props) => {
@@ -51,16 +41,16 @@ const PreferenceInformation = (props) => {
   const [preferenceInformation, setPreferenceInformation] = useState({
     ageMinimum: preferenceInfoData_.ageMinimum
       ? preferenceInfoData_.ageMinimum
-      : 0,
+      : 18,
     ageMaximum: preferenceInfoData_.ageMaximum
       ? preferenceInfoData_.ageMaximum
-      : 0,
+      : 20,
     heightMinimum: preferenceInfoData_.heightMinimum
       ? preferenceInfoData_.heightMinimum
-      : 0,
+      : '4ft 5',
     heightMaximum: preferenceInfoData_.heightMaximum
       ? preferenceInfoData_.heightMaximum
-      : 0,
+      : '4ft 6',
     maritalStatusPreference: preferenceInfoData_
       ? preferenceInfoData_.maritalStatusPreference
       : '',
@@ -73,11 +63,11 @@ const PreferenceInformation = (props) => {
     educationPreference: preferenceInfoData_
       ? preferenceInfoData_.educationPreference
       : '',
-    location: preferenceInfoData_ ? preferenceInfoData_.location : '',
+    location: preferenceInfoData_.location ? preferenceInfoData_.location : '',
     religionPreference: preferenceInfoData_
       ? preferenceInfoData_.religionPreference
       : '',
-    preferenceDetails: preferenceInfoData_
+    preferenceDetails: preferenceInfoData_.preferenceDetails
       ? preferenceInfoData_.preferenceDetails
       : '',
   })
@@ -97,12 +87,9 @@ const PreferenceInformation = (props) => {
         <br className="hide_title" />
         <Row className="row-padding">
           <Col xs={12} md={6}>
-            <h5>
-              Age Range
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
+            <h5>Age Range :</h5>
             <div className="row">
-              <div className="col-sm-6">
+              <div className="col-range">
                 <select
                   class="form-control ageMinimum"
                   placeholder="Choose One"
@@ -139,7 +126,7 @@ const PreferenceInformation = (props) => {
                   <option value="Above 35">Above 35</option>
                 </select>
               </div>
-              <div className="col-sm-6">
+              <div className="col-range">
                 <select
                   class="form-control ageMaximum"
                   placeholder="Choose One"
@@ -155,6 +142,8 @@ const PreferenceInformation = (props) => {
                   <option value="" disabled selected>
                     Choose Maximum
                   </option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
                   <option value="22">22</option>
                   <option value="23">23</option>
                   <option value="24">24</option>
@@ -178,12 +167,9 @@ const PreferenceInformation = (props) => {
             </div>
           </Col>
           <Col xs={12} md={6}>
-            <h5>
-              Height Range
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
-            </h5>
+            <h5>Height Range :</h5>
             <div className="row">
-              <div className="col-sm-6">
+              <div className="col-range">
                 <select
                   class="form-control heightMinimum"
                   placeholder="Choose One"
@@ -226,7 +212,7 @@ const PreferenceInformation = (props) => {
                   <option value="6ft 5">6ft 5</option>
                 </select>
               </div>
-              <div className="col-sm-6">
+              <div className="col-range">
                 <select
                   class="form-control heightMaximum"
                   placeholder="Choose One"
@@ -282,7 +268,7 @@ const PreferenceInformation = (props) => {
               options={options}
               isMulti={true}
               defaultValue={
-                preferenceInformation.maritalStatusPreference === ''
+                preferenceInformation.maritalStatusPreference
                   ? {
                       label: `${preferenceInformation.maritalStatusPreference}`,
                       value: `${preferenceInformation.maritalStatusPreference}`,
@@ -319,7 +305,7 @@ const PreferenceInformation = (props) => {
               options={optionComplexion}
               isMulti={true}
               defaultValue={
-                preferenceInformation.complexionPreference === ''
+                preferenceInformation.complexionPreference
                   ? {
                       label: `${preferenceInformation.complexionPreference}`,
                       value: `${preferenceInformation.complexionPreference}`,
@@ -356,7 +342,7 @@ const PreferenceInformation = (props) => {
               options={optionOccupation}
               isMulti={true}
               defaultValue={
-                preferenceInformation.occupationPreference === ''
+                preferenceInformation.occupationPreference
                   ? {
                       label: `${preferenceInformation.occupationPreference}`,
                       value: `${preferenceInformation.occupationPreference}`,
@@ -383,45 +369,48 @@ const PreferenceInformation = (props) => {
           </Col>
           <Col xs={12} md={6}>
             <h5>
-              Education
+              Education Level
               <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
             </h5>
-            <Select
-              className="educationPreference"
-              options={optionEducation}
-              isMulti={true}
-              defaultValue={
-                preferenceInformation.educationPreference === ''
-                  ? {
-                      label: `${preferenceInformation.educationPreference}`,
-                      value: `${preferenceInformation.educationPreference}`,
-                    }
-                  : false
-              }
-              placeholder="Choose one."
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: 3,
-                colors: {
-                  ...theme.colors,
-                  primary25: '#ff566a56',
-                  primary: '#ff566b',
-                },
-              })}
+            <select
+              class="form-control educationPreference"
+              placeholder="Choose One"
+              name="educationPreference"
+              value={preferenceInformation.educationPreference}
               onChange={(event) => {
                 setPreferenceInformation({
                   ...preferenceInformation,
-                  educationPreference: event.map((item) => item.label).join(),
+                  educationPreference: event.target.value,
                 })
               }}
-            />
+            >
+              <option value="" disabled selected>
+                Choose one
+              </option>
+              <option value="Minimum Secondary">Minimum Secondary</option>
+              <option value="Minimum Higher Secondary">
+                Minimum Higher Secondary
+              </option>
+              <option value="Minimum Diploma">Minimum Bachelor Honors</option>
+              <option value="Minimum Masters">Minimum Masters</option>
+              <option value="Minimum PhD">Minimum PhD</option>
+              <option value="Not Specific">Not Specific</option>
+            </select>
           </Col>
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={6}>
             <h5>
               Location
-              <span style={{ color: 'red', fontSize: '24px' }}>*</span>:
+              <span
+                style={{
+                  fontSize: '24px',
+                  visibility: 'hidden',
+                }}
+              >
+                *
+              </span>
+              :
             </h5>
             <input
               class="form-control location"
@@ -466,10 +455,11 @@ const PreferenceInformation = (props) => {
         </Row>
         <Row className="row-padding">
           <Col xs={12} md={12}>
-            <h5>Details:</h5>
+            <h5>Details :</h5>
             <textarea
               rows="3"
               className="form-control preferenceDetails"
+              value={preferenceInformation.preferenceDetails}
               onChange={(event) => {
                 setPreferenceInformation({
                   ...preferenceInformation,

@@ -11,7 +11,7 @@ class siblingdataController extends Controller
     public function getDataByCvId($id)
     {
         try {
-            $siblingData = SiblingData::where('cvdata_id', $id)->get();
+            $siblingData = SiblingData::where('u_id', $id)->get();
             return $siblingData;
         } catch (\Exception $e) {
             return response()->json([
@@ -25,9 +25,9 @@ class siblingdataController extends Controller
         $siblingDataStore = new SiblingData();
         try {
             $siblingDataStore->name = $req->name;
-            $siblingDataStore->ocupation = $req->ocupation;
+            $siblingDataStore->occupation = $req->occupation;
             $siblingDataStore->details = $req->details;
-            $siblingDataStore->cvdata_id = $req->cvdata_id;
+            $siblingDataStore->u_id = $req->u_id;
 
             $siblingDataStore->save();
 

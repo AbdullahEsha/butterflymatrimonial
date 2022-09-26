@@ -14,14 +14,12 @@ return new class extends Migration {
     {
         Schema::create('professionaldata', function (Blueprint $table) {
             $table->id();
+            $table->text('companyName');
             $table->text('designation');
-            $table->text('organizationName');
-            $table->text('com_department');
             $table->text('com_location');
             $table->text('from_employment');
             $table->text('to_employment');
-            $table->text('com_reference');
-            $table->integer('cvdata_id');
+            $table->text('u_id');
             $table->timestamps();
         });
     }

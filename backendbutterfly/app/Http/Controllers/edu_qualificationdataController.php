@@ -24,7 +24,7 @@ class edu_qualificationdataController extends Controller
     {
         try {
             $edu_qualificationData = Edu_qualificationData::where(
-                'cvdata_id',
+                'u_id',
                 $id
             )->get();
             return $edu_qualificationData;
@@ -39,19 +39,17 @@ class edu_qualificationdataController extends Controller
     {
         $edu_qualificationStore = new Edu_qualificationData();
         try {
+            $edu_qualificationStore->levelOfEducation = $req->levelOfEducation;
+            $edu_qualificationStore->group = $req->group;
             $edu_qualificationStore->instituteName = $req->instituteName;
             $edu_qualificationStore->passingYear = $req->passingYear;
-            $edu_qualificationStore->cvdata_id = $req->cvdata_id;
-            $edu_qualificationStore->levelOfEducation = $req->levelOfEducation;
-            $edu_qualificationStore->instituteLocation =
-                $req->instituteLocation;
-            $edu_qualificationStore->group = $req->group;
+            $edu_qualificationStore->u_id = $req->u_id;
 
             $edu_qualificationStore->save();
 
             return response()->json([
                 'message' =>
-                    'Education qualification data has just been stored.',
+                    'Your edu qualification data has just been stored.',
             ]);
         } catch (\Exception $e) {
             return response()->json([

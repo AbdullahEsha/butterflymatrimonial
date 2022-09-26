@@ -15,9 +15,9 @@ return new class extends Migration {
         Schema::create('siblingdata', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->text('ocupation');
+            $table->text('occupation');
             $table->text('details');
-            $table->integer('cvdata_id');
+            $table->text('u_id');
             $table->timestamps();
         });
     }

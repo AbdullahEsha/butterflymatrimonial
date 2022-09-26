@@ -5,6 +5,7 @@ const initialData = {
   educationalData: {},
   siblingData: {},
   preferenceInfoData: {},
+  galleryData: {},
 }
 
 const cvDataReducer = (state = initialData, action) => {

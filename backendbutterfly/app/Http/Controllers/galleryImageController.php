@@ -9,7 +9,7 @@ class galleryImageController extends Controller
     public function getGalleryImageByCvId($id)
     {
         try {
-            $getGalleryImage = GalleryImage::where('cvdata_id', $id)->get();
+            $getGalleryImage = GalleryImage::where('u_id', $id)->get();
             return $getGalleryImage;
         } catch (\Exception $e) {
             return response()->json([
@@ -21,19 +21,15 @@ class galleryImageController extends Controller
     {
         $storeImage = new GalleryImage();
         try {
-            $rename =
-                time() .
-                '.' .
-                $req->file('imageFill')->getClientOriginalExtension();
-
-            $storeImage->cvdata_id = $req->cvdata_id;
+            $rename = $req->file('imageFill')->getClientOriginalName();
+            $storeImage->u_id = $req->u_id;
             $storeImage->imageFill = 'uploads/images/' . $rename;
 
             $storeImage->save();
             $req->file('imageFill')->move('uploads/images', $rename);
 
             return response()->json([
-                'message' => 'Your gallery mage has just been stored.',
+                'message' => 'Your gallery image has just been stored.',
             ]);
         } catch (\Exception $e) {
             return response()->json([

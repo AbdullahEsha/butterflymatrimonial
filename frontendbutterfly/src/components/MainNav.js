@@ -17,9 +17,9 @@ const MainNav = () => {
           borderBottomRightRadius: '15px',
         }}
       >
-        <Navbar.Brand href="/" className="navpaddingleft">
+        <Link to="/" className="navpaddingleft navbar-brand">
           <img src={Img} alt="img" className="logoTop" />
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto navpaddingright">
