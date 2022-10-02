@@ -100,7 +100,7 @@ const About = () => {
                 <img src={uil_processor} alt="diamond" />
                 <br />
                 <br />
-                <h2>Matrimonial Apps</h2>
+                <h2>Apps</h2>
                 <h6>
                   Apps for both Android and IOS device. as an individuals can
                   contact and connect easily and have conversation as their

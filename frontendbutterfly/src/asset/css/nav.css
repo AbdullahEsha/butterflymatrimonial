@@ -4,8 +4,12 @@ a.nav-link {
   font-weight: 600;
 }
 
-.logoTop {
-  height: 50px;
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-light .navbar-toggler {
+  border-color: transparent;
+  margin-left: -15px;
 }
 
 #buttonCV {
@@ -20,6 +24,33 @@ a.nav-link {
   color: #000;
 }
 
+@media only screen and (max-width: 992px) {
+  .navbar-brand-2 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .navbar-brand h4 {
+    position: relative;
+    top: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #fc6375;
+    color: #fff;
+    padding: 4px 12px 4px;
+    border-radius: 14px;
+  }
+  .logoTop {
+    height: 40px;
+    margin-left: -47px;
+  }
+  .ms-auto {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: -webkit-center;
+  }
+}
+
 @media only screen and (min-width: 992px) {
   .navpaddingleft {
     padding-left: 5%;
@@ -32,5 +63,14 @@ a.nav-link {
     vertical-align: middle;
     position: relative;
     top: 15px;
+  }
+  .logoTop {
+    height: 50px;
+  }
+  .spacial-link {
+    padding-right: 30px;
+  }
+  .spacial-brand {
+    display: none;
   }
 }

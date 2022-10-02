@@ -81,9 +81,7 @@ const PreferenceInformation = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
-        <div align="center" className="hide_title">
-          <h3>Preference Information</h3>
-        </div>
+        <h3 className="hide_title">Preference Information</h3>
         <br className="hide_title" />
         <Row className="row-padding">
           <Col xs={12} md={6}>
@@ -123,7 +121,6 @@ const PreferenceInformation = (props) => {
                   <option value="33">33</option>
                   <option value="34">34</option>
                   <option value="35">35</option>
-                  <option value="Above 35">Above 35</option>
                 </select>
               </div>
               <div className="col-range">
@@ -160,8 +157,18 @@ const PreferenceInformation = (props) => {
                   <option value="35">35</option>
                   <option value="36">36</option>
                   <option value="37">37</option>
-                  <option value="39">39</option>
-                  <option value="Above 39">Above 39</option>
+                  <option value="40">40</option>
+                  <option value="41">41</option>
+                  <option value="42">42</option>
+                  <option value="43">43</option>
+                  <option value="44">44</option>
+                  <option value="41">41</option>
+                  <option value="45">45</option>
+                  <option value="46">46</option>
+                  <option value="47">47</option>
+                  <option value="48">48</option>
+                  <option value="49">49</option>
+                  <option value="50">50</option>
                 </select>
               </div>
             </div>

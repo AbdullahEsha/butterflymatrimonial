@@ -113,10 +113,10 @@ const Footer = () => {
                 <Link to="/privacy-policy">Privacy policy</Link>
               </li>
               <li>
-                <Link to="/cookie-policy">Cookie policy</Link>
+                <Link to="">Cookie policy</Link>
               </li>
               <li>
-                <Link to="/acceptable-use-policy">Acceptable use policy</Link>
+                <Link to="">Acceptable use policy</Link>
               </li>
             </ul>
             <br />

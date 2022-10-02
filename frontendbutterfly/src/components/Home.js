@@ -43,7 +43,7 @@ function Home() {
           <br />
           <br />
           <br id="hide_br" />
-          <div>
+          <div className="app-icon-position">
             <a
               href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
               style={{ textDecoration: 'none', paddingRight: '10px' }}

@@ -42,7 +42,7 @@ const ProfileInformation = (props) => {
     email: profileData_ ? profileData_.email : '',
     dob: profileData_ ? profileData_.dob : '',
     height: profileData_.height ? profileData_.height : '',
-    weight: profileData_ ? profileData_.weight : '',
+    weight: profileData_.weight ? profileData_.weight : 45,
     bloodGroup: profileData_ ? profileData_.bloodGroup : '',
     religion: profileData_ ? profileData_.religion : '',
     complexion: profileData_ ? profileData_.complexion : '',
@@ -52,7 +52,9 @@ const ProfileInformation = (props) => {
     grownUpAt: profileData_.grownUpAt ? profileData_.grownUpAt : '',
     citizenship: profileData_.citizenship ? profileData_.citizenship : '',
     familyStatus: profileData_ ? profileData_.familyStatus : '',
-    annualIncome: profileData_.annualIncome ? profileData_.annualIncome : '',
+    annualIncome: profileData_.annualIncome
+      ? profileData_.annualIncome
+      : 100000,
     hobby: profileData_ ? profileData_.hobby : '',
     physicalStatus: profileData_ ? profileData_.physicalStatus : '',
     specialCase: profileData_ ? profileData_.specialCase : '',
@@ -210,9 +212,9 @@ const ProfileInformation = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
-        <div align="center" className="hide_title">
-          <h3>Profile Information</h3>
-        </div>
+        {/* <div align="center" className="hide_title"> */}
+        <h3 className="hide_title">Profile Information</h3>
+        {/* </div> */}
         <br className="hide_title" />
         <Row>
           <Col xs={12} md={2} className="img_uploader image">
@@ -704,6 +706,7 @@ const ProfileInformation = (props) => {
             <input
               type="number"
               min="0"
+              step="5000"
               className="form-control annualIncome"
               placeholder="Enter approximate annual income."
               name="annualIncome"

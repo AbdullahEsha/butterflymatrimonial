@@ -37,7 +37,7 @@ const AdminSpecialPairing = () => {
         style={{ backgroundColor: '#ededed', padding: '20px' }}
       ></div>
       <div className="logoStyle">
-        <Link to="https://butterflymatrimonial.com/">
+        <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
       </div>

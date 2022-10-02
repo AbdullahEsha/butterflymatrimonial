@@ -12,6 +12,7 @@ import Footer from './Footer'
 import MainNav from './MainNav'
 import Swal from 'sweetalert2'
 import jsPDF from 'jspdf'
+import watermark from '../asset/image/butterflyWater.png'
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 
 const CVBank = () => {
@@ -254,12 +255,21 @@ const CVBank = () => {
     setGalleryData(h)
   }
 
-  const exportPdf = () => {
+  const exportPdf = async () => {
+    const response = await fetch(watermark)
+    const blob = await response.blob()
+    const fileBlur = new File([blob], 'image.jpg', { type: blob.type })
+
     var doc = new jsPDF('p', 'mm', 'a4')
 
     var img = new Image()
     img.src = URL.createObjectURL(profileData.image)
     doc.addImage(img, '*', 20, 24, 30, 30)
+
+    var img2 = new Image()
+    img2.src = URL.createObjectURL(fileBlur)
+
+    doc.addImage(img2, '*', 40, 80, 130, 130)
 
     doc.setFontSize(16)
     doc.addFont('ComicSansMS', 'Comic Sans', 'normal')
@@ -413,7 +423,7 @@ const CVBank = () => {
     doc.text(20, y + 5, splitTitle, 'left')
     y = y + text_width / 25
 
-    y = y + 12
+    y = y + 10
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
     doc.text(20, y, 'Educational Information:', 'left')
@@ -463,11 +473,11 @@ const CVBank = () => {
     doc.setDrawColor(255, 0, 0)
     doc.rect(20, y, 170, 0.1, 'F') // black line
 
-    y = y + 5
+    y = y + 7
     doc.setFontSize(11)
     professionalData.forEach((item, index) => {
       doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'designation:', 'left')
+      doc.text(x, y, 'Designation:', 'left')
 
       doc.setFont(undefined, 'normal')
       doc.text(x + 21.5, y, `${item.designation}`, 'left')
@@ -504,6 +514,7 @@ const CVBank = () => {
     if (y >= 230) {
       doc.addPage()
       y = 20 // Restart height position
+      doc.addImage(img2, '*', 40, 80, 130, 130)
     } else {
       y = y + 8
     }
@@ -717,8 +728,6 @@ const CVBank = () => {
     doc.save(profileData.name + ' Cv.pdf')
   }
 
-  const testCopy = () => {}
-
   const addCV = (event) => {
     event.preventDefault()
     const formData = new FormData()
@@ -824,70 +833,48 @@ const CVBank = () => {
           .then((data) => {
             if (data.data.message === 'Your CV has just been stored.') {
               siblingData.map((item) =>
+                axios.post(
+                  `https://api.butterflymatrimonial.com/api/post/sibling`,
+                  {
+                    name: item.name,
+                    occupation: item.occupation,
+                    details: item.details,
+                    u_id: uniqueId,
+                  },
+                ),
+              )
+
+              educationalData.map((item) =>
+                axios.post(
+                  `https://api.butterflymatrimonial.com/api/post/education/qualification`,
+                  {
+                    levelOfEducation: item.levelOfEducation,
+                    group: item.group,
+                    instituteName: item.instituteName,
+                    passingYear: item.passingYear,
+                    u_id: uniqueId,
+                  },
+                ),
+              )
+
+              professionalData.forEach((item) => {
                 axios
                   .post(
-                    `https://api.butterflymatrimonial.com/api/post/sibling`,
+                    `https://api.butterflymatrimonial.com/api/post/professional`,
                     {
-                      name: item.name,
-                      occupation: item.occupation,
-                      details: item.details,
+                      companyName: item.companyName,
+                      designation: item.designation,
+                      com_location: item.com_location,
+                      from_employment: item.from_employment,
+                      to_employment: item.to_employment,
                       u_id: uniqueId,
                     },
                   )
-                  .then((dataSib) => {
-                    if (
-                      dataSib.data.message ===
-                      'Your sibling data has just been stored.'
-                    ) {
-                      educationalData.map((item) =>
-                        axios
-                          .post(
-                            `https://api.butterflymatrimonial.com/api/post/education/qualification`,
-                            {
-                              levelOfEducation: item.levelOfEducation,
-                              group: item.group,
-                              instituteName: item.instituteName,
-                              passingYear: item.passingYear,
-                              u_id: uniqueId,
-                            },
-                          )
-                          .then((dataEdu) => {
-                            if (
-                              dataEdu.data.message ===
-                              'Your edu qualification data has just been stored.'
-                            ) {
-                              professionalData.map((item) =>
-                                axios
-                                  .post(
-                                    `https://api.butterflymatrimonial.com/api/post/professional`,
-                                    {
-                                      companyName: item.companyName,
-                                      designation: item.designation,
-                                      com_location: item.com_location,
-                                      from_employment: item.from_employment,
-                                      to_employment: item.to_employment,
-                                      u_id: uniqueId,
-                                    },
-                                  )
-                                  .catch(({ response }) => {
-                                    console.log(
-                                      'ProfessionalData error',
-                                      response,
-                                    )
-                                  }),
-                              )
-                            }
-                          })
-                          .catch(({ response }) => {
-                            console.log('EducationalData error', response)
-                          }),
-                      )
-                    }
-                  })
                   .catch(({ response }) => {
-                    console.log('SiblingData error', response)
-                  }),
-              )
+                    console.log('ProfessionalData error', response)
+                  })
+              })
+
               galleryData.imageFill.forEach((item) => {
                 const formData2 = new FormData()
                 formData2.append('imageFill', item)
@@ -904,11 +891,11 @@ const CVBank = () => {
 
               exportPdf()
               //submission confirmation
-              Swal.fire({
-                title: `Success.`,
-                icon: 'success',
-                html: `<input type="text" value="https://butterflymatrimonial.com/butterfly-cv-bank/${uniqueId}" name="link" class="form-control alert-input-fild"><button class="alert-btn" onClick="${testCopy()}"><img src="https://cdn-icons-png.flaticon.com/512/4355/4355195.png" alt="Snow" style="width:30px"></button>`,
-              })
+              // Swal.fire({
+              //   title: `Success.`,
+              //   icon: 'success',
+              //   html: `<input type="text" value="https://butterflymatrimonial.com/butterfly-cv-bank/${uniqueId}" name="link" class="form-control alert-input-fild"><button class="alert-btn" onClick="${testCopy()}"><img src="https://cdn-icons-png.flaticon.com/512/4355/4355195.png" alt="Snow" style="width:30px"></button><br/><p align="center" class="copy-data-url">Copy your cv link.</p>`,
+              // })
             } else {
               Swal.fire({
                 title: 'Oops!',
@@ -1142,7 +1129,7 @@ const CVBank = () => {
                     className="cv_bankButton_BackNext"
                     onClick={exportPdf}
                   >
-                    Download
+                    Save
                   </button>{' '}
                   <button
                     className="cv_bankButton_BackNext"

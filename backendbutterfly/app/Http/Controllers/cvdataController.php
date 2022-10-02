@@ -85,7 +85,7 @@ class cvdataController extends Controller
     public function cvDestroyById($id)
     {
         try {
-            $CvDataDelete = CvData::find($id);
+            $CvDataDelete = CvData::where('u_id', $id)->first();
             $CvDataDelete->delete();
         } catch (\Exception $e) {
             return response()->json([

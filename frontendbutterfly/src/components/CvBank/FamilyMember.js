@@ -76,9 +76,7 @@ const FamilyMember = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
-        <div align="center" className="hide_title">
-          <h3>Family Information</h3>
-        </div>
+        <h3 className="hide_title">Family Information</h3>
         <br className="hide_title" />
         <Row className="row-padding">
           <Col xs={12} md={6}>

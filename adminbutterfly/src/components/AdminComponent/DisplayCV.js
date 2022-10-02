@@ -13,7 +13,6 @@ const DisplayCV = () => {
   const [edudata, setEduData] = useState([])
   const [siblingData, setSiblingData] = useState([])
   const [professionData, setProfessionData] = useState([])
-
   const auth = useAuth()
   const navigate = useNavigate()
 
@@ -100,26 +99,29 @@ const DisplayCV = () => {
       })
   }
 
-  // let file = new File([`http://api.butterflymatrimonial.com/${cvdata.image}`], 'foo.jpg', {
-  //   type: 'image/jpg',
-  // })
-
-  // fetch(img.src)
-  //   .then((res) => console.log(res))
-  //   .then((blob) => {
-  //     const file = new File([blob], 'dot.png', blob)
-  //     console.log('src', file)
-  //   })
-
   const exportPdf = async () => {
-    var doc = new jsPDF('p', 'mm', 'a4')
-    let img = document.getElementById('image')
-    var urlEncoded = encodeURI(img.src)
+    // const previewImageFile = document.getElementById('previewImgFile')
 
-    var img2 = new Image()
-    img2.src = urlEncoded
-    img2.crossOrigin = false
-    doc.addImage(img2, 20, 24, 30, 30)
+    // const response = await fetch(previewImageFile)
+    // const blob = await response.blob()
+    // const imageFill = new File([blob], 'image.jpg', { type: blob.type })
+
+    // let result_base64 = await new Promise((resolve) => {
+    //   let fileReader = new FileReader()
+    //   fileReader.onload = () => resolve(fileReader.result)
+    //   fileReader.onerror = (error) => {
+    //     console.log(error)
+    //     alert('An Error occurred please try again, File might be corrupt')
+    //   }
+    //   fileReader.readAsDataURL(imageFill)
+    // })
+
+    var doc = new jsPDF('p', 'mm', 'a4')
+
+    // var img = new Image()
+    // img.src = result_base64
+
+    // doc.addImage(img, '*', 20, 24, 30, 30)
 
     doc.setFontSize(16)
     doc.addFont('ComicSansMS', 'Comic Sans', 'normal')
@@ -130,197 +132,152 @@ const DisplayCV = () => {
     doc.setDrawColor(255, 0, 0)
     doc.rect(20, 22, 170, 0.1, 'F') // black line
 
-    doc.setFontSize(10)
+    doc.setFontSize(11)
     doc.setFont(undefined, 'bold')
     doc.text(20, 60, 'Name:', 'left')
 
-    doc.setFontSize(10)
+    doc.setFontSize(11)
     doc.setFont(undefined, 'normal')
-    doc.text(31, 60, `${cvdata.name}`, 'left')
+    doc.text(32, 60, `${cvdata.name}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
     doc.text(110, 60, 'Gender:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(123, 60, `${cvdata.gender}`, 'left')
+    doc.text(125, 60, `${cvdata.gender}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
     doc.text(20, 68, 'Phone:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(31, 68, `${cvdata.phone}`, 'left')
+    doc.text(32, 68, `${cvdata.phone}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
     doc.text(110, 68, 'Religion:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(125, 68, `${cvdata.religion}`, 'left')
+    doc.text(126, 68, `${cvdata.religion}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
     doc.text(20, 76, 'Email:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(31, 76, `${cvdata.email}`, 'left')
+    doc.text(32, 76, `${cvdata.email}`, 'left')
 
-    doc.setFontSize(10)
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 76, 'Annual Income:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(138, 76, `${cvdata.annualIncome}`, 'left')
+
     doc.setFont(undefined, 'bold')
     doc.text(20, 84, 'Present Address:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(47, 84, `${cvdata.presentAddress}`, 'left')
+    doc.text(49, 84, `${cvdata.presentAddress}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(20, 92, 'Present Division:', 'left')
+    doc.text(20, 94, 'Date Of Birth:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(47, 92, `${cvdata.divisionPresent}`, 'left')
+    doc.text(45, 94, `${cvdata.dob}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(110, 92, 'Present Dristrict:', 'left')
+    doc.text(110, 94, 'Special Case:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(137, 92, `${cvdata.dristrictPresent}`, 'left')
+    doc.text(
+      132.5,
+      94,
+      `${cvdata.specialCase ? cvdata.specialCase : 'None'}`,
+      'left',
+    )
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(20, 100, 'Permanent Address:', 'left')
+    doc.text(20, 102, 'Height:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(52, 100, `${cvdata.parmanentAddress}`, 'left')
+    doc.text(33.5, 102, `${cvdata.height}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(20, 108, 'Permanent Division:', 'left')
+    doc.text(110, 102, 'Weight:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(52, 108, `${cvdata.divisionParmanent}`, 'left')
+    doc.text(124, 102, `${cvdata.weight}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(110, 108, 'Permanent Dristrict:', 'left')
+    doc.text(20, 110, 'Blood Group:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(142, 108, `${cvdata.dristrictParmanent}`, 'left')
+    doc.text(43.5, 110, `${cvdata.bloodGroup}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(20, 116, 'Date Of Birth:', 'left')
+    doc.text(110, 110, 'Grown Up At:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(42, 116, `${cvdata.age}`, 'left')
+    doc.text(134.5, 110, `${cvdata.grownUpAt}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(110, 116, 'Limitations Or Species Case:', 'left')
+    doc.text(20, 118, 'Citizenship:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(155, 116, `${cvdata.specialCase}`, 'left')
+    doc.text(41, 118, `${cvdata.citizenship}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(20, 124, 'Spouse Preference:', 'left')
+    doc.text(110, 118, 'Complexion:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(49, 124, `${cvdata.spousePreference}`, 'left')
+    doc.text(132, 118, `${cvdata.complexion}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(110, 124, 'Preference:', 'left')
+    doc.text(20, 126, 'Family Status:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(127.5, 124, `${cvdata.preference}`, 'left')
+    doc.text(45, 126, `${cvdata.familyStatus}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
-    doc.text(20, 132, 'About:', 'left')
+    doc.text(110, 126, 'Hobby:', 'left')
 
-    var y = 132
-
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    var text_width = doc.getTextWidth(cvdata.about)
-    var splitTitle = doc.splitTextToSize(cvdata.about, 170)
+    doc.text(123, 126, `${cvdata.hobby}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 134, 'Home Town:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(42, 134, `${cvdata.hometown}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(110, 134, 'Marital Status:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(136, 134, `${cvdata.maritalStatus}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 142, 'Physical Status:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(47, 142, `${cvdata.physicalStatus}`, 'left') //
+
+    doc.setFont(undefined, 'bold')
+    doc.text(20, 150, 'About:', 'left')
+
+    var y = 150
+
+    doc.setFont(undefined, 'normal')
+    var text_width = doc.getTextWidth(cvdata.about ? cvdata.about : 'None')
+    var splitTitle = doc.splitTextToSize(
+      cvdata.about ? cvdata.about : 'None',
+      170,
+    )
     doc.text(20, y + 5, splitTitle, 'left')
     y = y + text_width / 25
 
-    y = y - 2.5
-    doc.setFontSize(16)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Personal Information:', 'left')
-
-    y = y + 2
-    doc.setDrawColor(255, 0, 0)
-    doc.rect(20, y, 170, 0.1, 'F') // black line
-
-    y = y + 5
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Height:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(32, y, `${cvdata.height}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, y, 'Weight:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(122, y, `${cvdata.weight + '(kg)'}`, 'left')
-
-    y = y + 8
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Blood Group:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(41.5, y, `${cvdata.bloodGroup}`, 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(110, y, 'Grown Up At:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    doc.text(132, y, `${cvdata.grownUpAt}`, 'left')
-
-    y = y + 8
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Special Condition:', 'left')
-
-    doc.setFontSize(10)
-    doc.setFont(undefined, 'normal')
-    text_width = doc.getTextWidth(cvdata.specialCondition)
-    splitTitle = doc.splitTextToSize(cvdata.specialCondition, 170)
-    doc.text(20, y + 5, splitTitle, 'left')
-    y = y + text_width / 25
+    y = y + 10
 
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Educational Qualification:', 'left')
+    doc.text(20, y, 'Educational Information:', 'left')
 
     y = y + 2
     doc.setDrawColor(255, 0, 0)
@@ -329,135 +286,90 @@ const DisplayCV = () => {
     let x = 20
     y = y + 5
 
+    doc.setFontSize(11)
     edudata.forEach((item, index) => {
-      doc.setFontSize(10)
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Institute Name:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
       doc.text(
-        x + 24,
+        x + 27,
         y,
         `${item.instituteName + '(' + item.passingYear + ')'}`,
         'left',
       )
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'bold')
       doc.text(x + 90, y, 'Concentration/Major/Group:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
-      doc.text(x + 135, y, `${item.group}`, 'left')
+      doc.text(x + 139.5, y, `${item.group}`, 'left')
 
-      y = y + 8
-      doc.setFontSize(10)
+      y = y + 6
+
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Level of Education:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
-      doc.text(x + 30, y, `${item.levelOfEducation}`, 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Institute Location:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 118.5, y, `${item.instituteLocation}`, 'left')
+      doc.text(x + 33, y, `${item.levelOfEducation}`, 'left')
 
       y += 8
     })
 
-    if (y >= 260) {
-      doc.addPage()
-      y = 20 // Restart height position
-      var f = true
-    } else {
-      y = y + 2
-      f = false
-    }
-
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
-    doc.text(20, y, 'Professional Qualification:', 'left')
+    doc.text(20, y, 'Professional Information:', 'left')
 
     y = y + 2
     doc.setDrawColor(255, 0, 0)
     doc.rect(20, y, 170, 0.1, 'F') // black line
 
-    y = y + 5
+    y = y + 7
+    doc.setFontSize(11)
     professionData.forEach((item, index) => {
-      doc.setFontSize(10)
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Designation:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
-      doc.text(x + 19, y, `${item.designation}`, 'left')
+      doc.text(x + 21.5, y, `${item.designation}`, 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'bold')
       doc.text(x + 90, y, 'Company Name:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
-      doc.text(x + 116, y, `${item.organizationName}`, 'left')
+      doc.text(x + 118.5, y, `${item.companyName}`, 'left')
 
-      y = y + 8
-      doc.setFontSize(10)
+      y = y + 6
+
       doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Department:', 'left')
+      doc.text(x, y, 'Company Location:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
-      doc.text(x + 20, y, `${item.com_department}`, 'left')
+      doc.text(x + 34, y, `${item.com_location}`, 'left')
 
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x + 90, y, 'Company Location:', 'left')
+      y = y + 6
 
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      doc.text(x + 120.5, y, `${item.com_location}`, 'left')
-
-      y = y + 8
-      doc.setFontSize(10)
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Employment Period:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
       doc.text(
-        x + 32,
+        x + 35,
         y,
         `${item.from_employment} to ${item.to_employment}`,
         'left',
       )
-
       y = y + 8
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'bold')
-      doc.text(x, y, 'Reference:', 'left')
-
-      doc.setFontSize(10)
-      doc.setFont(undefined, 'normal')
-      text_width = doc.getTextWidth(item.com_reference)
-      splitTitle = doc.splitTextToSize(item.com_reference, 170)
-      doc.text(x, y + 5, splitTitle, 'left')
-      y = y + text_width / 25
-      //doc.text(x, y, `${item.com_reference}`, 'left')
-
-      y += 8
     })
 
-    if (y >= 260 && f === false) {
+    if (y >= 210) {
       doc.addPage()
       y = 20 // Restart height position
+    } else {
+      y = y + 8
     }
 
+    // y += 8
     doc.setFontSize(16)
     doc.setFont(undefined, 'bold')
     doc.text(20, y, 'Family Member:', 'left')
@@ -467,81 +379,196 @@ const DisplayCV = () => {
     doc.rect(20, y, 170, 0.1, 'F') // black line
 
     y = y + 5
-    doc.setFontSize(10)
+    doc.setFontSize(11)
     doc.setFont(undefined, 'bold')
     doc.text(x, y, 'Father Name:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(x + 22, y, `${cvdata.fatherName}`, 'left')
+    doc.text(x + 24, y, `${cvdata.fatherName}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
     doc.text(x + 90, y, 'Father Ocupation:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(x + 119, y, `${cvdata.fatherOcupation}`, 'left')
+    doc.text(
+      x + 121,
+      y,
+      `${cvdata.fatherOccupation ? cvdata.fatherOccupation : 'None'}`,
+      'left',
+    )
 
     y = y + 8
-    doc.setFontSize(10)
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Details:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(
+      x + 13,
+      y,
+      `${cvdata.fatherDetails ? cvdata.fatherDetails : 'None'}`,
+      'left',
+    )
+
+    y = y + 8
+
     doc.setFont(undefined, 'bold')
     doc.text(x, y, 'Mother Name:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(x + 23, y, `${cvdata.motherName}`, 'left')
+    doc.text(x + 25, y, `${cvdata.motherName}`, 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'bold')
     doc.text(x + 90, y, 'Mother Ocupation:', 'left')
 
-    doc.setFontSize(10)
     doc.setFont(undefined, 'normal')
-    doc.text(x + 120, y, `${cvdata.motherOcupation}`, 'left')
+    doc.text(
+      x + 122.5,
+      y,
+      `${cvdata.motherOccupation ? cvdata.motherOccupation : 'None'}`,
+      'left',
+    )
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Details:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(
+      x + 13,
+      y,
+      `${cvdata.motherDetails ? cvdata.motherDetails : 'None'}`,
+      'left',
+    )
 
     y = y + 8
     doc.setFontSize(12)
     doc.setFont(undefined, 'bold')
-    doc.text(x, y, 'Sibling`s:', 'left')
+    doc.text(x, y, 'Siblings:', 'left')
 
     y = y + 5
     siblingData.forEach((item, index) => {
-      doc.setFontSize(10)
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Name:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
-      doc.text(x + 10.5, y, `${item.name}`, 'left')
+      doc.text(x + 12.5, y, `${item.name}`, 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'bold')
       doc.text(x + 90, y, 'Ocupation:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
-      doc.text(x + 107.5, y, `${item.ocupation}`, 'left')
+      doc.text(x + 111, y, `${item.occupation}`, 'left')
 
       y = y + 8
-      doc.setFontSize(10)
+
       doc.setFont(undefined, 'bold')
       doc.text(x, y, 'Details:', 'left')
 
-      doc.setFontSize(10)
       doc.setFont(undefined, 'normal')
       text_width = doc.getTextWidth(item.details)
       splitTitle = doc.splitTextToSize(item.details, 170)
       doc.text(x, y + 5, splitTitle, 'left')
       y = y + text_width / 25
-
       y += 8
     })
+
+    y += 8
+
+    doc.setFontSize(16)
+    doc.setFont(undefined, 'bold')
+    doc.text(20, y, 'Preference Information:', 'left')
+
+    y += 2
+    doc.setDrawColor(255, 0, 0)
+    doc.rect(20, y, 170, 0.1, 'F') // black line
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Age Range:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 20, y, `${cvdata.ageMinimum} to ${cvdata.ageMaximum}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Height Range:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(
+      x + 115,
+      y,
+      `${cvdata.heightMinimum} to ${cvdata.heightMaximum}`,
+      'left',
+    )
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Marital Status:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 26, y, `${cvdata.maritalStatusPreference}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Complexion:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 112, y, `${cvdata.complexionPreference}`, 'left')
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Occupation:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 21, y, `${cvdata.occupationPreference}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Education:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 108.5, y, `${cvdata.educationPreference}`, 'left')
+
+    y += 8
+
+    doc.setFontSize(11)
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Location:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 16.5, y, `${cvdata.location}`, 'left')
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x + 90, y, 'Religion:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    doc.text(x + 106, y, `${cvdata.religionPreference}`, 'left')
+
+    y = y + 8
+
+    doc.setFont(undefined, 'bold')
+    doc.text(x, y, 'Details:', 'left')
+
+    doc.setFont(undefined, 'normal')
+    text_width = doc.getTextWidth(
+      cvdata.preferenceDetails ? cvdata.preferenceDetails : 'None',
+    )
+    splitTitle = doc.splitTextToSize(
+      cvdata.preferenceDetails ? cvdata.preferenceDetails : 'None',
+      170,
+    )
+    doc.text(x, y + 5, splitTitle, 'left')
+    y = y + text_width / 25
+    y += 8
 
     doc.save(cvdata.name + ' Cv.pdf')
   }
 
-  console.log(cvdata)
   return (
     <>
       <div class="sidebar">
@@ -571,385 +598,349 @@ const DisplayCV = () => {
         </div>
 
         <div style={{ backgroundColor: '#fff', padding: '30px' }}>
-          <Row>
-            <Col>
-              <h3>
-                <b>Profile Information:</b>
-              </h3>
-              <hr />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <div className="previewImg">
-                <img
-                  src={'https://api.butterflymatrimonial.com/' + cvdata.image}
-                  alt="previewImg"
-                />
-              </div>
-              <br />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Name:</b> {cvdata.name}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Gender:</b> {cvdata.gender}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Phone:</b> {cvdata.phone}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Religion:</b> {cvdata.religion}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
-                <b>Email:</b> {cvdata.email}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
-                <b>Present Address:</b> {cvdata.presentAddress}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Division:</b> {cvdata.divisionPresent}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Dristrict:</b> {cvdata.dristrictPresent}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
-                <b>Permanent Address:</b> {cvdata.parmanentAddress}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Division:</b> {cvdata.divisionParmanent}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Dristrict:</b> {cvdata.dristrictParmanent}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Date Of Birth:</b>{' '}
-                {`${
-                  cvdata.age
-                    ? new Date(cvdata.age).toLocaleString('en-GB', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })
-                    : ''
-                }`}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Limitations Or Special Case:</b> {cvdata.specialCase}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Height:</b> {cvdata.height}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Weight:</b> {cvdata.weight}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Blood Group:</b> {cvdata.bloodGroup}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Grown Up At:</b> {cvdata.grownUpAt}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
-                <b>Special Condition:</b> {cvdata.specialCondition}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h6>
-                <b>About:</b> {cvdata.about}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Professional Information:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          {professionData.map((item, index) => {
-            return (
-              <>
-                <label>Profession {index + 1}</label>
-                <Row>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Designation:</b>
-                      {item.designation}
-                    </h6>
-                  </Col>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Organization Name:</b>
-                      {item.organizationName}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Department:</b>
-                      {item.com_department}
-                    </h6>
-                  </Col>
-                  <Col xs="12" md="6">
-                    <h6>
-                      <b>Location:</b>
-                      {item.com_location}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="12" md="12">
-                    <h6>
-                      <b>Employment Period:</b> {item.from_employment} to{' '}
-                      {item.to_employment}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="12" md="12">
-                    <h6>
-                      <b>Reference:</b>
-                      {item.com_reference}
-                    </h6>
-                  </Col>
-                </Row>
-              </>
-            )
-          })}
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Educational Information:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          {edudata.map((item, index) => {
-            return (
-              <>
-                <label>Academic {index + 1}</label>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Institute Name:</b> {item.instituteName}(
-                      {item.passingYear})
-                    </h6>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Concentration/Major/Group:</b> {item.group}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Level of Education:</b> {item.levelOfEducation}(
-                      {item.passingYear})
-                    </h6>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <h6>
-                      <b>Institute Location:</b> {item.instituteLocation}
-                    </h6>
-                  </Col>
-                </Row>
-              </>
-            )
-          })}
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Family Member:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Father Name:</b> {cvdata.fatherName}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Ocupation:</b> {cvdata.fatherOcupation}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Mother Name:</b> {cvdata.motherName}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Ocupation:</b> {cvdata.motherOcupation}
-              </h6>
-            </Col>
-          </Row>
-
-          {siblingData.map((item, index) => {
-            return (
-              <>
-                <label>Sibling {index + 1}</label>
-                <Row>
-                  <Col xs={6} md={6}>
-                    <h6>
-                      <b>Name:</b> {item.name}
-                    </h6>
-                  </Col>
-                  <Col xs={6} md={6}>
-                    <h6>
-                      <b>Ocupation:</b> {item.ocupation}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <h6>
-                      <b>Details:</b> {item.details}
-                    </h6>
-                  </Col>
-                </Row>
-              </>
-            )
-          })}
-          <Row>
-            <Col>
-              <br />
-              <h4>
-                <b>Preference Information:</b>
-              </h4>
-              <hr />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Profession:</b> {cvdata.profession}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Skin Tone:</b> {cvdata.skinTone}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Spouse Preference:</b> {cvdata.spousePreference}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Preference:</b> {cvdata.preference}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Religion:</b> {cvdata.religionPreference}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Physical Status:</b> {cvdata.physicalStatus}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Age Range:</b> {cvdata.ageMinimum} to {cvdata.ageMaximum}
-              </h6>
-            </Col>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>Height Range:</b> {cvdata.heightMinimum} to{' '}
-                {cvdata.heightMaximum}
-              </h6>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={6}>
-              <h6>
-                <b>District Preference:</b> {cvdata.districtPreference}
-              </h6>
-            </Col>
-          </Row>
+          <div className="cv-bank-butterfly-outside">
+            <Row>
+              <Col>
+                <h3>
+                  <b>Profile Information:</b>
+                </h3>
+                <hr />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div className="previewImg">
+                  <img
+                    src={'https://api.butterflymatrimonial.com/' + cvdata.image}
+                    alt="previewImg"
+                    id="previewImgFile"
+                  />
+                </div>
+                <a
+                  href={
+                    'https://www.butterflymatrimonial.com/butterfly-gallery/' +
+                    cvdata.u_id
+                  }
+                  className="butterfly-gallery-link"
+                >
+                  <h5 className="show-image-btn">View more image.</h5>
+                </a>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Name:</b> {cvdata.name}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Gender:</b> {cvdata.gender}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Phone:</b> {cvdata.phone}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Religion:</b> {cvdata.religion}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h6>
+                  <b>Email:</b> {cvdata.email}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h6>
+                  <b>Present Address:</b> {cvdata.presentAddress}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Date Of Birth:</b>{' '}
+                  {`${
+                    cvdata.dob
+                      ? new Date(cvdata.dob).toLocaleString('en-GB', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })
+                      : ''
+                  }`}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Limitations Or Special Case:</b> {cvdata.specialCase}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Height:</b> {cvdata.height}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Weight:</b> {cvdata.weight}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Blood Group:</b> {cvdata.bloodGroup}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Grown Up At:</b> {cvdata.grownUpAt}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h6>
+                  <b>About:</b> {cvdata.about}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <br />
+                <h4>
+                  <b>Educational Information:</b>
+                </h4>
+                <hr />
+              </Col>
+            </Row>
+            {edudata.map((item, index) => {
+              return (
+                <>
+                  <label>Academic {index + 1}</label>
+                  <Row>
+                    <Col xs={12} md={6}>
+                      <h6>
+                        <b>Institute Name:</b> {item.instituteName}(
+                        {item.passingYear})
+                      </h6>
+                    </Col>
+                    <Col xs={12} md={6}>
+                      <h6>
+                        <b>Concentration/Major/Group:</b> {item.group}
+                      </h6>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12} md={6}>
+                      <h6>
+                        <b>Level of Education:</b> {item.levelOfEducation}
+                      </h6>
+                    </Col>
+                  </Row>
+                </>
+              )
+            })}
+            <Row>
+              <Col>
+                <br />
+                <h4>
+                  <b>Professional Information:</b>
+                </h4>
+                <hr />
+              </Col>
+            </Row>
+            {professionData.map((item, index) => {
+              return (
+                <>
+                  <label>Profession {index + 1}</label>
+                  <Row>
+                    <Col xs="12" md="6">
+                      <h6>
+                        <b>Designation:</b>
+                        {item.designation}
+                      </h6>
+                    </Col>
+                    <Col xs="12" md="6">
+                      <h6>
+                        <b>Company Name:</b>
+                        {item.companyName}
+                      </h6>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs="12" md="6">
+                      <h6>
+                        <b>Employment Period:</b> {item.from_employment} to{' '}
+                        {item.to_employment}
+                      </h6>
+                    </Col>
+                    <Col xs="12" md="6">
+                      <h6>
+                        <b>Location:</b>
+                        {item.com_location}
+                      </h6>
+                    </Col>
+                  </Row>
+                </>
+              )
+            })}
+            <Row>
+              <Col>
+                <br />
+                <h4>
+                  <b>Family Member:</b>
+                </h4>
+                <hr />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Father Name:</b> {cvdata.fatherName}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Occupation:</b> {cvdata.fatherOccupation}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12} md={12}>
+                <h6>
+                  <b>Father Details:</b> {cvdata.fatherDetails}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Mother Name:</b> {cvdata.motherName}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Ocupation:</b> {cvdata.motherOccupation}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12} md={12}>
+                <h6>
+                  <b>Mother Details:</b> {cvdata.motherDetails}
+                </h6>
+              </Col>
+            </Row>
+            {siblingData.map((item, index) => {
+              return (
+                <>
+                  <label>Sibling {index + 1}</label>
+                  <Row>
+                    <Col xs={6} md={6}>
+                      <h6>
+                        <b>Name:</b> {item.name}
+                      </h6>
+                    </Col>
+                    <Col xs={6} md={6}>
+                      <h6>
+                        <b>Ocupation:</b> {item.occupation}
+                      </h6>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <h6>
+                        <b>Details:</b> {item.details}
+                      </h6>
+                    </Col>
+                  </Row>
+                </>
+              )
+            })}
+            <Row>
+              <Col>
+                <br />
+                <h4>
+                  <b>Preference Information:</b>
+                </h4>
+                <hr />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Age Range:</b> {cvdata.ageMinimum} to {cvdata.ageMaximum}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Height Range:</b> {cvdata.heightMinimum} to{' '}
+                  {cvdata.heightMaximum}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Marital Status:</b> {cvdata.maritalStatusPreference}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Complexion:</b> {cvdata.complexionPreference}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Occupation:</b> {cvdata.occupationPreference}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Education:</b> {cvdata.educationPreference}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Location:</b> {cvdata.location}
+                </h6>
+              </Col>
+              <Col xs={6} md={6}>
+                <h6>
+                  <b>Religion:</b> {cvdata.religionPreference}
+                </h6>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12} md={12}>
+                <h6>
+                  <b>Details:</b> {cvdata.preferenceDetails}
+                </h6>
+              </Col>
+            </Row>
+          </div>
         </div>
       </div>
 
       <div className="logoStyle">
-        <Link to="https://butterflymatrimonial.com/">
+        <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
       </div>

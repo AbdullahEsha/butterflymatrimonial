@@ -3,8 +3,10 @@ import { Nav, Navbar } from 'react-bootstrap'
 import Img from '../asset/image/butterfly.png'
 import '../asset/css/nav.css'
 import { Link } from 'react-router-dom'
+import useWindowDimensions from './useWindowDimensions'
 
 const MainNav = () => {
+  const { width } = useWindowDimensions()
   return (
     <>
       <Navbar
@@ -17,7 +19,13 @@ const MainNav = () => {
           borderBottomRightRadius: '15px',
         }}
       >
-        <Link to="/" className="navpaddingleft navbar-brand">
+        <Link
+          to="/cv-bank"
+          className="navpaddingleft navbar-brand spacial-brand"
+        >
+          <h4>CV BANK</h4>
+        </Link>
+        <Link to="/" className="navpaddingleft navbar-brand navbar-brand-2">
           <img src={Img} alt="img" className="logoTop" />
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -35,16 +43,14 @@ const MainNav = () => {
             {/* <Link to="/special-pairing" className="nav-link">
               Special Pairing
             </Link> */}
-            <Link
-              to="/contact"
-              style={{ paddingRight: '30px' }}
-              className="nav-link"
-            >
+            <Link to="/contact" className="nav-link spacial-link">
               Contact
             </Link>
-            <Link to="/cv-bank" className="nav-link">
-              <p id="buttonCV">CV Bank</p>
-            </Link>
+            {width > 991 && (
+              <Link to="/cv-bank" className="nav-link">
+                <p id="buttonCV">CV Bank</p>
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

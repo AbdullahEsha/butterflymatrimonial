@@ -54,8 +54,8 @@ const Venus = () => {
             <div className="card_3">
               <img src={uil_processor} alt="uil_processor" /> <h3>Process</h3>{' '}
               <h6>
-                After the various conversation we processed and mutually start
-                processing.
+                Throughout the extensive conversations, we processed and
+                continued processing together.
               </h6>
             </div>
           </Col>

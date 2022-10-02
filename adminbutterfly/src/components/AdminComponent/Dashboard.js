@@ -126,26 +126,26 @@ const Dashboard = () => {
 
   let filterAge1 = cvdata.filter(
     (item1) =>
-      (new Date() - new Date(item1.age)) / 31557600000 >= 18 &&
-      (new Date() - new Date(item1.age)) / 31557600000 < 24,
+      (new Date() - new Date(item1.dob)) / 31557600000 >= 18 &&
+      (new Date() - new Date(item1.dob)) / 31557600000 < 24,
   ).length
   let filterAge2 = cvdata.filter(
     (item2) =>
-      (new Date() - new Date(item2.age)) / 31557600000 >= 24 &&
-      (new Date() - new Date(item2.age)) / 31557600000 < 30,
+      (new Date() - new Date(item2.dob)) / 31557600000 >= 24 &&
+      (new Date() - new Date(item2.dob)) / 31557600000 < 30,
   ).length
   let filterAge3 = cvdata.filter(
     (item3) =>
-      (new Date() - new Date(item3.age)) / 31557600000 >= 30 &&
-      (new Date() - new Date(item3.age)) / 31557600000 < 36,
+      (new Date() - new Date(item3.dob)) / 31557600000 >= 30 &&
+      (new Date() - new Date(item3.dob)) / 31557600000 < 36,
   ).length
   let filterAge4 = cvdata.filter(
     (item4) =>
-      (new Date() - new Date(item4.age)) / 31557600000 >= 36 &&
-      (new Date() - new Date(item4.age)) / 31557600000 < 42,
+      (new Date() - new Date(item4.dob)) / 31557600000 >= 36 &&
+      (new Date() - new Date(item4.dob)) / 31557600000 < 42,
   ).length
   let filterAge5 = cvdata.filter(
-    (item5) => (new Date() - new Date(item5.age)) / 31557600000 >= 42,
+    (item5) => (new Date() - new Date(item5.dob)) / 31557600000 >= 42,
   ).length
 
   let countTotal =
@@ -154,7 +154,7 @@ const Dashboard = () => {
   let demoArray = []
   if (cvdata.length > 0) {
     cvdata.forEach((elem, index) => {
-      let stringInput = elem.preference
+      let stringInput = elem.maritalStatusPreference
       let arrdata = stringInput.split(',')
       demoArray.push(arrdata)
     })
@@ -164,34 +164,53 @@ const Dashboard = () => {
   let countPreference2 = 0
   let countPreference3 = 0
   let countPreference4 = 0
+  let countPreference5 = 0
+  let countPreference6 = 0
 
   demoArray.forEach((item) => {
-    let singledata = item.find((elem) => elem === 'Single')
-    if (singledata === 'Single') {
+    let singledata = item.find((elem) => elem === 'Unmarried')
+    if (singledata === 'Unmarried') {
       countPreference1++
     }
   })
   demoArray.forEach((item) => {
-    let singledata = item.find((elem) => elem === 'Divorce')
-    if (singledata === 'Divorce') {
+    let singledata = item.find((elem) => elem === 'Widow/Widower')
+    if (singledata === 'Widow/Widower') {
       countPreference2++
     }
   })
   demoArray.forEach((item) => {
-    let singledata = item.find((elem) => elem === 'Divorce without child')
-    if (singledata === 'Divorce without child') {
+    let singledata = item.find((elem) => elem === 'Separated')
+    if (singledata === 'Separated') {
       countPreference3++
     }
   })
   demoArray.forEach((item) => {
-    let singledata = item.find((elem) => elem === 'Divorce with child')
-    if (singledata === 'Divorce with child') {
+    let singledata = item.find((elem) => elem === 'Divorced Without Child')
+    if (singledata === 'Divorced Without Child') {
       countPreference4++
+    }
+  })
+  demoArray.forEach((item) => {
+    let singledata = item.find((elem) => elem === 'Divorced With Child')
+    if (singledata === 'Divorced With Child') {
+      countPreference5++
+    }
+  })
+  demoArray.forEach((item) => {
+    let singledata = item.find((elem) => elem === 'Married')
+    if (singledata === 'Married') {
+      countPreference6++
     }
   })
 
   let countPreference =
-    countPreference1 + countPreference2 + countPreference3 + countPreference4
+    countPreference1 +
+    countPreference2 +
+    countPreference3 +
+    countPreference4 +
+    countPreference5 +
+    countPreference6
 
   return (
     <>
@@ -379,6 +398,7 @@ const Dashboard = () => {
         <div className="row" style={{ padding: '15px' }}>
           <div className="col-sm-12 col-md-4 col-lg-4 preferance-div">
             <h5>Recently CV Added</h5>
+            <br />
             <table width="100%">
               <tr>
                 <td rowSpan={2} width="50px">
@@ -442,16 +462,37 @@ const Dashboard = () => {
                   <b>Email:</b> {cvdata.map((item) => item.email)[2]}
                 </td>
               </tr>
+              <br />
+              <tr>
+                <td rowSpan={2} width="50px">
+                  <img
+                    src={
+                      'https://api.butterflymatrimonial.com/' +
+                      cvdata.map((item) => item.image)[3]
+                    }
+                    alt="mage"
+                    height="40px"
+                  />
+                </td>
+                <td>
+                  <b>Name:</b> {cvdata.map((item) => item.name)[3]}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Email:</b> {cvdata.map((item) => item.email)[3]}
+                </td>
+              </tr>
             </table>
           </div>
           <div className="col-sm-12 col-md-8 col-lg-8 ">
             <div className="preferance-div">
-              <h5>Preference Data</h5>
+              <h5>Marital Status Preference Data</h5>
               <div className="progress-outer">
                 <p style={{ float: 'right' }}>
                   {((countPreference1 / countPreference) * 100).toFixed(2)}%
                 </p>
-                <p>Single</p>
+                <p>Unmarried</p>
                 <div className="progress progress-extra">
                   <div
                     class="progress-bar"
@@ -469,7 +510,7 @@ const Dashboard = () => {
                 <p style={{ float: 'right' }}>
                   {((countPreference2 / countPreference) * 100).toFixed(2)}%
                 </p>
-                <p>Divorce</p>
+                <p>Widow/Widower</p>
                 <div className="progress progress-extra">
                   <div
                     class="progress-bar"
@@ -487,7 +528,7 @@ const Dashboard = () => {
                 <p style={{ float: 'right' }}>
                   {((countPreference3 / countPreference) * 100).toFixed(2)}%
                 </p>
-                <p>Divorce without child</p>
+                <p>Separated</p>
                 <div className="progress progress-extra">
                   <div
                     class="progress-bar"
@@ -505,7 +546,7 @@ const Dashboard = () => {
                 <p style={{ float: 'right' }}>
                   {((countPreference4 / countPreference) * 100).toFixed(2)}%
                 </p>
-                <p>Divorce with child</p>
+                <p>Divorced Without Child</p>
                 <div className="progress progress-extra">
                   <div
                     class="progress-bar"
@@ -519,12 +560,48 @@ const Dashboard = () => {
                   ></div>
                 </div>
               </div>
+              <div className="progress-outer">
+                <p style={{ float: 'right' }}>
+                  {((countPreference5 / countPreference) * 100).toFixed(2)}%
+                </p>
+                <p>Divorced With Child</p>
+                <div className="progress progress-extra">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style={{
+                      width: `${(countPreference5 / countPreference) * 100}%`,
+                    }}
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+              <div className="progress-outer">
+                <p style={{ float: 'right' }}>
+                  {((countPreference6 / countPreference) * 100).toFixed(2)}%
+                </p>
+                <p>Married</p>
+                <div className="progress progress-extra">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style={{
+                      width: `${(countPreference6 / countPreference) * 100}%`,
+                    }}
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div className="logoStyle">
-        <Link to="https://butterflymatrimonial.com/">
+        <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
       </div>

@@ -24,12 +24,7 @@ em {
 .berPadd h1 {
   font-weight: 700;
 }
-.navbar-toggler:focus {
-  box-shadow: none;
-}
-.navbar-light .navbar-toggler {
-  border-color: transparent;
-}
+
 .berPadd img {
   height: 75px;
 }
@@ -42,8 +37,11 @@ em {
   width: 100%;
   border-radius: 12px;
 }
-.alert-input-fild {
-  width: 92%;
+.privacy-list li {
+  margin-top: 10px;
+}
+.copy-data-url {
+  display: block;
 }
 .alert-btn {
   border: 1px solid #ced4da;
@@ -62,16 +60,15 @@ em {
 .hide_title {
   display: none;
   background-color: #fc6375;
-  padding: 7px 10px 4px;
-  text-align: -webkit-center;
+  padding: 3px 3px 3px;
+  text-align: center;
   margin: auto;
   color: #fff;
   border-radius: 25px;
-}
-.hide_title h3 {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
 }
+
 .butterfly-gallery-link h5 {
   background-color: #fc6375;
   color: #fff;
@@ -326,7 +323,7 @@ div.text_2 {
 }
 .text_position_3_milestone {
   text-align: -webkit-center;
-  margin-top: 100px;
+  margin-top: 45px;
 }
 .text_position_3_milestone h6 {
   max-width: 803px;
@@ -373,10 +370,11 @@ div.text_position_3 h6 {
   border-style: hidden;
   border-radius: 12px;
   width: 373px;
+  height: 310px;
   padding: 30px;
   background-color: #ff566b;
   color: #ffffff;
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.151);
+  box-shadow: 0 14px 26px rgb(0 0 0 / 15%);
   transition: all 0.2s ease-out;
 }
 .card_3 img {
@@ -429,6 +427,8 @@ div.text_3 {
 .card img {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  max-width: 100%;
+  max-height: 100%;
 }
 .card:hover {
   box-shadow: 0 18px 28px rgba(0, 0, 0, 0.363);
@@ -1179,7 +1179,7 @@ td {
   }
   .card_3 {
     width: 260px;
-    height: 235px;
+    height: 264px;
     padding: 10px;
   }
   .getVenus {
@@ -1344,7 +1344,7 @@ td {
   }
   .card_3 {
     width: 205px;
-    height: 205px;
+    height: 225px;
     padding: 10px;
   }
   .img_uploader input {
@@ -1624,7 +1624,8 @@ td {
   }
   .card_3 {
     width: 203px;
-    padding: 5px;
+    padding: 8px;
+    height: 205px;
   }
   #text_position_31 {
     margin-top: -185px;
@@ -1743,7 +1744,7 @@ td {
     height: 350px;
   }
   div.text_3 {
-    top: 48%;
+    top: 46%;
   }
   .about_text_position_13,
   .venus_text_position_4 {
@@ -1770,14 +1771,23 @@ td {
   .about_text_position_13 h6,
   .about_text_position_2 h6,
   .about_text_position_1 h6,
-  .text_position_2 h6,
-  .text_3 h6,
   .text_padding_2 h6,
   .text_position_3_milestone h6,
   .text_position_3 h6,
   .venus_text_position_2 h6 {
     font-size: 12px;
     max-width: 321px !important;
+  }
+  .app-icon-position {
+    margin-top: -12px;
+  }
+  .text_position_2 h6 {
+    font-size: 12px;
+    max-width: 321px !important;
+    margin-bottom: -7px;
+  }
+  .text_3 h6 {
+    font-size: 10px;
   }
   .venus_text_position_4,
   .venus_text_position_3,
@@ -1809,7 +1819,7 @@ td {
     margin-top: -74px;
   }
   .text_position_2 {
-    top: 60px;
+    top: 145px;
   }
   .text_position_2 h1,
   .about_text_position_1 h1 {
@@ -1946,9 +1956,10 @@ td {
     height: 210px;
   }
   .card_3 {
-    width: 150px;
+    width: 160px;
     padding: 5px;
     top: -60px;
+    height: 214px;
   }
   #text_position_31 {
     margin-top: -185px;
@@ -2109,13 +2120,17 @@ td {
   .about_text_position_13 h6,
   .about_text_position_2 h6,
   .about_text_position_1 h6,
-  .text_position_2 h6,
   .text_padding_2 h6,
   .text_position_3_milestone h6,
   .text_position_3 h6,
   .venus_text_position_2 h6 {
     font-size: 12px;
     max-width: 321px !important;
+  }
+  .text_position_2 h6 {
+    font-size: 12px;
+    max-width: 321px !important;
+    margin-bottom: -8px;
   }
   .text_3 h1 {
     font-size: 16px;
@@ -2148,7 +2163,7 @@ td {
     margin-top: -75px;
   }
   .text_position_2 {
-    top: 96px;
+    top: 125px;
   }
   .text_position_2 h1,
   .about_text_position_1 h1 {
@@ -2156,6 +2171,9 @@ td {
   }
   #hide_br {
     display: none;
+  }
+  .app-icon-position {
+    margin-top: -12px;
   }
   div.home_text_2_outside {
     height: 160px;
@@ -2291,6 +2309,7 @@ td {
     width: 150px;
     padding: 5px;
     top: -73px;
+    height: 220px;
   }
   #text_position_31 {
     margin-top: -185px;

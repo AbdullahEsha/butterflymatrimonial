@@ -24,12 +24,11 @@ const DisplayAllCV = () => {
   const [cvdataTemp, setCvDataTemp] = useState([])
   const [edudata, setEdudata] = useState([])
   const [ageRange, setAgeRange] = useState({
-    minAge: 0,
-    maxAge: 0,
+    minAge: 18,
+    maxAge: 20,
   })
   const [professionaldata, setProfessionaldata] = useState([])
   const [found, setFound] = useState(true)
-  const [edu, setEdu] = useState([])
   const auth = useAuth()
   const navigate = useNavigate()
 
@@ -52,7 +51,7 @@ const DisplayAllCV = () => {
   }, [])
 
   const arrpro = professionaldata.map((item) => item.designation)
-  const arrDistrict = cvdata.map((item) => item.districtPreference)
+  const arrDistrict = cvdata.map((item) => item.hometown)
   const respro = [...new Set(arrpro)]
   const resDistrict = [...new Set(arrDistrict)]
 
@@ -126,105 +125,92 @@ const DisplayAllCV = () => {
     })
   }
 
-  const handleInput = async (event) => {
-    let foundtest = edu.filter((item) => item === event.value)
-    if (foundtest.length === 0) {
-      await setEdu((edu) => [...edu, event.value])
-    }
-    const fuse = new Fuse(edudata, optionsEdu)
-    if (edu.length > 0) {
-      edu.forEach((item, index) => {
-        const result = fuse.search(item)
-
-        result.forEach((data) => {
-          let dataedu = cvdata.filter((item) => item.id === data.item.cvdata_id)
-          const obj = {
-            id: dataedu.map((x) => x.id)[0],
-            name: dataedu.map((y) => y.name)[0],
-            phone: dataedu.map((z) => z.phone)[0],
-            created_at: dataedu.map((p) => p.created_at)[0],
-          }
-          cvDataArr.push(obj)
-        })
-      })
-
-      if (cvDataArr.length > 0) {
-        setFound(true)
-        setCvDataTemp(cvDataArr)
-      } else {
-        setFound(false)
-      }
-    } else {
-      setFound(true)
-      getAllCv()
-    }
-  }
-
-  const removeEdu = async (index) => {
-    await setEdu([...edu.slice(0, index), ...edu.slice(index + 1, edu.length)])
-    const fuse = new Fuse(eduDataTemp, optionsEdu)
-    if (edu.length > 0) {
-      edu.forEach((item, index) => {
-        const result = fuse.search(item)
-        console.log(result)
-        result.forEach((data) => {
-          let dataedu = cvdata.filter((item) => item.id === data.item.cvdata_id)
-          const obj = {
-            id: dataedu.map((x) => x.id)[0],
-            name: dataedu.map((y) => y.name)[0],
-            phone: dataedu.map((z) => z.phone)[0],
-            created_at: dataedu.map((p) => p.created_at)[0],
-          }
-          cvDataArr.push(obj)
-        })
-      })
-
-      if (cvDataArr.length > 0) {
-        setFound(true)
-        setCvDataTemp(cvDataArr)
-      } else {
-        setFound(false)
-      }
-    } else {
-      setFound(true)
-      getAllCv()
-    }
-  }
-
+  // Search in `cv data` and in `tags` array , 'religion', 'gender', 'grownUpAt'
   const optionName = {
     threshold: 0,
-    // Search in `author` and in `tags` array , 'religion', 'gender', 'grownUpAt'
     keys: ['name', 'phone', 'grownUpAt'],
   }
+
+  // Search in `cv data` and in `tags` array ,, 'grownUpAt'
   const optionReligion = {
     threshold: 0,
-    // Search in `author` and in `tags` array ,, 'grownUpAt'
     keys: ['religion'],
   }
+
+  // Search in `cv data` and in `tags` array , 'gender'
   const optionGender = {
     threshold: 0,
-    // Search in `author` and in `tags` array ,, 'grownUpAt'
     keys: ['gender'],
   }
-  const optionsEdu = {
-    threshold: 0,
-    // Search in `author` and in `tags` array
-    keys: ['levelOfEducation', 'passingYear'],
-  }
-  const optionsProfessional = {
-    threshold: 0,
-    // Search in `author` and in `tags` array
-    keys: ['designation'],
-  }
+
+  // Search in `cv data` and in `tags` array, 'hometown'
   const optionsDistrict = {
     threshold: 0,
-    // Search in `author` and in `tags` array
-    keys: ['districtPreference'],
+    keys: ['hometown'],
+  }
+
+  // Search in `edu data` and in `tags` array, 'levelOfEducation', 'passingYear'
+  const optionsEdu = {
+    threshold: 0,
+    keys: ['levelOfEducation', 'passingYear'],
+  }
+
+  // Search in `professional data` and in `tags` array, 'designation'
+  const optionsProfessional = {
+    threshold: 0,
+    keys: ['designation'],
   }
 
   let cvDataArr = []
   let cvDataTemp = cvdata
-  let eduDataTemp = edudata
+
+  const handleEducation = async (event) => {
+    // event.map((item, index) => console.log(`eventvalue ${index}`, item.value))
+
+    const fuse = new Fuse(edudata, optionsEdu)
+
+    let resultpre = []
+    event.forEach((item) => {
+      let eduDataFind = fuse.search(item.value)
+      resultpre.push(eduDataFind)
+    })
+
+    let resultfound = []
+    resultpre.forEach((elm) => {
+      elm.forEach((elData) => resultfound.push(elData.item))
+    })
+
+    let resultUniqueId = []
+    resultfound.forEach((u_item) => {
+      resultUniqueId.push(u_item.u_id)
+    })
+
+    const result = [...new Set(resultUniqueId)]
+
+    if (result.length > 0) {
+      result.forEach((data) => {
+        let dataedu = cvdata.filter((item) => item.u_id === data)
+        const obj = {
+          u_id: dataedu.map((x) => x.u_id)[0],
+          name: dataedu.map((y) => y.name)[0],
+          phone: dataedu.map((z) => z.phone)[0],
+          created_at: dataedu.map((p) => p.created_at)[0],
+        }
+        if (obj.u_id) {
+          cvDataArr.push(obj)
+        }
+      })
+      if (cvDataArr.length > 0) {
+        setFound(true)
+        setCvDataTemp(cvDataArr)
+      } else {
+        setFound(false)
+      }
+    } else {
+      setFound(true)
+      getAllCv()
+    }
+  }
 
   const searchData = (search) => {
     if (search !== '') {
@@ -233,7 +219,7 @@ const DisplayAllCV = () => {
 
       result.forEach((data) => {
         const obj = {
-          id: data.item.id,
+          u_id: data.item.u_id,
           name: data.item.name,
           phone: data.item.phone,
           created_at: data.item.created_at,
@@ -260,7 +246,7 @@ const DisplayAllCV = () => {
 
       result.forEach((data) => {
         const obj = {
-          id: data.item.id,
+          u_id: data.item.u_id,
           name: data.item.name,
           phone: data.item.phone,
           created_at: data.item.created_at,
@@ -286,7 +272,7 @@ const DisplayAllCV = () => {
 
       result.forEach((data) => {
         const obj = {
-          id: data.item.id,
+          u_id: data.item.u_id,
           name: data.item.name,
           phone: data.item.phone,
           created_at: data.item.created_at,
@@ -312,15 +298,19 @@ const DisplayAllCV = () => {
       const result = fuse.search(searchProfessional)
 
       result.forEach((data) => {
-        let dataedu = cvdata.filter((item) => item.id === data.item.cvdata_id)
+        let dataedu = cvdata.filter((item) => item.u_id === data.item.u_id)
         const obj = {
-          id: dataedu.map((x) => x.id)[0],
+          u_id: dataedu.map((x) => x.u_id)[0],
           name: dataedu.map((y) => y.name)[0],
           phone: dataedu.map((z) => z.phone)[0],
           created_at: dataedu.map((p) => p.created_at)[0],
         }
-        cvDataArr.push(obj)
+        if (obj.u_id) {
+          cvDataArr.push(obj)
+        }
       })
+
+      console.log('cvDataArr', cvDataArr)
 
       if (cvDataArr.length > 0) {
         setFound(true)
@@ -334,34 +324,6 @@ const DisplayAllCV = () => {
     }
   }
 
-  // const searchDataDistrict = (searchDistrict) => {
-  //   if (searchDistrict !== '') {
-  //     const fuse = new Fuse(cvdata, optionsDistrict)
-  //     const result = fuse.search(searchDistrict)
-
-  //     result.forEach((data) => {
-  //       let dataedu = cvdata.filter((item) => item.id === data.item.cvdata_id)
-  //       const obj = {
-  //         id: dataedu.map((x) => x.id)[0],
-  //         name: dataedu.map((y) => y.name)[0],
-  //         phone: dataedu.map((z) => z.phone)[0],
-  //         created_at: dataedu.map((p) => p.created_at)[0],
-  //       }
-  //       cvDataArr.push(obj)
-  //     })
-
-  //     if (cvDataArr.length > 0) {
-  //       setFound(true)
-  //       setCvDataTemp(cvDataArr)
-  //     } else {
-  //       setFound(false)
-  //     }
-  //   } else {
-  //     setFound(true)
-  //     getAllCv()
-  //   }
-  // }
-
   const searchDataDistrict = (searchDistrict) => {
     if (searchDistrict !== '') {
       const fuse = new Fuse(cvdata, optionsDistrict)
@@ -369,7 +331,7 @@ const DisplayAllCV = () => {
 
       result.forEach((data) => {
         const obj = {
-          id: data.item.id,
+          u_id: data.item.u_id,
           name: data.item.name,
           phone: data.item.phone,
           created_at: data.item.created_at,
@@ -392,8 +354,8 @@ const DisplayAllCV = () => {
   const ageRangeSearch = () => {
     let filterAge4 = cvdata.filter(
       (item4) =>
-        (new Date() - new Date(item4.age)) / 31557600000 >= ageRange.minAge &&
-        (new Date() - new Date(item4.age)) / 31557600000 < ageRange.maxAge,
+        (new Date() - new Date(item4.dob)) / 31557600000 >= ageRange.minAge &&
+        (new Date() - new Date(item4.dob)) / 31557600000 < ageRange.maxAge,
     )
     setCvDataTemp(filterAge4)
   }
@@ -431,10 +393,10 @@ const DisplayAllCV = () => {
             <option value="" selected>
               Choose religion
             </option>
-            <option value="Muslim">Muslim</option>
-            <option value="Hindu">Hindu</option>
-            <option value="Buddhist">Buddhist</option>
-            <option value="Christian">Christian</option>
+            <option value="Islam">Islam</option>
+            <option value="Hinduism">Hinduism</option>
+            <option value="Christianity">Christianity</option>
+            <option value="Buddhism">Buddhism</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -499,21 +461,9 @@ const DisplayAllCV = () => {
           }}
         >
           <div className="education">
-            <div className="infos">
-              {edu.length > 0
-                ? edu.map((info, index) => {
-                    return (
-                      <div className="infos_item">
-                        <span>{info}</span>
-                        <button onClick={() => removeEdu(index)}>x</button>
-                      </div>
-                    )
-                  })
-                : null}
-            </div>
-
             <Select
               options={options}
+              isMulti={true}
               // className="group_1"
               theme={(theme) => ({
                 ...theme,
@@ -524,7 +474,7 @@ const DisplayAllCV = () => {
                   primary: '#ff566b',
                 },
               })}
-              onChange={(event) => handleInput(event)}
+              onChange={(event) => handleEducation(event)}
             />
           </div>
           <br />
@@ -541,7 +491,7 @@ const DisplayAllCV = () => {
               onChange={(event) => searchDataDistrict(event.target.value)}
             >
               <option value="" selected>
-                Choose District
+                Choose Hometown
               </option>
               {resDistrict.map((item) => {
                 return <option value={item}>{item}</option>
@@ -557,7 +507,9 @@ const DisplayAllCV = () => {
             <input
               type="number"
               className="form-control"
+              min="18"
               placeholder="Min Age"
+              value={ageRange.minAge ? ageRange.minAge : '18'}
               onChange={(event) => {
                 setAgeRange({ ...ageRange, minAge: event.target.value })
                 ageRangeSearch()
@@ -573,7 +525,9 @@ const DisplayAllCV = () => {
             <input
               type="number"
               className="form-control"
+              min="18"
               placeholder="Max Age"
+              value={ageRange.maxAge ? ageRange.maxAge : '20'}
               onChange={(event) => {
                 setAgeRange({ ...ageRange, maxAge: event.target.value })
                 ageRangeSearch()
@@ -619,7 +573,7 @@ const DisplayAllCV = () => {
                           }`}</td>
                           <td>
                             <Link
-                              to={`/display-cv/${item.id}`}
+                              to={`/display-cv/${item.u_id}`}
                               title="View"
                               className="btn btn-outline-info"
                             >
@@ -628,7 +582,7 @@ const DisplayAllCV = () => {
                             <button
                               className="btn btn-outline-danger"
                               title="Delete"
-                              onClick={() => removeOneCv(item.id)}
+                              onClick={() => removeOneCv(item.u_id)}
                             >
                               <MdDeleteForever size={20} />
                             </button>
@@ -643,7 +597,7 @@ const DisplayAllCV = () => {
         </div>
       </div>
       <div className="logoStyle">
-        <Link to="https://butterflymatrimonial.com/">
+        <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
       </div>

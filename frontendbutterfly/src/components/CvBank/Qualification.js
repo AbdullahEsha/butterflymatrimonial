@@ -257,9 +257,7 @@ const Qualification = (props) => {
   return (
     <>
       <Container className="cv_bank_container21">
-        <div align="center" className="hide_title">
-          <h3>Education & Profession</h3>
-        </div>
+        <h3 className="hide_title">Education & Profession</h3>
         <br className="hide_title" />
         {educationalQulification.map((item, index) => {
           return (
