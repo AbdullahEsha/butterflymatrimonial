@@ -9,7 +9,6 @@ a.nav-link {
 }
 .navbar-light .navbar-toggler {
   border-color: transparent;
-  margin-left: -15px;
 }
 
 #buttonCV {
@@ -25,6 +24,9 @@ a.nav-link {
 }
 
 @media only screen and (max-width: 992px) {
+  .navbar-light .navbar-nav .nav-link {
+    margin-left: -30px;
+  }
   .navbar-brand-2 {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -42,7 +44,7 @@ a.nav-link {
   }
   .logoTop {
     height: 40px;
-    margin-left: -47px;
+    margin-left: 25px;
   }
   .ms-auto {
     margin-left: 0 !important;
@@ -72,5 +74,19 @@ a.nav-link {
   }
   .spacial-brand {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar {
+    flex-direction: row-reverse;
+  }
+}
+@media only screen and (width: 992px) {
+  .navbar-light .navbar-nav .nav-link {
+    margin-left: 0px;
+  }
+  .navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end !important;
   }
 }

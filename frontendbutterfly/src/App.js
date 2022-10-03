@@ -23,6 +23,9 @@ import { Provider } from 'react-redux'
 import store from './store'
 import ButterflyCvBank from './components/ButterflyCvBank'
 import ButterflyGallery from './components/ButterflyGallery'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init()
 
 const App = () => {
   return (

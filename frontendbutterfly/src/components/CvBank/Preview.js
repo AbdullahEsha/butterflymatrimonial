@@ -315,19 +315,20 @@ const Preview = (props) => {
               <Row>
                 <Col xs={6} md={6}>
                   <h6>
-                    <b>Name:</b> {item.name}
+                    <b>Name:</b> {item.name ? item.name : 'none'}
                   </h6>
                 </Col>
                 <Col xs={6} md={6}>
                   <h6>
-                    <b>Ocupation:</b> {item.occupation}
+                    <b>Ocupation:</b>{' '}
+                    {item.occupation ? item.occupation : 'none'}
                   </h6>
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <h6>
-                    <b>Details:</b> {item.details}
+                    <b>Details:</b> {item.details ? item.details : 'none'}
                   </h6>
                 </Col>
               </Row>

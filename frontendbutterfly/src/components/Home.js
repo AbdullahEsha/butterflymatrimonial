@@ -15,6 +15,7 @@ import apu from '../asset/image/apu.png'
 import card_1 from '../asset/image/card_1.png'
 import card_2 from '../asset/image/card_2.png'
 import card_3 from '../asset/image/card_3.png'
+import card_4 from '../asset/image/card_4.png'
 import MainNav from './MainNav'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
@@ -23,7 +24,14 @@ function Home() {
   return (
     <>
       <MainNav />
-      <div className="background-img_1">
+      <div className="background-img_1"></div>
+      <div
+        className="container content-butterfly"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out-cubic"
+      >
         <div className="text_position_2">
           <h1>
             BUTTERFLY MATRIMONIAL
@@ -40,55 +48,61 @@ function Home() {
           <Link to="/venus" id="venusButton">
             Venus
           </Link>
-          <br />
-          <br />
           <br id="hide_br" />
-          <div className="app-icon-position">
-            <a
-              href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
-              style={{ textDecoration: 'none', paddingRight: '10px' }}
-            >
-              <img src={apple} alt="apple" className="app_icon_size" />{' '}
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.butterflymatrimonial.app&hl=en&gl=US"
-              style={{ textDecoration: 'none' }}
-            >
-              <img src={google} alt="google" className="app_icon_size" />
-            </a>
-          </div>
         </div>
       </div>
       <div className="ber_position">
         <Container>
+          <div className="berPaddtop">
+            <h1>WHAT WE DO?</h1>
+          </div>
           <Row id="rds" align="center">
-            <Col xs={12} md={12}>
-              <div className="berPaddtop">
-                <h1 className="h6padding">What we do?</h1>
-              </div>
-            </Col>
             <Col xs={12} md={3} id="home-do-content">
-              <div className="berPadd">
+              <div
+                className="berPadd"
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease"
+              >
                 <img src={consultancy} alt="consultancy" />
-                <h6 className="h6padding">Consultancy</h6>
+                <h6>Consultancy</h6>
               </div>
             </Col>
             <Col xs={12} md={3} id="home-do-content">
-              <div className="berPadd">
+              <div
+                className="berPadd"
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease"
+              >
                 <img src={diamond} alt="diamond" />
-                <h6 className="h6padding">Matchmaking</h6>
+                <h6>Matchmaking</h6>
               </div>
             </Col>
             <Col xs={12} md={3} id="home-do-content">
-              <div className="berPadd">
+              <div
+                className="berPadd"
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease"
+              >
                 <img src={pairing} alt="pairing" />
-                <h6 className="h6padding">Pairing</h6>
+                <h6>Pairing</h6>
               </div>
             </Col>
             <Col xs={12} md={3} id="home-do-content">
-              <div className="berPadd">
+              <div
+                className="berPadd"
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease"
+              >
                 <img src={othars} alt="othars" height="75px" />
-                <h6 className="h6padding">Others</h6>
+                <h6>Others</h6>
               </div>
             </Col>
           </Row>
@@ -112,7 +126,13 @@ function Home() {
           <Row>
             <Col xs={12} md={6} id="home-content-2">
               <div className="img_1_outside">
-                <div className="img_1">
+                <div
+                  className="img_1"
+                  data-aos="fade-up"
+                  data-aos-delay="50"
+                  data-aos-duration="1000"
+                  data-aos-easing="ease"
+                >
                   <img src={swipe} alt="swipe" />
                 </div>
               </div>
@@ -120,13 +140,31 @@ function Home() {
             <Col xs={12} md={6} id="home-content-2">
               <div className="home_text_2_outside">
                 <div className="text_2">
-                  <h1>Download Here</h1>
-                  <h6>
+                  <h1
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                  >
+                    Download Here
+                  </h1>
+                  <h6
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                  >
                     Apps for both platform - Android and IOS for your comfort
                     and easy use, download the app for simple communication and
                     smart pairing
                   </h6>
-                  <div className="badge_psition">
+                  <div
+                    className="badge_psition"
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                  >
                     <a
                       href="https://apps.apple.com/tt/app/butterfly-matrimonial/id1582021627"
                       id="badge"
@@ -160,23 +198,49 @@ function Home() {
       <Container>
         <Row className="container_position_1" align="center">
           <Col xs={12} md={3} id="card_2">
-            <div className="card_2">
+            <div
+              className="card_2"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
               <img src={happy} alt="happy" /> <h1>105+</h1>{' '}
               <h4>Happy Clients</h4>
             </div>
           </Col>
           <Col xs={12} md={3} id="card_2">
-            <div className="card_2">
+            <div
+              className="card_2"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
               <img src={successfull} alt="successfull" /> <h1>105+</h1>{' '}
               <h4>Successfull</h4>
             </div>
           </Col>
           <Col xs={12} md={3} id="card_2">
-            <div className="card_2">
+            <div
+              className="card_2"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
               <img src={solve} alt="solve" /> <h1>84+</h1> <h4>Solve Case</h4>
             </div>
           </Col>
-          <Col xs={12} md={3} id="card_2">
+          <Col
+            xs={12}
+            md={3}
+            id="card_2"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease"
+          >
             <div className="card_2">
               <img src={more} alt="more" /> <h1>240+</h1> <h4>More Help</h4>
             </div>
@@ -193,14 +257,34 @@ function Home() {
       <div className="background-img_3">
         <Container>
           <Row>
-            <Col xs={12} md={6} id="apu_img_content">
+            <Col
+              xs={12}
+              md={6}
+              id="apu_img_content"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
               <img src={apu} alt="apu" className="img_possition_1" />
             </Col>
             <Col xs={12} md={6} id="apu_img_content">
               <div className="home_text_3_outside">
                 <div className="text_3">
-                  <h1>Huraira Shishir</h1>
-                  <h6>
+                  <h1
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                  >
+                    Huraira Shishir
+                  </h1>
+                  <h6
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                  >
                     Accomplished professional with a long experience spanning
                     over the last two decades. Currently, running an online
                     matrimonial platform and working as a relationship
@@ -224,20 +308,33 @@ function Home() {
       </div>
       <Container>
         <Row>
-          <Col xs={12} md={4}>
-            <div className="card">
+          <Col xs={12} md={3}>
+            <div
+              className="card"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
               <img src={card_1} alt="card_1" />
               <h3>Shamshad & Sheshir</h3>
               <h6>
                 Attainment of your right match is never being that easy. There
                 is always a gap between your expectations & reality, at least in
                 case of selecting your partner. You need to be passionate,
-                confident, honest, aggressive and logical.
+                confident, honest, aggressive and logical. You can depend on
+                Butterfly.
               </h6>
             </div>
           </Col>
-          <Col xs={12} md={4}>
-            <div className="card">
+          <Col xs={12} md={3}>
+            <div
+              className="card"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
               <img src={card_2} alt="card_2" />
               <h3>Ruzdina & Iftekhar</h3>
               <h6>
@@ -249,8 +346,14 @@ function Home() {
               </h6>
             </div>
           </Col>
-          <Col xs={12} md={4}>
-            <div className="card">
+          <Col xs={12} md={3}>
+            <div
+              className="card"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
               <img src={card_3} alt="card_3" />
               <h3>Tithi & Mahfuz</h3>
               <h6>
@@ -258,7 +361,25 @@ function Home() {
                 social contact, we just trust on her expertise and depends.
                 Result, we have found our soulmate. If you want the same with
                 privacy. Yes you can confidently depends on Butterfly Venus
-                Package .
+                Package.
+              </h6>
+            </div>
+          </Col>
+          <Col xs={12} md={3}>
+            <div
+              className="card"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease"
+            >
+              <img src={card_4} alt="card_3" />
+              <h3>A Khatun & Rajon</h3>
+              <h6>
+                Maa... I had been searching bride for my son for a long. Didn't
+                match family, decency & talent like my Bouma. Their family is
+                almost the same as our family. Please search the same for my
+                younger son too. Yes you can trust on Butterfly Matrimonial.
               </h6>
             </div>
           </Col>

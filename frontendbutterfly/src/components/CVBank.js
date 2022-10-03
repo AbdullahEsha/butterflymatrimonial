@@ -824,7 +824,12 @@ const CVBank = () => {
       confirmButtonText: 'Yes, submit it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // insert cvdata
+        Swal.fire({
+          icon: 'info',
+          title: 'Please wait for a while.',
+          showConfirmButton: false,
+          timer: 1800,
+        })
         axios
           .post(
             `https://api.butterflymatrimonial.com/api/post/cv/new`,
@@ -836,14 +841,13 @@ const CVBank = () => {
                 axios.post(
                   `https://api.butterflymatrimonial.com/api/post/sibling`,
                   {
-                    name: item.name,
-                    occupation: item.occupation,
-                    details: item.details,
+                    name: item.name ? item.name : 'none',
+                    occupation: item.occupation ? item.occupation : 'none',
+                    details: item.details ? item.details : 'none',
                     u_id: uniqueId,
                   },
                 ),
               )
-
               educationalData.map((item) =>
                 axios.post(
                   `https://api.butterflymatrimonial.com/api/post/education/qualification`,
@@ -856,17 +860,22 @@ const CVBank = () => {
                   },
                 ),
               )
-
               professionalData.forEach((item) => {
                 axios
                   .post(
                     `https://api.butterflymatrimonial.com/api/post/professional`,
                     {
-                      companyName: item.companyName,
-                      designation: item.designation,
-                      com_location: item.com_location,
-                      from_employment: item.from_employment,
-                      to_employment: item.to_employment,
+                      companyName: item.companyName ? item.companyName : 'none',
+                      designation: item.designation ? item.designation : 'none',
+                      com_location: item.com_location
+                        ? item.com_location
+                        : 'none',
+                      from_employment: item.from_employment
+                        ? item.from_employment
+                        : 'none',
+                      to_employment: item.to_employment
+                        ? item.to_employment
+                        : 'none',
                       u_id: uniqueId,
                     },
                   )
@@ -874,7 +883,6 @@ const CVBank = () => {
                     console.log('ProfessionalData error', response)
                   })
               })
-
               galleryData.imageFill.forEach((item) => {
                 const formData2 = new FormData()
                 formData2.append('imageFill', item)
@@ -888,14 +896,13 @@ const CVBank = () => {
                     console.log('GalleryData error', response)
                   })
               })
-
               exportPdf()
               //submission confirmation
-              // Swal.fire({
-              //   title: `Success.`,
-              //   icon: 'success',
-              //   html: `<input type="text" value="https://butterflymatrimonial.com/butterfly-cv-bank/${uniqueId}" name="link" class="form-control alert-input-fild"><button class="alert-btn" onClick="${testCopy()}"><img src="https://cdn-icons-png.flaticon.com/512/4355/4355195.png" alt="Snow" style="width:30px"></button><br/><p align="center" class="copy-data-url">Copy your cv link.</p>`,
-              // })
+              Swal.fire({
+                title: `Success.`,
+                icon: 'success',
+                html: `<input type="text" value="https://butterflymatrimonial.com/butterfly-cv-bank/${uniqueId}" name="link" class="form-control alert-input-fild"><br/><p align="center" class="copy-data-url">Copy your cv link.</p>`,
+              })
             } else {
               Swal.fire({
                 title: 'Oops!',
@@ -1125,12 +1132,12 @@ const CVBank = () => {
               )}
               {data === 'Preview' && (
                 <div>
-                  <button
+                  {/* <button
                     className="cv_bankButton_BackNext"
                     onClick={exportPdf}
                   >
                     Save
-                  </button>{' '}
+                  </button>{' '} */}
                   <button
                     className="cv_bankButton_BackNext"
                     onClick={(event) => {

@@ -81,7 +81,31 @@ em {
   border-radius: 25px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.199);
 }
-
+.content-butterfly {
+  background-color: #ff566b;
+  border-radius: 12px;
+  position: relative;
+  top: -180px;
+  padding: 30px 0px 38px;
+  transition: all 0.2s ease-out;
+}
+.content-butterfly:hover {
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.23);
+  transform: scale(1.02);
+}
+.text_position_2 {
+  color: #fff;
+  position: relative;
+  text-align: -webkit-center;
+}
+.text_position_2 h6 {
+  max-width: 670px;
+}
+.berPaddtop {
+  background-color: #fff;
+  color: #212529;
+  margin-bottom: 55px;
+}
 .showDetail {
   display: none;
   background-color: rgb(255, 86, 107);
@@ -191,17 +215,6 @@ input#phoneNumber:active {
   top: -20px;
   border-radius: 0px 0px 50px 50px;
 }
-
-.text_position_2 {
-  color: #ffffff;
-  position: relative;
-  top: 280px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: -webkit-center;
-}
 a#badge img {
   height: 40px;
 }
@@ -214,14 +227,15 @@ a#badge img {
   font-size: larger;
   border-radius: 10px;
   border-style: solid;
-  border-width: 2px;
-  background-image: linear-gradient(#ff566b, #ff566b);
+  border-width: 1px;
+  background-image: linear-gradient(#fff, #fff);
   background-size: 0 100%;
   background-repeat: no-repeat;
   transition: 0.4s;
 }
 #venusButton:hover {
   background-size: 100% 100%;
+  color: #ff566b;
   border-style: hidden;
 }
 #venusButtonGet {
@@ -261,7 +275,7 @@ h1 {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -150px;
+  margin-top: -100px;
   left: 0;
   right: 0;
   text-align: center;
@@ -269,11 +283,19 @@ h1 {
 #rds {
   border-style: hidden;
   border-radius: 20px;
-  background-color: #ff566b;
 }
-.h6padding {
-  padding-top: 30px;
-  padding-bottom: 30px;
+.berPadd h6 {
+  margin-top: 15px;
+}
+.berPadd {
+  padding: 20px;
+  background-color: #ff566b;
+  border-radius: 10px;
+  transition: all 0.2s ease-out;
+}
+.berPadd:hover {
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.24);
+  transform: scale(1.02);
 }
 .background-img_2 {
   width: 100%;
@@ -351,7 +373,7 @@ div.text_position_3 h6 {
   transition: all 0.2s ease-out;
 }
 .card_2:hover {
-  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.363);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.23);
   transform: scale(1.02);
 }
 .card_2 img {
@@ -576,9 +598,6 @@ li a {
 }
 .venus_text_position_3 h6 {
   max-width: 727px;
-}
-.text_position_2 h6 {
-  max-width: 771px;
 }
 .venus_text_position_2 {
   color: #ffffff;
@@ -1090,9 +1109,9 @@ td {
   .card_3 {
     width: 340px;
   }
-  .ber_position {
+  /* .ber_position {
     margin-top: -160px;
-  }
+  } */
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1100,21 +1119,14 @@ td {
     margin-left: 10px;
     width: 86%;
   }
-  .ber_position {
+  /* .ber_position {
     margin-top: -125px;
-  }
+  } */
   .cv_bank_container {
     margin-top: 55px;
   }
   .educationAdd {
     margin-top: 15px;
-  }
-  .berPaddtop h1 {
-    font-size: 28px;
-  }
-  .h6padding {
-    padding-top: 18px;
-    padding-bottom: 18px;
   }
   .text_padding_2 {
     margin-top: 75px;
@@ -1212,36 +1224,25 @@ td {
   .venus_text_position_4 {
     margin-top: 40px;
   }
-  .text_position_2 {
-    top: 135px;
-  }
-  .text_position_2 h1 {
-    font-size: 35px;
-  }
-  .text_position_2 h6 {
-    font-size: 15px;
-  }
   .berPaddtop h1 {
     font-size: 28px;
   }
   .ber_position {
-    margin-top: -118px;
+    margin-top: -135px;
+  }
+  .berPaddtop {
+    margin-bottom: 30px;
   }
   .text_position_3_milestone {
     margin-bottom: 0px;
     margin-top: 60px;
   }
-  .h6padding {
-    padding-top: 18px;
-    padding-bottom: 18px;
-  }
   .text_padding_2 {
-    margin-top: 80px;
+    margin-top: 55px;
   }
   .background-img_2 {
     margin-bottom: 40px;
   }
-  .text_position_2 h6,
   .about_text_position_2 h6,
   .about_text_position_13 h6 {
     max-width: 600px;
@@ -1310,9 +1311,9 @@ td {
     height: 30px;
     width: 100px;
   }
-  .ber_position_about {
+  /* .ber_position_about {
     margin-top: 6%;
-  }
+  } */
   .berPadd img {
     height: 50px;
     width: 50px;
@@ -1412,9 +1413,15 @@ td {
   .hide_title {
     display: block;
   }
+  #hide_br {
+    display: none;
+  }
   .form-groupx input {
     margin-left: 10px;
     width: 86%;
+  }
+  .app-icon-position {
+    margin-top: -16px;
   }
   #hide_top {
     display: none;
@@ -1436,6 +1443,26 @@ td {
   }
   div.text_3 {
     top: 65%;
+  }
+  .berPaddtop {
+    margin-bottom: 30px;
+  }
+  .text_padding_2 {
+    margin-top: 40px;
+  }
+  .text_position_2 h1 {
+    font-size: 22px;
+  }
+  .text_position_2 h6 {
+    font-size: 13px;
+    max-width: 480px;
+  }
+  .content-butterfly {
+    top: -135px;
+  }
+  #venusButton {
+    padding: 5px 15px 5px 15px;
+    font-weight: 500;
   }
   .about_text_position_13,
   .venus_text_position_4 {
@@ -1463,7 +1490,6 @@ td {
   .about_text_position_13 h6,
   .about_text_position_2 h6,
   .about_text_position_1 h6,
-  .text_position_2 h6,
   .text_3 h6,
   .text_padding_2 h6,
   .text_2 h6,
@@ -1485,15 +1511,11 @@ td {
   }
   .background-img_1 {
     height: 450px;
+    border-radius: 0px 0px 0px 0px;
   }
-
-  .ber_position {
+  /* .ber_position {
     margin-top: -76px;
-  }
-  .text_position_2 {
-    position: relative;
-    top: 96px;
-  }
+  } */
   .text_position_3_milestone {
     margin-bottom: 0px;
   }
@@ -1558,7 +1580,6 @@ td {
     background-color: #ffffff;
   }
   .berPadd {
-    background-color: #fc6375;
     border-style: hidden;
     border-radius: 12px;
     padding: 15px;
@@ -1568,7 +1589,6 @@ td {
     height: 50px;
   }
   .berPaddtop {
-    background-color: #fc6375;
     border-style: hidden;
     border-radius: 12px;
     padding: 10px;
@@ -1673,8 +1693,7 @@ td {
     width: 50%;
   }
   #rds {
-    background-color: #ffffff;
-    margin-top: 58px;
+    margin-top: 20px;
   }
   .getVenus {
     margin-top: 380px;
@@ -1686,9 +1705,6 @@ td {
   }
   .berPaddtop h1 {
     font-size: 28px;
-  }
-  .h6padding {
-    padding-bottom: 0px;
   }
   .cv_bank_container21 {
     padding-left: 0px;
@@ -1733,6 +1749,27 @@ td {
   }
   #venus_text {
     width: 50%;
+  }
+  .berPaddtop {
+    margin-bottom: 30px;
+  }
+  .text_padding_2 {
+    margin-top: 40px;
+  }
+  .text_position_2 h1 {
+    font-size: 20px;
+  }
+  .text_position_2 h6 {
+    font-size: 13px;
+    padding: 0px 8px 0px;
+  }
+  .content-butterfly {
+    top: -135px;
+    width: 90% !important;
+  }
+  #venusButton {
+    padding: 5px 15px 5px 15px;
+    font-weight: 500;
   }
   #hide_br {
     display: none;
@@ -1779,12 +1816,7 @@ td {
     max-width: 321px !important;
   }
   .app-icon-position {
-    margin-top: -12px;
-  }
-  .text_position_2 h6 {
-    font-size: 12px;
-    max-width: 321px !important;
-    margin-bottom: -7px;
+    margin-top: -6px;
   }
   .text_3 h6 {
     font-size: 10px;
@@ -1807,6 +1839,7 @@ td {
   }
   .background-img_1 {
     height: 350px;
+    border-radius: 0px 0px 0px 0px;
   }
   #venusButton {
     padding: 6px 10px 6px 10px;
@@ -1815,13 +1848,9 @@ td {
     border-radius: 6px;
     border-width: 1px;
   }
-  .ber_position {
+  /* .ber_position {
     margin-top: -74px;
-  }
-  .text_position_2 {
-    top: 145px;
-  }
-  .text_position_2 h1,
+  } */
   .about_text_position_1 h1 {
     font-size: 22px;
   }
@@ -2024,14 +2053,11 @@ td {
   }
   .berPaddtop {
     background-color: #ffffff;
-    color: #000;
     padding: 0px;
+    margin-bottom: -30px;
   }
   .berPaddtop h1 {
     font-size: 24px;
-  }
-  .h6padding {
-    padding-bottom: 0px;
   }
   .cv_bank_container21 {
     padding-left: 0px;
@@ -2054,9 +2080,6 @@ td {
   .img_uploader input {
     width: 120px;
   }
-  .h6padding {
-    padding-top: 10px;
-  }
 }
 
 @media only screen and (max-width: 379px) {
@@ -2069,12 +2092,30 @@ td {
   .cv_bank_container {
     padding-bottom: 50px;
   }
-  .h6padding {
-    padding-top: 10px;
-  }
   .form-groupx input {
     align-self: center;
     width: 60%;
+  }
+  .berPaddtop {
+    margin-bottom: -30px;
+  }
+  .text_padding_2 {
+    margin-top: 40px;
+  }
+  .text_position_2 h1 {
+    font-size: 20px;
+  }
+  .text_position_2 h6 {
+    font-size: 13px;
+    padding: 0px 8px 0px;
+  }
+  .content-butterfly {
+    top: -135px;
+    width: 90% !important;
+  }
+  #venusButton {
+    padding: 5px 15px 5px 15px;
+    font-weight: 500;
   }
   .row-padding {
     padding-bottom: 0px;
@@ -2127,11 +2168,6 @@ td {
     font-size: 12px;
     max-width: 321px !important;
   }
-  .text_position_2 h6 {
-    font-size: 12px;
-    max-width: 321px !important;
-    margin-bottom: -8px;
-  }
   .text_3 h1 {
     font-size: 16px;
   }
@@ -2151,6 +2187,7 @@ td {
   }
   .background-img_1 {
     height: 350px;
+    border-radius: 0px 0px 0px 0px;
   }
   #venusButton {
     padding: 6px 10px 6px 10px;
@@ -2159,21 +2196,14 @@ td {
     border-radius: 6px;
     border-width: 1px;
   }
-  .ber_position {
+  /* .ber_position {
     margin-top: -75px;
-  }
-  .text_position_2 {
-    top: 125px;
-  }
-  .text_position_2 h1,
-  .about_text_position_1 h1 {
-    font-size: 22px;
-  }
+  } */
   #hide_br {
     display: none;
   }
   .app-icon-position {
-    margin-top: -12px;
+    margin-top: -6px;
   }
   div.home_text_2_outside {
     height: 160px;
@@ -2380,9 +2410,6 @@ td {
   .berPaddtop h1 {
     font-size: 24px;
   }
-  .h6padding {
-    padding-bottom: 0px;
-  }
   .cv_bank_container21 {
     padding-left: 0px;
     padding-right: 0px;
@@ -2496,4 +2523,13 @@ td {
     max-width: 95%;
     margin-top: 0;
   }
+}
+.copy-data-url {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(255, 86, 107);
+  margin-top: -5px;
+}
+.swal2-styled.swal2-confirm {
+  background-color: rgb(20, 116, 44) !important;
 }

@@ -70,7 +70,14 @@ const Contact = () => {
           <Col xs={12} md={6}>
             <div className="contact_img_1_outside">
               <div align="center" className="contact_img_1">
-                <img src={contact} alt="venus_img" />
+                <img
+                  src={contact}
+                  alt="venus_img"
+                  data-aos="fade-up"
+                  data-aos-delay="50"
+                  data-aos-duration="1000"
+                  data-aos-easing="ease"
+                />
               </div>
             </div>
           </Col>

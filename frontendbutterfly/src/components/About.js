@@ -59,12 +59,22 @@ const About = () => {
       <MainNav />
       <div className="about_background-img_1">
         <div className="about_text_position_1">
-          <h1>
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease"
+          >
             BUTTERFLY MATRIMONIAL <br />
             YOUR PARFECT MATCH MAKER
           </h1>
           <br id="hide_br" />
-          <h6>
+          <h6
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease"
+          >
             Butterfly Matrimonial is a digital platform, working for complete
             match-making for selective profiles, an app for self-driven matching
             service, pre-post marriage counselling and many more.
@@ -79,7 +89,13 @@ const About = () => {
           It’s a digital matchmaking platform not dating.
         </h6>
       </div>
-      <div className="ber_position_about">
+      <div
+        className="ber_position_about"
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease"
+      >
         <Container>
           <Row id="rds_about" align="center">
             <Col xs={12} md={4}>
@@ -131,7 +147,13 @@ const About = () => {
         </h6>
       </div>
       {width > 767 ? (
-        <Container id="teamPosition">
+        <Container
+          id="teamPosition"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-easing="ease"
+        >
           <Row>
             <Col xs={12} md={4}>
               <div className="team_position">
@@ -157,7 +179,12 @@ const About = () => {
           </Row>
         </Container>
       ) : (
-        <Container>
+        <Container
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-easing="ease"
+        >
           <Swiper
             modules={[Navigation, Pagination]}
             navigation={false}

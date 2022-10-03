@@ -212,6 +212,8 @@ const Dashboard = () => {
     countPreference5 +
     countPreference6
 
+  console.log(cvdata.length)
+
   return (
     <>
       <div class="sidebar">
