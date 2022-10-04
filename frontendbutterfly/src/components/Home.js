@@ -126,14 +126,15 @@ function Home() {
           <Row>
             <Col xs={12} md={6} id="home-content-2">
               <div className="img_1_outside">
-                <div
-                  className="img_1"
-                  data-aos="fade-up"
-                  data-aos-delay="50"
-                  data-aos-duration="1000"
-                  data-aos-easing="ease"
-                >
-                  <img src={swipe} alt="swipe" />
+                <div className="img_1">
+                  <img
+                    src={swipe}
+                    alt="swipe"
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                  />
                 </div>
               </div>
             </Col>

@@ -83,7 +83,7 @@ em {
 }
 .content-butterfly {
   background-color: #ff566b;
-  border-radius: 12px;
+  border-radius: 20px;
   position: relative;
   top: -180px;
   padding: 30px 0px 38px;
@@ -213,7 +213,7 @@ input#phoneNumber:active {
   background-size: cover;
   position: relative;
   top: -20px;
-  border-radius: 0px 0px 50px 50px;
+  border-radius: 0px 0px 20px 20px;
 }
 a#badge img {
   height: 40px;
