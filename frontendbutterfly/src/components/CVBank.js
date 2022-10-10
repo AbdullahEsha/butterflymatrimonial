@@ -5,7 +5,7 @@ import FamilyMember from './CvBank/FamilyMember'
 import PreferenceInformation from './CvBank/PreferenceInformation'
 import ProfileInFormation from './CvBank/ProfileInformation'
 import { useDispatch } from 'react-redux'
-import { addCvData } from '../actions/index'
+import { addCvData, initCvData } from '../actions/index'
 import axios from 'axios'
 import Preview from './CvBank/Preview'
 import Footer from './Footer'
@@ -14,8 +14,10 @@ import Swal from 'sweetalert2'
 import jsPDF from 'jspdf'
 import watermark from '../asset/image/butterflyWater.png'
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
+import useWindowDimensions from './useWindowDimensions'
 
 const CVBank = () => {
+  const { height, width } = useWindowDimensions()
   const dispatch = useDispatch()
   const [data, setData] = useState('ProfileInformation')
   const [profileData, setProfileData] = useState({})
@@ -34,67 +36,82 @@ const CVBank = () => {
       // var extFile = fileName.substr(idxDot, fileName.length).toLowerCase()
       if (profileData.image === undefined || profileData.image === '') {
         document.querySelector('.imageFile').style.border = '1px solid red'
+        window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
       } else if (profileData.name === undefined || profileData.name === '') {
         document.querySelector('.name').style.borderColor = 'red'
+        window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
       } else if (
         profileData.gender === undefined ||
         profileData.gender === ''
       ) {
         document.querySelector('.gender').style.display = 'block'
+        window.scrollTo({ top: 380, left: 0, behavior: 'smooth' })
       } else if (
         profileData.phone === undefined ||
         profileData.phone.match(/\d/g).length !== 11
       ) {
         document.querySelector('.phone').style.border = '1px solid red'
+        window.scrollTo({ top: 530, left: 0, behavior: 'smooth' })
       } else if (profileData.email === undefined || profileData.email === '') {
         document.querySelector('.email').style.borderColor = 'red'
+        window.scrollTo({ top: 500, left: 0, behavior: 'smooth' })
       } else if (profileData.dob === undefined || profileData.age === '') {
         document.querySelector('.dob').style.borderColor = 'red'
+        window.scrollTo({ top: 550, left: 0, behavior: 'smooth' })
       } else if (
         profileData.height === undefined ||
         profileData.height === ''
       ) {
         document.querySelector('.height').style.borderColor = 'red'
+        window.scrollTo({ top: 700, left: 0, behavior: 'smooth' })
       } else if (
         profileData.weight === undefined ||
         profileData.weight === ''
       ) {
         document.querySelector('.weight').style.borderColor = 'red'
+        window.scrollTo({ top: 750, left: 0, behavior: 'smooth' })
       } else if (
         profileData.bloodGroup === undefined ||
         profileData.bloodGroup === ''
       ) {
         document.querySelector('.bloodGroup').style.borderColor = 'red'
+        window.scrollTo({ top: 800, left: 0, behavior: 'smooth' })
       } else if (
         profileData.religion === undefined ||
         profileData.religion === ''
       ) {
         document.querySelector('.religion').style.borderColor = 'red'
+        window.scrollTo({ top: 900, left: 0, behavior: 'smooth' })
       } else if (
         profileData.complexion === undefined ||
         profileData.complexion === ''
       ) {
         document.querySelector('.complexion').style.borderColor = 'red'
+        window.scrollTo({ top: 1050, left: 0, behavior: 'smooth' })
       } else if (
         profileData.maritalStatus === undefined ||
         profileData.maritalStatus === ''
       ) {
         document.querySelector('.maritalStatus').style.borderColor = 'red'
+        window.scrollTo({ top: 1050, left: 0, behavior: 'smooth' })
       } else if (
         profileData.hometown === undefined ||
         profileData.hometown === ''
       ) {
         document.querySelector('.hometown').style.borderColor = 'red'
+        window.scrollTo({ top: 1150, left: 0, behavior: 'smooth' })
       } else if (
         profileData.presentAddress === undefined ||
         profileData.presentAddress === ''
       ) {
         document.querySelector('.presentAddress').style.borderColor = 'red'
+        window.scrollTo({ top: 1150, left: 0, behavior: 'smooth' })
       } else if (
         profileData.grownUpAt === undefined ||
         profileData.grownUpAt === ''
       ) {
         document.querySelector('.grownUpAt').style.borderColor = 'red'
+        window.scrollTo({ top: 1250, left: 0, behavior: 'smooth' })
       } else if (
         profileData.citizenship === undefined ||
         profileData.citizenship === ''
@@ -102,26 +119,36 @@ const CVBank = () => {
         document.querySelector(
           '.citizenship .css-1bi0jn-control',
         ).style.borderColor = 'red'
+        window.scrollTo({ top: 1350, left: 0, behavior: 'smooth' })
       } else if (
         profileData.familyStatus === undefined ||
         profileData.familyStatus === ''
       ) {
         document.querySelector('.familyStatus').style.borderColor = 'red'
+        window.scrollTo({ top: 1450, left: 0, behavior: 'smooth' })
       } else if (
         profileData.annualIncome === undefined ||
         profileData.annualIncome === ''
       ) {
         document.querySelector('.annualIncome').style.borderColor = 'red'
+        window.scrollTo({ top: 1480, left: 0, behavior: 'smooth' })
       } else if (profileData.hobby === undefined || profileData.hobby === '') {
         document.querySelector('.hobby .css-1bi0jn-control').style.borderColor =
           'red'
+        window.scrollTo({ top: 1570, left: 0, behavior: 'smooth' })
       } else if (
         profileData.physicalStatus === undefined ||
         profileData.physicalStatus === ''
       ) {
         document.querySelector('.physicalStatus').style.borderColor = 'red'
+        width < 767
+          ? window.scrollTo({ top: 1900, left: 0, behavior: 'smooth' })
+          : window.scrollTo({ top: 1400, left: 0, behavior: 'smooth' })
       } else if (galleryData.imageFill[0] === undefined) {
         document.querySelector('.fileContainer').style.borderColor = 'red'
+        width < 767
+          ? window.scrollTo({ top: 2500, left: 0, behavior: 'smooth' })
+          : window.scrollTo({ top: 1400, left: 0, behavior: 'smooth' })
       } else {
         setData('Qualification')
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
@@ -133,39 +160,48 @@ const CVBank = () => {
           item.levelOfEducation === ''
         ) {
           document.querySelector('.levelOfEducation').style.borderColor = 'red'
+          window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
         } else if (item.group === undefined || item.group === '') {
           document.querySelector(
             `.group_${index} .css-1bi0jn-control`,
           ).style.borderColor = 'red'
+          window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
         } else if (
           item.instituteName === undefined ||
           item.instituteName === ''
         ) {
           document.querySelector('.instituteName').style.borderColor = 'red'
+          window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
         } else if (item.passingYear === undefined || item.passingYear === '') {
           document.querySelector('.passingYear').style.borderColor = 'red'
+          window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
         }
       })
       professionalData.forEach((item) => {
         if (item.companyName === undefined || item.companyName === '') {
           document.querySelector('.companyName').style.borderColor = 'red'
+          window.scrollTo({ top: 700, left: 0, behavior: 'smooth' })
         } else if (item.designation === undefined || item.designation === '') {
           document.querySelector('.designation').style.borderColor = 'red'
+          window.scrollTo({ top: 700, left: 0, behavior: 'smooth' })
         } else if (
           item.com_location === undefined ||
           item.com_location === ''
         ) {
           document.querySelector('.com_location').style.borderColor = 'red'
+          window.scrollTo({ top: 700, left: 0, behavior: 'smooth' })
         } else if (
           item.from_employment === undefined ||
           item.from_employment === ''
         ) {
           document.querySelector('.from_employment').style.borderColor = 'red'
+          window.scrollTo({ top: 700, left: 0, behavior: 'smooth' })
         } else if (
           item.to_employment === undefined ||
           item.to_employment === ''
         ) {
           document.querySelector('.to_employment').style.borderColor = 'red'
+          window.scrollTo({ top: 700, left: 0, behavior: 'smooth' })
         } else {
           setData('FamilyMember')
           window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
@@ -174,11 +210,13 @@ const CVBank = () => {
     } else if (data === 'FamilyMember') {
       if (familyData.fatherName === undefined || familyData.fatherName === '') {
         document.querySelector('.fatherName').style.borderColor = 'red'
+        window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
       } else if (
         familyData.motherName === undefined ||
         familyData.motherName === ''
       ) {
         document.querySelector('.motherName').style.borderColor = 'red'
+        window.scrollTo({ top: 500, left: 0, behavior: 'smooth' })
       } else {
         setData('PreferenceInformation')
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
@@ -201,6 +239,7 @@ const CVBank = () => {
         document.querySelector(
           '.maritalStatusPreference .css-1bi0jn-control',
         ).style.borderColor = 'red'
+        window.scrollTo({ top: 300, left: 0, behavior: 'smooth' })
       } else if (
         preferenceInfoData.complexionPreference === undefined ||
         preferenceInfoData.complexionPreference === ''
@@ -208,6 +247,7 @@ const CVBank = () => {
         document.querySelector(
           '.complexionPreference .css-1bi0jn-control',
         ).style.borderColor = 'red'
+        window.scrollTo({ top: 400, left: 0, behavior: 'smooth' })
       } else if (
         preferenceInfoData.occupationPreference === undefined ||
         preferenceInfoData.occupationPreference === ''
@@ -215,16 +255,19 @@ const CVBank = () => {
         document.querySelector(
           '.occupationPreference .css-1bi0jn-control',
         ).style.borderColor = 'red'
+        window.scrollTo({ top: 500, left: 0, behavior: 'smooth' })
       } else if (
         preferenceInfoData.educationPreference === undefined ||
         preferenceInfoData.educationPreference === ''
       ) {
         document.querySelector('.educationPreference').style.borderColor = 'red'
+        window.scrollTo({ top: 500, left: 0, behavior: 'smooth' })
       } else if (
         preferenceInfoData.religionPreference === undefined ||
         preferenceInfoData.religionPreference === ''
       ) {
         document.querySelector('.religionPreference').style.borderColor = 'red'
+        window.scrollTo({ top: 600, left: 0, behavior: 'smooth' })
       } else {
         setData('Preview')
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
@@ -902,6 +945,9 @@ const CVBank = () => {
                 title: `Success.`,
                 icon: 'success',
                 html: `<input type="text" value="https://butterflymatrimonial.com/butterfly-cv-bank/${uniqueId}" name="link" class="form-control alert-input-fild"><br/><p align="center" class="copy-data-url">Copy your cv link.</p>`,
+              }).then(() => {
+                dispatch(initCvData())
+                setData('ProfileInformation')
               })
             } else {
               Swal.fire({
@@ -927,11 +973,18 @@ const CVBank = () => {
     <div style={{ backgroundColor: '#ededed' }}>
       <MainNav />
       <div className="cvbank_text_position_1">
-        <h1>CV BANK</h1>
+        <h1>CREATE YOUR CV</h1>
+
         <h6>
-          Butterfly Matrimonial is a digital platform, working for complete
-          match-making for selective profiles, an app for self-driven matching
-          service, pre-post marriage counselling and many more.
+          Marriage means two individual men and women, with similar minds or
+          similar types of families desire to connect & create a lovable family.
+          Initially, Family structure and perceptions are measured by Bio-Data
+          which is tough for individuals who have never experienced preparing a
+          CV. Butterfly Matrimonial helps you to prepare a complete Bio-Data.
+        </h6>
+        <h6>
+          Download and share the link to your potential desired family and
+          dearest one to introduce yourself and your family.
         </h6>
       </div>
       <Container id="hide_top">
@@ -952,7 +1005,10 @@ const CVBank = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => setData('ProfileInformation')}
+                  onClick={() =>
+                    // setData('ProfileInformation')
+                    validation()
+                  }
                   className="borderbottomlinehover"
                 >
                   Profile Information
@@ -974,7 +1030,10 @@ const CVBank = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => setData('Qualification')}
+                  onClick={() =>
+                    // setData('Qualification')
+                    validation()
+                  }
                   className="borderbottomlinehover"
                 >
                   Education & Profession
@@ -996,7 +1055,10 @@ const CVBank = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => setData('FamilyMember')}
+                  onClick={() =>
+                    // setData('FamilyMember')
+                    validation()
+                  }
                   className="borderbottomlinehover"
                 >
                   Family Information
@@ -1006,7 +1068,10 @@ const CVBank = () => {
             <li>
               {data === 'PreferenceInformation' || data === 'Preview' ? (
                 <button
-                  onClick={() => setData('PreferenceInformation')}
+                  onClick={
+                    () => setData('PreferenceInformation')
+                    // validation()
+                  }
                   id="borderbottomline"
                 >
                   <IoMdCheckmarkCircleOutline
@@ -1018,7 +1083,10 @@ const CVBank = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => setData('PreferenceInformation')}
+                  onClick={() =>
+                    // setData('PreferenceInformation')
+                    validation()
+                  }
                   className="borderbottomlinehover"
                 >
                   Preference Information
@@ -1132,16 +1200,23 @@ const CVBank = () => {
               )}
               {data === 'Preview' && (
                 <div>
-                  {/* <button
-                    className="cv_bankButton_BackNext"
-                    onClick={exportPdf}
+                  <button
+                    className="cv_bankButton_BackNext-chacked"
+                    id="submit-checked-btn"
                   >
-                    Save
-                  </button>{' '} */}
+                    Save and Download
+                  </button>{' '}
                   <button
                     className="cv_bankButton_BackNext"
+                    id="submit-not-checked-btn"
                     onClick={(event) => {
                       addCV(event)
+                      document.getElementById(
+                        'submit-checked-btn',
+                      ).style.display = 'block'
+                      document.getElementById(
+                        'submit-not-checked-btn',
+                      ).style.display = 'none'
                     }}
                   >
                     Save and Download

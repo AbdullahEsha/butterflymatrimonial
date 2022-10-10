@@ -24,7 +24,9 @@ em {
 .berPadd h1 {
   font-weight: 700;
 }
-
+#submit-checked-btn {
+  display: none;
+}
 .berPadd img {
   height: 75px;
 }
@@ -797,6 +799,15 @@ a:hover {
 .cv_bankButton_BackNext:hover {
   color: #ffffff;
   background-color: #ff566b;
+}
+.cv_bankButton_BackNext-chacked {
+  background-color: #ff566b;
+  color: #ffffff;
+  border: 2px solid #ff566b;
+  padding: 6px 20px 6px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
 }
 .educationAdd {
   background-color: #ff566b;
@@ -2330,7 +2341,7 @@ td {
     margin-top: 0px;
   }
   .about_text_position_1 {
-    top: 190px;
+    top: 110px;
   }
   .venus_img_1 {
     height: 210px;

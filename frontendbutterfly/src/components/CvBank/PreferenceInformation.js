@@ -466,6 +466,7 @@ const PreferenceInformation = (props) => {
             <textarea
               rows="3"
               className="form-control preferenceDetails"
+              placeholder="Write about your preference in detail."
               value={preferenceInformation.preferenceDetails}
               onChange={(event) => {
                 setPreferenceInformation({

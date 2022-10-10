@@ -23,7 +23,7 @@ const MainNav = () => {
           to="/cv-bank"
           className="navpaddingleft navbar-brand spacial-brand"
         >
-          <h4>CV BANK</h4>
+          <h4>Create CV</h4>
         </Link>
         <Link to="/" className="navpaddingleft navbar-brand navbar-brand-2">
           <img src={Img} alt="img" className="logoTop" />
@@ -48,7 +48,7 @@ const MainNav = () => {
             </Link>
             {width > 991 && (
               <Link to="/cv-bank" className="nav-link">
-                <p id="buttonCV">CV Bank</p>
+                <p id="buttonCV">Create CV</p>
               </Link>
             )}
           </Nav>

@@ -459,7 +459,7 @@ const Qualification = (props) => {
               </Row>
               <Row className="row-padding">
                 <h5>Employment Period :</h5>
-                <Col xs={12} md={6}>
+                <Col xs={6} md={6}>
                   <div class="from-group">
                     <div class="input-group mb-2">
                       <input
@@ -480,7 +480,7 @@ const Qualification = (props) => {
                     </div>
                   </div>
                 </Col>
-                <Col xs={12} md={6}>
+                <Col xs={6} md={6}>
                   {current !== `Chacked_${index}` && (
                     <div class="from-group">
                       <div class="input-group mb-2">

@@ -15,6 +15,11 @@ const cvDataReducer = (state = initialData, action) => {
         ...state,
         ...action.payload,
       }
+    case 'INIT_CV':
+      return {
+        ...state,
+        ...action.payload,
+      }
     default:
       return state
   }

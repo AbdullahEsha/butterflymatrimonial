@@ -20,3 +20,18 @@ export const addCvData = (
     },
   }
 }
+
+export const initCvData = () => {
+  return {
+    type: 'INIT_CV',
+    payload: {
+      profileData: {},
+      professionalData: {},
+      familyData: {},
+      educationalData: {},
+      siblingData: {},
+      preferenceInfoData: {},
+      galleryData: {},
+    },
+  }
+}

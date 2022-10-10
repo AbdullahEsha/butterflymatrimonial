@@ -59,22 +59,12 @@ const About = () => {
       <MainNav />
       <div className="about_background-img_1">
         <div className="about_text_position_1">
-          <h1
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease"
-          >
+          <h1>
             BUTTERFLY MATRIMONIAL <br />
             YOUR PARFECT MATCH MAKER
           </h1>
           <br id="hide_br" />
-          <h6
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease"
-          >
+          <h6>
             Butterfly Matrimonial is a digital platform, working for complete
             match-making for selective profiles, an app for self-driven matching
             service, pre-post marriage counselling and many more.
